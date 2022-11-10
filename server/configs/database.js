@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const CONNECTION_STRING = 'mongodb://localhost:27017/cryptoFox';
 
-module.exports = async (app) => {
+module.exports = async () => {
     try {
         await mongoose.connect(CONNECTION_STRING);
         console.log('Database connected');
