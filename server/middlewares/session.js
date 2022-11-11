@@ -1,12 +1,12 @@
-const { parseToken } = require('../service/userService');
+const { parseToken } = require('../service/tokenService');
 
-module.exports = () => (req, res, next) => {
+module.exports = () => async (req, res, next) => {
     const token = req.headers['x-authorization'];
 
     if (token) {
         try {
-            const payload = parseToken(token);
-            console.log(payload);
+            const payload = await parseToken(token);
+
             req.user = payload;
             req.token = token;
         } catch (error) {

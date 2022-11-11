@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// TODO: add to env variable
 const CONNECTION_STRING = 'mongodb://localhost:27017/cryptoFox';
 
 module.exports = async () => {

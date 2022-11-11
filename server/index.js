@@ -8,6 +8,7 @@ const session = require('./middlewares/session');
 const authController = require('./controllers/authController');
 const testController = require('./controllers/testController');
 
+// TODO: add to env variable
 const EXPRESS_PORT = 3030;
 
 async function start() {

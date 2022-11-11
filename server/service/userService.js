@@ -1,8 +1,6 @@
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-
-const JWT_SECRET = 'nQ5^LZ!AaGf^&d#9Dt5';
+const { createToken, banToken } = require('./tokenService');
 
 async function register(email, username, password) {
     const existing = await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
@@ -36,36 +34,12 @@ async function login(email, password) {
     return createToken(user);
 }
 
-async function logout() {
-    // TODO: Token blacklist
-}
-
-function parseToken(token) {
-    // if () { token in black list
-    // throw new Error('Token is blacklisted');
-    // }
-
-    return jwt.verify(token, JWT_SECRET);
-}
-
-function createToken(user) {
-    const data = {
-        _id: user._id,
-        email: user.email,
-        username: user.username,
-    };
-
-    return {
-        _id: user._id,
-        email: user.email,
-        username: user.username,
-        accessToken: jwt.sign(data, JWT_SECRET)
-    };
+async function logout(token) {
+    banToken(token);
 }
 
 module.exports = {
     register,
     login,
     logout,
-    parseToken
 };
