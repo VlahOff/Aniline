@@ -2,8 +2,11 @@ const express = require('express');
 const cors = require('cors');
 
 const databaseConfig = require('./configs/database');
-const authController = require('./controllers/authController');
+
 const session = require('./middlewares/session');
+
+const authController = require('./controllers/authController');
+const testController = require('./controllers/testController');
 
 const EXPRESS_PORT = 3030;
 
@@ -16,9 +19,10 @@ async function start() {
     await databaseConfig();
 
     app.use('/users', authController);
+    app.use('/test', testController);
 
     app.get('/', (req, res) => {
-        res.json('Application running without a hitch!');
+        res.json({ message: 'Application running without a hitch!' });
     });
 
     app.listen(3030, () => console.log('App listening on port: ' + EXPRESS_PORT));
