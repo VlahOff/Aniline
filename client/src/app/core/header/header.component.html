@@ -1,0 +1,30 @@
+<nav>
+    <div class="logoImg">
+        <i id="img" class="fa-brands fa-gripfire"></i>
+    </div>
+    <a href="/">{{title}}</a>
+    <a href="/home">Home</a>
+    <!-- Logged users -->
+    <div *ngIf="hasUser" class="userNav">
+        <a href="/portfolio">Portfolio</a>
+        <a href="/about">About Us</a>
+    </div>
+    <div *ngIf="hasUser" class="profile">
+        <span>Welcome, {{email}}</span>
+        <a href="/profile">My Profile</a>
+        <a id="logoutBtn" href="javascript:void(0)">Sign Out</a>
+    </div>
+    <!-- Guest users -->
+    <div class="guestNav">
+        <div class="profile">
+            <a href="/login">Log In</a>
+            <a href="/register">Sign Up</a>
+        </div>
+    </div>
+</nav>
+<!-- Home
+Forum
+Portfolio
+Login
+Register
+Logout -->
