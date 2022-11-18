@@ -12,7 +12,6 @@ async function parseToken(token) {
     }
 
     const result = jwt.verify(token, JWT_SECRET);
-    console.log(result);
     if (!result) {
         console.log('The ban hammer struck!');
         banToken(token);

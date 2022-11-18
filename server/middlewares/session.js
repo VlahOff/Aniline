@@ -1,4 +1,4 @@
-const { parseToken } = require('../service/tokenService');
+const { parseToken, banToken } = require('../service/tokenService');
 
 module.exports = () => async (req, res, next) => {
     const token = req.headers['x-authorization'];
@@ -10,6 +10,7 @@ module.exports = () => async (req, res, next) => {
             req.user = payload;
             req.token = token;
         } catch (error) {
+            banToken(token);
             return res.status(401).json({ message: 'Invalid authorization token!' });
         }
     }
