@@ -1,28 +1,25 @@
 <nav>
-    <div class="logoImg">
-        <i id="img" class="fa-brands fa-gripfire"></i>
-    </div>
-    <a href="/">{{title}}</a>
-    <a href="/home">Home</a>
-    <!-- Logged users -->
-    <div *ngIf="hasUser" class="userNav">
-        <a href="/portfolio">Portfolio</a>
-        <a href="/about">About Us</a>
-    </div>
-    <div *ngIf="hasUser" class="profile">
-        <span>Welcome, {{email}}</span>
-        <a href="/profile">My Profile</a>
-        <a id="logoutBtn" href="javascript:void(0)">Sign Out</a>
-    </div>
-    <!-- Guest users -->
-    <div class="guestNav">
-        <div class="profile">
-            <a href="/login">Log In</a>
-            <a href="/register">Sign Up</a>
+    <ul>
+        <li id="logo"><a href=""><img src="/assets/Untitled.png" alt="logo"></a></li>
+        <div class="button-container">
+            <li *ngIf="hasUser">
+                <p>Welcome {{email}}</p>
+            </li>
+            <li><a href="">Coins</a></li>
+            <li><a href="">Forum</a></li>
+            <div *ngIf="!hasUser" class="guestContainer">
+                <li><a href="">Login</a></li>
+                <li><a href="">Register</a></li>
+            </div>
+            <div *ngIf="hasUser" class="userContainer">
+                <li><a href="">Portfolio</a></li>
+                <li><a href="">Logout</a></li>
+            </div>
         </div>
-    </div>
+    </ul>
 </nav>
-<!-- Home
+<!-- 
+Home
 Forum
 Portfolio
 Login

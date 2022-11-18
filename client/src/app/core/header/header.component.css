@@ -1,70 +1,55 @@
 nav {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    margin-left: 5%;
-    margin-right: 5%;
     background-color: #1F2739;
-    overflow: auto;
-    border-radius: 20px;
-    box-shadow: 2px 5px 13px 5px #000000ad, 8px -15px 31px -12px rgb(0 0 0 / 0%);
-    padding: 5px 16px 5px 16px;
-}
-
-.logoImg {
+    margin: 15px 8%;
     padding: 0;
-    display: inline;
-    float: left;
+    border-radius: 15px;
+    box-shadow: 2px 5px 13px 5px #000000ad, 8px -15px 31px -12px rgb(0 0 0 / 0%);
 }
 
-#img {
-    height: 50px;
-    width: 50px;
-    color: #84000E;
+ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0 5px;
+    margin: 0;
 }
 
-nav>a,
-div>a {
-    float: left;
-    color: white;
-    text-align: center;
-    padding: 25px 0 25px 0;
+ul li {
+    display: inline-block;
+    margin: 5px 10px;
 }
 
-/* .logoText {
-    display: inline;
-    padding-top: inherit;
-    float: right;
-} */
-/* Style the links inside the navigation bar */
-/* nav a,
-nav span {
-    float: left;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-} */
-
-/* Change the color of links on hover */
-/* nav a:hover {
-    background-color: #4F535C;
-    color: white;
-    border-radius: 10px;
-} */
-
-/* Add a color to the active/current link */
-/* nav a,
-#common {
-    float: left;
-} */
-
-/* nav a.active {
+#logo a img {
+    margin-top: 5px;
     background-color: #84000E;
-    color: whitesmoke;
-    border-radius: 10px;
-} */
+    border-radius: 8px;
+    width: 100px;
+}
 
-/* .profile {
-    float: right;
-} */
+.button-container {
+    display: flex;
+    margin-right: 10px;
+}
+
+.button-container li {
+    margin: 21px 3px 3px 3px;
+    text-align: center;
+}
+
+.button-container p {
+    color: white;
+}
+
+.button-container a {
+    padding: 8px;
+    color: white;
+    text-decoration: none;
+}
+
+.button-container a:hover {
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #84000E;
+}
