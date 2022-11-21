@@ -83,9 +83,6 @@ const cryptoApi = {
 
         return res;
     },
-    topGainersAndLosers: async () => {
-
-    },
     currencyConverter: () => {
         
     }
