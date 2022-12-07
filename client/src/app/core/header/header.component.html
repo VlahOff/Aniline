@@ -1,20 +1,19 @@
 <nav>
     <ul>
-        <li id="logo"><a routerLink="/home"><img src="/assets/Untitled.png" alt="logo"></a></li>
+        <li id="logo"><a routerLink="/home"><img src="/assets/logo.png" alt="logo"></a></li>
         <div class="button-container">
             <li *ngIf="hasUser">
                 <p>Welcome {{email}}</p>
             </li>
-            <li><a href="">Coins</a></li>
-            <li><a routerLink="/forum">Forum</a></li>
-            <li><a href="">Cryptocurrency Converter</a></li>
+            <li><a routerLink="/coins">Coins</a></li>
+            <li><a routerLink="/converter">Crypto Converter</a></li>
             <div *ngIf="!hasUser" class="guestContainer">
-                <li><a href="">Login</a></li>
-                <li><a href="">Register</a></li>
+                <li><a routerLink="/auth/login">Login</a></li>
+                <li><a routerLink="/auth/register">Register</a></li>
             </div>
             <div *ngIf="hasUser" class="userContainer">
-                <li><a href="">Portfolio</a></li>
-                <li><a href="">Logout</a></li>
+                <li><a routerLink="/portfolio">Portfolio</a></li>
+                <li><a>Logout</a></li>
             </div>
         </div>
     </ul>

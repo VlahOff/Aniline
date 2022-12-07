@@ -1,0 +1,86 @@
+.container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 2px 5px 13px 5px #000000ad, 8px -15px 31px -12px rgb(0 0 0 / 0%);
+  border-radius: 15px;
+  margin: 150px 36% 35% 36%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  margin: auto;
+  width: 180px;
+  padding: 70px 0px;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  font-weight: 900;
+  padding: 0px 0px 50px 0px;
+  text-decoration: underline;
+}
+
+label {
+  margin-top: 15px;
+  display: flex;
+  font-size: 16px;
+  padding-left: 16%;
+  justify-content: left;
+}
+
+.input {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: black 1px solid;
+  padding: 0px 20px 10px 20px;
+  margin: 5px 15% 20px 15%;
+}
+
+.input-icon {
+  padding: 8px;
+  padding-left: 0px;
+  width: 20px;
+  opacity: 40%;
+}
+
+input {
+  text-align: center;
+  border: none;
+}
+
+.button-div {
+  display: flex;
+  justify-content: center;
+  margin: 5% 0%;
+  margin-bottom: 0px;
+}
+
+button {
+  background: rgb(198, 101, 199);
+  background: linear-gradient(90deg, rgba(198, 101, 199, 1) 0%, rgba(61, 127, 219, 1) 100%);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 30%;
+  font-size: large;
+  color: white;
+}
+
+.no-account {
+  display: flex;
+  justify-content: center;
+  margin: 25px;
+}
+
+a {
+  color: crimson;
+  padding-left: 3px;
+  font-weight: bold;
+  text-decoration: none;
+}
