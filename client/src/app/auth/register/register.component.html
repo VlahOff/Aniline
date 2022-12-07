@@ -1,30 +1,37 @@
 <div class="container">
-  <form>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <img class="logo" src="/assets/logo.png" alt="logo img">
     <h1>Register</h1>
     <label for="email">Email</label>
+    <span class="error" *ngIf="!registerForm.get('email')?.valid && registerForm.get('email')?.touched">Invalid
+      e-mail!</span>
     <div class="input">
       <img class="input-icon" src="/assets/at-solid.svg" alt="pass">
-      <input id="email" type="text" placeholder="Enter Email" name="email">
+      <input id="email" type="text" placeholder="Enter Email" formControlName="email">
       <img class="input-icon" src="" alt="">
     </div>
     <label for="password">Password</label>
+    <span class="error" *ngIf="!registerForm.get('pass')?.valid && registerForm.get('pass')?.touched">Invalid
+      password!</span>
     <div class="input">
       <img class="input-icon" src="/assets/key-solid.svg" alt="pass">
-      <input id="password" type="password" placeholder="Enter Password" name="password">
+      <input id="pass" type="password" placeholder="Enter Password" formControlName="pass">
       <img class="input-icon" src="" alt="">
     </div>
     <label for="repeatPass">Repeat Password</label>
+    <span class="error" *ngIf="registerForm.get('rePass')?.errors?.['passwordDontMatch'] && registerForm.get('rePass')?.touched">Passwords must match!</span>
+    <span class="error" *ngIf="!registerForm.get('pass')?.valid && registerForm.get('pass')?.touched">Invalid
+      password!</span>
     <div class="input">
       <img class="input-icon" src="/assets/key-solid.svg" alt="pass">
-      <input id="repeatPass" type="password" placeholder="Repeat Password" name="repeatPass">
+      <input id="rePass" type="password" placeholder="Repeat Password" formControlName="rePass">
       <img class="input-icon" src="" alt="">
     </div>
     <div class="button-div">
       <button type="submit" class="registerbtn button">Register</button>
     </div>
     <div class="no-account">
-      <p>Already have an account?<a href="/login">Sign in</a>.</p>
+      <p>Already have an account? <a routerLink="/auth/login">Sign in</a>.</p>
     </div>
   </form>
 </div>

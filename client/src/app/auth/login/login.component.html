@@ -1,24 +1,26 @@
 <div class="container">
-  <form>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <img class="logo" src="/assets/logo.png" alt="logo img">
     <h1>Login</h1>
     <label for="email">Email</label>
+    <span class="error" *ngIf="!loginForm.get('email')?.valid && loginForm.get('email')?.touched">Invalid e-mail!</span>
     <div class="input">
-        <img class="input-icon" src="/assets/at-solid.svg" alt="pass">
-        <input id="email" placeholder="Enter your e-mail!" name="email" type="text">
-        <img class="input-icon" src="" alt="">
+      <img class="input-icon" src="/assets/at-solid.svg" alt="pass">
+      <input id="email" placeholder="Enter your e-mail!" formControlName="email" type="email">
+      <img class="input-icon" src="" alt="">
     </div>
     <label for="password">Password</label>
+    <span class="error" *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched">Invalid password!</span>
     <div class="input">
-        <img class="input-icon" src="/assets/key-solid.svg" alt="pass">
-        <input id="password" type="password" placeholder="Enter your password!" name="password">
-        <img class="input-icon" src="" alt="">
+      <img class="input-icon" src="/assets/key-solid.svg" alt="pass">
+      <input id="password" type="password" placeholder="Enter your password!" formControlName="password">
+      <img class="input-icon" src="" alt="">
     </div>
     <div class="button-div">
       <button type="submit" class="button">Login</button>
     </div>
     <div class="no-account">
-      <p>Don't have an account? <a href="/register">Sign up</a>.</p>
+      <p>Don't have an account? <a routerLink="/auth/register">Sign up</a>.</p>
     </div>
   </form>
 </div>
