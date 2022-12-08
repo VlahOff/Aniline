@@ -9,6 +9,8 @@ import { CryptoConverterComponent } from './crypto-converter/crypto-converter.co
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { CoinsComponent } from './coins/coins.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CryptoCardComponent } from './home/crypto-card/crypto-card.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CryptoConverterComponent,
     PortfolioComponent,
     CoinsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CryptoCardComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,14 @@
 h1 {
+    margin: 8% 60% 0% 10%;
+    text-align: left;
     color: white;
     font-family: 'Orbitron';
     font-size: 90px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 0px 7%;
 }
