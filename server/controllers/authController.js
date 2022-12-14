@@ -12,7 +12,7 @@ authController.post('/register',
                 throw errors;
             }
 
-            const token = await register(req.body.email, req.body.username, req.body.password);
+            const token = await register(req.body.email, req.body.password);
             res.json(token);
         } catch (error) {
             res.status(400).json({
@@ -34,7 +34,7 @@ authController.post('/login', async (req, res) => {
 
 authController.get('/logout', async (req, res) => {
     await logout(req.token);
-    res.status(204).end();
+    res.status(200).end();
 });
 
 module.exports = authController;

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -9,20 +11,31 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
+  constructor(private authService: AuthService, private router: Router) { }
+
   ngOnInit(): void {
     this.registerForm = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'pass': new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
       'rePass': new FormControl(null, [Validators.required, Validators.minLength(6), this.doPasswordsMatch.bind(this)])
     });
   }
 
   onSubmit() {
-    console.log(this.registerForm);
+    this.authService.register(this.registerForm.value.email, this.registerForm.value.password)
+      .subscribe({
+        next: (resData) => {
+          console.log(resData);
+          this.router.navigate(['/']);
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
   }
 
   doPasswordsMatch(control: FormControl): { [s: string]: boolean; } | null {
-    if (control.value === this.registerForm?.get('pass')?.value) {
+    if (control.value === this.registerForm?.get('password')?.value) {
       return null;
     }
     return { 'passwordDontMatch': true };

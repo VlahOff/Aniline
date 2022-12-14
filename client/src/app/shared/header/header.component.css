@@ -20,34 +20,45 @@ ul li {
     margin: 5px 10px;
 }
 
-#logo a img {
+.logo a img {
     margin-top: 5px;
     background-color: #84000E;
     border-radius: 8px;
     width: 100px;
 }
 
-.button-container {
+.user {
+    padding: 15px;
+    color: white;
+}
+
+.left-container {
+    display: flex;
+    justify-content: left;
+    text-align: center;
+}
+
+.right-container {
     display: flex;
     margin-right: 10px;
 }
 
-.button-container li {
+.right-container li {
     margin: 21px 3px 3px 3px;
     text-align: center;
 }
 
-.button-container p {
+.right-container p {
     color: white;
 }
 
-.button-container a {
+.right-container a {
     padding: 8px;
     color: white;
     text-decoration: none;
 }
 
-.button-container a:hover {
+.right-container a:hover {
     text-decoration: none;
     padding: 8px;
     border-radius: 10px;

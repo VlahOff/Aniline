@@ -8,7 +8,7 @@ async function parseToken(token) {
     const data = await Token.findOne({ token });
 
     if (data) {
-        throw new Error('Token is blacklisted');
+        throw new Error('BLACKLISTED_TOKEN');
     }
 
     const result = jwt.verify(token, JWT_SECRET);
@@ -22,19 +22,18 @@ async function parseToken(token) {
 function createToken(user) {
     const data = {
         _id: user._id,
-        email: user.email,
-        username: user.username,
+        email: user.email
     };
 
     return {
         _id: user._id,
         email: user.email,
-        username: user.username,
         accessToken: jwt.sign(data, JWT_SECRET)
     };
 }
 
 async function banToken(token) {
+    console.log(token);
     return Token.create({ token });
 }
 

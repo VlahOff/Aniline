@@ -19,7 +19,8 @@ async function start() {
     app.use(session());
     await databaseConfig();
 
-    app.use('/users', authController);
+    app.use('/auth', authController);
+    // app.use('/crypto', Cryp)
     app.use('/test', testController);
 
     app.get('/', (req, res) => {
