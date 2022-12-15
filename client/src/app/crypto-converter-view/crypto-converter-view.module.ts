@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CryptoConverterComponent } from './crypto-converter/crypto-converter.component';
+import { ConverterRoutingModule } from './converter-routing.module';
 
 
 
@@ -9,7 +10,8 @@ import { CryptoConverterComponent } from './crypto-converter/crypto-converter.co
     CryptoConverterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ConverterRoutingModule
   ]
 })
 export class CryptoConverterViewModule { }

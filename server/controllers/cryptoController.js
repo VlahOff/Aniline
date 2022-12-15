@@ -4,8 +4,7 @@ const cryptoController = require('express').Router();
 
 cryptoController.get('/topThree', async (req, res) => {
   const temp = await cryptoApi.getTopThree();
-  console.log(temp);
-  res.json({ data: temp });
+  res.json(temp);
 });
 
 module.exports = cryptoController;
