@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/shared/notification/notification.service';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -11,7 +12,11 @@ import { AuthService } from '../auth.service';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private notificationService: NotificationService
+  ) { }
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -25,11 +30,12 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.registerForm.value.email, this.registerForm.value.password)
       .subscribe({
         next: (resData) => {
-          console.log(resData);
           this.router.navigate(['/']);
         },
         error: (error) => {
-          console.log(error);
+          if (error) {
+            this.notificationService.createNotification(error.message, 'alert')
+          }
         }
       });
   }

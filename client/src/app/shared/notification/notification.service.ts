@@ -8,10 +8,7 @@ import { Notification } from "./notification.model";
 export class NotificationService {
   notificationsChanged = new Subject<Notification[]>();
 
-  private notifications: Notification[] = [
-    new Notification('The email address is already in use by another account.', 'alert'),
-    new Notification('The email address is already in use by another account.', 'message')
-  ]
+  private notifications: Notification[] = [];
 
   createNotification(message: string, type: string) {
     this.notifications.push(new Notification(message, type));

@@ -21,7 +21,17 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   test() {
-    return this.http.get('http://localhost:3030/test/protected', { responseType: 'json' }).subscribe({ next: (res) => console.log(res) });
+    return this.http.get('http://localhost:3030/test/protected', { responseType: 'json' })
+    .subscribe({ 
+      next: (res) => {
+        console.log(res) 
+      },
+      error: (err) => {
+        console.log('this is it');
+        
+        console.log(err)
+      }
+    });
   }
 
   register(email: string, password: string) {
