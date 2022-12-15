@@ -2,11 +2,7 @@ export interface DetailedCoinDataResponse {
   id: string,
   symbol: string,
   name: string,
-  image: {
-    small: string,
-    thumb: string,
-    large: string;
-  },
+  image: string,
   current_price: number,
   market_cap: number,
   total_volume: number,

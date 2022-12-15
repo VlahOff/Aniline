@@ -1,13 +1,13 @@
 <div class="card-box">
   <div class="logo-container">
-    <img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579">
+    <img src="{{ card.image }}" alt="coin-logo">
   </div>
   <div>
     <div class="text-center">
       <h3 class="crypto-title">{{ card.name }}</h3>
-      <p>Price: ${{ card.currentPrice }}</p>
-      <p>Percent 24h: {{ card.percentageChange24 }}%</p>
-      <p>Percent 7d: {{ card.priceChange24 }}%</p>
+      <p><span class="label">Price:</span> ${{ card.current_price | number:'.2' }}</p>
+      <p><span class="label">24h:</span> ${{ card.price_change_24h | number:'1.2-2' }}</p>
+      <p><span class="label">24h:</span> {{ card.price_change_percentage_24h | number:'1.2-2' }}%</p>
     </div>
     <div class="data-buttons">
       <a class="button" href="">Add To Portfolio</a>

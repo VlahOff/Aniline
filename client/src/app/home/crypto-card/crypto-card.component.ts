@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DetailedCoinDataResponse } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-crypto-card',
@@ -6,12 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./crypto-card.component.css']
 })
 export class CryptoCardComponent implements OnInit {
-  @Input() card!: {
-    name: string,
-    currentPrice: number,
-    priceChange24: number,
-    percentageChange24: number
-  };
+  @Input() card!: DetailedCoinDataResponse;
 
   constructor() { }
 
