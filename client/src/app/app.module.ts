@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './shared/header/header.component';
 import { UserTokenInterceptor } from './auth/user-token.interceptor';
+import { NotificationComponent } from './shared/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserTokenInterceptor } from './auth/user-token.interceptor';
     PageNotFoundComponent,
     CryptoCardComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,

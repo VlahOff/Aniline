@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+import { NotificationService } from '../notification/notification.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   hasUser: boolean = false;
   private userSub!: Subscription;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.userSub = this.authService.user.subscribe(
@@ -24,7 +25,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onTest() {
-    this.authService.test();
+    // this.authService.test();
+    this.notificationService.createNotification('Fuck you', 'alert')
   }
 
   onLogout() {

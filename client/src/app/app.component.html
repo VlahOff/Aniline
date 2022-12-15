@@ -1,2 +1,7 @@
 <app-header></app-header>
+<app-notification 
+class="notif-container" 
+*ngFor="let notification of notifications; index as i" 
+(click)="remove(i)"
+[notification]="notification"></app-notification>
 <router-outlet></router-outlet>

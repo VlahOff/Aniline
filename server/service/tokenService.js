@@ -33,7 +33,7 @@ function createToken(user) {
 }
 
 async function banToken(token) {
-    console.log(token);
+    // console.log(token);
     return Token.create({ token });
 }
 
