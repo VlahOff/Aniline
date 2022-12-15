@@ -7,6 +7,7 @@ const session = require('./middlewares/session');
 
 const authController = require('./controllers/authController');
 const testController = require('./controllers/testController');
+const cryptoController = require('./controllers/cryptoController');
 
 // TODO: add to env variable
 const EXPRESS_PORT = 3030;
@@ -20,7 +21,7 @@ async function start() {
     await databaseConfig();
 
     app.use('/auth', authController);
-    // app.use('/crypto', Cryp)
+    app.use('/crypto', cryptoController);
     app.use('/test', testController);
 
     app.get('/', (req, res) => {

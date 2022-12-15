@@ -21,7 +21,7 @@ const cryptoApi = {
             total_volume: temp.data.total_volume.usd,
             btc_market_cap_percentage: temp.data.market_cap_percentage.btc
         };
-    },
+    },// decimal place for currency price value, default: 2
     getCoin: async (coin, precision) => {
         let t = await axios.get(cgHost + `simple/price?ids=${coin}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&precision=${Number(precision) | 2}`);
         return t.data;
@@ -84,7 +84,28 @@ const cryptoApi = {
         return res;
     },
     currencyConverter: () => {
-        
+
+    },
+    getListCoins: async () => {
+        return await axios.get(cgHost + 'coins/list?include_platform=true');
+    },
+    search: async (query) => {
+        let t = await axios.get(`${cgHost}search?query=${query}`);
+        return t.data.coins;
+    },
+    getTopThree: async () => {
+        const temp = await cryptoApi.getTopHundred();
+        const stableCoinsIds = ['tether', 'usd-coin', 'binance-usd', 'dai', 'paxos-standard', 'true-usd', 'usdd'];
+        const res = [];
+
+        while (res.length != 3) {
+            const tempCoin = temp.shift();
+            if (!stableCoinsIds.includes(tempCoin.id)) {
+                res.push(tempCoin);
+            }
+        }
+
+        return res;
     }
 };
 
