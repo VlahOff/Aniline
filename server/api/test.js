@@ -1,7 +1,7 @@
 const api = require('./cryptoApi');
 
 async function start() {
-    const temp = await api.newCoinsToday();
+    const temp = await api.cryptoMap();
 
     console.log(temp);
 }
