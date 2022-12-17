@@ -1,0 +1,81 @@
+.container {
+  padding: 100px 10%;
+  color: black;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  border: 1px solid white;
+  border-radius: 15px;
+  background: white;
+}
+
+h1 {
+  text-align: center;
+  padding: 50px 0px 80px 0px;
+  text-decoration: underline;
+}
+
+thead {
+  border-bottom: 1px solid black;
+}
+
+tbody {
+  display: flex;
+  flex-direction: column;
+}
+
+
+#first {
+  width: 25px;
+}
+
+#second {
+  width: 25px;
+}
+
+#third {
+  width: 350px;
+}
+
+#fourth {
+  width: 120px;
+}
+
+#fifth {
+  width: 150px;
+}
+
+#sixth {
+  width: 80px;
+}
+
+#seventh {
+  width: 70px;
+}
+
+#eighth {
+  width: 80px;
+}
+
+#ninth {
+  width: 200px;
+}
+
+#tenth {
+  width: 200px;
+}
+
+tr {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  text-align: center;
+  height: 40px;
+}
+
+td {
+  vertical-align: middle;
+}

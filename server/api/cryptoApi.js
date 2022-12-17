@@ -62,8 +62,27 @@ const cryptoApi = {
     },
     // TODO: NOT IMPLEMENTED
     getTopHundred: async () => {
-        let t = await axios.get(cgHost + 'coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false');
-        return t.data;
+        let t = await axios.get(cgHost + 'coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d');
+
+        const res = [];
+        t.data.forEach((t) => {
+            res.push({
+                id: t.id,
+                name: t.name,
+                symbol: t.symbol,
+                total_supply: t.total_supply,
+                last_updated: t.last_updated,
+                current_price: t.current_price,
+                market_cap: t.market_cap,
+                price_change_24h: t.price_change_24h,
+                price_change_percentage_24h: t.price_change_percentage_24h,
+                price_change_percentage_1h_in_currency: t.price_change_percentage_1h_in_currency,
+                price_change_percentage_24h_in_currency: t.price_change_percentage_24h_in_currency,
+                price_change_percentage_7d_in_currency: t.price_change_percentage_7d_in_currency,
+                image: t.image,
+            });
+        });
+        return res;
     },
     // TODO: NOT IMPLEMENTED
     newCoinsToday: async () => {
@@ -71,7 +90,7 @@ const cryptoApi = {
         t = t.data.data;
 
         const res = [];
-        t.forEach(async (t) => {
+        t.forEach((t) => {
             res.push({
                 id: t.slug,
                 name: t.name,

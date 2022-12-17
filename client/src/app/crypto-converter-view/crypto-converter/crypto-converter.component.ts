@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ConverterResponse, CryptoMap, FiatMap } from 'src/app/interfaces';
-import { ConverterService } from '../converter.service';
+import { CryptoService } from 'src/app/services/cryptoApi.service';
 
 @Component({
   selector: 'app-crypto-converter',
@@ -25,7 +25,7 @@ export class CryptoConverterComponent implements OnInit, OnDestroy {
 
   converterForm!: FormGroup;
 
-  constructor(private convertService: ConverterService) { }
+  constructor(private cryptoService: CryptoService) { }
 
   ngOnInit(): void {
     this.converterForm = new FormGroup({
@@ -34,14 +34,14 @@ export class CryptoConverterComponent implements OnInit, OnDestroy {
       'to': new FormControl(null, Validators.required)
     });
 
-    this.fiatMapSub = this.convertService.fiatMap()
+    this.fiatMapSub = this.cryptoService.fiatMap()
       .subscribe({
         next: (res) => {
           this.fiatMap = res;
         }
       });
 
-    this.cryptoMapSub = this.convertService.cryptoMap()
+    this.cryptoMapSub = this.cryptoService.cryptoMap()
       .subscribe({
         next: (res) => {
           this.cryptoMap = res;
@@ -50,7 +50,7 @@ export class CryptoConverterComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.convertSub = this.convertService.convert(this.converterForm.value.amount, this.fromId, this.toId)
+    this.convertSub = this.cryptoService.convert(this.converterForm.value.amount, this.fromId, this.toId)
       .subscribe({
         next: (res) => {
           this.result = res;

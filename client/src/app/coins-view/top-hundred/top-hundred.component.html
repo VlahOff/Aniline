@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="table">
+    <h1>Top 100 coins</h1>
+    <thead>
+      <tr>
+        <td id="first">#</td>
+        <td id="second"></td>
+        <td id="third">Coin</td>
+        <td id="fourth">Sym</td>
+        <td id="fifth">Price</td>
+        <td id="sixth">1h</td>
+        <td id="seventh">24h</td>
+        <td id="eighth">7d</td>
+        <td id="ninth">Mkt Cap</td>
+        <td id="tenth">Total</td>
+      </tr>
+    </thead>
+    <tbody>
+      <app-coin-top-row *ngFor="let coin of topHundred; index as i" [coin]="coin" [index]="i + 1"></app-coin-top-row>
+    </tbody>
+  </div>
+</div>

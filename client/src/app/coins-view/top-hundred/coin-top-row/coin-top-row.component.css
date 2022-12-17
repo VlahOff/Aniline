@@ -1,0 +1,58 @@
+#first {
+  width: 25px;
+}
+
+#second {}
+
+#third {
+  width: 350px;
+}
+
+#fourth {
+  width: 120px;
+  text-align: center;
+}
+
+#fifth {
+  width: 150px;
+}
+
+#sixth {
+  width: 80px;
+}
+
+#seventh {
+  width: 70px;
+}
+
+#eighth {
+  width: 80px;
+}
+
+#ninth {
+  width: 200px;
+}
+
+#tenth {
+  width: 200px;
+}
+
+img {
+  width: 25px;
+}
+
+tr {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  padding-top: 20px;
+  border-bottom: 1px black solid;
+}
+
+tr:hover {
+  background: rgb(231, 231, 231);
+}
+
+td {
+  height: 40px;
+}

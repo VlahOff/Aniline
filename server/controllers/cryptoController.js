@@ -7,6 +7,16 @@ cryptoController.get('/topThree', async (req, res) => {
   res.json(temp);
 });
 
+cryptoController.get('/topHundred', async (req, res) => {
+  const temp = await cryptoApi.getTopHundred();
+  res.json(temp);
+});
+
+cryptoController.get('/newCoins', async (req, res) => {
+  const temp = await cryptoApi.newCoinsToday();
+  res.json(temp);
+});
+
 cryptoController.get('/cryptoMap', async (req, res) => {
   const temp = await cryptoApi.cryptoMap();
   res.json(temp);

@@ -1,7 +1,7 @@
 const api = require('./cryptoApi');
 
 async function start() {
-    const temp = await api.cryptoMap();
+    const temp = await api.getTopHundred();
 
     console.log(temp);
 }

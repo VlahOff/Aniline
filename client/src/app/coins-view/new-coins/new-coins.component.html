@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="table">
+    <h1>New Coins</h1>
+    <thead>
+      <tr>
+        <td id="first">#</td>
+        <td id="third">Coin</td>
+        <td id="fourth">Sym</td>
+        <td id="fifth">Price</td>
+        <td id="sixth">1h</td>
+        <td id="seventh">24h</td>
+        <td id="eighth">7d</td>
+        <td id="tenth">Total</td>
+      </tr>
+    </thead>
+    <tbody>
+      <app-coin-new-row *ngFor="let coin of newCoins; index as i" [coin]="coin" [index]="i + 1"></app-coin-new-row>
+    </tbody>
+  </div>
+</div>
