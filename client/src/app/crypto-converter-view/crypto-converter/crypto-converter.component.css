@@ -1,10 +1,11 @@
 .container {
-  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 2px 5px 13px 5px #000000ad, 8px -15px 31px -12px rgb(0 0 0 / 0%);
+  color: white;
+  background: #526081;
   border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   margin: 50px 30% 35% 30%;
 }
 
@@ -18,7 +19,6 @@ form {
 .title {
   text-align: center;
   font-family: 'Roboto', sans-serif;
-  color: black
 }
 
 h1 {
@@ -36,9 +36,15 @@ h1 {
 }
 
 input {
+  color: white;
+  background: #526081;
   text-align: center;
   border: none;
   width: 80%;
+}
+
+::placeholder {
+  color: white;
 }
 
 input:focus {
@@ -119,7 +125,8 @@ input:focus {
 
 .menu-content button {
   display: block;
-  color: #000000;
+  background: #526081;
+  color: #ffffff;
   padding: 5px;
   text-decoration: none;
   border: none;
@@ -127,5 +134,5 @@ input:focus {
 
 .menu-content button:hover {
   color: #FFFFFF;
-  background-color: #00A4BD;
+  background-color: #813F46;
 }

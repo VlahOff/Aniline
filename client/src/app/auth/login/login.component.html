@@ -1,18 +1,20 @@
 <div class="container">
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <img class="logo" src="/assets/logo.png" alt="logo img">
+    <img class="logo" src="/assets/logo-white.png" alt="logo img">
     <h1>Login</h1>
     <label for="email">Email</label>
     <span class="error" *ngIf="!loginForm.get('email')?.valid && loginForm.get('email')?.touched">Invalid e-mail!</span>
     <div class="input">
-      <img class="input-icon" src="/assets/at-solid.svg" alt="pass">
+      <!-- <img class="input-icon" src="/assets/at-solid.svg" alt="pass"> -->
+      <i class="input-icon fa-solid fa-at"></i>
       <input id="email" placeholder="Enter your e-mail!" formControlName="email" type="email">
       <img class="input-icon" src="" alt="">
     </div>
     <label for="password">Password</label>
     <span class="error" *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched">Invalid password!</span>
     <div class="input">
-      <img class="input-icon" src="/assets/key-solid.svg" alt="pass">
+      <!-- <img class="input-icon" src="/assets/key-solid.svg" alt="pass"> -->
+      <i class="input-icon fa-solid fa-key"></i>
       <input id="password" type="password" placeholder="Enter your password!" formControlName="password">
       <img class="input-icon" src="" alt="">
     </div>

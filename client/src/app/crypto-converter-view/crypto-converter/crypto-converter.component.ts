@@ -12,16 +12,15 @@ import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
 export class CryptoConverterComponent implements OnInit, OnDestroy {
   fiatMap!: FiatMap[];
   cryptoMap!: CryptoMap[];
-  fiatMapValue!: FiatMap | undefined;
-
+  
   convertSub!: Subscription;
   fiatMapSub!: Subscription;
   cryptoMapSub!: Subscription;
-
+  
+  fiatMapValue!: FiatMap | undefined;
   fromId!: number;
   toId!: number;
   result!: ConverterResponse;
-
 
   converterForm!: FormGroup;
 
@@ -74,7 +73,9 @@ export class CryptoConverterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.convertSub.unsubscribe();
+    if (this.convertSub) {
+      this.convertSub.unsubscribe();
+    }
     this.fiatMapSub.unsubscribe();
     this.cryptoMapSub.unsubscribe();
   }
