@@ -25,7 +25,7 @@ import { NotificationComponent } from './shared/notification/notification.compon
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: UserTokenInterceptor, multi: true }

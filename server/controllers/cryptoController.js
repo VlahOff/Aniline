@@ -32,4 +32,9 @@ cryptoController.get('/convert', async (req, res) => {
   res.json(temp);
 });
 
+cryptoController.get('/getGlobalData', async (req, res) => {
+  const temp = await cryptoApi.getGlobal();
+  res.json(temp);
+});
+
 module.exports = cryptoController;

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DetailedCoinDataResponse } from '../interfaces';
-import { CryptoService } from '../services/cryptoApi.service';
+import { CryptoService } from '../shared/services/cryptoApi.service';
 
 @Component({
   selector: 'app-home',

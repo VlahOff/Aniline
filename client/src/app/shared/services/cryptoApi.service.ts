@@ -1,8 +1,8 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
-import { environment } from '../../environments/environment';
-import { CoinsViewNewResponse, CoinsViewTopResponse, ConverterResponse, CryptoMap, DetailedCoinDataResponse, FiatMap } from "../interfaces";
+import { environment } from '../../../environments/environment';
+import { CoinsViewNewResponse, CoinsViewTopResponse, ConverterResponse, CryptoMap, DetailedCoinDataResponse, FiatMap, GlobalDataResponse } from "../../interfaces";
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,11 @@ export class CryptoService {
   }
 
   fiatMap() {
-    return this.http.get<FiatMap[]>(environment.cryptoApi + '/fiatMap')
+    return this.http.get<FiatMap[]>(environment.cryptoApi + '/fiatMap');
+  }
+
+  getGlobalData() {
+    return this.http.get<GlobalDataResponse>(environment.cryptoApi + '/getGlobalData');
   }
 
   convert(amount: number, from: number, to: number) {

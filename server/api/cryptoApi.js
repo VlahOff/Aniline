@@ -12,16 +12,16 @@ const cmcHeaders = {
 // TODO: Add to env var
 
 const cryptoApi = {
-    // TODO: NOT IMPLEMENTED
     getGlobal: async () => {
         let temp = await axios.get(cgHost + 'global');
-        temp = temp.data;
+        temp = temp.data.data;
 
         return {
-            total_market_cap: temp.data.total_market_cap.usd,
-            market_cap_change_percentage_24h_usd: temp.data.market_cap_change_percentage_24h_usd,
-            total_volume: temp.data.total_volume.usd,
-            btc_market_cap_percentage: temp.data.market_cap_percentage.btc
+            total_market_cap: temp.total_market_cap.usd,
+            market_cap_change_percentage_24h_usd: temp.market_cap_change_percentage_24h_usd,
+            trading_volume: temp.total_volume.usd,
+            btc_dominance: temp.market_cap_percentage.btc,
+            number_of_coins: temp.active_cryptocurrencies
         };
     },// decimal place for currency price value, default: 2
     // TODO: NOT IMPLEMENTED
@@ -60,7 +60,6 @@ const cryptoApi = {
             last_updated: t.market_data.last_updated
         };
     },
-    // TODO: NOT IMPLEMENTED
     getTopHundred: async () => {
         let t = await axios.get(cgHost + 'coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d');
 
@@ -84,7 +83,6 @@ const cryptoApi = {
         });
         return res;
     },
-    // TODO: NOT IMPLEMENTED
     newCoinsToday: async () => {
         let t = await axios.get(cmcHostVOne + 'cryptocurrency/listings/latest?sort=date_added', { 'headers': cmcHeaders });
         t = t.data.data;

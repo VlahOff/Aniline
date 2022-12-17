@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CoinsViewTopResponse } from 'src/app/interfaces';
-import { CryptoService } from 'src/app/services/cryptoApi.service';
+import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
 
 @Component({
   selector: 'app-top-hundred',

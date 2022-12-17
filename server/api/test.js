@@ -1,7 +1,7 @@
 const api = require('./cryptoApi');
 
 async function start() {
-    const temp = await api.getTopHundred();
+    const temp = await api.getGlobal();
 
     console.log(temp);
 }

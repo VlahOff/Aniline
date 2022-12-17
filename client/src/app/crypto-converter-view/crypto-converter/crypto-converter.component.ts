@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ConverterResponse, CryptoMap, FiatMap } from 'src/app/interfaces';
-import { CryptoService } from 'src/app/services/cryptoApi.service';
+import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
 
 @Component({
   selector: 'app-crypto-converter',

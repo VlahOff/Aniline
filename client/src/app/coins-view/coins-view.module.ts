@@ -5,19 +5,19 @@ import { NewCoinsComponent } from './new-coins/new-coins.component';
 import { CoinsRoutingModule } from './coins-routing.module';
 import { CoinTopRowComponent } from './top-hundred/coin-top-row/coin-top-row.component';
 import { CoinNewRowComponent } from './new-coins/coin-new-row/coin-new-row.component';
-
-
+import { GlobalDataComponent } from './global-data/global-data.component';
 
 @NgModule({
   declarations: [
     TopHundredComponent,
     NewCoinsComponent,
     CoinTopRowComponent,
-    CoinNewRowComponent
+    CoinNewRowComponent,
+    GlobalDataComponent,
   ],
   imports: [
     CommonModule,
-    CoinsRoutingModule
+    CoinsRoutingModule,
   ]
 })
 export class CoinsViewModule { }
