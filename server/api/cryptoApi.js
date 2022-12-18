@@ -84,25 +84,36 @@ const cryptoApi = {
         return res;
     },
     newCoinsToday: async () => {
-        let t = await axios.get(cmcHostVOne + 'cryptocurrency/listings/latest?sort=date_added', { 'headers': cmcHeaders });
-        t = t.data.data;
+        let coinData = await axios.get(cmcHostVOne + 'cryptocurrency/listings/latest?sort=date_added', { 'headers': cmcHeaders });
+        coinData = coinData.data.data;
+
+        let ids = [];
+        coinData.forEach((t) => {
+            ids.push(t.slug);
+        });
+
+        let coinMetaData = await axios.get(cmcHostVTwo + `cryptocurrency/info?slug=${ids.join(',')}&aux=logo`, { 'headers': cmcHeaders });
+        coinMetaData = coinMetaData.data.data;
+        coinMetaData = Object.values(coinMetaData);
+        coinMetaData = coinMetaData.reverse();
 
         const res = [];
-        t.forEach((t) => {
+        for (let i = 0; i < ids.length; i++) {
             res.push({
-                id: t.slug,
-                name: t.name,
-                symbol: t.symbol.toLowerCase(),
-                total_supply: t.total_supply,
-                last_updated: t.last_updated,
-                price: t.quote.USD.price,
-                volume_24h: t.quote.USD.volume_24h,
-                volume_change_24h: t.quote.USD.volume_change_24h,
-                percent_change_1h: t.quote.USD.percent_change_1h,
-                percent_change_24h: t.quote.USD.percent_change_24h,
-                percent_change_7d: t.quote.USD.percent_change_7d
+                id: coinData[i].slug,
+                name: coinData[i].name,
+                symbol: coinData[i].symbol.toLowerCase(),
+                total_supply: coinData[i].total_supply,
+                last_updated: coinData[i].last_updated,
+                price: coinData[i].quote.USD.price,
+                volume_24h: coinData[i].quote.USD.volume_24h,
+                volume_change_24h: coinData[i].quote.USD.volume_change_24h,
+                percent_change_1h: coinData[i].quote.USD.percent_change_1h,
+                percent_change_24h: coinData[i].quote.USD.percent_change_24h,
+                percent_change_7d: coinData[i].quote.USD.percent_change_7d,
+                image: coinMetaData[i].logo
             });
-        });
+        }
 
         return res;
     },

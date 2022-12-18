@@ -9,5 +9,6 @@ export interface CoinsViewNewResponse {
   volume_change_24h: number,
   percent_change_1h: number,
   percent_change_24h: number,
-  percent_change_7d: number;
+  percent_change_7d: number,
+  image: string;
 }
