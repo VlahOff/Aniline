@@ -4,6 +4,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PortfolioRoutingModule } from './portfolio-routing.module';
 import { PortfolioTableComponent } from './portfolio-table/portfolio-table.component';
 import { PortfolioTableRowComponent } from './portfolio-table/portfolio-table-row/portfolio-table-row.component';
+import { AddCoinModalComponent } from './add-coin-modal/add-coin-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -11,10 +13,12 @@ import { PortfolioTableRowComponent } from './portfolio-table/portfolio-table-ro
   declarations: [
     PortfolioComponent,
     PortfolioTableComponent,
-    PortfolioTableRowComponent
+    PortfolioTableRowComponent,
+    AddCoinModalComponent
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     PortfolioRoutingModule
   ]
 })

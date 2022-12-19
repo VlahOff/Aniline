@@ -1,0 +1,162 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 200px;
+  color: white;
+  background: #526081;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  width: 500px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  padding: 50px 0px;
+  text-align: center;
+  text-decoration: underline;
+}
+
+label {
+  margin-top: 15px;
+  display: flex;
+  font-size: 16px;
+  padding-left: 16%;
+  justify-content: left;
+}
+
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: black 1px solid;
+  padding: 0px 20px 10px 20px;
+  margin: 5px 15% 20px 15%;
+}
+
+.input-container:has(> input.ng-invalid.ng-touched) {
+  border-bottom: red 1px solid;
+}
+
+.input {
+  color: white;
+  background: #526081;
+  text-align: center;
+  border: none;
+  width: 300px;
+}
+
+input:focus {
+  outline: none;
+}
+
+::placeholder {
+  color: white;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #526081 inset !important;
+  -webkit-text-fill-color: rgb(255, 255, 255);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.button-div {
+  display: flex;
+  justify-content: center;
+  margin: 5% 0%;
+}
+
+.button {
+  /* background: rgb(198, 101, 199); */
+  background: linear-gradient(90deg, #f1c0ff, #75ffff 100%);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 30px;
+  font-size: large;
+  color: black;
+  cursor: pointer;
+}
+
+.button-cancel {
+  /* background: linear-gradient(90deg, #f1c0ff, #75ffff 100%); */
+  background: grey;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 30px;
+  font-size: large;
+  color: black;
+  cursor: pointer;
+  margin-right: 50px;
+}
+
+.button-cancel:hover {
+  color: white;
+  background: linear-gradient(90deg, #8B0014, #33008B 100%);
+}
+
+.menu {
+  display: inline-block;
+  position: relative;
+}
+
+.menu-content {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: fit-content;
+  max-height: 300px;
+  overflow: auto;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.712);
+  background-color: white;
+  border-radius: 6px;
+  /* margin-top: 5px; */
+}
+
+.on {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 
+.menu:focus .menu-content {
+  display: flex;
+  flex-direction: column;
+} */
+
+.menu-content button {
+  display: block;
+  background: #526081;
+  color: #ffffff;
+  padding: 5px;
+  text-decoration: none;
+  border: none;
+}
+
+.menu-content button:hover {
+  color: #FFFFFF;
+  background-color: #813F46;
+}
+
+.error {
+  text-align: center;
+  color: white;
+  font-style: italic;
+  font-size: 16px;
+}
+
+button:disabled {
+  cursor: not-allowed
+}

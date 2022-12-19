@@ -6,3 +6,4 @@ export * from './coins-view-new-res';
 export * from './fiat-map';
 export * from './crypto-map';
 export * from './converter-res';
+export * from './all-coins-res';

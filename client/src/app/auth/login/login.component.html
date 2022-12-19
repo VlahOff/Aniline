@@ -19,7 +19,7 @@
       <img class="input-icon" src="" alt="">
     </div>
     <div class="button-div">
-      <button type="submit" class="button">Login</button>
+      <button type="submit" class="button" [disabled]="!loginForm.valid">Login</button>
     </div>
     <div class="no-account">
       <p>Don't have an account? <a routerLink="/auth/register">Sign up</a>.</p>

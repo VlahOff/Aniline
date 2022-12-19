@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   { path: 'home', component: HomeComponent },
   { path: 'coins', loadChildren: () => import('./coins-view/coins-view.module').then(m => m.CoinsViewModule) },
-  { path: 'converter', loadChildren: () => import('./crypto-converter-view/crypto-converter-view.module').then(m => m.CryptoConverterViewModule) },
+  { path: 'converter', loadChildren: () => import('./converter-view/crypto-converter-view.module').then(m => m.CryptoConverterViewModule) },
   { path: 'portfolio', loadChildren: () => import('./portfolio-view/portfolio-view.module').then(m => m.PortfolioViewModule) },
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
   { path: 'not-found', component: PageNotFoundComponent },

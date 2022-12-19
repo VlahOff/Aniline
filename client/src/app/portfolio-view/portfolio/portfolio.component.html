@@ -22,7 +22,10 @@
       <strong>Total Profit Loss (-63.42%)</strong>
     </div>
   </div>
-  <div class="portfolio-data">
+  <div class="portfolio-data"> 
     <app-portfolio-table></app-portfolio-table>
+  </div>
+  <div class="modal" *ngIf="isAddCoinModal">
+    <app-add-coin-modal></app-add-coin-modal>
   </div>
 </div>

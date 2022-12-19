@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 import { environment } from '../../../environments/environment';
-import { CoinsViewNewResponse, CoinsViewTopResponse, ConverterResponse, CryptoMap, DetailedCoinDataResponse, FiatMap, GlobalDataResponse } from "../../interfaces";
+import { AllCoins, CoinsViewNewResponse, CoinsViewTopResponse, ConverterResponse, CryptoMap, DetailedCoinDataResponse, FiatMap, GlobalDataResponse } from "../../interfaces";
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +33,10 @@ export class CryptoService {
 
   getGlobalData() {
     return this.http.get<GlobalDataResponse>(environment.cryptoApi + '/getGlobalData');
+  }
+
+  getAllCoins() {
+    return this.http.get<AllCoins[]>(environment.cryptoApi + '/allCoins');
   }
 
   convert(amount: number, from: number, to: number) {

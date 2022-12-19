@@ -71,6 +71,7 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px #526081 inset !important;
+    -webkit-text-fill-color: rgb(255, 255, 255);
 }
 
 input:focus {
@@ -97,6 +98,10 @@ button {
   font-size: large;
   color: white;
   cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed
 }
 
 .no-account {

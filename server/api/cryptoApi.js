@@ -119,7 +119,8 @@ const cryptoApi = {
     },
     // TODO: NOT IMPLEMENTED
     getListCoins: async () => {
-        return await axios.get(cgHost + 'coins/list?include_platform=true');
+        const t = await axios.get(cgHost + 'coins/list?include_platform=false');
+        return t.data;
     },
     // TODO: NOT IMPLEMENTED
     search: async (query) => {

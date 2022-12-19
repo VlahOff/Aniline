@@ -27,6 +27,11 @@ cryptoController.get('/fiatMap', async (req, res) => {
   res.json(temp);
 });
 
+cryptoController.get('/allCoins', async (req, res) => {
+  const temp = await cryptoApi.getListCoins();
+  res.json(temp);
+});
+
 cryptoController.get('/convert', async (req, res) => {
   const temp = await cryptoApi.convert(req.query.amount, req.query.from, req.query.to);
   res.json(temp);

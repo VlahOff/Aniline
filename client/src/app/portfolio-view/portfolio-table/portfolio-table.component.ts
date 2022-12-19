@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { AddCoinService } from '../add-coin.service';
 
 @Component({
   selector: 'app-portfolio-table',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortfolioTableComponent implements OnInit {
 
-  constructor() { }
+  constructor(private addCoinService: AddCoinService) { }
 
   ngOnInit(): void {
   }
 
+  showModal() {
+    this.addCoinService.isShown.next(true);
+  }
 }
