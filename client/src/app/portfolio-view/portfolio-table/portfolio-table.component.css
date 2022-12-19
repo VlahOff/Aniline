@@ -10,10 +10,27 @@
   background: white; */
 }
 
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 50px 0px 80px 0px;
+}
+
 h1 {
   text-align: center;
-  padding: 50px 0px 80px 0px;
   text-decoration: underline;
+}
+
+button {
+  background: rgb(198, 101, 199);
+  background: linear-gradient(90deg, #8B0014, #33008B 100%);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 5%;
+  font-size: large;
+  color: white;
+  cursor: pointer;
 }
 
 thead {
@@ -52,6 +69,10 @@ tbody {
 
 #seventh {
   width: 100px;
+}
+
+#eighth {
+  width: 25px;
 }
 
 tr {

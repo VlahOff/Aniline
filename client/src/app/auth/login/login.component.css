@@ -96,6 +96,7 @@ button {
   padding: 10px 30%;
   font-size: large;
   color: white;
+  cursor: pointer;
 }
 
 .no-account {
