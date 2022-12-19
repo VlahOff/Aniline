@@ -12,11 +12,11 @@ import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
 export class CryptoConverterComponent implements OnInit, OnDestroy {
   fiatMap!: FiatMap[];
   cryptoMap!: CryptoMap[];
-  
+
   convertSub!: Subscription;
   fiatMapSub!: Subscription;
   cryptoMapSub!: Subscription;
-  
+
   fiatMapValue!: FiatMap | undefined;
   fromId!: number;
   toId!: number;

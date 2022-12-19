@@ -1,12 +1,11 @@
 .container {
+  padding: 50px 10% 0 10%;
+}
+
+.converter {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  color: white;
-  background: #526081;
-  border-radius: 15px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  margin: 50px 30% 35% 30%;
 }
 
 form {
@@ -14,6 +13,10 @@ form {
   flex-direction: column;
   justify-content: center;
   padding: 25px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  color: white;
+  background: #526081;
 }
 
 .title {
@@ -27,20 +30,30 @@ h1 {
   text-decoration: underline;
 }
 
+.top-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
 .input {
   display: flex;
   justify-content: space-between;
   border-bottom: black 1px solid;
   padding: 0px 10px 10px 10px;
-  margin: 5px 30% 20px 30%;
+  width: 200px;
+}
+
+.input:has(> input.ng-invalid.ng-touched) {
+  border-bottom: red 1px solid;
 }
 
 input {
   color: white;
+  justify-content: center;
   background: #526081;
   text-align: center;
   border: none;
-  width: 80%;
 }
 
 ::placeholder {
@@ -70,12 +83,12 @@ input:focus {
 
 .button-div {
   display: flex;
-  justify-content: space-between;
-  margin: 0 15px;
+  justify-content: center;
+  margin: 15 15px;
 }
 
 .button {
-  width: 35px;
+  width: 100px;
   height: 35px;
   background: rgb(198, 101, 199);
   background: linear-gradient(90deg, #8B0014, #33008B 100%);
@@ -98,6 +111,7 @@ input:focus {
   display: flex;
   justify-content: center;
   margin-bottom: 15px;
+  margin-top: 25px;
 }
 
 .menu {
@@ -136,4 +150,8 @@ input:focus {
 .menu-content button:hover {
   color: #FFFFFF;
   background-color: #813F46;
+}
+
+button:disabled {
+  cursor: not-allowed
 }

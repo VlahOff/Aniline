@@ -23,18 +23,18 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
     private cryptoService: CryptoService) { }
 
   ngOnInit(): void {
-    // this.allCoinsSub = this.cryptoService.getAllCoins()
-    //   .subscribe({
-    //     next: (data) => {
-    //       this.allCoins = data;
-    //     }
-    //   });
+    this.allCoinsSub = this.cryptoService.getAllCoins()
+      .subscribe({
+        next: (data) => {
+          this.allCoins = data;
+        }
+      });
     console.log('Request has been made');
 
     this.addCoinForm = new FormGroup({
       'coin': new FormControl(null, Validators.required),
-      'coinPrice': new FormControl(null, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*[.]?[1-9]*[0-9]*$/)]),
-      'quantity': new FormControl(null, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
+      'coinPrice': new FormControl(null, [Validators.required, Validators.pattern(/^(?=.*[1-9])\d*(?:\.\d{0,})?$/)]),
+      'quantity': new FormControl(null, [Validators.required, Validators.pattern(/^(?=.*[1-9])\d*(?:\.\d{0,})?$/)])
     });
   }
 
