@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AllCoins } from 'src/app/interfaces';
 import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
-import { AddCoinService } from '../add-coin.service';
+import { PortfolioService } from '../portfolio.service';
 
 @Component({
   selector: 'app-add-coin-modal',
@@ -16,11 +16,13 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
   resultSorted!: AllCoins[] | undefined;
 
   addCoinForm!: FormGroup;
-  selectedCoin!: string;
+  selectedCoinName!: string;
+  submission!: Subscription;
 
   constructor(
-    private addCoinService: AddCoinService,
-    private cryptoService: CryptoService) { }
+    private portfolioService: PortfolioService,
+    private cryptoService: CryptoService
+  ) { }
 
   ngOnInit(): void {
     this.allCoinsSub = this.cryptoService.getAllCoins()
@@ -32,7 +34,7 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
     console.log('Request has been made');
 
     this.addCoinForm = new FormGroup({
-      'coin': new FormControl(null, Validators.required),
+      'coinId': new FormControl(null, Validators.required),
       'coinPrice': new FormControl(null, [Validators.required, Validators.pattern(/^(?=.*[1-9])\d*(?:\.\d{0,})?$/)]),
       'quantity': new FormControl(null, [Validators.required, Validators.pattern(/^(?=.*[1-9])\d*(?:\.\d{0,})?$/)])
     });
@@ -40,6 +42,17 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     console.log(this.addCoinForm.value);
+    this.submission = this.portfolioService.createTransaction(this.addCoinForm.value)
+      .subscribe({
+        next: (res) => {
+          console.log('Transaction posted');
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    this.addCoinForm.reset();
+    this.portfolioService.isShown.next(false);
   }
 
   filter(value: string) {
@@ -56,15 +69,19 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
   }
 
   setCoin(coin: AllCoins) {
-    this.selectedCoin = coin.name;
+    this.selectedCoinName = coin.name;
+    this.addCoinForm.patchValue({ coinId: coin.id });
     this.resultSorted = undefined;
   }
 
   hideModal() {
-    this.addCoinService.isShown.next(false);
+    this.portfolioService.isShown.next(false);
   }
 
   ngOnDestroy(): void {
     this.allCoinsSub.unsubscribe();
+    if (this.submission) {
+      this.submission.unsubscribe();
+    }
   }
 }

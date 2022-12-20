@@ -8,6 +8,8 @@ const session = require('./middlewares/session');
 const authController = require('./controllers/authController');
 const testController = require('./controllers/testController');
 const cryptoController = require('./controllers/cryptoController');
+const portfolioController = require('./controllers/PortfolioController');
+const { isUser } = require('./middlewares/guards');
 
 // TODO: add to env variable
 const EXPRESS_PORT = 3030;
@@ -22,6 +24,7 @@ async function start() {
 
     app.use('/auth', authController);
     app.use('/crypto', cryptoController);
+    app.use('/portfolio', isUser(), portfolioController);
     app.use('/test', testController);
 
     app.get('/', (req, res) => {

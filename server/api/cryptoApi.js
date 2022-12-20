@@ -117,7 +117,6 @@ const cryptoApi = {
 
         return res;
     },
-    // TODO: NOT IMPLEMENTED
     getListCoins: async () => {
         const t = await axios.get(cgHost + 'coins/list?include_platform=false');
         return t.data;

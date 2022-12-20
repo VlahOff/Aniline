@@ -7,3 +7,4 @@ export * from './fiat-map';
 export * from './crypto-map';
 export * from './converter-res';
 export * from './all-coins-res';
+export * from './transaction'

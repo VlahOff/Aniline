@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AddCoinService } from '../add-coin.service';
+import { PortfolioService } from '../portfolio.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -11,10 +11,10 @@ export class PortfolioComponent implements OnInit, OnDestroy {
   addCoinSub!: Subscription;
   isAddCoinModal = false;
 
-  constructor(private addCoinService: AddCoinService) { }
+  constructor(private portfolioService: PortfolioService) { }
 
   ngOnInit(): void {
-    this.addCoinSub = this.addCoinService.isShown
+    this.addCoinSub = this.portfolioService.isShown
       .subscribe({
         next: (t) => {
           this.isAddCoinModal = t;

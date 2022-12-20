@@ -2,8 +2,8 @@
   <form [formGroup]="addCoinForm" (ngSubmit)="onSubmit()">
     <h1 class="title">Add Transaction</h1>
 
-    <label for="coin">Coin</label>
-    <span class="error" *ngIf="!addCoinForm.get('coin')?.valid && addCoinForm.get('coin')?.touched">Please select a coin!</span>
+    <label for="coinId">Coin</label>
+    <span class="error" *ngIf="!addCoinForm.get('coinId')?.valid && addCoinForm.get('coinId')?.touched">Please select a coin!</span>
     <div class="input-container">
       <!-- <input class="input" id="coin" placeholder="Bitcoin" formControlName="coin" type="text"> -->
       <div class="menu">
@@ -12,11 +12,11 @@
           autocomplete="off" 
           #input 
           class="input" 
-          id="coin" 
+          id="coinId" 
           placeholder="Bitcoin" 
-          formControlName="coin" 
+          formControlName="coinId" 
           type="text" 
-          [value]="selectedCoin ? selectedCoin : ''">
+          [value]="selectedCoinName ? selectedCoinName : ''">
           <div class="menu-content" [class.on]="resultSorted">
             <button type="button" *ngFor="let coin of resultSorted"
             (click)="setCoin(coin)">
