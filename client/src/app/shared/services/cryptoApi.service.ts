@@ -46,4 +46,10 @@ export class CryptoService {
     params = params.append('to', to);
     return this.http.get<ConverterResponse>(environment.cryptoApi + '/convert', { params: params });
   }
+
+  getCoinDetails(coinId: string) {
+    let params = new HttpParams();
+    params = params.append('coinId', coinId);
+    return this.http.get<DetailedCoinDataResponse>(environment.cryptoApi + '/getCoinDetails', { params: params });
+  }
 }

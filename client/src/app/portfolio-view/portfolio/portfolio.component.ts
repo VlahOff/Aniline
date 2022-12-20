@@ -8,6 +8,15 @@ import { PortfolioService } from '../portfolio.service';
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent implements OnInit, OnDestroy {
+  totalBalanceSub!: Subscription;
+  totalBalance = 0;
+
+  totalPnLSub!: Subscription;
+  totalPnL = 0;
+
+  totalPnLPercentSub!: Subscription;
+  totalPnLPercent = 0;
+
   addCoinSub!: Subscription;
   isAddCoinModal = false;
 
@@ -20,9 +29,33 @@ export class PortfolioComponent implements OnInit, OnDestroy {
           this.isAddCoinModal = t;
         }
       });
+
+    this.totalBalanceSub = this.portfolioService.totalBalance
+      .subscribe({
+        next: (t) => {
+          this.totalBalance = this.totalBalance + t;
+        }
+      });
+
+    this.totalPnLSub = this.portfolioService.totalPnL
+      .subscribe({
+        next: (t) => {
+          this.totalPnL = this.totalPnL + t;
+        }
+      });
+
+    this.totalPnLPercentSub = this.portfolioService.totalPnLPercent
+      .subscribe({
+        next: (t) => {
+          this.totalPnLPercent = (this.totalPnL / (Math.abs(this.totalPnL) + this.totalBalance))  * 100
+        }
+      });
   }
 
   ngOnDestroy(): void {
+    this.totalBalanceSub.unsubscribe();
+    this.totalPnLSub.unsubscribe();
+    this.totalPnLPercentSub.unsubscribe();
     this.addCoinSub.unsubscribe();
   }
 }

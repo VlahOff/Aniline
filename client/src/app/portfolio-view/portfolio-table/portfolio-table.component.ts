@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
-import { Transaction } from 'src/app/interfaces';
+import { Subject, Subscription, takeUntil } from 'rxjs';
+import { DetailedCoinDataResponse, Transaction, TransactionDetailed } from 'src/app/interfaces';
+import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
 import { PortfolioService } from '../portfolio.service';
 
 @Component({
@@ -9,17 +10,18 @@ import { PortfolioService } from '../portfolio.service';
   styleUrls: ['./portfolio-table.component.css']
 })
 export class PortfolioTableComponent implements OnInit, OnDestroy {
-  userTransactions!: Transaction[];
+  userTransactions!: string[];
   userTransactionsSub!: Subscription;
 
-  constructor(private portfolioService: PortfolioService) { }
+
+  constructor(private portfolioService: PortfolioService, private cryptoService: CryptoService) { }
 
   ngOnInit(): void {
     this.userTransactionsSub = this.portfolioService.getAllTransactions()
       .subscribe({
         next: (data) => {
           console.log(data);
-          // this.userTransactions = data;
+          this.userTransactions = data;
         }
       });
   }

@@ -48,15 +48,15 @@ tbody {
 }
 
 #second {
-  width: 25px;
-}
-
-#third {
   width: 200px;
 }
 
-#fourth {
+#third {
   width: 80px;
+}
+
+#fourth {
+  width: 150px;
 }
 
 #fifth {

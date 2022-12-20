@@ -5,7 +5,7 @@
   <div>
     <div class="text-center">
       <h3 class="crypto-title">{{ card.name }}</h3>
-      <p><span class="label">Price:</span> ${{ card.current_price | number:'.2' }}</p>
+      <p><span class="label">Price:</span> ${{ card.current_price | number:'1.2-10' }}</p>
       <p><span class="label">24h:</span> ${{ card.price_change_24h | number:'1.2-2' }}</p>
       <p><span class="label">24h:</span> {{ card.price_change_percentage_24h | number:'1.2-2' }}%</p>
     </div>

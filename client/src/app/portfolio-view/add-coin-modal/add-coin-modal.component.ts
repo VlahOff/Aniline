@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AllCoins } from 'src/app/interfaces';
 import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
@@ -21,7 +22,8 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
 
   constructor(
     private portfolioService: PortfolioService,
-    private cryptoService: CryptoService
+    private cryptoService: CryptoService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +33,6 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
           this.allCoins = data;
         }
       });
-    console.log('Request has been made');
 
     this.addCoinForm = new FormGroup({
       'coinId': new FormControl(null, Validators.required),
@@ -41,7 +42,6 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.log(this.addCoinForm.value);
     this.submission = this.portfolioService.createTransaction(this.addCoinForm.value)
       .subscribe({
         next: (res) => {

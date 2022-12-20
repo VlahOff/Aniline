@@ -5,6 +5,10 @@ async function getAllUserTransactions(userId) {
   return Transaction.find({ owner: userId }).lean();
 }
 
+async function getTransaction(transactionId) {
+  return Transaction.findById(transactionId).lean();
+}
+
 async function createTransaction(data, userId) {
   const user = await User.findById(userId);
 
@@ -16,11 +20,24 @@ async function createTransaction(data, userId) {
   });
 }
 
-async function deleteTransaction() {
+async function editTransaction(data, transactionId) {
+  const transaction = {
+    coinId: data.coinId,
+    coinPrice: data.coinPrice,
+    quantity: data.quantity
+  };
 
+  return Transaction.findByIdAndUpdate(transactionId, transaction);
+}
+
+async function deleteTransaction(transactionId) {
+  return Transaction.findByIdAndRemove(transactionId);
 }
 
 module.exports = {
   getAllUserTransactions,
-  createTransaction
+  getTransaction,
+  createTransaction,
+  // editTransaction,
+  deleteTransaction
 };

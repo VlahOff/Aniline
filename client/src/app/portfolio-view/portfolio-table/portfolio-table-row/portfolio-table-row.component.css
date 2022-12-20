@@ -15,21 +15,22 @@ td {
 
 #first {
   width: 25px;
-  padding-top: 20px;
-  text-align: center;
-}
-
-#second {
   padding-top: 17px;
 }
 
-#third {
+#second {
   width: 200px;
   padding-top: 20px;
 }
 
-#fourth {
+#third {
+  padding-top: 20px;
+  text-align: center;
   width: 80px;
+}
+
+#fourth {
+  width: 150px;
   padding-top: 20px;
   text-align: center;
 }

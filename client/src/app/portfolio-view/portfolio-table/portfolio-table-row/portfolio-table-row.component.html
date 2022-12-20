@@ -1,5 +1,36 @@
 <tr>
   <td id="first">
+    <img src="{{detailedTransaction.image}}" alt="coin logo">
+  </td>
+  <td id="second">
+    <strong>{{detailedTransaction.name}}</strong>
+  </td>
+  <td id="third">
+    <p>{{detailedTransaction.symbol | uppercase}}</p>
+  </td>
+  <td id="fourth">
+    <p>${{detailedTransaction.current_price | number:'1.2-10'}}</p>
+  </td>
+  <td id="fifth">
+    <p>${{detailedTransaction.coinPrice * detailedTransaction.quantity | number:'1.2-2'}}</p>
+  </td>
+  <td id="sixth">
+    <p>${{(detailedTransaction.current_price * detailedTransaction.quantity) | number:'1.2-2'}}</p>
+    <p>{{detailedTransaction.quantity | number:'1.2-2'}} - {{detailedTransaction.symbol | uppercase}}</p>
+  </td>
+  <td id="seventh">
+    <p>${{(detailedTransaction.current_price - detailedTransaction.coinPrice) * detailedTransaction.quantity |
+      number:'1.2-2'}}</p>
+    <p>
+      {{(detailedTransaction.current_price * detailedTransaction.quantity - (detailedTransaction.coinPrice * detailedTransaction.quantity)) / (detailedTransaction.coinPrice * detailedTransaction.quantity) * 100 | number:'1.2-2'}}%
+    </p>
+  </td>
+  <td id="eighth">
+    <a (click)="removeTransaction()"><i class="fa-solid fa-xmark"></i></a>
+  </td>
+</tr>
+<!-- <tr>
+  <td id="first">
     <p>1</p>
   </td>
   <td id="second">
@@ -25,4 +56,4 @@
   <td id="eighth">
     <a><i class="fa-solid fa-xmark"></i></a>
   </td>
-</tr>
+</tr> -->
