@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, Subscription, takeUntil } from 'rxjs';
-import { DetailedCoinDataResponse, Transaction, TransactionDetailed } from 'src/app/interfaces';
+import { Subscription } from 'rxjs';
 import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
 import { PortfolioService } from '../portfolio.service';
 

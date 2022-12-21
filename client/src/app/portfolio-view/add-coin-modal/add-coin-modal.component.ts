@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AllCoins } from 'src/app/interfaces';
+import { NotificationService } from 'src/app/shared/notification/notification.service';
 import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
 import { PortfolioService } from '../portfolio.service';
 
@@ -23,6 +24,9 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
   constructor(
     private portfolioService: PortfolioService,
     private cryptoService: CryptoService,
+    private notificationService: NotificationService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -41,28 +45,30 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    const transaction = this.addCoinForm.value;
     this.submission = this.portfolioService.createTransaction(this.addCoinForm.value)
       .subscribe({
         next: (res) => {
-          console.log(this.addCoinForm.value);
           console.log(res);
         },
         error: (err) => {
-          console.log(err);
+          this.notificationService.createNotification(err.message, 'alert');
+        },
+        complete: () => {
+          console.log('confirmed');
         }
       });
     this.addCoinForm.reset();
     this.portfolioService.transactionsChange.next(['s']);
     this.portfolioService.isAddCoinModalRendered.next(false);
+    this.router.navigate(['/portfolio'], { relativeTo: this.route });
   }
 
   filter(value: string) {
     if (value) {
-      setTimeout(() => {
-        this.resultSorted = this.allCoins.filter((v) => {
-          return (v.id.toUpperCase() && v.name.toUpperCase()).startsWith(value.toUpperCase());
-        });
-      }, 200);
+      this.resultSorted = this.allCoins.filter((v) => {
+        return (v.id.toUpperCase() && v.name.toUpperCase()).startsWith(value.toUpperCase());
+      });
     } else {
       this.resultSorted = undefined;
     }

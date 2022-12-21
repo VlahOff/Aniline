@@ -71,9 +71,9 @@ portfolioController.post('/addTransaction', async (req, res) => {
     if (transaction.quantity <= 0) {
       throw new Error('QUANTITY_LEAST_ONES');
     }
-
-    await createTransaction(transaction, userId);
-    res.status(200).end();
+    console.log('transaction created');
+    const t = await createTransaction(transaction, userId);
+    res.json(t).status(200).end();
   } catch (error) {
     res.status(400).json({
       message: errorParser(error)

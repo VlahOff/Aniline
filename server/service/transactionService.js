@@ -12,12 +12,14 @@ async function getTransaction(transactionId) {
 async function createTransaction(data, userId) {
   const user = await User.findById(userId);
 
-  return Transaction.create({
+  const transaction = await Transaction.create({
     coinId: data.coinId,
     coinPrice: data.coinPrice,
     quantity: data.quantity,
     owner: user._id
   });
+
+  return transaction;
 }
 
 async function editTransaction(data, transactionId) {

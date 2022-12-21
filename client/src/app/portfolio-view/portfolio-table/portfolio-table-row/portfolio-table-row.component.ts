@@ -1,10 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Transaction, TransactionDetailed } from 'src/app/interfaces';
-import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
+import { TransactionDetailed } from 'src/app/interfaces';
 import { PortfolioService } from '../../portfolio.service';
-import { PortfolioTableComponent } from '../portfolio-table.component';
 
 @Component({
   selector: 'app-portfolio-table-row',
@@ -18,8 +15,7 @@ export class PortfolioTableRowComponent implements OnInit, OnDestroy {
   detailedTransaction!: TransactionDetailed;
 
   constructor(
-    private portfolioService: PortfolioService,
-    private router: Router
+    private portfolioService: PortfolioService
   ) { }
 
   ngOnInit(): void {

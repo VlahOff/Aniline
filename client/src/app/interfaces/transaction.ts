@@ -1,3 +1,5 @@
+import { Observable } from "rxjs";
+
 export interface Transaction {
   "coinId": string,
   "coinPrice": number,
