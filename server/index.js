@@ -12,8 +12,7 @@ const cryptoController = require('./controllers/cryptoController');
 const portfolioController = require('./controllers/PortfolioController');
 const { isUser } = require('./middlewares/guards');
 
-// TODO: add to env variable
-const EXPRESS_PORT = 3030;
+const EXPRESS_PORT = process.env.EXPRESS_PORT;
 
 async function start() {
     const app = express();
@@ -32,7 +31,7 @@ async function start() {
         res.json({ message: 'Application running without a hitch!' });
     });
 
-    app.listen(3030, () => console.log('App listening on port: ' + EXPRESS_PORT));
+    app.listen(EXPRESS_PORT, () => console.log('App listening on port: ' + EXPRESS_PORT));
 }
 
 start();
