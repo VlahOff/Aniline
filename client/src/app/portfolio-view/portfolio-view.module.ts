@@ -14,7 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     PortfolioComponent,
     PortfolioTableComponent,
     PortfolioTableRowComponent,
-    AddCoinModalComponent
+    AddCoinModalComponent,
   ],
   imports: [
     CommonModule,

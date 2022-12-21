@@ -23,7 +23,6 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
   constructor(
     private portfolioService: PortfolioService,
     private cryptoService: CryptoService,
-    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -45,14 +44,16 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
     this.submission = this.portfolioService.createTransaction(this.addCoinForm.value)
       .subscribe({
         next: (res) => {
-          console.log('Transaction posted');
+          console.log(this.addCoinForm.value);
+          console.log(res);
         },
         error: (err) => {
           console.log(err);
         }
       });
     this.addCoinForm.reset();
-    this.portfolioService.isShown.next(false);
+    this.portfolioService.transactionsChange.next(['s']);
+    this.portfolioService.isAddCoinModalRendered.next(false);
   }
 
   filter(value: string) {
@@ -61,8 +62,7 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
         this.resultSorted = this.allCoins.filter((v) => {
           return (v.id.toUpperCase() && v.name.toUpperCase()).startsWith(value.toUpperCase());
         });
-      }, 500);
-      console.log(this.resultSorted);
+      }, 200);
     } else {
       this.resultSorted = undefined;
     }
@@ -75,7 +75,7 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
   }
 
   hideModal() {
-    this.portfolioService.isShown.next(false);
+    this.portfolioService.isAddCoinModalRendered.next(false);
   }
 
   ngOnDestroy(): void {

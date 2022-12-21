@@ -9,7 +9,10 @@ import { Transaction, TransactionDetailed } from "../interfaces";
   providedIn: 'root'
 })
 export class PortfolioService {
-  isShown = new Subject<boolean>();
+  transactionsChange = new Subject();
+
+  isAddCoinModalRendered = new Subject<boolean>();
+
   totalBalance = new Subject<number>();
   totalPnL = new Subject<number>();
   totalPnLPercent = new Subject<number>();
@@ -33,6 +36,6 @@ export class PortfolioService {
   deleteTransaction(transactionId: string) {
     let params = new HttpParams();
     params = params.append('transactionId', transactionId);
-    return this.http.delete(environment.portfolioApi + '/removeTransaction');
+    return this.http.delete(environment.portfolioApi + '/removeTransaction', { params: params });
   }
 }

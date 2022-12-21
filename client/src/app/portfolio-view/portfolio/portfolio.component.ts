@@ -17,18 +17,14 @@ export class PortfolioComponent implements OnInit, OnDestroy {
   totalPnLPercentSub!: Subscription;
   totalPnLPercent = 0;
 
-  addCoinSub!: Subscription;
-  isAddCoinModal = false;
+  isAddCoinModalRenderedSub!: Subscription;
+  isAddCoinModalRendered = false;
 
   constructor(private portfolioService: PortfolioService) { }
 
   ngOnInit(): void {
-    this.addCoinSub = this.portfolioService.isShown
-      .subscribe({
-        next: (t) => {
-          this.isAddCoinModal = t;
-        }
-      });
+    this.isAddCoinModalRenderedSub = this.portfolioService.isAddCoinModalRendered
+      .subscribe({ next: t => this.isAddCoinModalRendered = t });
 
     this.totalBalanceSub = this.portfolioService.totalBalance
       .subscribe({
@@ -47,7 +43,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     this.totalPnLPercentSub = this.portfolioService.totalPnLPercent
       .subscribe({
         next: (t) => {
-          this.totalPnLPercent = (this.totalPnL / (Math.abs(this.totalPnL) + this.totalBalance))  * 100
+          this.totalPnLPercent = (this.totalPnL / (Math.abs(this.totalPnL) + this.totalBalance)) * 100;
         }
       });
   }
@@ -56,6 +52,6 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     this.totalBalanceSub.unsubscribe();
     this.totalPnLSub.unsubscribe();
     this.totalPnLPercentSub.unsubscribe();
-    this.addCoinSub.unsubscribe();
+    this.isAddCoinModalRenderedSub.unsubscribe();
   }
 }

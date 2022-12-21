@@ -10,27 +10,33 @@ import { PortfolioService } from '../portfolio.service';
   styleUrls: ['./portfolio-table.component.css']
 })
 export class PortfolioTableComponent implements OnInit, OnDestroy {
+  transactionChange!: Subscription;
   userTransactions!: string[];
   userTransactionsSub!: Subscription;
-
 
   constructor(private portfolioService: PortfolioService, private cryptoService: CryptoService) { }
 
   ngOnInit(): void {
+    this.transactionChange = this.portfolioService.transactionsChange
+      .subscribe({ next: v => this.getData() });
+    this.getData();
+  }
+
+  private getData() {
     this.userTransactionsSub = this.portfolioService.getAllTransactions()
       .subscribe({
         next: (data) => {
-          console.log(data);
           this.userTransactions = data;
         }
       });
   }
 
-  showModal() {
-    this.portfolioService.isShown.next(true);
+  showAddCoinModal() {
+    this.portfolioService.isAddCoinModalRendered.next(true);
   }
-
+  
   ngOnDestroy(): void {
     this.userTransactionsSub.unsubscribe();
+    this.transactionChange.unsubscribe();
   }
 }
