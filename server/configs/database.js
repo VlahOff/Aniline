@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 
-// TODO: add to env variable
-const CONNECTION_STRING = 'mongodb://localhost:27017/cryptoFox';
+const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 
 module.exports = async () => {
     try {
-        await mongoose.connect(CONNECTION_STRING);
+        await mongoose.connect(DB_CONNECTION_STRING);
         console.log('Database connected');
     } catch (error) {
         console.error('Error initializing database');

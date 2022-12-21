@@ -4,12 +4,10 @@ const cgHost = 'https://api.coingecko.com/api/v3/';
 const cmcHostVOne = 'https://pro-api.coinmarketcap.com/v1/';
 const cmcHostVTwo = 'https://pro-api.coinmarketcap.com/v2/';
 
-const CMC_API_KEY = 'd6eff52e-a428-4710-bdec-4ae4c749e53c';
+const CMC_API_KEY = process.env.CMC_API_KEY;
 const cmcHeaders = {
     'X-CMC_PRO_API_KEY': CMC_API_KEY
 };
-
-// TODO: Add to env var
 
 const cryptoApi = {
     getGlobal: async () => {

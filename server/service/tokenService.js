@@ -1,8 +1,7 @@
 const jwt = require('jsonwebtoken');
 const Token = require('../models/Token');
 
-// TODO: add to env variable
-const JWT_SECRET = 'nQ5^LZ!AaGf^&d#9Dt5';
+const JWT_SECRET_TOKEN = process.env.JWT_SECRET_TOKEN;
 
 async function parseToken(token) {
     const data = await Token.findOne({ token });
@@ -11,7 +10,7 @@ async function parseToken(token) {
         throw new Error('BLACKLISTED_TOKEN');
     }
 
-    const result = jwt.verify(token, JWT_SECRET);
+    const result = jwt.verify(token, JWT_SECRET_TOKEN);
     if (!result) {
         console.log('The ban hammer struck!');
         banToken(token);
@@ -28,7 +27,7 @@ function createToken(user) {
     return {
         _id: user._id,
         email: user.email,
-        accessToken: jwt.sign(data, JWT_SECRET)
+        accessToken: jwt.sign(data, JWT_SECRET_TOKEN)
     };
 }
 
