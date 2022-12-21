@@ -28,7 +28,7 @@ async function start() {
     app.use('/test', testController);
 
     app.get('/', (req, res) => {
-        res.json({ message: 'Application running without a hitch!' });
+        res.status(200).send('It works!');
     });
 
     app.listen(EXPRESS_PORT, () => console.log('App listening on port: ' + EXPRESS_PORT));
