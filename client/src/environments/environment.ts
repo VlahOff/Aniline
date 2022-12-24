@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  authApi: 'http://localhost:3030/auth',
-  cryptoApi: 'http://localhost:3030/crypto',
-  portfolioApi: 'http://localhost:3030/portfolio'
+  authApi: 'http://localhost:3000/auth',
+  cryptoApi: 'http://localhost:3000/crypto',
+  portfolioApi: 'http://localhost:3000/portfolio'
 };
 
 /*

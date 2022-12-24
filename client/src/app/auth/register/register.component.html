@@ -1,44 +1,41 @@
 <div class="container">
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <img class="logo" src="/assets/logo-white.png" alt="logo img">
-    <h1>Register</h1>
-
-    <label for="email">Email</label>
-    <span class="error" *ngIf="!registerForm.get('email')?.valid && registerForm.get('email')?.touched">Invalid
-      e-mail!</span>
-    <div class="input">
-      <!-- <img class="input-icon" src="/assets/at-solid.svg" alt="pass"> -->
-      <i class="input-icon fa-solid fa-at"></i>
-      <input id="email" type="text" placeholder="Enter Email" formControlName="email">
-      <img class="input-icon" src="" alt="">
-    </div>
-
-    <label for="password">Password</label>
-    <span class="error" *ngIf="!registerForm.get('password')?.valid && registerForm.get('password')?.touched">Invalid
-      password!</span>
-    <div class="input">
-      <!-- <img class="input-icon" src="/assets/key-solid.svg" alt="pass"> -->
-      <i class="input-icon fa-solid fa-key"></i>
-      <input id="password" type="password" placeholder="Enter Password" formControlName="password">
-      <img class="input-icon" src="" alt="">
-    </div>
-
-    <label for="repeatPass">Repeat Password</label>
-    <span class="error" *ngIf="registerForm.get('rePass')?.errors?.['passwordDontMatch'] && registerForm.get('rePass')?.touched">Passwords must match!</span>
-    <span class="error" *ngIf="!registerForm.get('password')?.valid && registerForm.get('password')?.touched">Invalid
-      password!</span>
-    <div class="input">
-      <!-- <img class="input-icon" src="/assets/key-solid.svg" alt="pass"> -->
-      <i class="input-icon fa-solid fa-key"></i>
-      <input id="rePass" type="password" placeholder="Repeat Password" formControlName="rePass">
-      <img class="input-icon" src="" alt="">
-    </div>
-
-    <div class="button-div">
-      <button type="submit" class="registerbtn button" [disabled]="!registerForm.valid">Register</button>
-    </div>
-    <div class="no-account">
-      <p>Already have an account? <a routerLink="/auth/login">Sign in</a>.</p>
-    </div>
-  </form>
+  <div class="register-container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <img class="logo" src="/assets/logo-white.png" alt="logo img">
+      <h1>Register</h1>
+      <label for="email">Email</label>
+      <span class="error" *ngIf="!registerForm.get('email')?.valid && registerForm.get('email')?.touched">Invalid
+        e-mail!</span>
+      <div class="input">
+        <i class="input-icon fa-solid fa-at"></i>
+        <input id="email" type="text" placeholder="Enter Email" formControlName="email">
+        <div class="input-icon"></div>
+      </div>
+      <label for="password">Password</label>
+      <span class="error" *ngIf="!registerForm.get('password')?.valid && registerForm.get('password')?.touched">Invalid
+        password!</span>
+      <div class="input">
+        <i class="input-icon fa-solid fa-key"></i>
+        <input id="password" type="password" placeholder="Enter Password" formControlName="password">
+        <div class="input-icon"></div>
+      </div>
+      <label for="repeatPass">Repeat Password</label>
+      <span class="error"
+        *ngIf="registerForm.get('rePass')?.errors?.['passwordDontMatch'] && registerForm.get('rePass')?.touched">Passwords
+        must match!</span>
+      <span class="error" *ngIf="!registerForm.get('password')?.valid && registerForm.get('password')?.touched">Invalid
+        password!</span>
+      <div class="input">
+        <i class="input-icon fa-solid fa-key"></i>
+        <input id="rePass" type="password" placeholder="Repeat Password" formControlName="rePass">
+        <div class="input-icon"></div>
+      </div>
+      <div class="button-div">
+        <button type="submit" class="registerbtn button" [disabled]="!registerForm.valid">Register</button>
+      </div>
+      <div class="no-account">
+        <p>Already have an account? <a routerLink="/auth/login">Sign in</a>.</p>
+      </div>
+    </form>
+  </div>
 </div>
