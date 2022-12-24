@@ -13,7 +13,7 @@ authController.post('/register',
             }
 
             const token = await register(req.body.email, req.body.password);
-            res.json(token);
+            res.status(200).json(token);
         } catch (error) {
             res.status(400).json({
                 message: errorParser(error)

@@ -1,70 +1,80 @@
+.navigation {
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
 nav {
-    background-color: #1F2739;
-    margin: 15px 8%;
-    padding: 0;
-    border-radius: 15px;
-    box-shadow: 2px 5px 13px 5px #000000ad, 8px -15px 31px -12px rgb(0 0 0 / 0%);
+	width: 100%;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	background-color: #1F2739;
+	box-shadow: 2px 5px 13px 5px #000000ad, 8px -15px 31px -12px rgb(0 0 0 / 0%);
 }
 
 ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    list-style: none;
-    padding: 0 5px;
-    margin: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-self: flex-end;
+	list-style: none;
+	padding: 0 5px;
+	margin: 0;
 }
 
 ul li {
-    display: inline-block;
-    margin: 5px 10px;
+	display: inline-block;
+	margin: 5px 10px;
 }
 
 .logo a img {
-    margin-top: 5px;
-    background-color: #84000E;
-    border-radius: 8px;
-    width: 100px;
+	margin-top: 5px;
+	background-color: #84000E;
+	border-radius: 8px;
+	width: 100px;
 }
 
 .user {
-    padding: 15px;
-    color: white;
+	padding: 15px;
+	color: white;
 }
 
 .left-container {
-    display: flex;
-    justify-content: left;
-    text-align: center;
+	display: flex;
+	justify-content: left;
+	text-align: center;
 }
 
 .right-container {
-    display: flex;
-    margin-right: 10px;
+	display: flex;
+	margin-right: 10px;
 }
 
 .right-container li {
-    margin: 21px 3px 3px 3px;
-    text-align: center;
+	margin: 21px 3px 3px 3px;
+	text-align: center;
 }
 
 .right-container p {
-    color: white;
+	color: white;
 }
 
 .right-container a {
-    padding: 8px;
-    color: white;
-    text-decoration: none;
+	padding: 8px;
+	color: white;
+	text-decoration: none;
 }
 
 .right-container a:hover {
-    text-decoration: none;
-    padding: 8px;
-    border-radius: 10px;
-    background-color: #84000E;
+	text-decoration: none;
+	padding: 8px;
+	border-radius: 10px;
+	background-color: #84000E;
 }
 
 a {
-    cursor: pointer;
+	cursor: pointer;
 }
