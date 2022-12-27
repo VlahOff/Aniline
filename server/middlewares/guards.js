@@ -3,7 +3,7 @@ function isUser() {
         if (req.user) {
             next();
         } else {
-            res.status(401).json({ message: 'Please login' });
+            res.status(401).json({ message: 'NO_USER' });
         }
     };
 }
