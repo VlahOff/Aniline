@@ -1,8 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { BehaviorSubject, catchError, Subscription, tap, throwError } from 'rxjs';
 
+import * as fromApp from '../+store/app.reducer';
+import * as AuthActions from './+store/auth.actions';
 import { environment } from '../../environments/environment';
 import { User } from './user.model';
 
@@ -15,91 +18,36 @@ interface AuthResponse {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-  user = new BehaviorSubject<User | null>(null);
+export class AuthService implements OnInit, OnDestroy {
+  private userSub!: Subscription;
+  private user!: User | null;
+  private tokenExpirationTimer: any;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private store: Store<fromApp.AppState>) { }
 
-  register(email: string, password: string) {
-    return this.http.post<AuthResponse>(environment.authApi + '/register',
-      {
-        email: email,
-        password: password
-      }
-    ).pipe(
-      catchError(err => {
-        return throwError(() => {
-          this.handleErrors(err);
-        });
-      }),
-      tap(resData => {
-        this.createUser(resData.email, resData._id, resData.accessToken);
-      })
-    );
+  ngOnInit(): void {
+    this.userSub = this.store.select('auth')
+      .pipe(
+        tap(authState => {
+          this.user = authState.user;
+        })
+      ).subscribe();
   }
 
-  login(email: string, password: string) {
-    return this.http.post<AuthResponse>(environment.authApi + '/login',
-      {
-        email: email,
-        password: password
-      }
-    ).pipe(
-      catchError(err => {
-        return throwError(() => {
-          this.handleErrors(err);
-        });
-      }),
-      tap(resData => {
-        this.createUser(resData.email, resData._id, resData.accessToken);
-      })
-    );
+  setLogoutTimer(timeUntil: number) {
+    this.tokenExpirationTimer = setTimeout(() => {
+      this.store.dispatch(AuthActions.logout({ payload: this.user?.token || '' }));
+    }, timeUntil);
   }
 
-  logout() {
-    this.http.get(environment.authApi + '/logout').subscribe(
-      (res) => {
-        console.log(res);
-      }
-    );
-
-    this.user.next(null);
-    this.router.navigate(['/']);
-    localStorage.removeItem('userData');
-  }
-
-  autoLogin() {
-    const userData = localStorage.getItem('userData');
-    if (!userData) {
-      return;
+  clearLogoutTimer() {
+    if (this.tokenExpirationTimer) {
+      clearTimeout(this.tokenExpirationTimer);
+      this.tokenExpirationTimer = null;
     }
-
-    const userObj = JSON.parse(userData);
-    const loadedUser = new User(userObj.email, userObj._id, userObj.accessToken);
-    this.user.next(loadedUser);
   }
 
-  private createUser(email: string, _id: string, accessToken: string) {
-    const user = new User(email, _id, accessToken);
-    this.user.next(user);
-    localStorage.setItem('userData', JSON.stringify(user));
-  }
-
-  private handleErrors(error: HttpErrorResponse) {
-    let errorMessage = 'An unknown error has occurred!';
-    if (!error.error.message) {
-      throw new Error(errorMessage);
-    }
-
-    switch (error.error.message) {
-      case 'EMAIL_TAKEN':
-        errorMessage = 'The email address is already in use by another account.';
-        break;
-      case 'INVALID_CREDENTIALS':
-        errorMessage = 'Invalid email or password.';
-        break;
-    }
-
-    throw new Error(errorMessage);
+  ngOnDestroy(): void {
+    this.userSub.unsubscribe();
   }
 }

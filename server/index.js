@@ -1,6 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
 
 const databaseConfig = require('./configs/database');
 
@@ -11,6 +10,7 @@ const testController = require('./controllers/testController');
 const cryptoController = require('./controllers/cryptoController');
 const portfolioController = require('./controllers/PortfolioController');
 const { isUser } = require('./middlewares/guards');
+const cors = require('./middlewares/cors');
 
 const EXPRESS_PORT = process.env.EXPRESS_PORT;
 

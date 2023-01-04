@@ -20,19 +20,24 @@ async function parseToken(token) {
 
 function createToken(user) {
     const data = {
-        _id: user._id,
-        email: user.email
+        userId: user._id,
+        email: user.email,
+        username: user.username
     };
 
+    const t = new Date();
+    t.setHours(new Date().getHours() + 8);
+
     return {
-        _id: user._id,
+        userId: user._id,
         email: user.email,
-        accessToken: jwt.sign(data, JWT_SECRET_TOKEN)
+        username: user.username,
+        accessToken: jwt.sign(data, JWT_SECRET_TOKEN),
+        expiriesIn: Date.parse(t)
     };
 }
 
 async function banToken(token) {
-    // console.log(token);
     return Token.create({ token });
 }
 
