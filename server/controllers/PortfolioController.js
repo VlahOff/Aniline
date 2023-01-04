@@ -9,7 +9,7 @@ portfolioController.get('/getTransactions', async (req, res) => {
     if (!req.user) {
       throw new Error('NO_USER');
     }
-    const userId = req.user._id;
+    const userId = req.user.userId;
     let transactions = await getAllUserTransactions(userId);
     transactions = transactions.map(t => { return t = t._id.toString(); });
 
@@ -69,7 +69,7 @@ portfolioController.post('/addTransaction', async (req, res) => {
       throw new Error('QUANTITY_LEAST_ONES');
     }
 
-    const transaction = await createTransaction(req.body.data, req.user._id);
+    const transaction = await createTransaction(req.body.data, req.user.userId);
     res.status(200).json(transaction);
   } catch (error) {
     res.status(400).json({

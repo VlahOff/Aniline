@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { NotificationService } from 'src/app/shared/notification/notification.service';
-import { AuthService } from '../auth.service';
-import * as fromApp from '../../+store/app.reducer';
-import * as AuthActions from '../+store/auth.actions';
 import { Store } from '@ngrx/store';
+
+import * as AuthActions from '../+store/auth.actions';
+import * as fromApp from '../../+store/app.reducer';
 
 @Component({
   selector: 'app-login',

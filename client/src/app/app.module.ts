@@ -4,8 +4,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
 
 import * as fromApp from './+store/app.reducer';
+import { CryptoEffects } from './+store/crypto.effects';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthEffects } from './auth/+store/auth.effects';
@@ -31,7 +34,8 @@ import { NotificationComponent } from './shared/notification/notification.compon
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, CryptoEffects]),
+    StoreDevtoolsModule.instrument({ logOnly: environment.production })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: UserTokenInterceptor, multi: true }

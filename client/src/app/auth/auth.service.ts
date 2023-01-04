@@ -1,19 +1,10 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { BehaviorSubject, catchError, Subscription, tap, throwError } from 'rxjs';
+import { Subscription, tap } from 'rxjs';
 
 import * as fromApp from '../+store/app.reducer';
 import * as AuthActions from './+store/auth.actions';
-import { environment } from '../../environments/environment';
 import { User } from './user.model';
-
-interface AuthResponse {
-  _id: string,
-  email: string,
-  accessToken: string;
-}
 
 @Injectable({
   providedIn: 'root'
