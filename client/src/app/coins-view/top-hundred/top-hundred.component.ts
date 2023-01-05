@@ -1,7 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { CoinsViewTopResponse } from 'src/app/interfaces';
-import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
+import { Store } from '@ngrx/store';
+import { map, Subscription } from 'rxjs';
+
+import { TopHundred } from 'src/app/interfaces';
+import * as fromApp from '../../+store/app.reducer';
+import * as CryptoActions from '../../+store/crypto.actions';
 
 @Component({
   selector: 'app-top-hundred',
@@ -9,18 +12,18 @@ import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
   styleUrls: ['./top-hundred.component.css']
 })
 export class TopHundredComponent implements OnInit, OnDestroy {
-  topHundred!: CoinsViewTopResponse[];
+  topHundred!: TopHundred[] | null;
   topHundredSub!: Subscription;
 
-  constructor(private cryptoService: CryptoService) { }
+  constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
-    this.topHundredSub = this.cryptoService.topHundred()
-      .subscribe({
-        next: (res) => {
-          this.topHundred = res;
-        }
-      });
+    this.topHundredSub = this.store.select('crypto')
+      .pipe(
+        map(state => state.topHundred)
+      ).subscribe(res => this.topHundred = res);
+
+    this.store.dispatch(CryptoActions.fetchTopHundred());
   }
 
   ngOnDestroy(): void {

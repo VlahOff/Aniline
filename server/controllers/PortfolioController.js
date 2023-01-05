@@ -9,11 +9,11 @@ portfolioController.get('/getTransactions', async (req, res) => {
     if (!req.user) {
       throw new Error('NO_USER');
     }
-    const userId = req.user._id;
+    const userId = req.user.userId;
     let transactions = await getAllUserTransactions(userId);
     transactions = transactions.map(t => { return t = t._id.toString(); });
 
-    res.json(transactions).status(200).end();
+    res.status(200).json(transactions);
   } catch (error) {
     res.status(400).json({
       message: errorParser(error)
@@ -43,7 +43,7 @@ portfolioController.get('/getTransaction', async (req, res) => {
       price_change_percentage_24h: details.price_change_percentage_24h
     };
 
-    res.json(transaction).status(200).end();
+    res.status(200).json(transaction);
   } catch (error) {
     res.status(400).json({
       message: errorParser(error)
@@ -57,23 +57,20 @@ portfolioController.post('/addTransaction', async (req, res) => {
       throw new Error('NO_USER');
     }
 
-    const transaction = req.body.data;
-    const userId = req.user._id;
-
-    if (transaction.coinId === '') {
+    if (req.body.data.coinId === '') {
       throw new Error('ENTER_COIN_ID');
     }
 
-    if (transaction.coinPrice <= 0) {
+    if (req.body.data.coinPrice <= 0) {
       throw new Error('COIN_PRICE_NOT_POSITIVE');
     }
 
-    if (transaction.quantity <= 0) {
+    if (req.body.data.quantity <= 0) {
       throw new Error('QUANTITY_LEAST_ONES');
     }
-    console.log('transaction created');
-    const t = await createTransaction(transaction, userId);
-    res.json(t).status(200).end();
+
+    const transaction = await createTransaction(req.body.data, req.user.userId);
+    res.status(200).json(transaction);
   } catch (error) {
     res.status(400).json({
       message: errorParser(error)

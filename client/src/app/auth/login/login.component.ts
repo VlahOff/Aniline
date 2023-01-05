@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { NotificationService } from 'src/app/shared/notification/notification.service';
-import { AuthService } from '../auth.service';
+import { Store } from '@ngrx/store';
+
+import * as AuthActions from '../+store/auth.actions';
+import * as fromApp from '../../+store/app.reducer';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
   constructor(
-    private authService: AuthService,
-    private router: Router,
-    private notificationService: NotificationService
+    private store: Store<fromApp.AppState>
   ) { }
 
   ngOnInit(): void {
@@ -26,17 +25,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
-      .subscribe({
-        next: (resData) => {
-          console.log(resData);
-          this.router.navigate(['/']);
-        },
-        error: (error) => {
-          if (error) {
-            this.notificationService.createNotification(error.message, 'alert');
-          }
-        }
-      });
+    this.store.dispatch(AuthActions.loginStart({
+      payload: {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password
+      }
+    }));
   }
 }

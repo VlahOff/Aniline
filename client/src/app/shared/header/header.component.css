@@ -8,9 +8,10 @@
 
 nav {
 	width: 100%;
-	border-bottom-left-radius: 15px;
-	border-bottom-right-radius: 15px;
-	background-color: #1F2739;
+	background: rgba(102, 102, 102, 0.4);
+	/* box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ); */
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
 	box-shadow: 2px 5px 13px 5px #000000ad, 8px -15px 31px -12px rgb(0 0 0 / 0%);
 }
 
@@ -31,9 +32,8 @@ ul li {
 }
 
 .logo a img {
-	margin-top: 5px;
-	background-color: #84000E;
-	border-radius: 8px;
+	margin-top: 4px;
+	color: white;
 	width: 100px;
 }
 
@@ -72,7 +72,7 @@ ul li {
 	text-decoration: none;
 	padding: 8px;
 	border-radius: 10px;
-	background-color: #84000E;
+	background-color: #757575;
 }
 
 a {

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CoinsViewNewResponse } from 'src/app/interfaces';
+import { NewCoinsResponse } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-coin-new-row',
@@ -7,7 +7,7 @@ import { CoinsViewNewResponse } from 'src/app/interfaces';
   styleUrls: ['./coin-new-row.component.css']
 })
 export class CoinNewRowComponent implements OnInit {
-  @Input() coin!: CoinsViewNewResponse;
+  @Input() coin!: NewCoinsResponse;
   @Input() index!: number;
 
   constructor() { }

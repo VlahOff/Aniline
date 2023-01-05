@@ -1,7 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { GlobalDataResponse } from 'src/app/interfaces';
-import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
+import { Store } from '@ngrx/store';
+import { map, Subscription } from 'rxjs';
+
+import { GlobalData } from 'src/app/interfaces';
+import * as fromApp from '../../+store/app.reducer';
+import * as CryptoActions from '../../+store/crypto.actions';
 
 @Component({
   selector: 'app-global-data',
@@ -9,18 +12,22 @@ import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
   styleUrls: ['./global-data.component.css']
 })
 export class GlobalDataComponent implements OnInit, OnDestroy {
-  globalData!: GlobalDataResponse;
+  globalData!: GlobalData | null;
   dataSub!: Subscription;
 
-  constructor(private cryptoService: CryptoService) { }
+  constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
-    this.dataSub = this.cryptoService.getGlobalData()
-      .subscribe({
-        next: (res) => {
-          this.globalData = res;
-        }
+    this.dataSub = this.store.select('crypto')
+      .pipe(
+        map(state => {
+          return state.globalData;
+        })
+      ).subscribe(res => {
+        this.globalData = res;
       });
+
+    this.store.dispatch(CryptoActions.fetchGlobalData());
   }
 
   ngOnDestroy(): void {

@@ -11,6 +11,11 @@
         <input id="email" type="text" placeholder="Enter Email" formControlName="email">
         <div class="input-icon"></div>
       </div>
+      <div class="input">
+        <i class="input-icon fa-solid fa-at"></i>
+        <input id="username" type="text" placeholder="Enter Username" formControlName="username">
+        <div class="input-icon"></div>
+      </div>
       <label for="password">Password</label>
       <span class="error" *ngIf="!registerForm.get('password')?.valid && registerForm.get('password')?.touched">Invalid
         password!</span>

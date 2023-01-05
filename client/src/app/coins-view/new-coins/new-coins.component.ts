@@ -1,7 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { CoinsViewNewResponse } from 'src/app/interfaces';
-import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
+import { Store } from '@ngrx/store';
+import { map, Subscription } from 'rxjs';
+
+import { NewCoin } from 'src/app/interfaces';
+import * as fromApp from '../../+store/app.reducer';
+import * as CryptoActions from '../../+store/crypto.actions';
 
 @Component({
   selector: 'app-new-coins',
@@ -9,18 +12,20 @@ import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
   styleUrls: ['./new-coins.component.css']
 })
 export class NewCoinsComponent implements OnInit, OnDestroy {
-  newCoins!: CoinsViewNewResponse[];
+  newCoins!: NewCoin[] | null;
   newCoinsSub!: Subscription;
 
-  constructor(private cryptoService: CryptoService) { }
+  constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
-    this.newCoinsSub = this.cryptoService.newCoins()
-      .subscribe({
-        next: (res) => {
-          this.newCoins = res;
-        }
+    this.newCoinsSub = this.store.select('crypto')
+      .pipe(
+        map(state => state.newCoins)
+      ).subscribe(data => {
+        this.newCoins = data;
       });
+
+    this.store.dispatch(CryptoActions.fetchNewCoins());
   }
 
   ngOnDestroy(): void {

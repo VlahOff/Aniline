@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const { createToken, banToken } = require('./tokenService');
 
-async function register(email, password) {
+async function register(email, username, password) {
     const existing = await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
 
     if (existing) {
@@ -11,6 +11,7 @@ async function register(email, password) {
 
     const user = await User.create({
         email,
+        username,
         hashedPassword: await bcrypt.hash(password, 10)
     });
 

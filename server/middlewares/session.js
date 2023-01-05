@@ -11,7 +11,7 @@ module.exports = () => async (req, res, next) => {
             req.token = token;
         } catch (error) {
             banToken(token);
-            return res.status(401).json({ message: 'Invalid authorization token!' });
+            return res.status(401).json({ message: 'INVALID_TOKEN' });
         }
     }
 

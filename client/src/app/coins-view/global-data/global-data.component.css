@@ -1,6 +1,8 @@
 .global-data-container {
   display: flex;
   flex-direction: row;
+  align-self: flex-end;
+  align-content: flex-start;
   justify-content: space-evenly;
   color: white;
 }

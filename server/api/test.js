@@ -1,10 +1,9 @@
-const api = require('./cryptoApi');
+// const api = require('./cryptoApi');
 
-async function start() {
-    const temp = await api.getCoinDetailed('bitcoin');
+// async function start() {
+//     const temp = await api.getCoinDetailed('bitcoin');
 
-    console.log(temp);
-}
+//     console.log(temp);
+// }
 
-start();
-
+// start();

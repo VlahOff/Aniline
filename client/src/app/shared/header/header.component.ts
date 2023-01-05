@@ -1,6 +1,10 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/auth/auth.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { map, Subscription } from 'rxjs';
+import { User } from 'src/app/auth/user.model';
+
+import * as fromApp from '../../+store/app.reducer';
+import * as AuthActions from '../../auth/+store/auth.actions';
 
 @Component({
   selector: 'app-header',
@@ -8,23 +12,22 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  email: string = '';
-  hasUser: boolean = false;
   private userSub!: Subscription;
 
-  constructor(private authService: AuthService) { }
+  user!: User | null;
+
+  constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
-    this.userSub = this.authService.user.subscribe(
-      (user) => {
-        this.email = user?.email || '';
-        this.hasUser = !!user;
-      },
-    );
+    this.userSub = this.store.select('auth').pipe(
+      map(authState => authState.user),
+    ).subscribe(user => {
+      this.user = user;
+    });
   }
 
   onLogout() {
-    this.authService.logout();
+    this.store.dispatch(AuthActions.logout({ payload: this.user?.token || '' }));
   }
 
   ngOnDestroy(): void {

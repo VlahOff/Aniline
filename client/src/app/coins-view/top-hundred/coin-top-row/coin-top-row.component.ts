@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CoinsViewTopResponse } from 'src/app/interfaces';
+import { TopHundredResponse } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-coin-top-row',
@@ -7,7 +7,7 @@ import { CoinsViewTopResponse } from 'src/app/interfaces';
   styleUrls: ['./coin-top-row.component.css']
 })
 export class CoinTopRowComponent implements OnInit {
-  @Input() coin!: CoinsViewTopResponse;
+  @Input() coin!: TopHundredResponse;
   @Input() index!: number;
 
   constructor() { }

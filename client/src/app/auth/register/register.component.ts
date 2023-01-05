@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { NotificationService } from 'src/app/shared/notification/notification.service';
-import { AuthService } from '../auth.service';
+import { Store } from '@ngrx/store';
+
+import * as AuthActions from '../+store/auth.actions';
+import * as fromApp from '../../+store/app.reducer';
 
 @Component({
   selector: 'app-register',
@@ -13,31 +14,26 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
   constructor(
-    private authService: AuthService,
-    private router: Router,
-    private notificationService: NotificationService
+    private store: Store<fromApp.AppState>
   ) { }
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email]),
+      'username': new FormControl(null, [Validators.required, Validators.minLength(6)]),
       'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
       'rePass': new FormControl(null, [Validators.required, Validators.minLength(6), this.doPasswordsMatch.bind(this)])
     });
   }
 
   onSubmit() {
-    this.authService.register(this.registerForm.value.email, this.registerForm.value.password)
-      .subscribe({
-        next: (resData) => {
-          this.router.navigate(['/']);
-        },
-        error: (error) => {
-          if (error) {
-            this.notificationService.createNotification(error.message, 'alert')
-          }
-        }
-      });
+    this.store.dispatch(AuthActions.signupStart({
+      payload: {
+        email: this.registerForm.value.email,
+        username: this.registerForm.value.username,
+        password: this.registerForm.value.password
+      }
+    }));
   }
 
   doPasswordsMatch(control: FormControl): { [s: string]: boolean; } | null {
