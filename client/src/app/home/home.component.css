@@ -1,8 +1,9 @@
 h1 {
-    margin: 6% 60% 0% 10%;
-    text-align: left;
+    margin: 300px 100px 200px 100px;
+    text-align: center;
     color: white;
-    font-family: 'Orbitron';
+    font-family: 'Montserrat';
+    font-weight: 200;
     font-size: 90px;
 }
 

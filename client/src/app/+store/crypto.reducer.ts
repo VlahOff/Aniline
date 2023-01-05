@@ -1,23 +1,41 @@
 import { createReducer, on } from "@ngrx/store";
-import { GlobalData, GlobalDataResponse } from "../interfaces";
+import { GlobalData, NewCoin, TopHundred } from "../interfaces";
 import * as CryptoActions from './crypto.actions';
 
 export interface State {
-  globalData: GlobalDataResponse | null;
+  globalData: GlobalData | null;
+  topHundred: TopHundred[] | null;
+  newCoins: NewCoin[] | null;
 }
 
 const initialState: State = {
-  globalData: null
+  globalData: null,
+  topHundred: null,
+  newCoins: null
 };
 
 
 export const cryptoReducer = createReducer(
   initialState,
 
-  on(CryptoActions.getGlobalData, (state, { payload }) => {
+  on(CryptoActions.setGlobalData, (state, { payload }) => {
     return {
       ...state,
       globalData: payload
+    };
+  }),
+
+  on(CryptoActions.setTopHundred, (state, { payload }) => {
+    return {
+      ...state,
+      topHundred: payload
+    };
+  }),
+
+  on(CryptoActions.setNewCoins, (state, { payload }) => {
+    return {
+      ...state,
+      newCoins: payload
     };
   })
 );

@@ -8,6 +8,7 @@ html {
 body,
 html {
     background: no-repeat;
-    background: linear-gradient(#0F131C, #450009);
+    /* background: linear-gradient(#0F131C, #450009); */
     background-attachment: fixed;
+    background-image: url("./assets/black-bg.webp");
 }

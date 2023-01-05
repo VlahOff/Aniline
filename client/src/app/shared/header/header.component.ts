@@ -14,9 +14,7 @@ import * as AuthActions from '../../auth/+store/auth.actions';
 export class HeaderComponent implements OnInit, OnDestroy {
   private userSub!: Subscription;
 
-  private user!: User | null;
-  username!: string | undefined;
-  hasUser: boolean = false;
+  user!: User | null;
 
   constructor(private store: Store<fromApp.AppState>) { }
 
@@ -25,8 +23,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       map(authState => authState.user),
     ).subscribe(user => {
       this.user = user;
-      this.username = user?.username;
-      this.hasUser = !!user;
     });
   }
 
