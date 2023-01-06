@@ -18,7 +18,10 @@ interface AuthResponse {
 }
 
 const handleAuthentication = (userId: string, email: string, username: string, accessToken: string, expiriesIn: string) => {
-  const user = new User(email, username, userId, accessToken, new Date(expiriesIn));
+  const expirationTime = new Date();
+  expirationTime.setMilliseconds(new Date().getMilliseconds() + Number(expiriesIn))
+
+  const user = new User(email, username, userId, accessToken, expirationTime);
   localStorage.setItem('userData', JSON.stringify(user));
 
   return AuthActions.authenticateSuccess({
@@ -27,7 +30,7 @@ const handleAuthentication = (userId: string, email: string, username: string, a
       userId: userId,
       username: username,
       accessToken: accessToken,
-      expiresIn: new Date(expiriesIn),
+      expiresIn: expirationTime,
       redirect: true
     }
   });
