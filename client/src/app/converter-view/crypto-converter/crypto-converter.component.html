@@ -15,10 +15,14 @@
             <img src="" alt="" class="input-icon">
             <input type="text" placeholder="From BTC" formControlName="from">
             <i class="fa-solid fa-circle-arrow-down"></i>
+
             <div class="menu-content">
-              <button type="button" *ngFor="let crypto of cryptoMap" (click)="fromCrypto(crypto)">{{ crypto.name }} ({{
-                crypto.symbol }})</button>
+              <button type="button" 
+              *ngFor="let crypto of state.cryptoMap" 
+              (click)="fromCrypto(crypto)">
+              {{ crypto.name }} ({{ crypto.symbol }})</button>
             </div>
+
           </div>
         </div>
         <div class="menu">
@@ -26,10 +30,14 @@
             <img src="" alt="" class="input-icon">
             <input type="text" placeholder="To USD" formControlName="to">
             <i class="fa-solid fa-circle-arrow-down"></i>
+
             <div class="menu-content">
-              <button type="button" *ngFor="let fiat of fiatMap" (click)="toFiat(fiat)">{{ fiat.name }} "{{fiat.sign}}"
-                ({{ fiat.symbol }})</button>
+              <button type="button" 
+              *ngFor="let fiat of state.fiatMap" 
+              (click)="toFiat(fiat)">
+              {{ fiat.name }} "{{fiat.sign}}" ({{ fiat.symbol }})</button>
             </div>
+            
           </div>
         </div>
       </div>
@@ -38,10 +46,10 @@
             class="fa-solid fa-1x fa-money-bill-transfer"></i> Convert</button>
       </div>
       <div class="output">
-        <h4 class="output-field" *ngIf="result">{{ result.amount }} {{ result.name }} ({{ result.symbol }}) =
+        <!-- <h4 class="output-field" *ngIf="result">{{ result.amount }} {{ result.name }} ({{ result.symbol }}) =
           {{ result.quote[toId].price | number:'1.2-2' }} {{ fiatMapValue?.name }} "{{ fiatMapValue?.sign }}"
           ({{fiatMapValue?.symbol}})
-        </h4>
+        </h4> -->
       </div>
     </form>
   </div>

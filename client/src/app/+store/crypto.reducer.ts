@@ -5,12 +5,15 @@ import * as CryptoActions from './crypto.actions';
 export interface State {
   globalData: GlobalData | null;
   topHundred: TopHundred[] | null;
+  topThree: TopHundred[] | null;
   newCoins: NewCoin[] | null;
+
 }
 
 const initialState: State = {
   globalData: null,
   topHundred: null,
+  topThree: null,
   newCoins: null
 };
 
@@ -22,6 +25,13 @@ export const cryptoReducer = createReducer(
     return {
       ...state,
       globalData: payload
+    };
+  }),
+
+  on(CryptoActions.setTopThree, (state, { payload }) => {
+    return {
+      ...state,
+      topThree: payload
     };
   }),
 
@@ -37,5 +47,7 @@ export const cryptoReducer = createReducer(
       ...state,
       newCoins: payload
     };
-  })
+  }),
+
+  
 );
