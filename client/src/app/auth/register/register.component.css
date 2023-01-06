@@ -7,9 +7,10 @@
 .register-container {
   max-width: 500px;
   color: white;
-  background: #526081;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  border-radius: 15px;
+  background: rgba(102, 102, 102, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 10px;
 }
 
 form {
@@ -20,15 +21,13 @@ form {
 .logo {
   margin: auto;
   width: 180px;
-  padding: 70px 0px;
+  padding: 50px 0px;
 }
 
 h1 {
-  display: flex;
-  justify-content: center;
-  font-weight: 900;
-  padding: 0px 0px 50px 0px;
-  text-decoration: underline;
+  text-align: center;
+  font-weight: 300;
+  padding: 0px 0px 10px 0px;
 }
 
 label {
@@ -60,26 +59,30 @@ label {
 
 input {
   color: white;
-  background: #526081;
+  background: rgba(102, 102, 102, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 10px;
   text-align: center;
   border: none;
   width: 300px;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
-    -webkit-box-shadow: 0 0 0 30px #526081 inset !important;
-    -webkit-text-fill-color: rgb(255, 255, 255);
 }
 
 input:focus {
   outline: none;
 }
 
+
 ::placeholder {
-  color: white;
+  color: #a8a8a8;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #3F4249 inset !important;
+  -webkit-text-fill-color: rgb(255, 255, 255);
 }
 
 .button-div {
@@ -90,8 +93,8 @@ input:focus {
 }
 
 button {
-  background: rgb(198, 101, 199);
-  background: linear-gradient(90deg, #8B0014, #33008B 100%);
+  background-color: #00DBDE;
+  background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
   border: none;
   border-radius: 10px;
   padding: 10px 30%;
@@ -119,7 +122,7 @@ a {
 
 .error {
   text-align: center;
-  color: white;
+  color: crimson;
   font-style: italic;
   font-size: 15px;
 }
