@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { CryptoMap, FiatMap } from "src/app/interfaces";
+import { ConverterResponse, CryptoMap, FiatMap } from "src/app/interfaces";
 
 export const fetchCryptoMap = createAction('[Converter] Fetch Crypto Map');
 
@@ -15,12 +15,31 @@ export const setFiatMap = createAction(
   props<{ payload: FiatMap[]; }>()
 );
 
-export const setFromId = createAction(
-  '[Converter] Set From Id',
+export const setFrom = createAction(
+  '[Converter] Set From',
+  props<{ payload: CryptoMap | null; }>()
+);
+
+export const setTo = createAction(
+  '[Converter] Set To',
+  props<{ payload: FiatMap | null; }>()
+);
+
+export const setAmount = createAction(
+  '[Converter] Set Amount',
   props<{ payload: number; }>()
 );
 
-export const setToId = createAction(
-  '[Converter] Set To Id',
-  props<{ payload: number; }>()
+export const convertCurrency = createAction(
+  '[Converter] Convert Currency',
+  props<{
+    payload: {
+      amount: number, from: CryptoMap | null, to: FiatMap | null;
+    };
+  }>()
+);
+
+export const setConvertResult = createAction(
+  '[Converter] Set Converter Result',
+  props<{ payload: ConverterResponse | null; }>()
 );

@@ -5,6 +5,6 @@ export * from './topHundred';
 export * from './newCoins';
 export * from './fiatMap';
 export * from './cryptoMap';
-export * from './converter-res';
+export * from './converterRes';
 export * from './all-coins-res';
 export * from './transaction'

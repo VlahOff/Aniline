@@ -1,9 +1,9 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { map, switchMap } from "rxjs";
 
-import { CryptoMap, CryptoMapRes, FiatMap, FiatMapRes } from "src/app/interfaces";
+import { ConverterResponse, CryptoMap, CryptoMapRes, FiatMap, FiatMapRes } from "src/app/interfaces";
 import { environment } from "src/environments/environment";
 import * as ConverterActions from './converter.actions';
 
@@ -61,8 +61,26 @@ export class ConverterEffects {
     })
   ));
 
+  convertCurrency$ = createEffect(() => this.actions$.pipe(
+    ofType(ConverterActions.convertCurrency),
+    switchMap((data) => {
+      let params = new HttpParams();
+      if (data.payload.from?.id && data.payload.to?.id) {
+        params = params.append('amount', data.payload.amount);
+        params = params.append('from', data.payload.from.id);
+        params = params.append('to', data.payload.to.id);
+      }
+
+      return this.http
+        .get<ConverterResponse>(environment.cryptoApi + '/convert', { params: params });
+    }),
+    map(res => {
+      return ConverterActions.setConvertResult({ payload: res });
+    })
+  ));
+
   constructor(
     private actions$: Actions,
     private http: HttpClient
-  ) {}
+  ) { }
 }
