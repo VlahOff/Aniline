@@ -2,11 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { map, Subscription } from 'rxjs';
-import { ConverterResponse, CryptoMap, CryptoMapRes, FiatMap, FiatMapRes } from 'src/app/interfaces';
-import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
-import * as fromApp from '../../+store/app.reducer';
-import * as fromConverter from '../+store/converter.reducer';
+
+import { ConverterResponse, CryptoMap, FiatMap } from 'src/app/interfaces';
 import * as ConverterActions from '../+store/converter.actions';
+import * as fromConverter from '../+store/converter.reducer';
+import * as fromApp from '../../+store/app.reducer';
 
 @Component({
   selector: 'app-crypto-converter',

@@ -4,8 +4,10 @@
   justify-content: center;
   margin-top: 200px;
   color: white;
-  background: #526081;
-  border-radius: 15px;
+  background: rgba(102, 102, 102, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   width: 500px;
 }
@@ -19,7 +21,7 @@ form {
 .title {
   padding: 50px 0px;
   text-align: center;
-  text-decoration: underline;
+  font-weight: 300;
 }
 
 label {
@@ -45,7 +47,10 @@ label {
 
 .input {
   color: white;
-  background: #526081;
+  background: rgba(102, 102, 102, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 10px;
   text-align: center;
   border: none;
   width: 300px;
@@ -56,14 +61,14 @@ input:focus {
 }
 
 ::placeholder {
-  color: white;
+  color: #a8a8a8;
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #526081 inset !important;
+  -webkit-box-shadow: 0 0 0 30px #3F4249 inset !important;
   -webkit-text-fill-color: rgb(255, 255, 255);
 }
 
@@ -80,13 +85,13 @@ input::-webkit-inner-spin-button {
 }
 
 .button {
-  /* background: rgb(198, 101, 199); */
-  background: linear-gradient(90deg, #f1c0ff, #75ffff 100%);
+  background-color: #00DBDE;
+  background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
   border: none;
   border-radius: 10px;
   padding: 10px 30px;
   font-size: large;
-  color: black;
+  color: white;
   cursor: pointer;
 }
 
@@ -97,14 +102,9 @@ input::-webkit-inner-spin-button {
   border-radius: 10px;
   padding: 10px 30px;
   font-size: large;
-  color: black;
+  color: white;
   cursor: pointer;
   margin-right: 50px;
-}
-
-.button-cancel:hover {
-  color: white;
-  background: linear-gradient(90deg, #8B0014, #33008B 100%);
 }
 
 .menu {
