@@ -27,7 +27,7 @@ export class AuthService implements OnInit, OnDestroy {
 
   setLogoutTimer(timeUntil: number) {
     this.tokenExpirationTimer = setTimeout(() => {
-      this.store.dispatch(AuthActions.logout({ payload: this.user?.token || '' }));
+      this.store.dispatch(AuthActions.logout({ payload: this.user?.accessToken || '' }));
     }, timeUntil);
   }
 

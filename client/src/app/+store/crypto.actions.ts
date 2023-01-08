@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { GlobalData, NewCoin, TopHundred } from "../interfaces";
+import { CryptoMap, FiatMap, GlobalData, NewCoin, TopHundred } from "../interfaces";
 
 export const fetchGlobalData = createAction('[Crypto] Fetch Global Data');
 
@@ -8,6 +8,13 @@ export const setGlobalData = createAction(
   props<{
     payload: GlobalData;
   }>()
+);
+
+export const fetchTopThree = createAction('[Crypto] Fetch Top Three');
+
+export const setTopThree = createAction(
+  '[Crypto] Set Top Three',
+  props<{ payload: TopHundred[]; }>()
 );
 
 export const fetchTopHundred = createAction('[Crypto] Fetch Top Hundred');

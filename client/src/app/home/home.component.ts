@@ -1,7 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { DetailedCoinDataResponse } from '../interfaces';
-import { CryptoService } from '../shared/services/cryptoApi.service';
+import { Store } from '@ngrx/store';
+import { map, Subscription } from 'rxjs';
+
+import * as fromApp from '../+store/app.reducer';
+import * as CryptoActions from '../+store/crypto.actions';
+import { TopHundred } from '../interfaces';
 
 @Component({
   selector: 'app-home',
@@ -9,22 +12,22 @@ import { CryptoService } from '../shared/services/cryptoApi.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  cards!: DetailedCoinDataResponse[]
+  topThreeCards!: TopHundred[] | null;
+  topThreeSub!: Subscription;
 
-  topSub!: Subscription;
-
-  constructor(private cryptoService: CryptoService) { }
+  constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
-    this.topSub = this.cryptoService.topThree()
-      .subscribe({
-        next: (data) => {
-          this.cards = data;
-        }
-      });
+    this.topThreeSub = this.store.select('crypto').pipe(
+      map(state => state.topThree)
+    ).subscribe(data => {
+      this.topThreeCards = data;
+    });
+
+    this.store.dispatch(CryptoActions.fetchTopThree());
   }
 
   ngOnDestroy(): void {
-    this.topSub.unsubscribe();
+    this.topThreeSub.unsubscribe();
   }
 }

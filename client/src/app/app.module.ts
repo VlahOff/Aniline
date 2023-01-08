@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthEffects } from './auth/+store/auth.effects';
 import { UserTokenInterceptor } from './auth/user-token.interceptor';
+import { ConverterEffects } from './converter-view/+store/converter.effects';
 import { CryptoCardComponent } from './home/crypto-card/crypto-card.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -34,7 +35,7 @@ import { NotificationComponent } from './shared/notification/notification.compon
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([AuthEffects, CryptoEffects]),
+    EffectsModule.forRoot([AuthEffects, CryptoEffects, ConverterEffects]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production })
   ],
   providers: [
