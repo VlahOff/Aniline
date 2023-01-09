@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { NotificationComponent } from './shared/notification/notification.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { NotificationComponent } from './shared/notification/notification.compon
     HomeComponent,
     HeaderComponent,
     NotificationComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
