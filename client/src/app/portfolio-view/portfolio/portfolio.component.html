@@ -5,7 +5,10 @@
         <h4>Total portfolio value</h4>
         <p>$230.43</p>
       </div>
-      <h1>My Assets</h1>
+      <div class="right-title">
+        <h1>My Assets</h1>
+        <button type="button" (click)="showAddModal()">Add New Coin</button>        
+      </div>
     </div>
     <div class="table">
       <thead>
@@ -24,5 +27,8 @@
         <app-portfolio-table-row></app-portfolio-table-row>
       </tbody>
     </div>
+  </div>
+  <div class="modal" *ngIf="state.addModalShown"  (click)="hideModal($event)">
+    <app-add-coin-modal></app-add-coin-modal>
   </div>
 </div>

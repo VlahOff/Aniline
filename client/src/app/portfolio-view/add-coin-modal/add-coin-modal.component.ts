@@ -1,11 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AllCoins } from 'src/app/interfaces';
 import { NotificationService } from 'src/app/shared/notification/notification.service';
 import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
 import { PortfolioService } from '../portfolio.service';
+import * as fromApp from '../../+store/app.reducer';
+import * as PortfolioActions from '../+store/portfolio.actions';
 
 @Component({
   selector: 'app-add-coin-modal',
@@ -26,7 +29,8 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
     private cryptoService: CryptoService,
     private notificationService: NotificationService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private store: Store<fromApp.AppState>
   ) { }
 
   ngOnInit(): void {
@@ -80,8 +84,10 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
     this.resultSorted = undefined;
   }
 
-  hideModal() {
-    this.portfolioService.isAddCoinModalRendered.next(false);
+  hideModal(target: MouseEvent) {
+    console.log(target);
+
+    this.store.dispatch(PortfolioActions.showAddModal());
   }
 
   ngOnDestroy(): void {

@@ -41,7 +41,7 @@
       <p class="input">{{+coinPrice.value * +quantity.value | number:'1.0-2'}}</p>
     </div>
     <div class="button-div">
-      <button type="button" class="button-cancel" (click)="hideModal()">Cancel</button>
+      <button type="button" class="button-cancel" (click)="hideModal($event)">Cancel</button>
       <button type="submit" class="button" [disabled]="!addCoinForm.valid">Submit</button>
     </div>
   </form>
