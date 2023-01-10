@@ -1,11 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { map, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { ConverterResponse, CryptoMap, FiatMap } from 'src/app/interfaces';
 import * as ConverterActions from '../+store/converter.actions';
-import * as fromConverter from '../+store/converter.reducer';
+import { getCryptoMap, getFiatMap, getFrom, getResult, getTo } from '../+store/converter.selector';
 import * as fromApp from '../../+store/app.reducer';
 
 @Component({
@@ -13,11 +13,14 @@ import * as fromApp from '../../+store/app.reducer';
   templateUrl: './crypto-converter.component.html',
   styleUrls: ['./crypto-converter.component.css']
 })
-export class CryptoConverterComponent implements OnInit, OnDestroy {
-  convertSub!: Subscription;
+export class CryptoConverterComponent implements OnInit {
+  cryptoMap$: Observable<CryptoMap[] | null> = this.store.select(getCryptoMap);
+  fiatMap$: Observable<FiatMap[] | null> = this.store.select(getFiatMap);
+  result$: Observable<ConverterResponse | null> = this.store.select(getResult);
+  from$: Observable<CryptoMap | null> = this.store.select(getFrom);
+  to$: Observable<FiatMap | null> = this.store.select(getTo);
+
   converterForm!: FormGroup;
-  state!: fromConverter.State;
-  result!: ConverterResponse | null;
 
   constructor(private store: Store<fromApp.AppState>) { }
 
@@ -28,26 +31,12 @@ export class CryptoConverterComponent implements OnInit, OnDestroy {
       'to': new FormControl(null, Validators.required)
     });
 
-    this.convertSub = this.store.select('converter').pipe(
-      map(state => {
-        this.state = state;
-        this.result = state.result;
-      })
-    ).subscribe();
-
     this.store.dispatch(ConverterActions.fetchCryptoMap());
     this.store.dispatch(ConverterActions.fetchFiatMap());
   }
 
   onSubmit() {
-    this.store.dispatch(
-      ConverterActions.convertCurrency({
-        payload: {
-          amount: this.state.amount,
-          from: this.state.from,
-          to: this.state.to
-        }
-      }));
+    this.store.dispatch(ConverterActions.convertCurrency());
     this.converterForm.reset();
   }
 
@@ -68,9 +57,5 @@ export class CryptoConverterComponent implements OnInit, OnDestroy {
   toFiat(fiat: FiatMap) {
     this.store.dispatch(ConverterActions.setTo({ payload: fiat }));
     (<FormControl>this.converterForm.get('to')).setValue(`${fiat.name} "${fiat.sign}"`);
-  }
-
-  ngOnDestroy(): void {
-    this.convertSub.unsubscribe();
   }
 }

@@ -13,7 +13,7 @@ export interface State {
   result: ConverterResponse | null;
 }
 
-const initialState: State = {
+const initialState: Readonly<State> = {
   cryptoMap: null,
   fiatMap: null,
   amount: 0,

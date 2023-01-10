@@ -1,11 +1,13 @@
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { map, switchMap } from "rxjs";
+import { Store } from "@ngrx/store";
+import { map, switchMap, withLatestFrom } from "rxjs";
 
 import { ConverterResponse, CryptoMap, CryptoMapRes, FiatMap, FiatMapRes } from "src/app/interfaces";
 import { environment } from "src/environments/environment";
 import * as ConverterActions from './converter.actions';
+import * as fromApp from '../../+store/app.reducer';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -63,12 +65,14 @@ export class ConverterEffects {
 
   convertCurrency$ = createEffect(() => this.actions$.pipe(
     ofType(ConverterActions.convertCurrency),
-    switchMap((data) => {
+    withLatestFrom(this.store.select('converter')),
+    map(state => state[1]),
+    switchMap((state) => {
       let params = new HttpParams();
-      if (data.payload.from?.id && data.payload.to?.id) {
-        params = params.append('amount', data.payload.amount);
-        params = params.append('from', data.payload.from.id);
-        params = params.append('to', data.payload.to.id);
+      if (state.from?.id && state.to?.id) {
+        params = params.append('amount', state.amount);
+        params = params.append('from', state.from.id);
+        params = params.append('to', state.to.id);
       }
 
       return this.http
@@ -81,6 +85,7 @@ export class ConverterEffects {
 
   constructor(
     private actions$: Actions,
-    private http: HttpClient
+    private http: HttpClient,
+    private store: Store<fromApp.AppState>
   ) { }
 }

@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 import { environment } from '../../../environments/environment';
-import { AllCoins, DetailedCoinDataResponse } from "../../interfaces";
+import { DetailedCoinDataResponse } from "../../interfaces";
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +10,6 @@ import { AllCoins, DetailedCoinDataResponse } from "../../interfaces";
 export class CryptoService {
 
   constructor(private http: HttpClient) { }
-
-  getAllCoins() {
-    return this.http.get<AllCoins[]>(environment.cryptoApi + '/allCoins');
-  }
 
   getCoinDetails(coinId: string) {
     let params = new HttpParams();

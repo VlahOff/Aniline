@@ -8,6 +8,7 @@ import { NotificationService } from 'src/app/shared/notification/notification.se
 import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
 import { PortfolioService } from '../portfolio.service';
 import * as fromApp from '../../+store/app.reducer';
+import * as fromPortfolio from '../+store/portfolio.reducer';
 import * as PortfolioActions from '../+store/portfolio.actions';
 
 @Component({
@@ -16,17 +17,13 @@ import * as PortfolioActions from '../+store/portfolio.actions';
   styleUrls: ['./add-coin-modal.component.css']
 })
 export class AddCoinModalComponent implements OnInit, OnDestroy {
-  allCoins!: AllCoins[];
-  allCoinsSub!: Subscription;
-  resultSorted!: AllCoins[] | undefined;
+  stateSub!: Subscription;
+  state!: fromPortfolio.State;
 
   addCoinForm!: FormGroup;
-  selectedCoinName!: string;
-  submission!: Subscription;
 
   constructor(
     private portfolioService: PortfolioService,
-    private cryptoService: CryptoService,
     private notificationService: NotificationService,
     private router: Router,
     private route: ActivatedRoute,
@@ -34,12 +31,8 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.allCoinsSub = this.cryptoService.getAllCoins()
-      .subscribe({
-        next: (data) => {
-          this.allCoins = data;
-        }
-      });
+    this.stateSub = this.store.select('portfolio')
+      .subscribe(data => this.state = data);
 
     this.addCoinForm = new FormGroup({
       'coinId': new FormControl(null, Validators.required),
@@ -49,51 +42,53 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    const transaction = this.addCoinForm.value;
-    this.submission = this.portfolioService.createTransaction(this.addCoinForm.value)
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-        },
-        error: (err) => {
-          this.notificationService.createNotification(err.message, 'alert');
-        },
-        complete: () => {
-          console.log('confirmed');
-        }
-      });
-    this.addCoinForm.reset();
-    this.portfolioService.transactionsChange.next(['s']);
-    this.portfolioService.isAddCoinModalRendered.next(false);
-    this.router.navigate(['/portfolio'], { relativeTo: this.route });
+    // console.log(this.addCoinForm.value);
+
+    // const transaction = this.addCoinForm.value;
+    // this.submission = this.portfolioService.createTransaction(this.addCoinForm.value)
+    //   .subscribe({
+    //     next: (res) => {
+    //       // console.log(res);
+    //     },
+    //     error: (err) => {
+    //       this.notificationService.createNotification(err.message, 'alert');
+    //     },
+    //     complete: () => {
+    //       console.log('confirmed');
+    //     }
+    //   });
+    // this.addCoinForm.reset();
+    // this.portfolioService.transactionsChange.next(['s']);
+    // this.portfolioService.isAddCoinModalRendered.next(false);
+    // this.router.navigate(['/portfolio'], { relativeTo: this.route });
   }
 
   filter(value: string) {
-    if (value) {
-      this.resultSorted = this.allCoins.filter((v) => {
-        return (v.id.toUpperCase() && v.name.toUpperCase()).startsWith(value.toUpperCase());
-      });
-    } else {
-      this.resultSorted = undefined;
-    }
+    // if (value) {
+    //   this.resultSorted = this.allCoins.filter((v) => {
+    //     return (v.id.toUpperCase() && v.name.toUpperCase()).startsWith(value.toUpperCase());
+    //   });
+    // } else {
+    //   this.resultSorted = undefined;
+    // }
   }
 
   setCoin(coin: AllCoins) {
-    this.selectedCoinName = coin.name;
-    this.addCoinForm.patchValue({ coinId: coin.id });
-    this.resultSorted = undefined;
+    // this.selectedCoinName = coin.name;
+    // this.addCoinForm.patchValue({ coinId: coin.id });
+    // this.resultSorted = undefined;
   }
 
   hideModal(target: MouseEvent) {
-    console.log(target);
+    // console.log(target);
 
-    this.store.dispatch(PortfolioActions.showAddModal());
+    // this.store.dispatch(PortfolioActions.showAddModal());
   }
 
   ngOnDestroy(): void {
-    this.allCoinsSub.unsubscribe();
-    if (this.submission) {
-      this.submission.unsubscribe();
-    }
+    // this.stateSub.unsubscribe();
+    // if (this.submission) {
+    //   this.submission.unsubscribe();
+    // }
   }
 }

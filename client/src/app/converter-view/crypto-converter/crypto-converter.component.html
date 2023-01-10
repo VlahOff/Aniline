@@ -15,14 +15,12 @@
             <img src="" alt="" class="input-icon">
             <input type="text" placeholder="From BTC" formControlName="from">
             <i class="fa-solid fa-circle-arrow-down"></i>
-
             <div class="menu-content">
               <button type="button" 
-              *ngFor="let crypto of state.cryptoMap" 
-              (click)="fromCrypto(crypto)">
-              {{ crypto.name }} ({{ crypto.symbol }})</button>
+              *ngFor="let crypto of cryptoMap$ | async" 
+              (click)="fromCrypto(crypto)"
+              >{{ crypto.name }} ({{ crypto.symbol }})</button>
             </div>
-
           </div>
         </div>
         <div class="menu">
@@ -30,14 +28,12 @@
             <img src="" alt="" class="input-icon">
             <input type="text" placeholder="To USD" formControlName="to">
             <i class="fa-solid fa-circle-arrow-down"></i>
-
             <div class="menu-content">
               <button type="button" 
-              *ngFor="let fiat of state.fiatMap" 
-              (click)="toFiat(fiat)">
-              {{ fiat.name }} "{{fiat.sign}}" ({{ fiat.symbol }})</button>
+              *ngFor="let fiat of fiatMap$ | async" 
+              (click)="toFiat(fiat)"
+              >{{ fiat.name }} "{{fiat.sign}}" ({{ fiat.symbol }})</button>
             </div>
-            
           </div>
         </div>
       </div>
@@ -46,14 +42,14 @@
             class="fa-solid fa-1x fa-money-bill-transfer"></i> Convert</button>
       </div>
       <div class="output">
-        <h4 class="output-field" *ngIf= "result">
-          {{ result.amount }} 
-          {{ result.name }} 
-          ({{ result.symbol }}) =
-          {{ result.quote[state.to!.id].price | number:'1.2-2' }} 
-          {{ state.to!.name }} 
-          "{{ state.to!.sign }}"
-          ({{ state.to!.symbol }})
+        <h4 class="output-field" *ngIf="result$ | async">
+          {{ (result$ | async)!.amount }}
+          {{ (result$ | async)!.name }}
+          ({{ (result$ | async)!.symbol }}) =
+          {{ (result$ | async)!.quote[(to$ | async)!.id].price | number:'1.2-2' }}
+          {{ (to$ | async)!.name }}
+          "{{ (to$ | async)!.sign }}"
+          ({{ (to$ | async)!.symbol }})
         </h4>
       </div>
     </form>
