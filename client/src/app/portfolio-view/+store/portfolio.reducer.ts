@@ -1,18 +1,20 @@
 import { createReducer, on } from "@ngrx/store";
-import { AllCoins } from "src/app/interfaces";
+import { AllCoins, TransactionDetailed } from "src/app/interfaces";
 import * as PortfolioActions from './portfolio.actions';
 
 export interface State {
   totalPortfolioValue: number;
-  transactions: [];
+  transactionsIds: string[];
+  transactions: TransactionDetailed[];
   addModalShown: boolean;
   allCoinsList: AllCoins[];
 }
 
 const initialState: State = {
   totalPortfolioValue: 0,
+  transactionsIds: [],
   transactions: [],
-  addModalShown: true,
+  addModalShown: false,
   allCoinsList: []
 };
 

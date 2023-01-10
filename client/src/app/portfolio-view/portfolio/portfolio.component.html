@@ -30,7 +30,7 @@
       </tbody>
     </div>
   </div>
-  <div class="modal" *ngIf="state.addModalShown"  (click)="hideModal($event)">
+  <div class="modal" *ngIf="(addModalStatus$ | async)"  (click)="hideModal($event)">
     <app-add-coin-modal></app-add-coin-modal>
   </div>
 </div>

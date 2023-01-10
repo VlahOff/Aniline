@@ -18,6 +18,14 @@ export class PortfolioEffects {
     map(data => PortfolioActions.setAllCoinsList({ payload: data }))
   ));
 
+  fetchTransactionsIds$ = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.fetchTransactionsIds),
+    switchMap(() => {
+      return this.http.get<string[]>(environment.portfolioApi + '/getTransactions');
+    }),
+    map(data => PortfolioActions.setTransactionsIds({ payload: data }))
+  ));
+
   constructor(
     private actions$: Actions,
     private http: HttpClient

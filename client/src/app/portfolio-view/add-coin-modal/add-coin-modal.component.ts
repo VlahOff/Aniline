@@ -2,21 +2,22 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AllCoins } from 'src/app/interfaces';
 import { NotificationService } from 'src/app/shared/notification/notification.service';
-import { CryptoService } from 'src/app/shared/services/cryptoApi.service';
 import { PortfolioService } from '../portfolio.service';
 import * as fromApp from '../../+store/app.reducer';
 import * as fromPortfolio from '../+store/portfolio.reducer';
 import * as PortfolioActions from '../+store/portfolio.actions';
+import { getAddModalStatus } from '../+store/portfolio.selector';
 
 @Component({
   selector: 'app-add-coin-modal',
   templateUrl: './add-coin-modal.component.html',
   styleUrls: ['./add-coin-modal.component.css']
 })
-export class AddCoinModalComponent implements OnInit, OnDestroy {
+export class AddCoinModalComponent implements OnInit {
+
   stateSub!: Subscription;
   state!: fromPortfolio.State;
 
@@ -31,9 +32,6 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.stateSub = this.store.select('portfolio')
-      .subscribe(data => this.state = data);
-
     this.addCoinForm = new FormGroup({
       'coinId': new FormControl(null, Validators.required),
       'coinPrice': new FormControl(null, [Validators.required, Validators.pattern(/^(?=.*[1-9])\d*(?:\.\d{0,})?$/)]),
@@ -85,10 +83,4 @@ export class AddCoinModalComponent implements OnInit, OnDestroy {
     // this.store.dispatch(PortfolioActions.showAddModal());
   }
 
-  ngOnDestroy(): void {
-    // this.stateSub.unsubscribe();
-    // if (this.submission) {
-    //   this.submission.unsubscribe();
-    // }
-  }
 }

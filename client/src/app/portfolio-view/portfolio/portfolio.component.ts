@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../+store/app.reducer';
 import * as PortfolioActions from '../+store/portfolio.actions';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { getAddModalStatus } from '../+store/portfolio.selector';
 
 @Component({
   selector: 'app-portfolio',
@@ -10,16 +11,13 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent implements OnInit, OnDestroy {
-  stateSub!: Subscription;
-  state: any;
+  addModalStatus$: Observable<boolean> = this.store.select(getAddModalStatus);
 
   constructor(
     private store: Store<fromApp.AppState>
   ) { }
 
   ngOnInit(): void {
-    this.stateSub = this.store.select('portfolio')
-      .subscribe(state => this.state = state);
   }
 
   showAddModal() {
@@ -33,6 +31,5 @@ export class PortfolioComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.stateSub.unsubscribe();
   }
 }

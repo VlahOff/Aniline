@@ -9,3 +9,10 @@ export const setAllCoinsList = createAction(
   '[Portfolio] Set All Coins List',
   props<{ payload: AllCoins[]; }>()
 );
+
+export const fetchTransactionsIds = createAction('[Portfolio] Fetch Transaction IDs');
+
+export const setTransactionsIds = createAction(
+  '[Portfolio] Set TransactionsIds',
+  props<{ payload: string[]; }>()
+);
