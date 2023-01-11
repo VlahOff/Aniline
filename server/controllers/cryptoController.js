@@ -1,6 +1,7 @@
 const cryptoController = require('express').Router();
 const cryptoApi = require('../api/cryptoApi');
 const errorParser = require('../utils/errorParser');
+const tempData = require('./allCoins');
 
 cryptoController.get('/topThree', async (req, res) => {
   try {
@@ -59,8 +60,9 @@ cryptoController.get('/fiatMap', async (req, res) => {
 
 cryptoController.get('/allCoins', async (req, res) => {
   try {
-    const temp = await cryptoApi.getListCoins();
-    res.status(200).json(temp);
+    // const temp = await cryptoApi.getListCoins();
+    const temp = tempData;
+    res.status(200).json(temp).end();
   } catch (error) {
     res.status(400).json({
       message: errorParser(error)

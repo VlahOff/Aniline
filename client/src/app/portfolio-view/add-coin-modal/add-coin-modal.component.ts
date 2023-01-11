@@ -1,15 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { AllCoins } from 'src/app/interfaces';
 import { NotificationService } from 'src/app/shared/notification/notification.service';
-import { PortfolioService } from '../portfolio.service';
 import * as fromApp from '../../+store/app.reducer';
 import * as fromPortfolio from '../+store/portfolio.reducer';
 import * as PortfolioActions from '../+store/portfolio.actions';
-import { getAddModalStatus } from '../+store/portfolio.selector';
+import { getAllCoins } from '../+store/portfolio.selector';
 
 @Component({
   selector: 'app-add-coin-modal',
@@ -17,14 +16,12 @@ import { getAddModalStatus } from '../+store/portfolio.selector';
   styleUrls: ['./add-coin-modal.component.css']
 })
 export class AddCoinModalComponent implements OnInit {
-
-  stateSub!: Subscription;
-  state!: fromPortfolio.State;
+  allCoins$: Observable<AllCoins[]> = this.store.select(getAllCoins);
+  selectedCoinName!: string;
 
   addCoinForm!: FormGroup;
 
   constructor(
-    private portfolioService: PortfolioService,
     private notificationService: NotificationService,
     private router: Router,
     private route: ActivatedRoute,
@@ -62,12 +59,12 @@ export class AddCoinModalComponent implements OnInit {
   }
 
   filter(value: string) {
+    this.store.dispatch(PortfolioActions.setCoinInputField({ payload: value }));
+
     // if (value) {
-    //   this.resultSorted = this.allCoins.filter((v) => {
+    //   this.allCoinsResult = this.allCoins.filter((v) => {
     //     return (v.id.toUpperCase() && v.name.toUpperCase()).startsWith(value.toUpperCase());
     //   });
-    // } else {
-    //   this.resultSorted = undefined;
     // }
   }
 
@@ -78,9 +75,6 @@ export class AddCoinModalComponent implements OnInit {
   }
 
   hideModal(target: MouseEvent) {
-    // console.log(target);
-
-    // this.store.dispatch(PortfolioActions.showAddModal());
+    this.store.dispatch(PortfolioActions.showAddModal());
   }
-
 }

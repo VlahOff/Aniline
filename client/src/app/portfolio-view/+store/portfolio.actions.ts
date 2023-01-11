@@ -13,6 +13,11 @@ export const setAllCoinsList = createAction(
 export const fetchTransactionsIds = createAction('[Portfolio] Fetch Transaction IDs');
 
 export const setTransactionsIds = createAction(
-  '[Portfolio] Set TransactionsIds',
+  '[Portfolio] Set Transactions IDs',
   props<{ payload: string[]; }>()
+);
+
+export const setCoinInputField = createAction(
+  '[Portfolio] Set Coin Input Field',
+  props<{ payload: string; }>()
 );

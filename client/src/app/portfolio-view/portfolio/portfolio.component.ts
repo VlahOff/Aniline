@@ -18,6 +18,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.store.dispatch(PortfolioActions.fetchAllCoinsList())
   }
 
   showAddModal() {

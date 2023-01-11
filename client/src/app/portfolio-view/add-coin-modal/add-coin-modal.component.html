@@ -2,19 +2,29 @@
   <form [formGroup]="addCoinForm" (ngSubmit)="onSubmit()">
     <h1 class="title">Add Transaction</h1>
     <label for="coinId">Coin</label>
-    <span class="error" *ngIf="!addCoinForm.get('coinId')?.valid && addCoinForm.get('coinId')?.touched">Please select a
-      coin!</span>
+    <span class="error" 
+    *ngIf="!addCoinForm.get('coinId')?.valid && addCoinForm.get('coinId')?.touched"
+    >Please select a coin!</span>
     <div class="input-container">
-      <!-- <input class="input" id="coin" placeholder="Bitcoin" formControlName="coin" type="text"> -->
       <div class="menu">
-        <!-- <div class="input-dropdown">
-          <input (input)="filter(input.value)" autocomplete="off" #input class="input" id="coinId" placeholder="Bitcoin"
-            formControlName="coinId" type="text" [value]="selectedCoinName ? selectedCoinName : ''">
-          <div class="menu-content" [class.on]="resultSorted">
-            <button type="button" *ngFor="let coin of resultSorted" (click)="setCoin(coin)">
-              {{coin.name}} - {{coin.symbol | uppercase}}</button>
+        <div class="input-dropdown">
+          <input 
+          #input 
+          (input)="filter(input.value)" 
+          autocomplete="off" 
+          class="input" 
+          id="coinId" 
+          placeholder="Bitcoin"
+          formControlName="coinId" 
+          type="text" 
+          [value]="selectedCoinName ? selectedCoinName : ''">
+          <div class="menu-content" [class.on]="(allCoins$ | async)">
+            <button type="button" 
+            *ngFor="let coin of (allCoins$ | async)" 
+            (click)="setCoin(coin)"
+            >{{coin.name}} - {{coin.symbol | uppercase}}</button>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
     <label for="coinPrice">Price per coin</label>
