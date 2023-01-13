@@ -1,0 +1,66 @@
+tr {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  text-align: center;
+  height: 40px;
+  margin: 15px;
+}
+
+.first {
+  width: 140px;
+  display: flex;
+  justify-content: left;
+}
+
+.first img {
+  height: 25px;
+  padding-top: 6px;
+  padding-right: 15px;
+}
+
+.asset-name {
+  display: block;
+  text-align: left;
+}
+
+.second {
+  width: 200px;
+  display: flex;
+  text-align: left;
+  padding-top: 10px;
+}
+
+.spacer {
+  margin: 0 5px;
+}
+
+.third {
+  width: 120px;
+  text-align: left;
+  padding-top: 10px;
+}
+
+.fourth {
+  width: 120px;
+  text-align: left;
+  padding-top: 10px;
+}
+
+.fifth {
+  width: 120px;
+  text-align: left;
+}
+
+.sixth {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  padding-top: 7px;
+  cursor: pointer;
+}
+
+.sixth:hover {
+  background-color: #181818;
+  border-radius: 16px;
+}

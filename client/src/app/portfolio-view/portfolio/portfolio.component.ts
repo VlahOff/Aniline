@@ -1,57 +1,37 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { PortfolioService } from '../portfolio.service';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../+store/app.reducer';
+import * as PortfolioActions from '../+store/portfolio.actions';
+import { Observable, Subscription } from 'rxjs';
+import { getAddModalStatus, getTotalAssetValue, getTransactionsIds } from '../+store/portfolio.selector';
 
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.css']
 })
-export class PortfolioComponent implements OnInit, OnDestroy {
-  totalBalanceSub!: Subscription;
-  totalBalance = 0;
+export class PortfolioComponent implements OnInit {
+  totalAssetValue$: Observable<number> = this.store.select(getTotalAssetValue);
+  transactionsIds$: Observable<string[]> = this.store.select(getTransactionsIds);
+  addModalStatus$: Observable<boolean> = this.store.select(getAddModalStatus);
 
-  totalPnLSub!: Subscription;
-  totalPnL = 0;
-
-  totalPnLPercentSub!: Subscription;
-  totalPnLPercent = 0;
-
-  isAddCoinModalRenderedSub!: Subscription;
-  isAddCoinModalRendered = false;
-
-  constructor(private portfolioService: PortfolioService) { }
+  constructor(
+    private store: Store<fromApp.AppState>
+  ) { }
 
   ngOnInit(): void {
-    this.isAddCoinModalRenderedSub = this.portfolioService.isAddCoinModalRendered
-      .subscribe({ next: t => this.isAddCoinModalRendered = t });
-
-    this.totalBalanceSub = this.portfolioService.totalBalance
-      .subscribe({
-        next: (t) => {
-          this.totalBalance = this.totalBalance + t;
-        }
-      });
-
-    this.totalPnLSub = this.portfolioService.totalPnL
-      .subscribe({
-        next: (t) => {
-          this.totalPnL = this.totalPnL + t;
-        }
-      });
-
-    this.totalPnLPercentSub = this.portfolioService.totalPnLPercent
-      .subscribe({
-        next: (t) => {
-          this.totalPnLPercent = (this.totalPnL / (Math.abs(this.totalPnL) + this.totalBalance)) * 100;
-        }
-      });
+    this.store.dispatch(PortfolioActions.fetchAllCoinsList());
+    this.store.dispatch(PortfolioActions.fetchTransactionsIds());
   }
 
-  ngOnDestroy(): void {
-    this.totalBalanceSub.unsubscribe();
-    this.totalPnLSub.unsubscribe();
-    this.totalPnLPercentSub.unsubscribe();
-    this.isAddCoinModalRenderedSub.unsubscribe();
+  showAddModal() {
+    this.store.dispatch(PortfolioActions.showAddModal());
+  }
+
+  hideModal(event: MouseEvent) {
+    if ((event.target as HTMLElement).tagName === 'DIV' &&
+      (event.target as HTMLElement).className === 'modal') {
+      this.store.dispatch(PortfolioActions.showAddModal());
+    }
   }
 }

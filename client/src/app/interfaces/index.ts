@@ -6,5 +6,5 @@ export * from './newCoins';
 export * from './fiatMap';
 export * from './cryptoMap';
 export * from './converterRes';
-export * from './all-coins-res';
+export * from './allCoins';
 export * from './transaction'

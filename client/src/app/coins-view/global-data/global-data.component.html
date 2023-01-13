@@ -1,8 +1,8 @@
 <div class="global-data-container">
   <div class="card">
     <div class="top-row-cap">
-      <p><strong>$</strong>{{ globalData?.total_market_cap | number:'1.2-2' }}</p>
-      <p ng>{{ globalData?.market_cap_change_percentage_24h_usd | number:'1.2-2' }}<strong>%</strong></p>
+      <p><strong>$</strong>{{ (globalData$ | async)?.total_market_cap | number:'1.2-2' }}</p>
+      <p ng>{{ (globalData$ | async)?.market_cap_change_percentage_24h_usd | number:'1.2-2' }}<strong>%</strong></p>
     </div>
     <hr>
     <strong>Market Capitalization</strong>
@@ -10,14 +10,14 @@
   <div class="card">
     <div class="top-row">
       <strong>$</strong>
-      <p>{{ globalData?.trading_volume | number:'1.2-2' }}</p>
+      <p>{{ (globalData$ | async)?.trading_volume | number:'1.2-2' }}</p>
     </div>
     <hr>
     <strong>24h Trading Volume</strong>
   </div>
   <div class="card">
     <div class="top-row">
-      <p>{{ globalData?.btc_dominance | number:'1.2-2' }}</p>
+      <p>{{ (globalData$ | async)?.btc_dominance | number:'1.2-2' }}</p>
       <strong>%</strong>
     </div>
     <hr>
@@ -25,7 +25,7 @@
   </div>
   <div class="card">
     <div class="top-row">
-      <p>{{ globalData?.number_of_coins | number:'1.0' }}</p>
+      <p>{{ (globalData$ | async)?.number_of_coins | number:'1.0' }}</p>
     </div>
     <hr>
     <strong># of Coins</strong>

@@ -18,7 +18,9 @@
       </tr>
     </thead>
     <tbody>
-      <app-coin-new-row *ngFor="let coin of newCoins; index as i" [coin]="coin" [index]="i + 1"></app-coin-new-row>
+      <app-coin-new-row 
+      *ngFor="let coin of (newCoins$ | async); index as i" [coin]="coin"
+        [index]="i + 1"></app-coin-new-row>
     </tbody>
   </div>
 </div>

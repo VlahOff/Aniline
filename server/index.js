@@ -8,7 +8,7 @@ const session = require('./middlewares/session');
 const authController = require('./controllers/authController');
 const testController = require('./controllers/testController');
 const cryptoController = require('./controllers/cryptoController');
-const portfolioController = require('./controllers/PortfolioController');
+const portfolioController = require('./controllers/portfolioController');
 const { isUser } = require('./middlewares/guards');
 const cors = require('./middlewares/cors');
 

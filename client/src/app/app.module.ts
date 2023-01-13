@@ -19,6 +19,8 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { NotificationComponent } from './shared/notification/notification.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { PortfolioEffects } from './portfolio-view/+store/portfolio.effects';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { NotificationComponent } from './shared/notification/notification.compon
     HomeComponent,
     HeaderComponent,
     NotificationComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ import { NotificationComponent } from './shared/notification/notification.compon
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([AuthEffects, CryptoEffects, ConverterEffects]),
+    EffectsModule.forRoot([AuthEffects, CryptoEffects, ConverterEffects, PortfolioEffects]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production })
   ],
   providers: [

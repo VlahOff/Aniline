@@ -1,24 +1,37 @@
 <div class="container">
-  <div class="portfolio-status">
-    <div class="card">
-      <div class="top-row-cap">
-        <p>${{totalBalance | number:'1.2-2'}}</p>
+  <div class="card">
+    <div class="title">
+      <div class="left-title">
+        <h4>Total portfolio value</h4>
+        <p>{{ (totalAssetValue$ | async)  | currency:'USD':'symbol':'1.2-2'}}</p>
       </div>
-      <hr>
-      <strong>Total Balance</strong>
+      <div class="right-title">
+        <h1>My Assets</h1>
+        <div class="button" (click)="showAddModal()">
+          <i class="fa-solid fa-1x fa-plus"></i>
+        </div>
+      </div>
     </div>
-    <div class="card">
-      <div class="top-row-cap">
-        <p>${{totalPnL | number:'1.2-2'}}</p>
-      </div>
-      <hr>
-      <strong>Total Profit Loss ({{totalPnLPercent | number:'1.2-2'}}%)</strong>
+    <div class="table">
+      <thead>
+        <tr>
+          <td class="first-header">Asset</td>
+          <td class="second-header">Balance</td>
+          <td class="third-header">Price (USD)</td>
+          <td class="fourth-header">24h Change (%)</td>
+          <td class="fifth-header">PNL</td>
+          <td class="sixth-header"></td>
+        </tr>
+      </thead>
+      <tbody>
+        <app-portfolio-table-row
+        *ngFor="let transactionId of (transactionsIds$ | async)"
+        [transactionId]="transactionId"
+        ></app-portfolio-table-row>
+      </tbody>
     </div>
   </div>
-  <div class="portfolio-data">
-    <app-portfolio-table></app-portfolio-table>
-  </div>
-  <div class="modal" *ngIf="isAddCoinModalRendered">
+  <div class="modal" *ngIf="(addModalStatus$ | async)"  (click)="hideModal($event)">
     <app-add-coin-modal></app-add-coin-modal>
   </div>
 </div>
