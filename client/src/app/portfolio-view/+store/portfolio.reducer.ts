@@ -8,8 +8,8 @@ export interface State {
   transactions: TransactionDetailed[];
   addModalShown: boolean;
   allCoinsList: AllCoins[];
-  allCoinsResult: AllCoins[];
   coinInputField: string;
+  selectedCoin: AllCoins | null;
 }
 
 const initialState: State = {
@@ -18,8 +18,8 @@ const initialState: State = {
   transactions: [],
   addModalShown: false,
   allCoinsList: [],
-  allCoinsResult: [],
-  coinInputField: ''
+  coinInputField: '',
+  selectedCoin: null
 };
 
 export const portfolioReducer = createReducer(
@@ -43,6 +43,20 @@ export const portfolioReducer = createReducer(
     return {
       ...state,
       coinInputField: payload
+    };
+  }),
+
+  on(PortfolioActions.setTransactionsIds, (state, { payload }) => {
+    return {
+      ...state,
+      transactionsIds: payload
+    };
+  }),
+
+  on(PortfolioActions.setTransaction, (state, { payload }) => {
+    return {
+      ...state,
+      transactions: [...state.transactions, payload]
     };
   })
 );

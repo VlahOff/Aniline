@@ -41,8 +41,9 @@ label {
   margin: 5px 15% 20px 15%;
 }
 
+.input-container:has(div.menu>div.input-dropdown>input.ng-invalid.ng-touched),
 .input-container:has(> input.ng-invalid.ng-touched) {
-  border-bottom: red 1px solid;
+  border-bottom: crimson 1px solid;
 }
 
 .input {
@@ -96,7 +97,6 @@ input::-webkit-inner-spin-button {
 }
 
 .button-cancel {
-  /* background: linear-gradient(90deg, #f1c0ff, #75ffff 100%); */
   background: grey;
   border: none;
   border-radius: 10px;
@@ -147,7 +147,7 @@ input::-webkit-inner-spin-button {
 
 .error {
   text-align: center;
-  color: white;
+  color: crimson;
   font-style: italic;
   font-size: 16px;
 }

@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../../+store/app.reducer';
 import * as PortfolioActions from '../+store/portfolio.actions';
 import { Observable, Subscription } from 'rxjs';
-import { getAddModalStatus } from '../+store/portfolio.selector';
+import { getAddModalStatus, getTransactionsIds } from '../+store/portfolio.selector';
 
 @Component({
   selector: 'app-portfolio',
@@ -11,6 +11,7 @@ import { getAddModalStatus } from '../+store/portfolio.selector';
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent implements OnInit, OnDestroy {
+  transactionsIds$: Observable<string[]> = this.store.select(getTransactionsIds);
   addModalStatus$: Observable<boolean> = this.store.select(getAddModalStatus);
 
   constructor(
@@ -18,7 +19,8 @@ export class PortfolioComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch(PortfolioActions.fetchAllCoinsList())
+    this.store.dispatch(PortfolioActions.fetchAllCoinsList());
+    this.store.dispatch(PortfolioActions.fetchTransactionsIds());
   }
 
   showAddModal() {
@@ -26,7 +28,8 @@ export class PortfolioComponent implements OnInit, OnDestroy {
   }
 
   hideModal(event: MouseEvent) {
-    if ((event.target as HTMLElement).tagName === 'DIV' && (event.target as HTMLElement).className === 'modal') {
+    if ((event.target as HTMLElement).tagName === 'DIV' &&
+      (event.target as HTMLElement).className === 'modal') {
       this.store.dispatch(PortfolioActions.showAddModal());
     }
   }

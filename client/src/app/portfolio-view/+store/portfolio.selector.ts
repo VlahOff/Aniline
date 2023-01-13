@@ -14,8 +14,10 @@ export const getAllCoins = createSelector(
   (allCoins: AllCoins[], coinInput: string) => {
     if (coinInput != '') {
       return allCoins
-        .filter(v => (v.name.toUpperCase() && v.id.toUpperCase())
-          .startsWith(coinInput.toUpperCase()));
+        .filter(v => {
+          (v.name.toUpperCase() && v.id.toUpperCase())
+            .startsWith(coinInput.toUpperCase());
+        });
     }
     const t: AllCoins[] = [];
     return t;
@@ -23,3 +25,5 @@ export const getAllCoins = createSelector(
 );
 
 export const getAddModalStatus = createSelector(portfolioSelector, s => s.addModalShown);
+
+export const getTransactionsIds = createSelector(portfolioSelector, s => s.transactionsIds);

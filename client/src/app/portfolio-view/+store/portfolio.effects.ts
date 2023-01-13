@@ -1,9 +1,9 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { map, switchMap } from "rxjs";
+import { concatMap, map, mapTo, of, switchMap } from "rxjs";
 
-import { AllCoins } from "src/app/interfaces";
+import { AllCoins, Transaction, TransactionDetailed } from "src/app/interfaces";
 import { environment } from "src/environments/environment";
 import * as PortfolioActions from './portfolio.actions';
 
@@ -25,6 +25,27 @@ export class PortfolioEffects {
     }),
     map(data => PortfolioActions.setTransactionsIds({ payload: data }))
   ));
+
+  fetchTransaction$ = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.fetchTransaction),
+    concatMap((state) => {
+      let params = new HttpParams();
+      params = params.append('transactionId', state.payload);
+      return this.http.get<TransactionDetailed>(
+        environment.portfolioApi + '/getTransaction', { params: params });
+    }),
+    map(data => PortfolioActions.setTransaction({ payload: data }))
+  ));
+
+  addTransaction = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.addTransaction),
+    switchMap((state) => {
+      const data = state.payload;
+
+      return this.http
+        .post<Transaction>(environment.portfolioApi + '/addTransaction', { data });
+    })
+  ), { dispatch: false });
 
   constructor(
     private actions$: Actions,

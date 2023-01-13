@@ -24,9 +24,10 @@
         </tr>
       </thead>
       <tbody>
-        <app-portfolio-table-row></app-portfolio-table-row>
-        <app-portfolio-table-row></app-portfolio-table-row>
-        <app-portfolio-table-row></app-portfolio-table-row>
+        <app-portfolio-table-row
+        *ngFor="let transactionId of (transactionsIds$ | async)"
+        [transactionId]="transactionId"
+        ></app-portfolio-table-row>
       </tbody>
     </div>
   </div>
