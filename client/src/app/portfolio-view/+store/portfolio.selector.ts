@@ -1,12 +1,14 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { of } from "rxjs";
+
 import { AllCoins } from "src/app/interfaces";
 import * as fromPortfolio from './portfolio.reducer';
 
 const portfolioSelector = createFeatureSelector<fromPortfolio.State>('portfolio');
 
-export const getCoinInputField = createSelector(portfolioSelector, s => s.coinInputField);
-const allCoins = createSelector(portfolioSelector, s => s.allCoinsList);
+const allCoins = createSelector(portfolioSelector,
+  s => s.allCoinsList);
+export const getCoinInputField = createSelector(portfolioSelector,
+  s => s.coinInputField);
 
 export const getAllCoins = createSelector(
   allCoins,
@@ -15,15 +17,26 @@ export const getAllCoins = createSelector(
     if (coinInput != '') {
       return allCoins
         .filter(v => {
-          (v.name.toUpperCase() && v.id.toUpperCase())
+          return (v.name.toUpperCase() && v.id.toUpperCase())
             .startsWith(coinInput.toUpperCase());
         });
     }
-    const t: AllCoins[] = [];
-    return t;
+
+    return [];
   }
 );
 
-export const getAddModalStatus = createSelector(portfolioSelector, s => s.addModalShown);
+export const getAddModalStatus = createSelector(portfolioSelector,
+  s => s.addModalShown);
 
-export const getTransactionsIds = createSelector(portfolioSelector, s => s.transactionsIds);
+export const getTransactionsIds = createSelector(portfolioSelector,
+  s => s.transactionsIds);
+
+export const getTransaction = (id: string) =>
+  createSelector(portfolioSelector, s => {
+    return s.transactions.find(t => t.transactionId === id);
+  });
+
+export const getTotalAssetValue = createSelector(
+  portfolioSelector,
+  s => s.transactions.reduce((acc, value) => acc + value.value, 0));

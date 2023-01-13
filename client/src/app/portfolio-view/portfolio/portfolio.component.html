@@ -3,7 +3,7 @@
     <div class="title">
       <div class="left-title">
         <h4>Total portfolio value</h4>
-        <p>$230.43</p>
+        <p>{{ (totalAssetValue$ | async)  | currency:'USD':'symbol':'1.2-2'}}</p>
       </div>
       <div class="right-title">
         <h1>My Assets</h1>

@@ -1,25 +1,26 @@
 <tr>
   <td class="first">
-    <img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579" alt="logo">
+    <img src="{{ (transaction$ | async)?.image }}" alt="logo">
     <div class="asset-name">
-      <strong>Bitcoin</strong>
-      <p>BTC</p>
+      <strong>{{ (transaction$ | async)?.name}}</strong>
+      <p>{{ (transaction$ | async)?.symbol | uppercase }}</p>
     </div>
   </td>
   <td class="second">
-    <strong>0.333 BTC</strong>
+    <strong>{{ (transaction$ | async)?.quantity }} 
+      {{ (transaction$ | async)?.symbol | uppercase }}</strong>
     <p class="spacer">≈</p>
-    <p>$434.32</p>
+    <p>{{ (transaction$ | async)?.value | currency:'USD':'symbol':'1.2-2'}}</p>
   </td>
   <td class="third">
-    <p>$17,323.42</p>
+    <p>{{ (transaction$ | async)?.current_price | currency:'USD':'symbol':'1.2-10'}}</p>
   </td>
   <td class="fourth">
-    <p>+2.53%</p>
+    <p>{{(transaction$ | async)?.price_change_percentage_24h | number:'1.2-2'}}%</p>
   </td>
   <td class="fifth">
-    <p>-$131.66</p>
-    <p>-32.2%</p>
+    <p>{{ (transaction$ | async)?.pnlValue | currency:'USD':'symbol':'1.2-2' }}</p>
+    <p>{{ (transaction$ | async)?.pnlPercent | number:'1.2-2' }}%</p>
   </td>
   <td class="sixth">
     <i class="fa-solid fa-xmark"></i>

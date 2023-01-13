@@ -3,7 +3,6 @@ import { AllCoins, TransactionDetailed } from "src/app/interfaces";
 import * as PortfolioActions from './portfolio.actions';
 
 export interface State {
-  totalPortfolioValue: number;
   transactionsIds: string[];
   transactions: TransactionDetailed[];
   addModalShown: boolean;
@@ -13,7 +12,6 @@ export interface State {
 }
 
 const initialState: State = {
-  totalPortfolioValue: 0,
   transactionsIds: [],
   transactions: [],
   addModalShown: false,
@@ -58,5 +56,5 @@ export const portfolioReducer = createReducer(
       ...state,
       transactions: [...state.transactions, payload]
     };
-  })
+  }),
 );

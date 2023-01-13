@@ -27,13 +27,17 @@ portfolioController.get('/getTransaction', async (req, res) => {
       throw new Error('NO_USER');
     }
 
-    const raw = await getTransaction(req.query.transactionId);
-    const details = await getCoinDetailed(raw.coinId);
+    const transactionData = await getTransaction(req.query.transactionId);
+    const details = await getCoinDetailed(transactionData.coinId);
 
     const transaction = {
-      coinId: raw.coinId,
-      coinPrice: raw.coinPrice,
-      quantity: raw.quantity,
+      coinId: transactionData.coinId,
+      boughtPrice: transactionData.coinPrice,
+      quantity: transactionData.quantity,
+      transactionId: transactionData._id,
+      value: transactionData.quantity * details.current_price,
+      pnlValue: (details.current_price - transactionData.coinPrice) * transactionData.quantity,
+      pnlPercent: ((details.current_price * transactionData.quantity) - (transactionData.coinPrice * transactionData.quantity)) / (transactionData.coinPrice * transactionData.quantity) * 100,
       id: details.id,
       symbol: details.symbol,
       name: details.name,

@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import * as fromApp from '../../+store/app.reducer';
 import * as PortfolioActions from '../+store/portfolio.actions';
 import { Observable, Subscription } from 'rxjs';
-import { getAddModalStatus, getTransactionsIds } from '../+store/portfolio.selector';
+import { getAddModalStatus, getTotalAssetValue, getTransactionsIds } from '../+store/portfolio.selector';
 
 @Component({
   selector: 'app-portfolio',
@@ -11,6 +11,7 @@ import { getAddModalStatus, getTransactionsIds } from '../+store/portfolio.selec
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent implements OnInit, OnDestroy {
+  totalAssetValue$: Observable<number> = this.store.select(getTotalAssetValue);
   transactionsIds$: Observable<string[]> = this.store.select(getTransactionsIds);
   addModalStatus$: Observable<boolean> = this.store.select(getAddModalStatus);
 

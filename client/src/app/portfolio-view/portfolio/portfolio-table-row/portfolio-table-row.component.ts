@@ -2,6 +2,9 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../+store/app.reducer';
 import * as PortfolioActions from '../../+store/portfolio.actions';
+import { getTransaction } from '../../+store/portfolio.selector';
+import { Observable } from 'rxjs';
+import { TransactionDetailed } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-portfolio-table-row',
@@ -10,14 +13,16 @@ import * as PortfolioActions from '../../+store/portfolio.actions';
 })
 export class PortfolioTableRowComponent implements OnInit, OnDestroy {
   @Input() transactionId!: string;
+  transaction$!: Observable<TransactionDetailed | null | undefined>;
 
   constructor(
     private store: Store<fromApp.AppState>
   ) { }
 
   ngOnInit(): void {
-    console.log(this.transactionId);
-    this.store.dispatch(PortfolioActions.fetchTransaction({ payload: this.transactionId }));
+    this.store.dispatch(PortfolioActions
+      .fetchTransaction({ payload: this.transactionId }));
+    this.transaction$ = this.store.select(getTransaction(this.transactionId));
   }
 
   ngOnDestroy(): void {
