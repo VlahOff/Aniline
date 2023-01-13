@@ -10,7 +10,7 @@ import { getAddModalStatus, getTotalAssetValue, getTransactionsIds } from '../+s
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.css']
 })
-export class PortfolioComponent implements OnInit, OnDestroy {
+export class PortfolioComponent implements OnInit {
   totalAssetValue$: Observable<number> = this.store.select(getTotalAssetValue);
   transactionsIds$: Observable<string[]> = this.store.select(getTransactionsIds);
   addModalStatus$: Observable<boolean> = this.store.select(getAddModalStatus);
@@ -33,8 +33,5 @@ export class PortfolioComponent implements OnInit, OnDestroy {
       (event.target as HTMLElement).className === 'modal') {
       this.store.dispatch(PortfolioActions.showAddModal());
     }
-  }
-
-  ngOnDestroy(): void {
   }
 }

@@ -5,10 +5,8 @@ import * as fromPortfolio from './portfolio.reducer';
 
 const portfolioSelector = createFeatureSelector<fromPortfolio.State>('portfolio');
 
-const allCoins = createSelector(portfolioSelector,
-  s => s.allCoinsList);
-export const getCoinInputField = createSelector(portfolioSelector,
-  s => s.coinInputField);
+const allCoins = createSelector(portfolioSelector, s => s.allCoinsList);
+export const getCoinInputField = createSelector(portfolioSelector, s => s.coinInputField);
 
 export const getAllCoins = createSelector(
   allCoins,
@@ -26,11 +24,9 @@ export const getAllCoins = createSelector(
   }
 );
 
-export const getAddModalStatus = createSelector(portfolioSelector,
-  s => s.addModalShown);
+export const getAddModalStatus = createSelector(portfolioSelector, s => s.addModalShown);
 
-export const getTransactionsIds = createSelector(portfolioSelector,
-  s => s.transactionsIds);
+export const getTransactionsIds = createSelector(portfolioSelector, s => s.transactionsIds);
 
 export const getTransaction = (id: string) =>
   createSelector(portfolioSelector, s => {

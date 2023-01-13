@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -21,8 +20,6 @@ export class AddCoinModalComponent implements OnInit {
   addCoinForm!: FormGroup;
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
     private store: Store<fromApp.AppState>
   ) { }
 
@@ -44,8 +41,6 @@ export class AddCoinModalComponent implements OnInit {
     }));
     this.addCoinForm.reset();
     this.store.dispatch(PortfolioActions.showAddModal());
-
-    this.router.navigate(['/portfolio'], { relativeTo: this.route });
   }
 
   filter(value: string) {

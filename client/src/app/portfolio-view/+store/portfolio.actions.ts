@@ -32,7 +32,19 @@ export const setTransaction = createAction(
   props<{ payload: TransactionDetailed; }>()
 );
 
+export const addTransactionId = createAction(
+  '[Portfolio] Add Transaction ID',
+  props<{ payload: string; }>()
+);
+
 export const addTransaction = createAction(
   '[Portfolio] Add Transaction',
   props<{ payload: Transaction; }>()
 );
+
+export const removeTransaction = createAction(
+  '[Portfolio] Remove Transaction',
+  props<{ payload: string; }>()
+);
+
+export const dummy = createAction('[Portfolio] Dummy');
