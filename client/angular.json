@@ -45,6 +45,10 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "src/app/dev-tools.ts",
+                  "with": "src/app/dev-tools.prod.ts"
                 }
               ],
               "outputHashing": "all"

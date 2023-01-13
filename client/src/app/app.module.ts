@@ -21,6 +21,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { NotificationComponent } from './shared/notification/notification.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { PortfolioEffects } from './portfolio-view/+store/portfolio.effects';
+import { specificModules } from './dev-tools';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { PortfolioEffects } from './portfolio-view/+store/portfolio.effects';
     HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([AuthEffects, CryptoEffects, ConverterEffects, PortfolioEffects]),
-    StoreDevtoolsModule.instrument({ logOnly: environment.production })
+    ...specificModules
+    // StoreDevtoolsModule.instrument({ logOnly: environment.production })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: UserTokenInterceptor, multi: true }
