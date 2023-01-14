@@ -122,6 +122,7 @@ input:focus {
 .menu {
   display: inline-block;
   position: relative;
+  width: 250px;
 }
 
 .menu-content {
