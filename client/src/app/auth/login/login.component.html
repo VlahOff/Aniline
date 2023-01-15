@@ -3,24 +3,33 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <img class="logo" src="/assets/logo-white.png" alt="logo img">
       <h1>Login</h1>
+
       <label for="email">Email</label>
-      <span class="error" *ngIf="!loginForm.get('email')?.valid && loginForm.get('email')?.touched">Invalid
-        e-mail!</span>
+      <span class="error" 
+      *ngIf="!loginForm.get('email')?.valid && loginForm.get('email')?.touched"
+      >Invalid e-mail!</span>
       <div class="input">
         <i class="input-icon fa-solid fa-at"></i>
-        <input id="email" placeholder="Enter your e-mail!" formControlName="email" type="email">
+        <input id="email" 
+        placeholder="Enter your e-mail!" 
+        formControlName="email" type="email" autofocus>
         <div class="input-icon"></div>
       </div>
+
       <label for="password">Password</label>
-      <span class="error" *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched">Invalid
-        password!</span>
+      <span class="error" 
+      *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched"
+      >Invalid password!</span>
       <div class="input">
         <i class="input-icon fa-solid fa-key"></i>
-        <input id="password" type="password" placeholder="Enter your password!" formControlName="password">
+        <input id="password" type="password" 
+        placeholder="Enter your password!" formControlName="password">
         <div class="input-icon"></div>
       </div>
+
       <div class="button-div">
-        <button type="submit" class="button" [disabled]="!loginForm.valid">Login</button>
+        <button type="submit" class="button" 
+        [disabled]="!loginForm.valid">Login</button>
       </div>
       <div class="no-account">
         <p>Don't have an account? <a routerLink="/auth/register">Sign up</a>.</p>
