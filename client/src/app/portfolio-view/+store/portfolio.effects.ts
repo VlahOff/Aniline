@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { concatMap, map, switchMap } from "rxjs";
 
-import { AllCoins, Transaction, TransactionDetailed } from "src/app/interfaces";
+import { AllCoins, TransactionDetailed } from "src/app/interfaces";
 import { environment } from "src/environments/environment";
 import * as PortfolioActions from './portfolio.actions';
 

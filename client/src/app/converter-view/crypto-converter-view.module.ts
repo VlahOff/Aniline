@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CryptoConverterComponent } from './crypto-converter/crypto-converter.component';
-import { ConverterRoutingModule } from './converter-routing.module';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { ConverterRoutingModule } from './converter-routing.module';
+import { CryptoConverterComponent } from './crypto-converter/crypto-converter.component';
 
 
 

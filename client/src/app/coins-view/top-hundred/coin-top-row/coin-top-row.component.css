@@ -1,11 +1,14 @@
 #first {
   width: 25px;
+  padding-left: 5px;
 }
 
-#second {}
+#second {
+  width: 25px;
+}
 
 #third {
-  width: 350px;
+  width: 200px;
 }
 
 #fourth {
@@ -18,23 +21,23 @@
 }
 
 #sixth {
-  width: 80px;
+  width: 60px;
 }
 
 #seventh {
-  width: 70px;
+  width: 60px;
 }
 
 #eighth {
-  width: 80px;
+  width: 60px;
 }
 
 #ninth {
-  width: 200px;
+  width: 150px;
 }
 
 #tenth {
-  width: 200px;
+  width: 170px;
 }
 
 img {
@@ -50,9 +53,10 @@ tr {
 }
 
 tr:hover {
-  background: #293040
+  background-color: #757575;
 }
 
 td {
+  overflow: hidden;
   height: 40px;
 }

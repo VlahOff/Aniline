@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
 
 import * as fromApp from './+store/app.reducer';
 import * as AuthActions from './auth/+store/auth.actions';
-import { Notification } from './shared/notification/notification.model';
 
 @Component({
   selector: 'app-root',

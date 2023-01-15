@@ -1,8 +1,17 @@
+export interface ChartData {
+  time: number,
+  price: number;
+}
+
 export interface DetailedCoinDataResponse {
   id: string,
   symbol: string,
   name: string,
-  image: string,
+  image: {
+    thumb: string,
+    small: string,
+    large: string;
+  },
   current_price: number,
   market_cap: number,
   total_volume: number,
@@ -21,7 +30,8 @@ export interface DetailedCoinDataResponse {
   atl: number,
   atl_change_percentage: number,
   atl_date: Date,
-  last_updated: Date;
+  last_updated: Date,
+  chartData: ChartData[];
 }
 
 export class DetailedCoinData {

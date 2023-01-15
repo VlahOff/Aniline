@@ -27,10 +27,18 @@ const cryptoApi = {
         let t = await axios.get(cgHost + `simple/price?ids=${coin}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&precision=${Number(precision) | 2}`);
         return t.data;
     },
-    // TODO: NOT IMPLEMENTED
     getCoinDetailed: async (coin) => {
         let t = await axios.get(cgHost + `coins/${coin}?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false`);
+        let c = await axios.get(cgHost + `coins/${coin}/market_chart?vs_currency=usd&days=1&interval=hourly`);
         t = t.data;
+        c = c.data.prices;
+        const r = [];
+        c.forEach(v => {
+            r.push({
+                time: v[0],
+                price: v[1]
+            });
+        });
 
         return {
             id: t.id,
@@ -55,7 +63,8 @@ const cryptoApi = {
             atl: t.market_data.atl.usd,
             atl_change_percentage: t.market_data.atl_change_percentage.usd,
             atl_date: t.market_data.atl_date.usd,
-            last_updated: t.market_data.last_updated
+            last_updated: t.market_data.last_updated,
+            chartData: r
         };
     },
     getTopHundred: async () => {

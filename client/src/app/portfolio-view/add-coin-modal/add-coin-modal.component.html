@@ -18,7 +18,8 @@
           placeholder="Bitcoin"
           formControlName="coinId" 
           type="text" 
-          [value]="selectedCoinName ? selectedCoinName : ''">
+          [value]="selectedCoinName ? selectedCoinName : ''"
+          autofocus>
           <div class="menu-content" [class.on]="(allCoins$ | async)">
             <button type="button" 
             *ngFor="let coin of (allCoins$ | async)" 

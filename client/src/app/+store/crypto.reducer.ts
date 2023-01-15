@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { GlobalData, NewCoin, TopHundred } from "../interfaces";
+import { DetailedCoinDataResponse, GlobalData, NewCoin, TopHundred } from "../interfaces";
 import * as CryptoActions from './crypto.actions';
 
 export interface State {
@@ -7,14 +7,15 @@ export interface State {
   topHundred: TopHundred[] | null;
   topThree: TopHundred[] | null;
   newCoins: NewCoin[] | null;
-
+  coinDetails: DetailedCoinDataResponse | null;
 }
 
 const initialState: State = {
   globalData: null,
   topHundred: null,
   topThree: null,
-  newCoins: null
+  newCoins: null,
+  coinDetails: null
 };
 
 
@@ -49,5 +50,10 @@ export const cryptoReducer = createReducer(
     };
   }),
 
-  
+  on(CryptoActions.setCoinDetails, (state, { payload }) => {
+    return {
+      ...state,
+      coinDetails: payload
+    };
+  })
 );

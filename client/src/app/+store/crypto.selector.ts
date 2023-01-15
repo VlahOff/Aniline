@@ -10,3 +10,5 @@ export const getTopHundred = createSelector(cryptoSelector, s => s.topHundred);
 export const getNewCoins = createSelector(cryptoSelector, s => s.newCoins);
 
 export const getTopThree = createSelector(cryptoSelector, s => s.topThree);
+
+export const getCoinDetails = createSelector(cryptoSelector, s => s.coinDetails);

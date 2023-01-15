@@ -6,6 +6,8 @@ import { CoinsRoutingModule } from './coins-routing.module';
 import { CoinTopRowComponent } from './top-hundred/coin-top-row/coin-top-row.component';
 import { CoinNewRowComponent } from './new-coins/coin-new-row/coin-new-row.component';
 import { GlobalDataComponent } from './global-data/global-data.component';
+import { CoinDetailsComponent } from './coin-details/coin-details.component';
+import { ChartComponent } from './coin-details/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { GlobalDataComponent } from './global-data/global-data.component';
     CoinTopRowComponent,
     CoinNewRowComponent,
     GlobalDataComponent,
+    CoinDetailsComponent,
+    ChartComponent,
   ],
   imports: [
     CommonModule,
