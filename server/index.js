@@ -1,16 +1,15 @@
 require('dotenv').config();
-const express = require('express');
 
+const express = require('express');
 const databaseConfig = require('./configs/database');
 
 const session = require('./middlewares/session');
-
-const authController = require('./controllers/authController');
-const testController = require('./controllers/testController');
-const cryptoController = require('./controllers/cryptoController');
-const portfolioController = require('./controllers/portfolioController');
 const { isUser } = require('./middlewares/guards');
 const cors = require('./middlewares/cors');
+
+const authController = require('./controllers/authController');
+const cryptoController = require('./controllers/cryptoController');
+const portfolioController = require('./controllers/portfolioController');
 
 const EXPRESS_PORT = process.env.EXPRESS_PORT;
 
@@ -25,7 +24,6 @@ async function start() {
     app.use('/auth', authController);
     app.use('/crypto', cryptoController);
     app.use('/portfolio', isUser(), portfolioController);
-    app.use('/test', testController);
 
     app.get('/', (req, res) => {
         res.status(200).send('It works!');

@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Subscription } from 'rxjs';
-import { User } from 'src/app/auth/user.model';
 
+import { User } from 'src/app/auth/user.model';
 import * as fromApp from '../../+store/app.reducer';
 import * as AuthActions from '../../auth/+store/auth.actions';
 

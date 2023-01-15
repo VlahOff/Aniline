@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as fromApp from '../../+store/app.reducer';
+import { Observable } from 'rxjs';
+
 import * as PortfolioActions from '../+store/portfolio.actions';
-import { Observable, Subscription } from 'rxjs';
 import { getAddModalStatus, getTotalAssetValue, getTransactionsIds } from '../+store/portfolio.selector';
+import * as fromApp from '../../+store/app.reducer';
 
 @Component({
   selector: 'app-portfolio',

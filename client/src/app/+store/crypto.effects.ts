@@ -1,10 +1,13 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { map, switchMap } from "rxjs";
 
 import { environment } from "src/environments/environment";
-import { GlobalData, GlobalDataResponse, NewCoin, NewCoinsResponse, TopHundred, TopHundredResponse } from "../interfaces";
+import {
+  DetailedCoinDataResponse, GlobalData, GlobalDataResponse,
+  NewCoin, NewCoinsResponse, TopHundred, TopHundredResponse
+} from "../interfaces";
 import * as CryptoActions from './crypto.actions';
 
 const httpOptions = {
@@ -129,6 +132,23 @@ export class CryptoEffects {
     }),
     map(data => {
       return CryptoActions.setTopThree({ payload: data });
+    })
+  ));
+
+  fetchCoinDetails$ = createEffect(() => this.actions$.pipe(
+    ofType(CryptoActions.fetchCoinDetails),
+    switchMap((state) => {
+      let params = new HttpParams();
+      params = params.append('coinId', state.payload);
+      return this.http.get<DetailedCoinDataResponse>(
+        environment.cryptoApi + '/getCoinDetails',
+        {
+          params: params,
+          headers: httpOptions.headers
+        });
+    }),
+    map(data => {
+      return CryptoActions.setCoinDetails({ payload: data });
     })
   ));
 

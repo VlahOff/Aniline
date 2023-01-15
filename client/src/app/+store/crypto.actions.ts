@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { CryptoMap, FiatMap, GlobalData, NewCoin, TopHundred } from "../interfaces";
+import { DetailedCoinDataResponse, GlobalData, NewCoin, TopHundred } from "../interfaces";
 
 export const fetchGlobalData = createAction('[Crypto] Fetch Global Data');
 
@@ -29,6 +29,16 @@ export const fetchNewCoins = createAction('[Crypto] Fetch New Coins');
 export const setNewCoins = createAction(
   '[Crypto] Set New Coins',
   props<{ payload: NewCoin[]; }>()
+);
+
+export const fetchCoinDetails = createAction(
+  '[Crypto] Fetch Coin Details',
+  props<{ payload: string; }>()
+);
+
+export const setCoinDetails = createAction(
+  '[Crypto] Set Coin Details',
+  props<{ payload: DetailedCoinDataResponse | null; }>()
 );
 
 export const dummy = createAction('[Crypto] Dummy');

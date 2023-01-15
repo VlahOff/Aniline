@@ -31,14 +31,6 @@ export const setAmount = createAction(
 );
 
 export const convertCurrency = createAction('[Converter] Convert Currency');
-// export const convertCurrency = createAction(
-//   '[Converter] Convert Currency',
-//   props<{
-//     payload: {
-//       amount: number, from: CryptoMap | null, to: FiatMap | null;
-//     };
-//   }>()
-// );
 
 export const setConvertResult = createAction(
   '[Converter] Set Converter Result',

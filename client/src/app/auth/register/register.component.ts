@@ -19,10 +19,27 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
-      'email': new FormControl(null, [Validators.required, Validators.email]),
-      'username': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
-      'password': new FormControl(null, [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)]),
-      'rePass': new FormControl(null, [Validators.required, this.doPasswordsMatch.bind(this)])
+      'email': new FormControl(null,
+        [
+          Validators.required,
+          Validators.email
+        ]),
+      'username': new FormControl(null,
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30)
+        ]),
+      'password': new FormControl(null,
+        [
+          Validators.required,
+          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)
+        ]),
+      'rePass': new FormControl(null,
+        [
+          Validators.required,
+          this.doPasswordsMatch.bind(this)
+        ])
     });
   }
 

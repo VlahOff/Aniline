@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="display">
+    <div class="header">
+      <div class="left-half">
+        <div class="coin-name">
+          <img src="{{(coinDetailsData$ | async)?.image?.small}}" alt="">
+          <h1>{{ (coinDetailsData$ | async)?.name}}</h1>
+          <strong>BTC</strong>
+        </div>
+      </div>
+      <div class="right-half">
+        <app-chart [data]="coinDetailsData$"></app-chart>
+      </div>
+    </div>
+  </div>
+</div>

@@ -30,22 +30,7 @@ portfolioController.get('/getTransaction', async (req, res) => {
     const transactionData = await getTransaction(req.query.transactionId);
     const details = await getCoinDetailed(transactionData.coinId);
 
-    const transaction = {
-      coinId: transactionData.coinId,
-      boughtPrice: transactionData.coinPrice,
-      quantity: transactionData.quantity,
-      transactionId: transactionData._id,
-      value: transactionData.quantity * details.current_price,
-      pnlValue: (details.current_price - transactionData.coinPrice) * transactionData.quantity,
-      pnlPercent: ((details.current_price * transactionData.quantity) - (transactionData.coinPrice * transactionData.quantity)) / (transactionData.coinPrice * transactionData.quantity) * 100,
-      id: details.id,
-      symbol: details.symbol,
-      name: details.name,
-      image: details.image.small,
-      current_price: details.current_price,
-      price_change_24h: details.price_change_24h,
-      price_change_percentage_24h: details.price_change_percentage_24h
-    };
+    const transaction = createTransactionDetail(transactionData, details);
 
     res.status(200).json(transaction);
   } catch (error) {
@@ -76,22 +61,7 @@ portfolioController.post('/addTransaction', async (req, res) => {
     const transactionData = await createTransaction(req.body.data, req.user.userId);
     const details = await getCoinDetailed(transactionData.coinId);
 
-    const transaction = {
-      coinId: transactionData.coinId,
-      boughtPrice: transactionData.coinPrice,
-      quantity: transactionData.quantity,
-      transactionId: transactionData._id,
-      value: transactionData.quantity * details.current_price,
-      pnlValue: (details.current_price - transactionData.coinPrice) * transactionData.quantity,
-      pnlPercent: ((details.current_price * transactionData.quantity) - (transactionData.coinPrice * transactionData.quantity)) / (transactionData.coinPrice * transactionData.quantity) * 100,
-      id: details.id,
-      symbol: details.symbol,
-      name: details.name,
-      image: details.image.small,
-      current_price: details.current_price,
-      price_change_24h: details.price_change_24h,
-      price_change_percentage_24h: details.price_change_percentage_24h
-    };
+    const transaction = createTransactionDetail(transactionData, details);
 
     res.status(200).json(transaction);
   } catch (error) {
@@ -115,5 +85,24 @@ portfolioController.delete('/removeTransaction', async (req, res) => {
     });
   }
 });
+
+function createTransactionDetail(transactionData, details) {
+  return {
+    coinId: transactionData.coinId,
+    boughtPrice: transactionData.coinPrice,
+    quantity: transactionData.quantity,
+    transactionId: transactionData._id,
+    value: transactionData.quantity * details.current_price,
+    pnlValue: (details.current_price - transactionData.coinPrice) * transactionData.quantity,
+    pnlPercent: ((details.current_price * transactionData.quantity) - (transactionData.coinPrice * transactionData.quantity)) / (transactionData.coinPrice * transactionData.quantity) * 100,
+    id: details.id,
+    symbol: details.symbol,
+    name: details.name,
+    image: details.image.small,
+    current_price: details.current_price,
+    price_change_24h: details.price_change_24h,
+    price_change_percentage_24h: details.price_change_percentage_24h
+  };
+}
 
 module.exports = portfolioController;
