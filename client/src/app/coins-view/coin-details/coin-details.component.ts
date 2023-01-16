@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { map, Observable, Subscription } from 'rxjs';
+
+import { getCoinDetails } from 'src/app/+store/crypto.selector';
+import { DetailedCoinDataResponse } from 'src/app/interfaces';
 import * as fromApp from '../../+store/app.reducer';
 import * as CryptoActions from '../../+store/crypto.actions';
-import { Store } from '@ngrx/store';
-import { DetailedCoinDataResponse } from 'src/app/interfaces';
-import { getCoinDetails } from 'src/app/+store/crypto.selector';
 
 @Component({
   selector: 'app-coin-details',

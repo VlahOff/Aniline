@@ -7,10 +7,10 @@ import { catchError, concatMap, map, of, switchMap, tap } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import * as fromApp from '../../+store/app.reducer';
+import * as AppStateActions from '../../+store/appState.actions';
 import { AuthService } from '../auth.service';
 import { User } from '../user.model';
 import * as AuthActions from './auth.actions';
-import * as AppStateActions from '../../+store/appState.actions';
 import { getToken } from './auth.selector';
 
 interface AuthResponse {

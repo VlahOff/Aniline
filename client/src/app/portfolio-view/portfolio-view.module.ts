@@ -15,12 +15,12 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
     PortfolioComponent,
     PortfolioTableRowComponent,
     AddCoinModalComponent,
-    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    PortfolioRoutingModule
+    PortfolioRoutingModule,
+    LoadingSpinnerComponent
   ]
 })
 export class PortfolioViewModule { }

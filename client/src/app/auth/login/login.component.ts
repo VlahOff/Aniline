@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getLoadingStatus } from 'src/app/+store/appState.selector';
 
+import { getLoadingStatus } from 'src/app/+store/appState.selector';
 import * as AuthActions from '../+store/auth.actions';
 import * as fromApp from '../../+store/app.reducer';
 
