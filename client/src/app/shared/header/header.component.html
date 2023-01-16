@@ -3,19 +3,19 @@
 		<ul>
 			<div class="left-container">
 				<li class="logo"><a routerLink="/home"><img src="/assets/logo-white.png" alt="logo"></a></li>
-				<li class="user" *ngIf="user">
-					<p>Welcome {{ user.username }}</p>
+				<li class="user" *ngIf="(user | async)">
+					<p>Welcome {{ (user | async)?.username }}</p>
 				</li>
 			</div>
 			<div class="right-container">
 				<li><a routerLink="/coins/top100">Top 100</a></li>
 				<li><a routerLink="/coins/new-coins">New Coins</a></li>
 				<li><a routerLink="/converter">Crypto Converter</a></li>
-				<div *ngIf="!user" class="guestContainer">
+				<div *ngIf="!(user | async)" class="guestContainer">
 					<li><a routerLink="/auth/login">Login</a></li>
 					<li><a routerLink="/auth/register">Register</a></li>
 				</div>
-				<div *ngIf="user" class="userContainer">
+				<div *ngIf="(user | async)" class="userContainer">
 					<li><a routerLink="/portfolio">Portfolio</a></li>
 					<li><a (click)="onLogout()">Logout</a></li>
 				</div>

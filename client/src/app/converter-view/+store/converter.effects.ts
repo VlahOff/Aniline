@@ -6,8 +6,9 @@ import { map, switchMap, withLatestFrom } from "rxjs";
 
 import { ConverterResponse, CryptoMap, CryptoMapRes, FiatMap, FiatMapRes } from "src/app/interfaces";
 import { environment } from "src/environments/environment";
-import * as ConverterActions from './converter.actions';
 import * as fromApp from '../../+store/app.reducer';
+import * as AppStateActions from '../../+store/appState.actions';
+import * as ConverterActions from './converter.actions';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,6 +21,7 @@ export class ConverterEffects {
   fetchCryptoMap$ = createEffect(() => this.actions$.pipe(
     ofType(ConverterActions.fetchCryptoMap),
     switchMap(() => {
+      this.store.dispatch(AppStateActions.loadStart());
       return this.http
         .get<CryptoMapRes[]>(environment.cryptoApi + '/cryptoMap', httpOptions);
     }),
@@ -36,6 +38,7 @@ export class ConverterEffects {
       return result;
     }),
     map(data => {
+      this.store.dispatch(AppStateActions.loadEnd());
       return ConverterActions.setCryptoMap({ payload: data });
     })
   ));
@@ -43,6 +46,7 @@ export class ConverterEffects {
   fetchFiatMap$ = createEffect(() => this.actions$.pipe(
     ofType(ConverterActions.fetchFiatMap),
     switchMap(() => {
+      this.store.dispatch(AppStateActions.loadStart());
       return this.http
         .get<FiatMapRes[]>(environment.cryptoApi + '/fiatMap', httpOptions);
     }),
@@ -59,6 +63,7 @@ export class ConverterEffects {
       return result;
     }),
     map(data => {
+      this.store.dispatch(AppStateActions.loadEnd());
       return ConverterActions.setFiatMap({ payload: data });
     })
   ));
@@ -68,6 +73,7 @@ export class ConverterEffects {
     withLatestFrom(this.store.select('converter')),
     map(state => state[1]),
     switchMap((state) => {
+      this.store.dispatch(AppStateActions.loadStart());
       let params = new HttpParams();
       if (state.from?.id && state.to?.id) {
         params = params.append('amount', state.amount);
@@ -79,6 +85,7 @@ export class ConverterEffects {
         .get<ConverterResponse>(environment.cryptoApi + '/convert', { params: params });
     }),
     map(res => {
+      this.store.dispatch(AppStateActions.loadEnd());
       return ConverterActions.setConvertResult({ payload: res });
     })
   ));

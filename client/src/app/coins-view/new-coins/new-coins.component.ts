@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { getLoadingStatus } from 'src/app/+store/appState.selector';
 import { getNewCoins } from 'src/app/+store/crypto.selector';
 
 import { NewCoin } from 'src/app/interfaces';
@@ -13,6 +14,7 @@ import * as CryptoActions from '../../+store/crypto.actions';
   styleUrls: ['./new-coins.component.css']
 })
 export class NewCoinsComponent implements OnInit {
+  isLoading$: Observable<boolean> = this.store.select(getLoadingStatus);
   newCoins$: Observable<NewCoin[] | null> = this.store.select(getNewCoins);
 
   constructor(private store: Store<fromApp.AppState>) { }

@@ -44,7 +44,15 @@ authController.post('/login',
 	});
 
 authController.get('/logout', async (req, res) => {
-	await logout(req.query.token);
+	try {
+		if (req.query.token === '') {
+			throw new Error('TOKEN_IS_NULL');
+		}
+	} catch (error) {
+		res.status(401).json({
+			message: errorParser(error)
+		});
+	}
 	res.status(202).end();
 });
 

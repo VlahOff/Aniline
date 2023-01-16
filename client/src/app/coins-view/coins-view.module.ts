@@ -8,6 +8,7 @@ import { CoinNewRowComponent } from './new-coins/coin-new-row/coin-new-row.compo
 import { GlobalDataComponent } from './global-data/global-data.component';
 import { CoinDetailsComponent } from './coin-details/coin-details.component';
 import { ChartComponent } from './coin-details/chart/chart.component';
+import { LoadingSpinnerComponent } from '../shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ChartComponent } from './coin-details/chart/chart.component';
     GlobalDataComponent,
     CoinDetailsComponent,
     ChartComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule,

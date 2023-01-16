@@ -35,6 +35,9 @@ async function login(email, password) {
 }
 
 async function logout(token) {
+	if (token === '') {
+		throw new Error('TOKEN_IS_NULL');
+	}
 	banToken(token);
 }
 

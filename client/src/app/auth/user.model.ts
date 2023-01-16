@@ -4,7 +4,7 @@ export class User {
     public email: string,
     public username: string,
     public userId: string,
-    public accessToken: string,
+    public _accessToken: string,
     private expiresIn: Date,
   ) { }
 
@@ -12,6 +12,6 @@ export class User {
     if (!this.expiresIn || new Date() > this.expiresIn) {
       return null;
     }
-    return this.accessToken;
+    return this._accessToken;
   }
 }
