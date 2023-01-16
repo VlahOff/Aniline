@@ -2,12 +2,16 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, of, switchMap, tap } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { catchError, concatMap, map, of, switchMap, tap } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
+import * as fromApp from '../../+store/app.reducer';
 import { AuthService } from '../auth.service';
 import { User } from '../user.model';
 import * as AuthActions from './auth.actions';
+import * as AppStateActions from '../../+store/appState.actions';
+import { getToken } from './auth.selector';
 
 interface AuthResponse {
   userId: string,
@@ -19,7 +23,7 @@ interface AuthResponse {
 
 const handleAuthentication = (userId: string, email: string, username: string, accessToken: string, expiriesIn: string) => {
   const expirationTime = new Date();
-  expirationTime.setMilliseconds(new Date().getMilliseconds() + Number(expiriesIn))
+  expirationTime.setMilliseconds(new Date().getMilliseconds() + Number(expiriesIn));
 
   const user = new User(email, username, userId, accessToken, expirationTime);
   localStorage.setItem('userData', JSON.stringify(user));
@@ -65,6 +69,7 @@ export class AuthEffects {
   authSignup$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.signupStart),
     switchMap((authData) => {
+      this.store.dispatch(AppStateActions.loadStart());
       return this.http.post<AuthResponse>(environment.authApi + '/register',
         {
           email: authData.payload.email,
@@ -76,6 +81,7 @@ export class AuthEffects {
           this.authService.setLogoutTimer(Number(resData.expiriesIn));
         }),
         map((resData: AuthResponse) => {
+          this.store.dispatch(AppStateActions.loadEnd());
           return handleAuthentication(resData.userId, resData.email, resData.username, resData.accessToken, resData.expiriesIn);
         }),
         catchError(err => {
@@ -88,6 +94,7 @@ export class AuthEffects {
   authLogin$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.loginStart),
     switchMap((authData) => {
+      this.store.dispatch(AppStateActions.loadStart());
       return this.http.post<AuthResponse>(environment.authApi + '/login',
         {
           email: authData.payload.email,
@@ -98,6 +105,7 @@ export class AuthEffects {
           this.authService.setLogoutTimer(Number(resData.expiriesIn));
         }),
         map(resData => {
+          this.store.dispatch(AppStateActions.loadEnd());
           return handleAuthentication(resData.userId, resData.email, resData.username, resData.accessToken, resData.expiriesIn);
         }),
         catchError(err => {
@@ -111,6 +119,7 @@ export class AuthEffects {
     ofType(AuthActions.autoLogin),
     map(() => {
       const userData = localStorage.getItem('userData');
+      
       if (!userData) {
         return AuthActions.dummy();
       }
@@ -120,7 +129,7 @@ export class AuthEffects {
         userObj.email,
         userObj.username,
         userObj.userId,
-        userObj.accessToken,
+        userObj._accessToken,
         new Date(userObj.expiresIn)
       );
 
@@ -139,7 +148,8 @@ export class AuthEffects {
           }
         });
       }
-
+      console.log(loadedUser);
+      
       return AuthActions.dummy();
     })
   ));
@@ -154,10 +164,13 @@ export class AuthEffects {
   ), { dispatch: false });
 
   authLogout$ = createEffect(() => this.actions$.pipe(
-    ofType(AuthActions.logout),
-    switchMap((r) => {
+    ofType(AuthActions.logoutStart),
+    concatMap(() => {
+      let token!: string;
+      this.store.select(getToken).subscribe(t => token = t);
+
       let httpParams = new HttpParams();
-      httpParams = httpParams.append('token', r.payload);
+      httpParams = httpParams.append('token', token);
 
       return this.http.get(environment.authApi + '/logout', { params: httpParams });
     }),
@@ -165,13 +178,15 @@ export class AuthEffects {
       this.authService.clearLogoutTimer();
       localStorage.removeItem('userData');
       this.router.navigate(['/home']);
-    })
-  ), { dispatch: false });
+    }),
+    map(() => AuthActions.logoutEnd())
+  ));
 
   constructor(
     private actions$: Actions,
     private http: HttpClient,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private store: Store<fromApp.AppState>
   ) { }
 }

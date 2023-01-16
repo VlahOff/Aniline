@@ -2,8 +2,11 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { map, switchMap } from "rxjs";
+import { Store } from "@ngrx/store";
 
 import { environment } from "src/environments/environment";
+import * as fromApp from '../+store/app.reducer';
+import * as AppStateActions from '../+store/appState.actions';
 import {
   DetailedCoinDataResponse, GlobalData, GlobalDataResponse,
   NewCoin, NewCoinsResponse, TopHundred, TopHundredResponse
@@ -21,6 +24,7 @@ export class CryptoEffects {
   fetchGlobalData$ = createEffect(() => this.actions$.pipe(
     ofType(CryptoActions.fetchGlobalData),
     switchMap(() => {
+      this.store.dispatch(AppStateActions.loadStart());
       return this.http
         .get<GlobalDataResponse>(environment.cryptoApi + '/getGlobalData', httpOptions);
     }),
@@ -66,6 +70,7 @@ export class CryptoEffects {
       return result;
     }),
     map(data => {
+      this.store.dispatch(AppStateActions.loadEnd());
       return CryptoActions.setTopHundred({ payload: data });
     })
   ));
@@ -73,6 +78,7 @@ export class CryptoEffects {
   fetchNewCoins$ = createEffect(() => this.actions$.pipe(
     ofType(CryptoActions.fetchNewCoins),
     switchMap(() => {
+      this.store.dispatch(AppStateActions.loadStart());
       return this.http
         .get<NewCoinsResponse[]>(environment.cryptoApi + '/newCoins', httpOptions);
     }),
@@ -99,6 +105,7 @@ export class CryptoEffects {
       return res;
     }),
     map(data => {
+      this.store.dispatch(AppStateActions.loadEnd());
       return CryptoActions.setNewCoins({ payload: data });
     })
   ));
@@ -106,6 +113,7 @@ export class CryptoEffects {
   fetchTopThree$ = createEffect(() => this.actions$.pipe(
     ofType(CryptoActions.fetchTopThree),
     switchMap(() => {
+      this.store.dispatch(AppStateActions.loadStart());
       return this.http
         .get<TopHundredResponse[]>(environment.cryptoApi + '/topThree', httpOptions);
     }),
@@ -131,6 +139,7 @@ export class CryptoEffects {
       return result;
     }),
     map(data => {
+      this.store.dispatch(AppStateActions.loadEnd());
       return CryptoActions.setTopThree({ payload: data });
     })
   ));
@@ -154,6 +163,7 @@ export class CryptoEffects {
 
   constructor(
     private actions$: Actions,
-    private http: HttpClient
+    private http: HttpClient,
+    private store: Store<fromApp.AppState>
   ) { }
 }

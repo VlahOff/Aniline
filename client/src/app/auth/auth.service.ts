@@ -1,33 +1,20 @@
-import { Injectable, OnDestroy, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subscription, tap } from 'rxjs';
 
 import * as fromApp from '../+store/app.reducer';
 import * as AuthActions from './+store/auth.actions';
-import { User } from './user.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnInit, OnDestroy {
-  private userSub!: Subscription;
-  private user!: User | null;
+export class AuthService {
   private tokenExpirationTimer: any;
 
   constructor(private store: Store<fromApp.AppState>) { }
 
-  ngOnInit(): void {
-    this.userSub = this.store.select('auth')
-      .pipe(
-        tap(authState => {
-          this.user = authState.user;
-        })
-      ).subscribe();
-  }
-
   setLogoutTimer(timeUntil: number) {
     this.tokenExpirationTimer = setTimeout(() => {
-      this.store.dispatch(AuthActions.logout({ payload: this.user?.accessToken || '' }));
+      this.store.dispatch(AuthActions.logoutStart());
     }, timeUntil);
   }
 
@@ -36,9 +23,5 @@ export class AuthService implements OnInit, OnDestroy {
       clearTimeout(this.tokenExpirationTimer);
       this.tokenExpirationTimer = null;
     }
-  }
-
-  ngOnDestroy(): void {
-    this.userSub.unsubscribe();
   }
 }

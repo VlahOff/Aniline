@@ -33,10 +33,9 @@ export const authenticateFail = createAction(
   props<{ payload: string; }>()
 );
 
-export const logout = createAction(
-  '[Auth] Logout',
-  props<{ payload: string; }>()
-);
+export const logoutStart = createAction('[Auth] Logout');
+
+export const logoutEnd = createAction('[Auth] Logout End');
 
 export const clearError = createAction('[Auth] Clear Error');
 

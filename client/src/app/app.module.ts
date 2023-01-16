@@ -19,7 +19,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PortfolioEffects } from './portfolio-view/+store/portfolio.effects';
 import { HeaderComponent } from './shared/header/header.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
-import { NotificationComponent } from './shared/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,6 @@ import { NotificationComponent } from './shared/notification/notification.compon
     CryptoCardComponent,
     HomeComponent,
     HeaderComponent,
-    NotificationComponent,
     LoadingSpinnerComponent,
   ],
   imports: [

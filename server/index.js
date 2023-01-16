@@ -14,22 +14,22 @@ const portfolioController = require('./controllers/portfolioController');
 const EXPRESS_PORT = process.env.EXPRESS_PORT;
 
 async function start() {
-    const app = express();
+	const app = express();
 
-    app.use(cors());
-    app.use(express.json());
-    app.use(session());
-    await databaseConfig();
+	app.use(cors());
+	app.use(express.json());
+	app.use(session());
+	await databaseConfig();
 
-    app.use('/auth', authController);
-    app.use('/crypto', cryptoController);
-    app.use('/portfolio', isUser(), portfolioController);
+	app.use('/auth', authController);
+	app.use('/crypto', cryptoController);
+	app.use('/portfolio', isUser(), portfolioController);
 
-    app.get('/', (req, res) => {
-        res.status(200).send('It works!');
-    });
+	app.get('/', (req, res) => {
+		res.status(200).send('It works!');
+	});
 
-    app.listen(EXPRESS_PORT, () => console.log('App listening on port: ' + EXPRESS_PORT));
+	app.listen(EXPRESS_PORT, () => console.log('App listening on port: ' + EXPRESS_PORT));
 }
 
 start();

@@ -13,6 +13,7 @@ export class CoinTopRowComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
