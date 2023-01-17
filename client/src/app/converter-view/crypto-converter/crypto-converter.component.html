@@ -4,7 +4,7 @@
       <h1 class="title">Cryptocurrency Converter Calculator</h1>
       <div class="top-row">
         <div class="input">
-          <i class="fa-solid fa-circle-dollar-to-slot"></i>
+          <i class="fa-solid fa-coins"></i>
           <input type="text" placeholder="Enter amount" formControlName="amount" (keyup)="setAmount()" autofocus>
           <img src="" alt="" class="input-icon">
         </div>
@@ -14,7 +14,7 @@
           <div class="input-dropdown">
             <img src="" alt="" class="input-icon">
             <input type="text" placeholder="From BTC" formControlName="from">
-            <i class="fa-solid fa-circle-arrow-down"></i>
+            <i class="fa-regular fa-square-caret-down"></i>
             <div class="menu-content">
               <button type="button" 
               *ngFor="let crypto of cryptoMap$ | async" 
@@ -27,7 +27,7 @@
           <div class="input-dropdown">
             <img src="" alt="" class="input-icon">
             <input type="text" placeholder="To USD" formControlName="to">
-            <i class="fa-solid fa-circle-arrow-down"></i>
+            <i class="fa-regular fa-square-caret-down"></i>
             <div class="menu-content">
               <button type="button" 
               *ngFor="let fiat of fiatMap$ | async" 
@@ -38,8 +38,8 @@
         </div>
       </div>
       <div class="button-div">
-        <button type="submit" class="button" [disabled]="!converterForm.valid"><i
-            class="fa-solid fa-1x fa-money-bill-transfer"></i> Convert</button>
+        <button type="submit" class="button" [disabled]="!converterForm.valid">
+          <i class="fa-solid fa-arrows-rotate"></i> Convert</button>
       </div>
       <div class="output">
         <h4 class="output-field" *ngIf="result$ | async">

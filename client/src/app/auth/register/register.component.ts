@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { getLoadingStatus } from 'src/app/+store/appState.selector';
+import { getError, getLoadingStatus } from 'src/app/+store/appState.selector';
 import * as AuthActions from '../+store/auth.actions';
 import * as fromApp from '../../+store/app.reducer';
+import * as AppStateActions from '../../+store/appState.actions';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
+  error$: Observable<string> = this.store.select(getError);
   isLoading$: Observable<boolean> = this.store.select(getLoadingStatus);
   registerForm!: FormGroup;
 
@@ -61,5 +63,9 @@ export class RegisterComponent implements OnInit {
       return null;
     }
     return { 'passwordDontMatch': true };
+  }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(AppStateActions.clearError());
   }
 }

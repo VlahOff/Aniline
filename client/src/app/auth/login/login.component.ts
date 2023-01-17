@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { getLoadingStatus } from 'src/app/+store/appState.selector';
+import { getError, getLoadingStatus } from 'src/app/+store/appState.selector';
 import * as AuthActions from '../+store/auth.actions';
 import * as fromApp from '../../+store/app.reducer';
+import * as AppStateActions from '../../+store/appState.actions';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+  error$: Observable<string> = this.store.select(getError);
   isLoading$: Observable<boolean> = this.store.select(getLoadingStatus);
   loginForm!: FormGroup;
 
@@ -38,5 +40,9 @@ export class LoginComponent implements OnInit {
         password: this.loginForm.value.password
       }
     }));
+  }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(AppStateActions.clearError());
   }
 }

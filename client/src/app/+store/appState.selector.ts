@@ -5,5 +5,4 @@ const appStateSelector = createFeatureSelector<fromAppState.State>('appState');
 
 export const getLoadingStatus = createSelector(appStateSelector, s => s.loading);
 
-// this.store.dispatch(AppStateActions.loadEnd());
-// this.store.dispatch(AppStateActions.loadStart());
+export const getError = createSelector(appStateSelector, s => s.error);

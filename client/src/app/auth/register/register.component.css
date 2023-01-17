@@ -5,7 +5,7 @@
 }
 
 .register-container {
-  max-width: 500px;
+  width: 400px;
   color: white;
   background: rgba(102, 102, 102, 0.4);
   backdrop-filter: blur(6px);
@@ -13,48 +13,66 @@
   border-radius: 10px;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
+header {
+  display: block;
+  text-align: center;
 }
 
 .logo {
-  margin: auto;
   width: 180px;
+  margin: auto;
   padding: 50px 0px;
 }
 
 h1 {
-  text-align: center;
   font-weight: 300;
   padding: 0px 0px 10px 0px;
 }
 
-label {
-  margin-top: 15px;
+form {
   display: flex;
-  font-size: 16px;
-  padding-left: 16%;
-  justify-content: left;
+  flex-direction: column;
+  padding: 0 50px;
 }
 
-.input {
-  display: flex;
-  justify-content: space-between;
+.input-container {
+  display: block;
   border-bottom: black 1px solid;
-  padding: 0px 20px 10px 20px;
-  margin: 5px 15% 20px 15%;
+  margin-top: 25px;
 }
 
-.input:has(> input.ng-invalid.ng-touched) {
+.input-container:has(.field > input.ng-invalid.ng-touched) {
   border-bottom: red 1px solid;
 }
 
+label {
+  display: block;
+  text-align: left;
+  font-size: 16px;
+  padding-left: 10px;
+}
+
+.error {
+  display: block;
+  text-align: center;
+  color: crimson;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.field {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  padding: 10px 0;
+}
+
 .input-icon {
-  padding: 8px;
-  padding-left: 0px;
+  padding: 15px;
+  padding-top: 8px;
   width: 20px;
   opacity: 40%;
+  color: white;
 }
 
 input {
@@ -72,24 +90,21 @@ input:focus {
   outline: none;
 }
 
-
 ::placeholder {
   color: #a8a8a8;
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #3F4249 inset !important;
-  -webkit-text-fill-color: rgb(255, 255, 255);
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 40rem #545454 inset;
 }
 
-.button-div {
-  display: flex;
-  justify-content: center;
-  margin: 5% 0%;
-  margin-bottom: 0px;
+.button-container {
+  display: block;
+  text-align: center;
+  margin-top: 25px;
 }
 
 button {
@@ -104,12 +119,13 @@ button {
 }
 
 button:disabled {
-  cursor: not-allowed
+  background-color: #00DBDE;
+  background-image: linear-gradient(90deg, #000000 0%, #5a5a5a 100%);
+  cursor: not-allowed;
 }
 
-.no-account {
-  display: flex;
-  justify-content: center;
+footer {
+  text-align: center;
   margin: 25px;
 }
 
@@ -118,13 +134,6 @@ a {
   padding-left: 3px;
   font-weight: bold;
   text-decoration: none;
-}
-
-.error {
-  text-align: center;
-  color: crimson;
-  font-style: italic;
-  font-size: 15px;
 }
 
 .spinner-container {
@@ -140,6 +149,7 @@ a {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.6);
 }
+
 .spinner {
   margin: 0;
   position: absolute;
