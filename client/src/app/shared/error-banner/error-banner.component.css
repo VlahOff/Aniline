@@ -1,0 +1,10 @@
+.container {
+  color: white;
+  background: rgba(220, 20, 60, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  text-align: center;
+  padding: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}

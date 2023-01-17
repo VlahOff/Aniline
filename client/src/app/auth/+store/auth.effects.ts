@@ -7,10 +7,10 @@ import { catchError, concatMap, map, of, switchMap, tap } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import * as fromApp from '../../+store/app.reducer';
+import * as AppStateActions from '../../+store/appState.actions';
 import { AuthService } from '../auth.service';
 import { User } from '../user.model';
 import * as AuthActions from './auth.actions';
-import * as AppStateActions from '../../+store/appState.actions';
 import { getToken } from './auth.selector';
 
 interface AuthResponse {
@@ -61,7 +61,7 @@ const handleError = (error: string) => {
       break;
   }
 
-  return of(AuthActions.authenticateFail({ payload: errorMessage }));
+  return of(AppStateActions.setError({ payload: errorMessage }));
 };
 
 @Injectable()
@@ -85,7 +85,8 @@ export class AuthEffects {
           return handleAuthentication(resData.userId, resData.email, resData.username, resData.accessToken, resData.expiriesIn);
         }),
         catchError(err => {
-          return handleError(err);
+          this.store.dispatch(AppStateActions.loadEnd());
+          return handleError(err.error.message);
         })
       );
     })
@@ -109,7 +110,8 @@ export class AuthEffects {
           return handleAuthentication(resData.userId, resData.email, resData.username, resData.accessToken, resData.expiriesIn);
         }),
         catchError(err => {
-          return handleError(err);
+          this.store.dispatch(AppStateActions.loadEnd());
+          return handleError(err.error.message);
         })
       );
     })
@@ -119,7 +121,7 @@ export class AuthEffects {
     ofType(AuthActions.autoLogin),
     map(() => {
       const userData = localStorage.getItem('userData');
-      
+
       if (!userData) {
         return AuthActions.dummy();
       }
@@ -149,7 +151,7 @@ export class AuthEffects {
         });
       }
       console.log(loadedUser);
-      
+
       return AuthActions.dummy();
     })
   ));

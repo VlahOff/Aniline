@@ -1,70 +1,95 @@
 <div class="container">
-  <div class="register-container">
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <section class="register-container">
+    <app-error-banner 
+    *ngIf="(error$ | async)" 
+    [errorMessage]="(error$ | async)"
+    ></app-error-banner>
+
+    <header>
       <img class="logo" src="/assets/logo-white.png" alt="logo img">
       <h1>Register</h1>
+    </header>
 
-      <label for="email">Email</label>
-      <span class="error" 
-      *ngIf="!registerForm.get('email')?.valid && registerForm.get('email')?.touched"
-      >Invalid e-mail!</span>
-      <div class="input">
-        <i class="input-icon fa-solid fa-at"></i>
-        <input id="email" type="text" 
-        placeholder="Enter Email" formControlName="email" autofocus>
-        <div class="input-icon"></div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <div class="input-container">
+        <label for="email">Email</label>
+        <span class="error" 
+        *ngIf="!registerForm.get('email')?.valid && 
+        registerForm.get('email')?.touched"
+        >Invalid e-mail!</span>
+
+        <div class="field">
+          <i class="input-icon fa-solid fa-at"></i>
+          <input id="email" type="text" 
+          placeholder="Enter Email" formControlName="email" autofocus>
+          <div class="input-icon"></div>
+        </div>
       </div>
 
-      <label for="email">Username</label>
-      <span class="error" 
-      *ngIf="!registerForm.get('username')?.valid && registerForm.get('username')?.touched"
-      >Invalid username!</span>
-      <div class="input">
-        <i class="input-icon fa-solid fa-at"></i>
-        <input id="username" type="text" 
-        placeholder="Enter Username" formControlName="username">
-        <div class="input-icon"></div>
+      <div class="input-container">
+        <label for="email">Username</label>
+        <span class="error"
+          *ngIf="!registerForm.get('username')?.valid && 
+          registerForm.get('username')?.touched"
+          >Invalid username!</span>
+
+        <div class="field">
+          <i class="input-icon fa-solid fa-at"></i>
+          <input id="username" type="text" 
+          placeholder="Enter Username" formControlName="username">
+          <div class="input-icon"></div>
+        </div>
       </div>
 
-      <label for="password">Password</label>
-      <span class="error" 
-      *ngIf="!registerForm.get('password')?.valid && registerForm.get('password')?.touched"
-      >Invalid password!</span>
-      <div class="input">
-        <i class="input-icon fa-solid fa-key"></i>
-        <input id="password" type="password" 
-        placeholder="Enter Password" formControlName="password">
-        <div class="input-icon"></div>
+      <div class="input-container">
+        <label for="password">Password</label>
+        <span class="error"
+          *ngIf="!registerForm.get('password')?.valid && 
+          registerForm.get('password')?.touched"
+          >Invalid password!</span>
+
+        <div class="field">
+          <i class="input-icon fa-solid fa-key"></i>
+          <input id="password" type="password" 
+          placeholder="Enter Password" formControlName="password">
+          <div class="input-icon"></div>
+        </div>
       </div>
 
-      <label for="repeatPass">Repeat Password</label>
-      <span class="error"
-        *ngIf="registerForm.get('rePass')?.errors?.['passwordDontMatch'] 
-        && registerForm.get('rePass')?.touched"
+      <div class="input-container">
+        <label for="repeatPass">Repeat Password</label>
+        <span class="error" 
+        *ngIf="registerForm.get('rePass')?.errors?.['passwordDontMatch'] &&
+        registerForm.get('rePass')?.touched"
         >Passwords must match!</span>
-      <span class="error" 
-      *ngIf="!registerForm.get('rePass')?.valid 
-      && registerForm.get('rePass')?.touched"
-      >Invalid password!</span>
-      <div class="input">
-        <i class="input-icon fa-solid fa-key"></i>
-        <input id="rePass" type="password" 
-        placeholder="Repeat Password" formControlName="rePass">
-        <div class="input-icon"></div>
+        <span class="error" 
+        *ngIf="!registerForm.get('rePass')?.valid && 
+        registerForm.get('rePass')?.touched"
+        >Invalid password!</span>
+
+        <div class="field">
+          <i class="input-icon fa-solid fa-key"></i>
+          <input id="rePass" type="password" 
+          placeholder="Repeat Password" formControlName="rePass">
+          <div class="input-icon"></div>
+        </div>
       </div>
 
-      <div class="button-div">
+      <div class="button-container">
         <button type="submit" class="registerbtn button" 
         [disabled]="!registerForm.valid">Register</button>
       </div>
 
-      <div class="no-account">
-        <p>Already have an account? <a routerLink="/auth/login">Sign in</a>.</p>
-      </div>
-
     </form>
-  </div>
+
+    <footer>
+      <p>Already have an account? <a routerLink="/auth/login">Sign in</a>.</p>
+    </footer>
+
+  </section>
 </div>
+
 <div class="spinner-container" *ngIf="(isLoading$ | async)">
   <app-loading-spinner class="spinner"></app-loading-spinner>
 </div>

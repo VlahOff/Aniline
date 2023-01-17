@@ -1,42 +1,63 @@
 <div class="container">
-  <div class="login-container">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <section class="login-container">
+    <app-error-banner 
+    *ngIf="(error$ | async)" 
+    [errorMessage]="(error$ | async)"
+    ></app-error-banner>
+
+    <header>
       <img class="logo" src="/assets/logo-white.png" alt="logo img">
       <h1>Login</h1>
+    </header>
 
-      <label for="email">Email</label>
-      <span class="error" 
-      *ngIf="!loginForm.get('email')?.valid && loginForm.get('email')?.touched"
-      >Invalid e-mail!</span>
-      <div class="input">
-        <i class="input-icon fa-solid fa-at"></i>
-        <input id="email" 
-        placeholder="Enter your e-mail!" 
-        formControlName="email" type="email" autofocus>
-        <div class="input-icon"></div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <div class="input-container">
+        <label for="email">Email</label>
+        <span class="error" 
+        *ngIf="!loginForm.get('email')?.valid && 
+        loginForm.get('email')?.touched"
+        >Invalid e-mail!</span>
+
+        <div class="field">
+          <i class="input-icon fa-solid fa-at"></i>
+          <input id="email" 
+          placeholder="Enter your e-mail!" 
+          formControlName="email" type="email" autofocus>
+          <div class="input-icon"></div>
+        </div>
       </div>
 
-      <label for="password">Password</label>
-      <span class="error" 
-      *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched"
-      >Invalid password!</span>
-      <div class="input">
-        <i class="input-icon fa-solid fa-key"></i>
-        <input id="password" type="password" 
-        placeholder="Enter your password!" formControlName="password">
-        <div class="input-icon"></div>
+      <div class="input-container">
+        <label for="password">Password</label>
+        <span class="error" 
+        *ngIf="!loginForm.get('password')?.valid && 
+        loginForm.get('password')?.touched"
+        >Invalid password!</span>
+
+        <div class="field">
+          <i class="input-icon fa-solid fa-key"></i>
+          <input id="password" 
+          placeholder="Enter your password!" 
+          formControlName="password" type="password">
+          <div class="input-icon"></div>
+        </div>
       </div>
 
-      <div class="button-div">
+      <div class="button-container">
         <button type="submit" class="button" 
         [disabled]="!loginForm.valid">Login</button>
       </div>
-      <div class="no-account">
-        <p>Don't have an account? <a routerLink="/auth/register">Sign up</a>.</p>
-      </div>
+
     </form>
-  </div>
+
+    <footer>
+      <p>Don't have an account? <a routerLink="/auth/register">Sign up</a>.</p>
+    </footer>
+
+  </section>
 </div>
+
 <div class="spinner-container" *ngIf="(isLoading$ | async)">
   <app-loading-spinner class="spinner"></app-loading-spinner>
 </div>

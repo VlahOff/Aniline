@@ -27,7 +27,6 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     CryptoCardComponent,
     HomeComponent,
     HeaderComponent,
-    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +35,8 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([AuthEffects, CryptoEffects, ConverterEffects, PortfolioEffects]),
-    ...specificModules
+    ...specificModules,
+    LoadingSpinnerComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: UserTokenInterceptor, multi: true }
