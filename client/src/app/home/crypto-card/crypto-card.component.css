@@ -1,13 +1,11 @@
 .card-box {
-  display: flex;
-  flex-direction: column;
   margin: 25px;
   background: rgba(102, 102, 102, 0.4);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   border-radius: 10px;
   color: white;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   padding: 8px;
   width: 200px;
 }
@@ -29,8 +27,6 @@ img {
 }
 
 .text-center {
-  display: flex;
-  flex-direction: column;
   padding: 10px;
   margin-bottom: 8px;
   border-top: white solid 1px;
@@ -51,7 +47,6 @@ img {
   display: flex;
   flex-direction: column;
   padding: 0 30px;
-
 }
 
 .button {
@@ -63,7 +58,6 @@ img {
 
 .button:hover {
   text-decoration: none;
-
   padding: 8px 2px;
   border-radius: 10px;
   background-color: #757575;

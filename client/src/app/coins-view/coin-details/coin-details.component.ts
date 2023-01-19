@@ -32,8 +32,8 @@ export class CoinDetailsComponent implements OnInit, OnDestroy {
       )
       .subscribe();
 
-    this.coinDetailsData$ = this.store.select(getCoinDetails);
     this.store.dispatch(CryptoActions.fetchCoinDetails({ payload: this.id }));
+    this.coinDetailsData$ = this.store.select(getCoinDetails);
   };
 
   ngOnDestroy(): void {

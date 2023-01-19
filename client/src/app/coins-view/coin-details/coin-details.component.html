@@ -1,15 +1,41 @@
 <div class="container">
-  <main>
+  <article class="main">
     <header>
-      <h1></h1>
+      <div class="left-header-part">
+        <img class="coin-logo" src="{{ (coinDetailsData$ | async)?.image?.small }}" alt="Coin logo">
+        <h1 class="coin-name">{{ (coinDetailsData$ | async)?.name}}</h1>
+        <strong class="symbol">{{ (coinDetailsData$ | async)?.symbol | uppercase }}</strong>
+      </div>
+      <div class="center-header-part">
+        <div class="bar">
+          <div class="bar-progress" [style.width.%]="(coinDetailsData$ | async)?.low_high_value">
+            <i class="arrow fa-solid fa-caret-up"></i>
+          </div>
+        </div>
+        <div class="low-high">
+          <p>Low: {{ (coinDetailsData$ | async)?.low_24h | currency:'USD':'symbol':'1.2-2' }}</p>
+          <p>High: {{ (coinDetailsData$ | async)?.high_24h | currency:'USD':'symbol':'1.2-2' }}</p>
+        </div>
+      </div>
+      <div class="right-header-part">
+        <h2>{{ (coinDetailsData$ | async)?.current_price | currency:'USD':'symbol':'1.2-2' }}</h2>
+      </div>
     </header>
-    <section class="coin-info">
-      <img src="{{(coinDetailsData$ | async)?.image?.small}}" alt="">
-      <h1>{{ (coinDetailsData$ | async)?.name}}</h1>
-      <strong>BTC</strong>
-    </section>
-    <section class="chart-container">
-      <app-chart [data]="coinDetailsData$"></app-chart>
-    </section>
-  </main>
+    <main>
+      <table>
+        <tr>
+          <th><p>Market Cap</p></th>
+          <th><p>Circulating Supply</p></th>
+          <th><p>Volume</p></th>
+          <th><p>All Time High</p></th>
+          <th><p>All Time Low</p></th>
+        </tr>
+      </table>
+      <section class="chart-container">
+        <app-chart [data]="coinDetailsData$"></app-chart>
+      </section>
+    </main>
+    <footer>
+    </footer>
+  </article>
 </div>

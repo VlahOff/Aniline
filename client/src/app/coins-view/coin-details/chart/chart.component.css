@@ -1,6 +1,6 @@
 .chart {
   width: 800px;
-  background: rgba(102, 102, 102, 0.4);
+  background: rgba(102, 102, 102, 0.1);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   padding: 15px;
