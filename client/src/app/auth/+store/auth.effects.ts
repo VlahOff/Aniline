@@ -150,7 +150,6 @@ export class AuthEffects {
           }
         });
       }
-      console.log(loadedUser);
 
       return AuthActions.dummy();
     })

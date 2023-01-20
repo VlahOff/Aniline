@@ -1,16 +1,94 @@
 <div class="container">
-  <div class="display">
-    <div class="header">
-      <div class="left-half">
-        <div class="coin-name">
-          <img src="{{(coinDetailsData$ | async)?.image?.small}}" alt="">
-          <h1>{{ (coinDetailsData$ | async)?.name}}</h1>
-          <strong>BTC</strong>
+  <article class="details-page">
+    <header>
+      <div class="left-header-part">
+        <img class="coin-logo" src="{{ (coinDetailsData$ | async)?.image?.small }}" alt="Coin logo">
+        <h1 class="coin-name">
+          {{ (coinDetailsData$ | async)?.name}}
+        </h1>
+        <strong class="symbol">
+          {{ (coinDetailsData$ | async)?.symbol | uppercase }}
+        </strong>
+      </div>
+      <div class="center-header-part">
+        <div class="bar">
+          <div class="bar-progress" [style.width.%]="(coinDetailsData$ | async)?.low_high_value">
+            <i class="arrow fa-solid fa-caret-up"></i>
+          </div>
+        </div>
+        <div class="low-high">
+          <p>Low: {{ (coinDetailsData$ | async)?.low_24h | currency:'USD':'symbol':'1.2-2' }}</p>
+          <p>High: {{ (coinDetailsData$ | async)?.high_24h | currency:'USD':'symbol':'1.2-2' }}</p>
         </div>
       </div>
-      <div class="right-half">
-        <app-chart [data]="coinDetailsData$"></app-chart>
+      <div class="right-header-part">
+        <h2>{{ (coinDetailsData$ | async)?.current_price | currency:'USD':'symbol':'1.2-2' }}</h2>
       </div>
-    </div>
-  </div>
+    </header>
+    <main>
+      <table>
+        <tr>
+          <th>
+            <article class="cell">
+              <h5>Market Cap</h5>
+              <br>
+              <br>
+              <p>{{ (coinDetailsData$ | async)?.market_cap | currency:'USD':'symbol':'1.2-2' }}</p>
+              <p>{{ (coinDetailsData$ | async)?.market_cap_change_percentage_24h | number:'1.2-2' }}%</p>
+            </article>
+          </th>
+          <th>
+            <article class="cell">
+              <h5>Circulating Supply</h5>
+              <br>
+              <br>
+              <p>{{ (coinDetailsData$ | async)?.circulating_supply  | number :'1.0' }}
+                <b>{{ (coinDetailsData$ | async)?.symbol | uppercase }}</b>
+              </p>
+              <p>Max Supply: {{ (coinDetailsData$ | async)?.max_supply }}</p>
+            </article>
+          </th>
+          <th>
+            <article class="cell">
+              <h5>Volume</h5>
+              <br>
+              <br>
+              <br>
+              <p>{{ (coinDetailsData$ | async)?.total_volume | currency:'USD':'symbol':'1.2-2' }}</p>
+            </article>
+          </th>
+          <th>
+            <article class="cell">
+              <h5>All Time High</h5>
+              <br>
+              <p>{{ (coinDetailsData$ | async)?.ath | currency:'USD':'symbol':'1.2-2' }}</p>
+              <p>{{ (coinDetailsData$ | async)?.ath_change_percentage | number : '1.2-2' }}%</p>
+              <time>
+                <p class="timestamp">{{ (coinDetailsData$ | async)?.ath_date | date : 'd MMM y  H:mm' }}</p>
+              </time>
+            </article>
+          </th>
+          <th>
+            <article class="last-cell">
+              <h5>All Time Low</h5>
+              <br>
+              <p>{{ (coinDetailsData$ | async)?.atl | currency:'USD':'symbol':'1.2-2' }}</p>
+              <p>{{ (coinDetailsData$ | async)?.atl_change_percentage | number : '1.2-2' }}%</p>
+              <time>
+                <p class="timestamp">{{ (coinDetailsData$ | async)?.atl_date | date : 'd MMM y  H:mm' }}</p>
+              </time>
+            </article>
+          </th>
+        </tr>
+      </table>
+      <section class="chart-container">
+        <app-chart [data]="coinDetailsData$"></app-chart>
+      </section>
+    </main>
+    <footer>
+    </footer>
+  </article>
+</div>
+<div class="spinner-container" *ngIf="(isLoading$ | async)">
+  <app-loading-spinner class="spinner"></app-loading-spinner>
 </div>

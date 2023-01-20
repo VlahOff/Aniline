@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
 import { map, Observable, Subscription } from 'rxjs';
 import { ChartData, DetailedCoinDataResponse } from 'src/app/interfaces';
@@ -9,10 +9,10 @@ import { ChartData, DetailedCoinDataResponse } from 'src/app/interfaces';
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.css']
 })
-export class ChartComponent implements OnInit {
+export class ChartComponent implements OnInit, OnDestroy {
   chartSub!: Subscription;
   @Input() data!: Observable<DetailedCoinDataResponse | null>;
-  chartData!: ChartData[];
+  chartData!: ChartData[] | undefined;
   labels: string[] = [];
   timeStamp: number[] = [];
   chart!: any;
@@ -20,32 +20,44 @@ export class ChartComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.chartSub = this.data.pipe(
-      map(v => {
-        // this.chartData = v!.chartData;
-        // this.chartData.forEach(v => this.labels.push(new Date(v.time).toLocaleTimeString("de-DE", { hour: 'numeric', minute: 'numeric' })));
-        // this.chartData.forEach(v => this.timeStamp.push(v.price));
-      })
-    ).subscribe(v => console.log(v));
+    this.chartSub = this.data
+      .subscribe(v => {
+        if (v) {
+          this.chartData = v.chartData;
+          this.chartData.forEach(v => this.labels.push(new Date(v.time).toLocaleTimeString("de-DE", { hour: 'numeric', minute: 'numeric' })));
+          this.chartData.forEach(v => this.timeStamp.push(v.price));
 
+          this.chart = new Chart("acquisitions", {
+            type: 'line', //this denotes tha type of chart
 
-    Chart.overrides.line.borderColor = 'crimson';
+            data: {// values on X-Axis
+              labels: this.labels,
+              datasets: [
+                {
+                  data: this.timeStamp,
+                  pointStyle: false,
+                  borderColor: 'crimson',
+                },
+              ]
+            },
+            options: {
+              plugins: {
+                tooltip: {
+                  enabled: false
+                }
+              }
+            }
+          });
+        }
+      });
+
 
     Chart.defaults.plugins.legend.display = false;
+    Chart.defaults.color = 'white';
+  }
 
-    this.chart = new Chart("acquisitions", {
-      type: 'line', //this denotes tha type of chart
-
-      data: {// values on X-Axis
-        labels: this.labels,
-        datasets: [
-          {
-            label: "Bitcoin",
-            data: this.timeStamp,
-            backgroundColor: 'crimson'
-          },
-        ]
-      },
-    });
+  ngOnDestroy(): void {
+    this.chartSub.unsubscribe();
+    this.chart = null;
   }
 }

@@ -1,24 +1,148 @@
 .container {
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
-  margin-top: 150px;
+  align-content: center;
+  margin-top: 160px;
+  color: aliceblue;
 }
 
-.display {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 25px;
+.details-page {
+  width: 1400px;
   background: rgba(102, 102, 102, 0.4);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  width: 1400px;
-  padding: 50px;
 }
 
-.header {
+header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin: 24px;
+}
+
+.left-header-part {
+  display: flex;
+  margin-right: 6px;
+}
+
+.coin-logo {
+  width: 28px;
+  margin-right: 6px;
+}
+
+.coin-name {
+  margin-right: 6px;
+}
+
+.symbol {
+  background-color: #6e6e6e;
+  padding: 4px;
+  padding-right: 5px;
+  border-radius: 6px;
+}
+
+.center-header-part {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  /* padding-top: 8px; */
+}
+
+.bar {
+  width: 300px;
+  height: 8px;
+  background-color: #6e6e6e;
+  border-radius: 8px;
+}
+
+.bar-progress {
+  background-color: #262626;
+  height: 8px;
+  border-radius: 8px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  text-align: right;
+  padding-right: 5px;
+}
+
+.arrow {
+  position: absolute;
+}
+
+.low-high {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  margin-top: 10px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 24px 46px;
+}
+
+table {
+  border-top: #6e6e6e 1px solid;
+  border-bottom: #6e6e6e 1px solid;
+}
+
+.cell {
+  border-right: #6e6e6e 1px solid;
+}
+
+th {
+  width: 160px;
+  text-align: left;
+  padding: 10px;
+}
+
+th>p {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+p.timestamp {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgb(177, 177, 177);
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.spinner {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }

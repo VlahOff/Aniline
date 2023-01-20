@@ -1,33 +1,31 @@
-<div class="global-data-container">
-  <div class="card">
-    <div class="top-row-cap">
-      <p><strong>$</strong>{{ (globalData$ | async)?.total_market_cap | number:'1.2-2' }}</p>
-      <p ng>{{ (globalData$ | async)?.market_cap_change_percentage_24h_usd | number:'1.2-2' }}<strong>%</strong></p>
-    </div>
+<section class="global-data-container">
+  <article class="card">
+    <header class="top-row-cap">
+      <p>{{ (globalData$ | async)?.total_market_cap | currency:'USD':'symbol':'1.2-2' }}</p>
+      <p>{{ (globalData$ | async)?.market_cap_change_percentage_24h_usd | number:'1.2-2' }}%</p>
+    </header>
     <hr>
     <strong>Market Capitalization</strong>
-  </div>
-  <div class="card">
-    <div class="top-row">
-      <strong>$</strong>
-      <p>{{ (globalData$ | async)?.trading_volume | number:'1.2-2' }}</p>
-    </div>
+  </article>
+  <article class="card">
+    <header class="top-row">
+      <p>{{ (globalData$ | async)?.trading_volume | currency:'USD':'symbol':'1.2-2' }}</p>
+    </header>
     <hr>
     <strong>24h Trading Volume</strong>
-  </div>
-  <div class="card">
-    <div class="top-row">
-      <p>{{ (globalData$ | async)?.btc_dominance | number:'1.2-2' }}</p>
-      <strong>%</strong>
-    </div>
+  </article>
+  <article class="card">
+    <header class="top-row">
+      <p>{{ (globalData$ | async)?.btc_dominance | number:'1.2-2' }}%</p>
+    </header>
     <hr>
     <strong>Bitcoin Market Cap Dominance</strong>
-  </div>
-  <div class="card">
-    <div class="top-row">
+  </article>
+  <article class="card">
+    <header class="top-row">
       <p>{{ (globalData$ | async)?.number_of_coins | number:'1.0' }}</p>
-    </div>
+    </header>
     <hr>
     <strong># of Coins</strong>
-  </div>
-</div>
+  </article>
+</section>

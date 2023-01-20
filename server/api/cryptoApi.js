@@ -50,6 +50,7 @@ const cryptoApi = {
 			total_volume: t.market_data.total_volume.usd,
 			high_24h: t.market_data.high_24h.usd,
 			low_24h: t.market_data.low_24h.usd,
+			low_high_value: ((t.market_data.current_price.usd - t.market_data.low_24h.usd) * 100) / (t.market_data.high_24h.usd - t.market_data.low_24h.usd),
 			price_change_24h: t.market_data.price_change_24h,
 			price_change_percentage_24h: t.market_data.price_change_percentage_24h,
 			market_cap_change_24h: t.market_data.market_cap_change_24h,
