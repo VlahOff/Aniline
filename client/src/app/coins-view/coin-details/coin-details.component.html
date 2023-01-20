@@ -1,10 +1,14 @@
 <div class="container">
-  <article class="main">
+  <article class="details-page">
     <header>
       <div class="left-header-part">
         <img class="coin-logo" src="{{ (coinDetailsData$ | async)?.image?.small }}" alt="Coin logo">
-        <h1 class="coin-name">{{ (coinDetailsData$ | async)?.name}}</h1>
-        <strong class="symbol">{{ (coinDetailsData$ | async)?.symbol | uppercase }}</strong>
+        <h1 class="coin-name">
+          {{ (coinDetailsData$ | async)?.name}}
+        </h1>
+        <strong class="symbol">
+          {{ (coinDetailsData$ | async)?.symbol | uppercase }}
+        </strong>
       </div>
       <div class="center-header-part">
         <div class="bar">
@@ -24,11 +28,57 @@
     <main>
       <table>
         <tr>
-          <th><p>Market Cap</p></th>
-          <th><p>Circulating Supply</p></th>
-          <th><p>Volume</p></th>
-          <th><p>All Time High</p></th>
-          <th><p>All Time Low</p></th>
+          <th>
+            <article class="cell">
+              <h5>Market Cap</h5>
+              <br>
+              <br>
+              <p>{{ (coinDetailsData$ | async)?.market_cap | currency:'USD':'symbol':'1.2-2' }}</p>
+              <p>{{ (coinDetailsData$ | async)?.market_cap_change_percentage_24h | number:'1.2-2' }}%</p>
+            </article>
+          </th>
+          <th>
+            <article class="cell">
+              <h5>Circulating Supply</h5>
+              <br>
+              <br>
+              <p>{{ (coinDetailsData$ | async)?.circulating_supply  | number :'1.0' }}
+                <b>{{ (coinDetailsData$ | async)?.symbol | uppercase }}</b>
+              </p>
+              <p>Max Supply: {{ (coinDetailsData$ | async)?.max_supply }}</p>
+            </article>
+          </th>
+          <th>
+            <article class="cell">
+              <h5>Volume</h5>
+              <br>
+              <br>
+              <br>
+              <p>{{ (coinDetailsData$ | async)?.total_volume | currency:'USD':'symbol':'1.2-2' }}</p>
+            </article>
+          </th>
+          <th>
+            <article class="cell">
+              <h5>All Time High</h5>
+              <br>
+              <p>{{ (coinDetailsData$ | async)?.ath | currency:'USD':'symbol':'1.2-2' }}</p>
+              <p>{{ (coinDetailsData$ | async)?.ath_change_percentage | number : '1.2-2' }}%</p>
+              <time>
+                <p class="timestamp">{{ (coinDetailsData$ | async)?.ath_date | date : 'd MMM y  H:mm' }}</p>
+              </time>
+            </article>
+          </th>
+          <th>
+            <article class="last-cell">
+              <h5>All Time Low</h5>
+              <br>
+              <p>{{ (coinDetailsData$ | async)?.atl | currency:'USD':'symbol':'1.2-2' }}</p>
+              <p>{{ (coinDetailsData$ | async)?.atl_change_percentage | number : '1.2-2' }}%</p>
+              <time>
+                <p class="timestamp">{{ (coinDetailsData$ | async)?.atl_date | date : 'd MMM y  H:mm' }}</p>
+              </time>
+            </article>
+          </th>
         </tr>
       </table>
       <section class="chart-container">
