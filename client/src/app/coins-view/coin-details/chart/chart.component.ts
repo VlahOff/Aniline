@@ -57,6 +57,7 @@ export class ChartComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.chartSub.unsubscribe();
     this.chart = null;
   }
 }

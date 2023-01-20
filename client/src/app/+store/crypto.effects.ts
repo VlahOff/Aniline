@@ -147,6 +147,7 @@ export class CryptoEffects {
   fetchCoinDetails$ = createEffect(() => this.actions$.pipe(
     ofType(CryptoActions.fetchCoinDetails),
     switchMap((state) => {
+      this.store.dispatch(AppStateActions.loadStart());
       let params = new HttpParams();
       params = params.append('coinId', state.payload);
       return this.http.get<DetailedCoinDataResponse>(
@@ -157,6 +158,7 @@ export class CryptoEffects {
         });
     }),
     map(data => {
+      this.store.dispatch(AppStateActions.loadEnd());
       return CryptoActions.setCoinDetails({ payload: data });
     })
   ));
