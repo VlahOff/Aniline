@@ -82,7 +82,7 @@
         </tr>
       </table>
       <section class="chart-container">
-        <app-chart [data]="coinDetailsData$"></app-chart>
+        <app-chart [chart$]="coinDetailsChart$" [coinId]="id"></app-chart>
       </section>
     </main>
     <footer>

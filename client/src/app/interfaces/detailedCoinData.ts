@@ -3,6 +3,10 @@ export interface ChartData {
   price: number;
 }
 
+export interface ChartDataResponse {
+  chartData: ChartData[];
+}
+
 export interface DetailedCoinDataResponse {
   id: string,
   symbol: string,
@@ -32,7 +36,6 @@ export interface DetailedCoinDataResponse {
   atl_change_percentage: number,
   atl_date: Date,
   last_updated: Date,
-  chartData: ChartData[];
 }
 
 export class DetailedCoinData {

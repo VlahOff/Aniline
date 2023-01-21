@@ -29,16 +29,7 @@ const cryptoApi = {
 	},
 	getCoinDetailed: async (coin) => {
 		let t = await axios.get(cgHost + `coins/${coin}?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false`);
-		let c = await axios.get(cgHost + `coins/${coin}/market_chart?vs_currency=usd&days=1&interval=hourly`);
 		t = t.data;
-		c = c.data.prices;
-		const r = [];
-		c.forEach(v => {
-			r.push({
-				time: v[0],
-				price: v[1]
-			});
-		});
 
 		return {
 			id: t.id,
@@ -64,9 +55,24 @@ const cryptoApi = {
 			atl: t.market_data.atl.usd,
 			atl_change_percentage: t.market_data.atl_change_percentage.usd,
 			atl_date: t.market_data.atl_date.usd,
-			last_updated: t.market_data.last_updated,
-			chartData: r
+			last_updated: t.market_data.last_updated
 		};
+	},
+	getCoinChartData: async (coin, days) => {
+		let interval = days > 1 ? 'hourly' : 'daily';
+
+		let c = await axios.get(cgHost + `coins/${coin}/market_chart?vs_currency=usd&days=${days}&interval=${interval}`);
+		c = c.data.prices;
+
+		const r = [];
+		c.forEach(v => {
+			r.push({
+				time: v[0],
+				price: v[1]
+			});
+		});
+
+		return r;
 	},
 	getTopHundred: async () => {
 		let t = await axios.get(cgHost + 'coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d');

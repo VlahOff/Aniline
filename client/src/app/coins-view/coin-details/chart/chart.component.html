@@ -1,3 +1,8 @@
 <div class="chart">
+  <section class="buttons-container">
+    <button type="button" (click)="fetchChartOneDay()">1D</button>
+    <button type="button" (click)="fetchChartOneWeek()">7D</button>
+    <button type="button" (click)="fetchChartOneMonth()">1M</button>
+  </section>
   <canvas id="acquisitions">{{chart}}</canvas>
 </div>

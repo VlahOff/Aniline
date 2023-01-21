@@ -1,13 +1,14 @@
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { map, switchMap } from "rxjs";
 import { Store } from "@ngrx/store";
+import { map, switchMap } from "rxjs";
 
 import { environment } from "src/environments/environment";
 import * as fromApp from '../+store/app.reducer';
 import * as AppStateActions from '../+store/appState.actions';
 import {
+  ChartDataResponse,
   DetailedCoinDataResponse, GlobalData, GlobalDataResponse,
   NewCoin, NewCoinsResponse, TopHundred, TopHundredResponse
 } from "../interfaces";
@@ -150,6 +151,7 @@ export class CryptoEffects {
       this.store.dispatch(AppStateActions.loadStart());
       let params = new HttpParams();
       params = params.append('coinId', state.payload);
+
       return this.http.get<DetailedCoinDataResponse>(
         environment.cryptoApi + '/getCoinDetails',
         {
@@ -160,6 +162,29 @@ export class CryptoEffects {
     map(data => {
       this.store.dispatch(AppStateActions.loadEnd());
       return CryptoActions.setCoinDetails({ payload: data });
+    })
+  ));
+
+  fetchCoinDetailsChartData$ = createEffect(() => this.actions$.pipe(
+    ofType(CryptoActions.fetchChartData),
+    switchMap((state) => {
+      this.store.dispatch(AppStateActions.loadStart());
+      let params = new HttpParams();
+      params = params.append('coinId', state.payload.coinId);
+      params = params.append('days', state.payload.days);
+
+      return this.http.get<ChartDataResponse>(
+        environment.cryptoApi + '/getCoinChartData',
+        {
+          params: params,
+          headers: httpOptions.headers
+        });
+    }),
+    map(data => data.chartData),
+    map(data => {
+      this.store.dispatch(AppStateActions.loadEnd());
+      this.store.dispatch(CryptoActions.setChartData({ payload: null }));
+      return CryptoActions.setChartData({ payload: data });
     })
   ));
 
