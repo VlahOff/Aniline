@@ -59,9 +59,7 @@ const cryptoApi = {
 		};
 	},
 	getCoinChartData: async (coin, days) => {
-		let interval = days > 1 ? 'hourly' : 'daily';
-
-		let c = await axios.get(cgHost + `coins/${coin}/market_chart?vs_currency=usd&days=${days}&interval=${interval}`);
+		let c = await axios.get(cgHost + `coins/${coin}/market_chart?vs_currency=usd&days=${days}`);
 		c = c.data.prices;
 
 		const r = [];

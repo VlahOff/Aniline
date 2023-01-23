@@ -183,7 +183,6 @@ export class CryptoEffects {
     map(data => data.chartData),
     map(data => {
       this.store.dispatch(AppStateActions.loadEnd());
-      this.store.dispatch(CryptoActions.setChartData({ payload: null }));
       return CryptoActions.setChartData({ payload: data });
     })
   ));

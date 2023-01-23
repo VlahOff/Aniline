@@ -75,7 +75,7 @@ header {
   position: absolute;
 }
 
-.low-high {
+.low-high-bar-titles {
   display: flex;
   justify-content: space-between;
   width: 500px;

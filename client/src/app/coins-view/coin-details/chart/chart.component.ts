@@ -15,9 +15,9 @@ import * as CryptoActions from '../../../+store/crypto.actions';
   styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnInit, OnDestroy {
-  chartSub!: Subscription;
-  @Input() chart$!: Observable<ChartData[] | null>;
   @Input() coinId!: string;
+  chartSub!: Subscription;
+  chart$!: Observable<ChartData[] | null>;
 
   chartData!: ChartData[] | undefined;
   labels: string[] = [];
@@ -29,65 +29,97 @@ export class ChartComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.store.dispatch(
+      CryptoActions.fetchChartData({ payload: { coinId: this.coinId, days: 1 } }));
+    this.chart$ = this.store.select(getCoinDetailsChart);
+
     this.chartSub = this.chart$
       .subscribe(v => {
         if (v) {
           this.chartData = v;
-          if (this.chartData!.length > 25) {
-            // this.chartData.forEach(v => this.labels.push(new Date(v.time).toLocaleDateString("de-DE", { day: 'numeric', month: 'short' })));
-            this.chartData.forEach(v => this.labels.push(new Date(v.time).toLocaleDateString("de-DE")));
-          } else {
-            this.chartData.forEach(v => this.labels.push(new Date(v.time).toLocaleTimeString("de-DE", { hour: 'numeric', minute: 'numeric' })));
+
+          if (this.labels.length > 0 && this.timeStamp.length > 0) {
+            this.labels = [];
+            this.timeStamp = [];
           }
+
+          this.chartData.forEach(v => {
+            this.labels.push(new Date(v.time).toLocaleString("de-DE",
+              {
+                hour: '2-digit',
+                minute: "2-digit",
+                day: '2-digit',
+                month: 'short',
+                year: '2-digit'
+              }));
+          });
+
           this.chartData.forEach(v => this.timeStamp.push(v.price));
 
-          this.chart = new Chart("acquisitions", {
-            type: 'line', //this denotes tha type of chart
-
-            data: {// values on X-Axis
-              labels: this.labels,
-              datasets: [
-                {
-                  data: this.timeStamp,
-                  pointStyle: false,
-                  borderColor: 'crimson',
-                },
-              ]
-            },
-            options: {
-              plugins: {
-                tooltip: {
-                  enabled: true
-                }
-              }
-            }
-          });
+          this.createChart();
+          this.chart.update();
         }
       });
 
-
-    Chart.defaults.plugins.legend.display = false;
-    Chart.defaults.color = 'white';
+    Chart.defaults.color = '#fff';
   }
 
   fetchChartOneDay() {
+    this.store.dispatch(
+      CryptoActions.fetchChartData({ payload: { coinId: this.coinId, days: 1 } }));
     this.chart.destroy();
-    this.store.dispatch(CryptoActions.fetchChartData({ payload: { coinId: this.coinId, days: 1 } }));
   }
 
   fetchChartOneWeek() {
+    this.store.dispatch(
+      CryptoActions.fetchChartData({ payload: { coinId: this.coinId, days: 7 } }));
     this.chart.destroy();
-    this.store.dispatch(CryptoActions.fetchChartData({ payload: { coinId: this.coinId, days: 7 } }));
   }
 
   fetchChartOneMonth() {
+    this.store.dispatch(
+      CryptoActions.fetchChartData({ payload: { coinId: this.coinId, days: 30 } }));
     this.chart.destroy();
-    this.store.dispatch(CryptoActions.fetchChartData({ payload: { coinId: this.coinId, days: 30 } }));
   }
 
   ngOnDestroy(): void {
     this.chartSub.unsubscribe();
     this.chart.destroy();
     this.store.dispatch(CryptoActions.setChartData({ payload: null }));
+  }
+
+  createChart() {
+    this.chart = new Chart("acquisitions", {
+      type: 'line', //this denotes tha type of chart
+      data: {// values on X-Axis
+        labels: this.labels,
+        datasets: [
+          {
+            data: this.timeStamp,
+            pointStyle: false,
+            borderColor: 'crimson',
+            tension: 0.1
+          },
+        ]
+      },
+      options: {
+        animation: {
+          easing: 'easeInSine'
+        },
+        elements: {
+          point: {
+            hoverRadius: 18
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            enabled: true
+          }
+        }
+      }
+    });
   }
 }

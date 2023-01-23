@@ -19,7 +19,6 @@ import * as CryptoActions from '../../+store/crypto.actions';
 export class CoinDetailsComponent implements OnInit, OnDestroy {
   isLoading$: Observable<boolean> = this.store.select(getLoadingStatus);
   coinDetailsData$!: Observable<DetailedCoinDataResponse | null>;
-  coinDetailsChart$!: Observable<ChartData[] | null>;
 
   idSub!: Subscription;
   id!: string;
@@ -37,16 +36,11 @@ export class CoinDetailsComponent implements OnInit, OnDestroy {
       .subscribe();
 
     this.store.dispatch(CryptoActions.fetchCoinDetails({ payload: this.id }));
-    this.store.dispatch(CryptoActions.fetchChartData({ payload: { coinId: this.id, days: 1 } }));
     this.coinDetailsData$ = this.store.select(getCoinDetails);
-    this.coinDetailsChart$ = this.store.select(getCoinDetailsChart);
   };
-
- 
 
   ngOnDestroy(): void {
     this.idSub.unsubscribe();
     this.store.dispatch(CryptoActions.setCoinDetails({ payload: null }));
-    this.store.dispatch(CryptoActions.setChartData({ payload: null }));
   }
 }

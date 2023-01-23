@@ -16,7 +16,7 @@
             <i class="arrow fa-solid fa-caret-up"></i>
           </div>
         </div>
-        <div class="low-high">
+        <div class="low-high-bar-titles">
           <p>Low: {{ (coinDetailsData$ | async)?.low_24h | currency:'USD':'symbol':'1.2-2' }}</p>
           <p>High: {{ (coinDetailsData$ | async)?.high_24h | currency:'USD':'symbol':'1.2-2' }}</p>
         </div>
@@ -82,7 +82,7 @@
         </tr>
       </table>
       <section class="chart-container">
-        <app-chart [chart$]="coinDetailsChart$" [coinId]="id"></app-chart>
+        <app-chart [coinId]="id"></app-chart>
       </section>
     </main>
     <footer>
