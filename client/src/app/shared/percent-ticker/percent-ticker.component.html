@@ -1,0 +1,4 @@
+<p [ngClass]="percent > 0 ? 'green':'red'">
+  {{percent > 0 ? '⮝' : '⮟'}}
+  {{percent| number:'1.2-2'}}%
+</p>

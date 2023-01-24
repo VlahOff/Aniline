@@ -15,13 +15,16 @@
     <p>${{coin.price | number:'1.2-10'}}</p>
   </td>
   <td id="sixth">
-    <p>{{coin.percent_change_1h | number:'1.2-2'}}%</p>
+    <app-percent-ticker 
+    [percent]="coin.percent_change_1h"></app-percent-ticker>
   </td>
   <td id="seventh">
-    <p>{{coin.percent_change_24h | number:'1.2-2'}}%</p>
+    <app-percent-ticker 
+    [percent]="coin.percent_change_24h"></app-percent-ticker>
   </td>
   <td id="eighth">
-    <p>{{coin.percent_change_7d | number:'1.2-2'}}%</p>
+    <app-percent-ticker 
+    [percent]="coin.percent_change_7d"></app-percent-ticker>
   </td>
   <td id="tenth">
     <p>{{coin.total_supply | number:'1.0'}}</p>

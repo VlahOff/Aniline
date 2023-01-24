@@ -4,8 +4,8 @@ import { Store } from '@ngrx/store';
 import { map, Observable, Subscription } from 'rxjs';
 
 import { getLoadingStatus } from 'src/app/+store/appState.selector';
-import { getCoinDetails, getCoinDetailsChart } from 'src/app/+store/crypto.selector';
-import { ChartData, DetailedCoinDataResponse } from 'src/app/interfaces';
+import { getCoinDetails } from 'src/app/+store/crypto.selector';
+import { DetailedCoinDataResponse } from 'src/app/interfaces';
 import * as fromApp from '../../+store/app.reducer';
 import * as CryptoActions from '../../+store/crypto.actions';
 

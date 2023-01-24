@@ -9,6 +9,7 @@ export interface State {
   newCoins: NewCoin[] | null;
   coinDetails: DetailedCoinDataResponse | null;
   chartData: ChartData[] | null;
+  chartPeriod: number;
 }
 
 const initialState: State = {
@@ -17,7 +18,8 @@ const initialState: State = {
   topThree: null,
   newCoins: null,
   coinDetails: null,
-  chartData: null
+  chartData: null,
+  chartPeriod: 1
 };
 
 
@@ -63,6 +65,13 @@ export const cryptoReducer = createReducer(
     return {
       ...state,
       chartData: payload
+    };
+  }),
+
+  on(CryptoActions.setChartPeriod, (state, { payload }) => {
+    return {
+      ...state,
+      chartPeriod: payload
     };
   })
 );

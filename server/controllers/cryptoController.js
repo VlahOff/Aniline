@@ -92,8 +92,8 @@ cryptoController.get('/getGlobalData', async (req, res) => {
 
 cryptoController.get('/getCoinDetails', async (req, res) => {
   try {
-    // const temp = await cryptoApi.getCoinDetailed(req.query.coinId);
-    const temp = {
+    const temp = await cryptoApi.getCoinDetailed(req.query.coinId);
+    const temp2 = {
       'id': 'bitcoin',
       'symbol': 'btc',
       'name': 'Bitcoin',
@@ -109,6 +109,7 @@ cryptoController.get('/getCoinDetails', async (req, res) => {
       'low_24h': 20533,
       'low_high_value': 32.70241850683491,
       'price_change_24h': -640.1811279779,
+      // 'price_change_percentage_24h': 2.9798,
       'price_change_percentage_24h': -2.9798,
       'market_cap_change_24h': -12720047856.944,
       'market_cap_change_percentage_24h': -3.07207,
@@ -135,8 +136,8 @@ cryptoController.get('/getCoinDetails', async (req, res) => {
 
 cryptoController.get('/getCoinChartData', async (req, res) => {
   try {
-    // const temp = await cryptoApi.getCoinChartData(req.query.coinId, req.query.days);
-    const temp = [
+    const temp = await cryptoApi.getCoinChartData(req.query.coinId, req.query.days);
+    const temp2 = [
       {
         'time': 1674057726503,
         'price': 21255.367139697784

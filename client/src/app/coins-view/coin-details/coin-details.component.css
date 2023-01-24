@@ -82,6 +82,21 @@ header {
   margin-top: 10px;
 }
 
+.right-header-part {
+  display: flex;
+  gap: 12px
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 500px;
+}
+
+.percent-ticker {
+  font-size: 18px;
+  font-weight: 500px;
+}
+
 main {
   display: flex;
   flex-direction: column;

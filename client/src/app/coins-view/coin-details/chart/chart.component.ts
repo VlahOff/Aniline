@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@
 import { Store } from '@ngrx/store';
 import Chart from 'chart.js/auto';
 import { Observable, Subscription } from 'rxjs';
-import { getCoinDetailsChart } from 'src/app/+store/crypto.selector';
+import { getChartPeriod, getCoinDetailsChart } from 'src/app/+store/crypto.selector';
 
 import { ChartData } from 'src/app/interfaces';
 import * as fromApp from '../../../+store/app.reducer';
@@ -17,6 +17,7 @@ import * as CryptoActions from '../../../+store/crypto.actions';
 export class ChartComponent implements OnInit, OnDestroy {
   @Input() coinId!: string;
   chartSub!: Subscription;
+  chartPeriod$!: Observable<number | null>;
   chart$!: Observable<ChartData[] | null>;
 
   chartData!: ChartData[] | undefined;
@@ -62,23 +63,36 @@ export class ChartComponent implements OnInit, OnDestroy {
       });
 
     Chart.defaults.color = '#fff';
+    this.chartPeriod$ = this.store.select(getChartPeriod);
   }
 
   fetchChartOneDay() {
     this.store.dispatch(
-      CryptoActions.fetchChartData({ payload: { coinId: this.coinId, days: 1 } }));
+      CryptoActions.fetchChartData({ payload: { coinId: this.coinId, days: 1 } })
+    );
+    this.store.dispatch(
+      CryptoActions.setChartPeriod({ payload: 1 })
+    );
     this.chart.destroy();
   }
 
   fetchChartOneWeek() {
     this.store.dispatch(
-      CryptoActions.fetchChartData({ payload: { coinId: this.coinId, days: 7 } }));
+      CryptoActions.fetchChartData({ payload: { coinId: this.coinId, days: 7 } }))
+      ;
+    this.store.dispatch(
+      CryptoActions.setChartPeriod({ payload: 7 })
+    );
     this.chart.destroy();
   }
 
   fetchChartOneMonth() {
     this.store.dispatch(
-      CryptoActions.fetchChartData({ payload: { coinId: this.coinId, days: 30 } }));
+      CryptoActions.fetchChartData({ payload: { coinId: this.coinId, days: 30 } })
+    );
+    this.store.dispatch(
+      CryptoActions.setChartPeriod({ payload: 30 })
+    );
     this.chart.destroy();
   }
 

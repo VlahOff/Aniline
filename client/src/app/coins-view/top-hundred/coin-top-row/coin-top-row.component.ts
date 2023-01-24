@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TopHundredResponse } from 'src/app/interfaces';
 
 @Component({
@@ -6,14 +6,9 @@ import { TopHundredResponse } from 'src/app/interfaces';
   templateUrl: './coin-top-row.component.html',
   styleUrls: ['./coin-top-row.component.css']
 })
-export class CoinTopRowComponent implements OnInit {
+export class CoinTopRowComponent {
   @Input() coin!: TopHundredResponse;
   @Input() index!: number;
 
   constructor() { }
-
-  ngOnInit(): void {
-
-  }
-
 }

@@ -1,0 +1,12 @@
+p {
+  text-align: center;
+  width: 90px;
+}
+
+p.red {
+  color: #BF3F3F;
+}
+
+p.green {
+  color: #3F7F3F;
+}

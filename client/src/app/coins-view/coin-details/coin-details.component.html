@@ -1,8 +1,10 @@
 <div class="container">
   <article class="details-page">
     <header>
+
       <div class="left-header-part">
-        <img class="coin-logo" src="{{ (coinDetailsData$ | async)?.image?.small }}" alt="Coin logo">
+        <img class="coin-logo" 
+        src="{{ (coinDetailsData$ | async)?.image?.small }}" alt="Coin logo">
         <h1 class="coin-name">
           {{ (coinDetailsData$ | async)?.name}}
         </h1>
@@ -10,21 +12,31 @@
           {{ (coinDetailsData$ | async)?.symbol | uppercase }}
         </strong>
       </div>
+
       <div class="center-header-part">
         <div class="bar">
-          <div class="bar-progress" [style.width.%]="(coinDetailsData$ | async)?.low_high_value">
+          <div class="bar-progress" 
+          [style.width.%]="(coinDetailsData$ | async)?.low_high_value">
             <i class="arrow fa-solid fa-caret-up"></i>
           </div>
         </div>
         <div class="low-high-bar-titles">
-          <p>Low: {{ (coinDetailsData$ | async)?.low_24h | currency:'USD':'symbol':'1.2-2' }}</p>
-          <p>High: {{ (coinDetailsData$ | async)?.high_24h | currency:'USD':'symbol':'1.2-2' }}</p>
+          <p>Low: {{ (coinDetailsData$ | async)?.low_24h |
+            currency:'USD':'symbol':'1.2-2' }}</p>
+          <p>High: {{ (coinDetailsData$ | async)?.high_24h |
+            currency:'USD':'symbol':'1.2-2' }}</p>
         </div>
       </div>
+
       <div class="right-header-part">
-        <h2>{{ (coinDetailsData$ | async)?.current_price | currency:'USD':'symbol':'1.2-2' }}</h2>
+        <p class="price">{{ (coinDetailsData$ | async)?.current_price | 
+          currency:'USD':'symbol':'1.2-2' }}</p>
+        <app-percent-ticker class="percent-ticker"
+          [percent]="(coinDetailsData$ | async)!.price_change_percentage_24h"
+          ></app-percent-ticker>
       </div>
     </header>
+
     <main>
       <table>
         <tr>
@@ -33,8 +45,10 @@
               <h5>Market Cap</h5>
               <br>
               <br>
-              <p>{{ (coinDetailsData$ | async)?.market_cap | currency:'USD':'symbol':'1.2-2' }}</p>
-              <p>{{ (coinDetailsData$ | async)?.market_cap_change_percentage_24h | number:'1.2-2' }}%</p>
+              <p>{{ (coinDetailsData$ | async)?.market_cap | 
+                currency:'USD':'symbol':'1.2-2' }}</p>
+              <p>{{ (coinDetailsData$ | async)?.market_cap_change_percentage_24h | 
+                number:'1.2-2' }}%</p>
             </article>
           </th>
           <th>
@@ -54,17 +68,21 @@
               <br>
               <br>
               <br>
-              <p>{{ (coinDetailsData$ | async)?.total_volume | currency:'USD':'symbol':'1.2-2' }}</p>
+              <p>{{ (coinDetailsData$ | async)?.total_volume | 
+                currency:'USD':'symbol':'1.2-2' }}</p>
             </article>
           </th>
           <th>
             <article class="cell">
               <h5>All Time High</h5>
               <br>
-              <p>{{ (coinDetailsData$ | async)?.ath | currency:'USD':'symbol':'1.2-2' }}</p>
-              <p>{{ (coinDetailsData$ | async)?.ath_change_percentage | number : '1.2-2' }}%</p>
+              <p>{{ (coinDetailsData$ | async)?.ath | 
+                currency:'USD':'symbol':'1.2-2' }}</p>
+              <p>{{ (coinDetailsData$ | async)?.ath_change_percentage | 
+                number : '1.2-2' }}%</p>
               <time>
-                <p class="timestamp">{{ (coinDetailsData$ | async)?.ath_date | date : 'd MMM y  H:mm' }}</p>
+                <p class="timestamp">{{ (coinDetailsData$ | async)?.ath_date | 
+                  date : 'd MMM y  H:mm' }}</p>
               </time>
             </article>
           </th>
@@ -72,10 +90,13 @@
             <article class="last-cell">
               <h5>All Time Low</h5>
               <br>
-              <p>{{ (coinDetailsData$ | async)?.atl | currency:'USD':'symbol':'1.2-2' }}</p>
-              <p>{{ (coinDetailsData$ | async)?.atl_change_percentage | number : '1.2-2' }}%</p>
+              <p>{{ (coinDetailsData$ | async)?.atl | 
+                currency:'USD':'symbol':'1.2-2' }}</p>
+              <p>{{ (coinDetailsData$ | async)?.atl_change_percentage | 
+                number : '1.2-2' }}%</p>
               <time>
-                <p class="timestamp">{{ (coinDetailsData$ | async)?.atl_date | date : 'd MMM y  H:mm' }}</p>
+                <p class="timestamp">{{ (coinDetailsData$ | async)?.atl_date | 
+                  date : 'd MMM y  H:mm' }}</p>
               </time>
             </article>
           </th>

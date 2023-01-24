@@ -1,8 +1,19 @@
 <div class="chart">
   <section class="buttons-container">
-    <button type="button" (click)="fetchChartOneDay()">1D</button>
-    <button type="button" (click)="fetchChartOneWeek()">7D</button>
-    <button type="button" (click)="fetchChartOneMonth()">1M</button>
+    <button 
+    ngClass="{{(chartPeriod$ | async) == 1 ? 'selected': ''}}" 
+    type="button"
+    (click)="fetchChartOneDay()">1D</button>
+
+    <button 
+    ngClass="{{(chartPeriod$ | async) == 7 ? 'selected': ''}}"
+    type="button" 
+    (click)="fetchChartOneWeek()">7D</button>
+
+    <button
+    ngClass="{{(chartPeriod$ | async) == 30 ? 'selected': ''}}" 
+    type="button" 
+    (click)="fetchChartOneMonth()">1M</button>
   </section>
   <canvas id="acquisitions">{{chart}}</canvas>
 </div>

@@ -51,4 +51,9 @@ export const setChartData = createAction(
   props<{ payload: ChartData[] | null; }>()
 );
 
+export const setChartPeriod = createAction(
+  '[Crypto] Set Chart Period',
+  props<{ payload: number; }>()
+);
+
 export const dummy = createAction('[Crypto] Dummy');
