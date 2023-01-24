@@ -10,6 +10,9 @@
         <div class="button" (click)="showAddModal()">
           <i class="fa-solid fa-1x fa-plus"></i>
         </div>
+        <div class="button" (click)="showEditModal()">
+          <i class="fa-solid fa-1x fa-minus"></i>
+        </div>
       </div>
     </div>
     <div class="table">
@@ -25,14 +28,19 @@
       </thead>
       <tbody>
         <app-portfolio-table-row
+        class="transaction"
         *ngFor="let transactionId of (transactionsIds$ | async)"
         [transactionId]="transactionId"
         ></app-portfolio-table-row>
       </tbody>
     </div>
   </div>
-  <div class="modal" *ngIf="(addModalStatus$ | async)"  (click)="hideModal($event)">
+  <div class="modal" *ngIf="(addModalStatus$ | async)" (click)="hideModal($event)">
+  
     <app-add-coin-modal></app-add-coin-modal>
+  </div>
+  <div class="modal" *ngIf="(editModalStatus$ | async)" (click)="hideModal($event)">
+    <app-edit-coin-modal></app-edit-coin-modal>
   </div>
 </div>
 <div class="spinner-container" *ngIf="(isLoading$ | async)">

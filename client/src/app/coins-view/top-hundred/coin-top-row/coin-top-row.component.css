@@ -49,11 +49,12 @@ tr {
   justify-content: space-around;
   gap: 10px;
   padding-top: 20px;
-  border-bottom: 1px black solid;
+  border-bottom: 1px #797979 solid;
 }
 
 tr:hover {
   background-color: #757575;
+  transition: background-color, ease, 600ms;
 }
 
 td {

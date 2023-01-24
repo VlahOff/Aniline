@@ -5,6 +5,7 @@ import * as PortfolioActions from './portfolio.actions';
 export interface State {
   allCoinsList: AllCoins[];
   addModalShown: boolean;
+  editModalShown: boolean;
   selectedCoin: AllCoins | null;
   coinInputField: string;
   transactionsIds: string[];
@@ -14,6 +15,7 @@ export interface State {
 const initialState: State = {
   allCoinsList: [],
   addModalShown: false,
+  editModalShown: true,
   selectedCoin: null,
   coinInputField: '',
   transactionsIds: [],
@@ -27,6 +29,21 @@ export const portfolioReducer = createReducer(
     return {
       ...state,
       addModalShown: !state.addModalShown
+    };
+  }),
+
+  on(PortfolioActions.showEditModal, (state) => {
+    return {
+      ...state,
+      editModalShown: !state.editModalShown
+    };
+  }),
+
+  on(PortfolioActions.hideModals, (state) => {
+    return {
+      ...state,
+      addModalShown: false,
+      editModalShown: false
     };
   }),
 

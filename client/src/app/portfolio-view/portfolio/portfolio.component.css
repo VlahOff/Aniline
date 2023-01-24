@@ -27,10 +27,9 @@
 }
 
 thead {
-  border-bottom: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid #797979;
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
 }
 
 tbody {
@@ -44,6 +43,15 @@ tr {
   gap: 10px;
   text-align: center;
   height: 40px;
+}
+
+.transaction {
+  border-bottom: 1px #797979 solid;
+}
+
+.transaction:hover {
+  background-color: #757575;
+  transition: background-color, ease, 600ms;
 }
 
 .first-header {

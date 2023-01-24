@@ -4,9 +4,11 @@ p {
 }
 
 p.red {
-  color: #BF3F3F;
+  color: #be2e2e;
+  /* color: #BF3F3F; */
 }
 
 p.green {
-  color: #3F7F3F;
+  color: #2e832e;
+  /* color: #3F7F3F; */
 }

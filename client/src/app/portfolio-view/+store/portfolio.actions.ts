@@ -3,6 +3,10 @@ import { AllCoins, Transaction, TransactionDetailed } from "src/app/interfaces";
 
 export const showAddModal = createAction('[Portfolio] Show Add Modal');
 
+export const showEditModal = createAction('[Portfolio] Show Edit Modal');
+
+export const hideModals = createAction('[Portfolio] Hide Modals');
+
 export const fetchAllCoinsList = createAction('[Portfolio] Fetch All Coins List');
 
 export const setAllCoinsList = createAction(
