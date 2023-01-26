@@ -1,4 +1,4 @@
-.card-box {
+.card {
   margin: 25px;
   background: rgba(102, 102, 102, 0.4);
   backdrop-filter: blur(6px);
@@ -16,7 +16,7 @@
   padding: 20px 0;
 }
 
-.crypto-title {
+.coin-name {
   text-align: center;
   padding-top: 15px;
   color: white;
@@ -26,14 +26,14 @@ img {
   width: 50px;
 }
 
-.text-center {
+.coin-info {
   padding: 10px;
   margin-bottom: 8px;
   border-top: white solid 1px;
   border-bottom: white solid 1px;
 }
 
-.text-center p {
+.coin-info p {
   font-size: 18px;
   text-align: center;
   margin-bottom: 5px;

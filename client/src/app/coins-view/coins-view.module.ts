@@ -9,18 +9,18 @@ import { CoinsRoutingModule } from './coins-routing.module';
 import { GlobalDataComponent } from './global-data/global-data.component';
 import { CoinNewRowComponent } from './new-coins/coin-new-row/coin-new-row.component';
 import { NewCoinsComponent } from './new-coins/new-coins.component';
-import { CoinTopRowComponent } from './top-hundred/coin-top-row/coin-top-row.component';
 import { TopHundredComponent } from './top-hundred/top-hundred.component';
+import { CoinDataTableComponent } from './coin-data-table/coin-data-table.component';
 
 @NgModule({
   declarations: [
     TopHundredComponent,
     NewCoinsComponent,
-    CoinTopRowComponent,
     CoinNewRowComponent,
     GlobalDataComponent,
     CoinDetailsComponent,
     ChartComponent,
+    CoinDataTableComponent,
   ],
   imports: [
     CommonModule,

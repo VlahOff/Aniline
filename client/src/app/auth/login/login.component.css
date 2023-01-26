@@ -1,11 +1,11 @@
 .container {
   display: flex;
   justify-content: center;
-  margin-top: 160px;
+  margin-top: 200px;
 }
 
 .login-container {
-  width: 400px;
+  width: 460px;
   color: white;
   background: rgba(102, 102, 102, 0.4);
   backdrop-filter: blur(6px);
@@ -14,19 +14,16 @@
 }
 
 header {
-  display: block;
   text-align: center;
 }
 
 .logo {
   width: 180px;
-  margin: auto;
   padding: 50px 0px;
 }
 
 h1 {
   font-weight: 300;
-  padding: 0px 0px 10px 0px;
 }
 
 form {
@@ -63,14 +60,12 @@ label {
 
 .field {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   height: 30px;
-  padding: 10px 0;
+  margin-top: 8px;
 }
 
 .input-icon {
-  padding: 15px;
-  padding-top: 8px;
   width: 20px;
   opacity: 40%;
   color: white;
@@ -84,7 +79,8 @@ input {
   border-radius: 10px;
   text-align: center;
   border: none;
-  width: 300px;
+  width: 280px;
+  height: 20px;
 }
 
 input:focus {

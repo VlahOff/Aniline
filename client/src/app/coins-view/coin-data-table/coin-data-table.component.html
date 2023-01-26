@@ -1,0 +1,52 @@
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="sticky-col first-col">#</th>
+        <th class="sticky-col second-col"></th>
+        <th class="sticky-col third-col">Coin</th>
+        <th class="fourth-col">Sym</th>
+        <th class="fifth-col">Price</th>
+        <th class="sixth-col">1h</th>
+        <th class="seventh-col">24h</th>
+        <th class="eighth-col">7d</th>
+        <th class="ninth-col">Mkt Cap</th>
+        <th class="tenth-col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-row" *ngFor="let coin of (coinsData$ | async), index as i">
+        <td class="sticky-col first-col">
+          <p>{{i + 1}}</p>
+        </td>
+        <td class="sticky-col second-col">
+          <img src="{{coin.image}}" alt="coin logo">
+        </td>
+        <td class="sticky-col third-col">
+          <p>{{coin.name}}</p>
+        </td>
+        <td class="fourth-col">
+          <p>{{coin.symbol | uppercase}}</p>
+        </td>
+        <td class="fifth-col">
+          <p>${{coin.current_price | number:'1.2-10'}}</p>
+        </td>
+        <td class="sixth-col">
+          <app-percent-ticker [percent]="coin.price_change_percentage_1h_in_currency"></app-percent-ticker>
+        </td>
+        <td class="seventh-col">
+          <app-percent-ticker [percent]="coin.price_change_percentage_24h"></app-percent-ticker>
+        </td>
+        <td class="eighth-col">
+          <app-percent-ticker [percent]="coin.price_change_percentage_7d_in_currency"></app-percent-ticker>
+        </td>
+        <td class="ninth-col">
+          <p>${{coin.market_cap | number:'1.0'}}</p>
+        </td>
+        <td class="tenth-col">
+          <p>{{coin.total_supply | number:'1.0'}}</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

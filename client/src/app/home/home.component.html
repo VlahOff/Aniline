@@ -1,5 +1,5 @@
 <h1>Track your crypto gains!</h1>
-<div class="container">
+<div class="card-container">
   <app-crypto-card *ngFor="let card of (topThree$ | async)" [card]="card"></app-crypto-card>
 </div>
 <div class="spinner-container" *ngIf="(isLoading$ | async)">
