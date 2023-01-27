@@ -20,9 +20,19 @@ export const setFrom = createAction(
   props<{ payload: CryptoMap | null; }>()
 );
 
+export const setFromString = createAction(
+  '[Converter] Set From String',
+  props<{ payload: string; }>()
+);
+
 export const setTo = createAction(
   '[Converter] Set To',
   props<{ payload: FiatMap | null; }>()
+);
+
+export const setToString = createAction(
+  '[Converter] Set To String',
+  props<{ payload: string; }>()
 );
 
 export const setAmount = createAction(

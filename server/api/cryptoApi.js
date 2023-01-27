@@ -161,7 +161,7 @@ const cryptoApi = {
 	},
 
 	cryptoMap: async () => {
-		const t = await axios.get(cmcHostVOne + 'cryptocurrency/map?sort=cmc_rank&limit=100', { 'headers': cmcHeaders });
+		const t = await axios.get(cmcHostVOne + 'cryptocurrency/map?sort=cmc_rank', { 'headers': cmcHeaders });
 		const arr = [];
 		t.data.data.forEach(e => {
 			const res = {
@@ -176,13 +176,18 @@ const cryptoApi = {
 	},
 
 	fiatMap: async () => {
-		return [
-			{ id: 2781, name: 'United States Dollar', sign: '$', symbol: 'USD' },
-			{ id: 2790, name: 'Euro', sign: '€', symbol: 'EUR' },
-			{ id: 2814, name: 'Bulgarian Lev', sign: 'лв', symbol: 'BGN' },
-			{ id: 2782, name: 'Australian Dollar', sign: '$', symbol: 'AUD' },
-			{ id: 2784, name: 'Canadian Dollar', sign: '$', symbol: 'CAD' }
-		];
+		const t = await axios.get(cmcHostVOne + 'fiat/map', { 'headers': cmcHeaders });
+		const arr = [];
+		t.data.data.forEach(e => {
+			const res = {
+				id: e.id,
+				name: e.name,
+				sign: e.sign,
+				symbol: e.symbol
+			};
+			arr.push(res);
+		});
+		return arr;
 	},
 
 	convert: async (amount, fromCurrency, toCurrency) => {

@@ -23,19 +23,7 @@ export class ConverterEffects {
     switchMap(() => {
       this.store.dispatch(AppStateActions.loadStart());
       return this.http
-        .get<CryptoMapRes[]>(environment.cryptoApi + '/cryptoMap', httpOptions);
-    }),
-    map(data => {
-      const result: CryptoMap[] = [];
-      data.forEach(v => {
-        result.push(new CryptoMap(
-          v.id,
-          v.name,
-          v.slug,
-          v.symbol
-        ));
-      });
-      return result;
+        .get<CryptoMap[]>(environment.cryptoApi + '/cryptoMap', httpOptions);
     }),
     map(data => {
       this.store.dispatch(AppStateActions.loadEnd());
@@ -48,19 +36,7 @@ export class ConverterEffects {
     switchMap(() => {
       this.store.dispatch(AppStateActions.loadStart());
       return this.http
-        .get<FiatMapRes[]>(environment.cryptoApi + '/fiatMap', httpOptions);
-    }),
-    map(data => {
-      const result: FiatMap[] = [];
-      data.forEach(v => {
-        result.push(new FiatMap(
-          v.id,
-          v.name,
-          v.sign,
-          v.symbol
-        ));
-      });
-      return result;
+        .get<FiatMap[]>(environment.cryptoApi + '/fiatMap', httpOptions);
     }),
     map(data => {
       this.store.dispatch(AppStateActions.loadEnd());

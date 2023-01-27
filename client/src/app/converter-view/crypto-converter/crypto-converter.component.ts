@@ -15,6 +15,7 @@ import * as fromApp from '../../+store/app.reducer';
   styleUrls: ['./crypto-converter.component.css']
 })
 export class CryptoConverterComponent implements OnInit {
+  // 
   isLoading$: Observable<boolean> = this.store.select(getLoadingStatus);
   cryptoMap$: Observable<CryptoMap[] | null> = this.store.select(getCryptoMap);
   fiatMap$: Observable<FiatMap[] | null> = this.store.select(getFiatMap);
@@ -51,12 +52,22 @@ export class CryptoConverterComponent implements OnInit {
     );
   }
 
+  filterFrom(value: string) {
+    this.store.dispatch(ConverterActions.setFromString({ payload: value }));
+  }
+
+  filterTo(value: string) {
+    this.store.dispatch(ConverterActions.setToString({ payload: value }));
+  }
+
   fromCrypto(crypto: CryptoMap) {
+    this.store.dispatch(ConverterActions.setFromString({ payload: '' }));
     this.store.dispatch(ConverterActions.setFrom({ payload: crypto }));
     (<FormControl>this.converterForm.get('from')).setValue(`${crypto.name} "${crypto.symbol}"`);
   }
 
   toFiat(fiat: FiatMap) {
+    this.store.dispatch(ConverterActions.setToString({ payload: '' }));
     this.store.dispatch(ConverterActions.setTo({ payload: fiat }));
     (<FormControl>this.converterForm.get('to')).setValue(`${fiat.name} "${fiat.sign}"`);
   }

@@ -1,46 +1,68 @@
 <div class="container">
-  <div class="converter">
+  <section class="converter">
     <form [formGroup]="converterForm" (ngSubmit)="onSubmit()">
       <h1 class="title">Cryptocurrency Converter Calculator</h1>
-      <div class="top-row">
-        <div class="input">
-          <i class="fa-solid fa-coins"></i>
-          <input type="text" placeholder="Enter amount" formControlName="amount" (keyup)="setAmount()" autofocus>
-          <img src="" alt="" class="input-icon">
-        </div>
-      </div>
-      <div class="selector-container">
-        <div class="menu">
-          <div class="input-dropdown">
-            <img src="" alt="" class="input-icon">
-            <input type="text" placeholder="From BTC" formControlName="from">
-            <i class="fa-regular fa-square-caret-down"></i>
-            <div class="menu-content">
-              <button type="button" 
-              *ngFor="let crypto of cryptoMap$ | async" 
-              (click)="fromCrypto(crypto)"
-              >{{ crypto.name }} ({{ crypto.symbol }})</button>
-            </div>
-          </div>
-        </div>
-        <div class="menu">
-          <div class="input-dropdown">
-            <img src="" alt="" class="input-icon">
-            <input type="text" placeholder="To USD" formControlName="to">
-            <i class="fa-regular fa-square-caret-down"></i>
-            <div class="menu-content">
-              <button type="button" 
-              *ngFor="let fiat of fiatMap$ | async" 
-              (click)="toFiat(fiat)"
-              >{{ fiat.name }} "{{fiat.sign}}" ({{ fiat.symbol }})</button>
-            </div>
+
+      <div class="amount-input-container">
+        <div class="input-container">
+          <div class="input">
+            <i class="input-icon fa-solid fa-coins"></i>
+            <input type="text" placeholder="Enter amount" 
+            formControlName="amount" (keyup)="setAmount()" autofocus>
+            <div class="input-icon"></div>
           </div>
         </div>
       </div>
-      <div class="button-div">
+
+      <div class="currency-selector-container">
+
+        <div class="input-container">
+          <div class="input">
+            <div class="input-icon"></div>
+            <input #inputFrom 
+            (input)="filterFrom(inputFrom.value)" 
+            autocomplete="off" 
+            class="input" id="from" 
+            placeholder="Bitcoin"
+            formControlName="from" 
+            type="text">
+            <i class="input-icon fa-regular fa-square-caret-down"></i>
+            <div class="menu-content" [class.on]="(cryptoMap$ | async)" >
+              <button type="button" 
+              *ngFor="let coin of (cryptoMap$ | async)" 
+              (click)="fromCrypto(coin)"
+              >{{coin.name}} - {{coin.symbol | uppercase}}</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-container">
+          <div class="input">
+            <div class="input-icon"></div>
+            <input #inputTo 
+            (input)="filterTo(inputTo.value)" 
+            autocomplete="off" 
+            class="input" id="to" 
+            placeholder="USD"
+            formControlName="to" 
+            type="text">
+            <i class="input-icon fa-regular fa-square-caret-down"></i>
+            <div class="menu-content" [class.on]="(fiatMap$ | async)">
+              <button type="button" 
+              *ngFor="let coin of (fiatMap$ | async)" 
+              (click)="toFiat(coin)"
+              >{{coin.name}} - {{coin.symbol | uppercase}}</button>
+            </div>
+          </div>
+        </div>
+          
+      </div>
+
+      <div class="button-container">
         <button type="submit" class="button" [disabled]="!converterForm.valid">
           <i class="fa-solid fa-arrows-rotate"></i> Convert</button>
       </div>
+
       <div class="output">
         <h4 class="output-field" *ngIf="result$ | async">
           {{ (result$ | async)!.amount }}
@@ -52,9 +74,11 @@
           ({{ (to$ | async)!.symbol }})
         </h4>
       </div>
+
     </form>
-  </div>
+  </section>
 </div>
+
 <div class="spinner-container" *ngIf="(isLoading$ | async)">
   <app-loading-spinner class="spinner"></app-loading-spinner>
 </div>

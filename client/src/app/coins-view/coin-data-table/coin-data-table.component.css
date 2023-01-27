@@ -20,7 +20,6 @@ thead {
   position: -webkit-sticky;
   position: sticky;
   background-color: #444444;
-  /* z-index: 2; */
 }
 
 tr {

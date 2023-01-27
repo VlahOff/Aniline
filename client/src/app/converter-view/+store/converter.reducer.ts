@@ -9,7 +9,9 @@ export interface State {
   fiatMap: FiatMap[] | null;
   amount: number;
   from: CryptoMap | null;
+  fromString: string;
   to: FiatMap | null;
+  toString: string;
   result: ConverterResponse | null;
 }
 
@@ -18,7 +20,9 @@ const initialState: Readonly<State> = {
   fiatMap: null,
   amount: 0,
   from: null,
+  fromString: '',
   to: null,
+  toString: '',
   result: null
 };
 
@@ -46,10 +50,24 @@ export const converterReducer = createReducer(
     };
   }),
 
+  on(ConverterActions.setFromString, (state, { payload }) => {
+    return {
+      ...state,
+      fromString: payload
+    };
+  }),
+
   on(ConverterActions.setTo, (state, { payload }) => {
     return {
       ...state,
       to: payload
+    };
+  }),
+
+  on(ConverterActions.setToString, (state, { payload }) => {
+    return {
+      ...state,
+      toString: payload
     };
   }),
 
