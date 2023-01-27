@@ -7,7 +7,6 @@ import { ChartComponent } from './coin-details/chart/chart.component';
 import { CoinDetailsComponent } from './coin-details/coin-details.component';
 import { CoinsRoutingModule } from './coins-routing.module';
 import { GlobalDataComponent } from './global-data/global-data.component';
-import { CoinNewRowComponent } from './new-coins/coin-new-row/coin-new-row.component';
 import { NewCoinsComponent } from './new-coins/new-coins.component';
 import { TopHundredComponent } from './top-hundred/top-hundred.component';
 import { CoinDataTableComponent } from './coin-data-table/coin-data-table.component';
@@ -16,7 +15,6 @@ import { CoinDataTableComponent } from './coin-data-table/coin-data-table.compon
   declarations: [
     TopHundredComponent,
     NewCoinsComponent,
-    CoinNewRowComponent,
     GlobalDataComponent,
     CoinDetailsComponent,
     ChartComponent,

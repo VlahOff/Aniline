@@ -7,9 +7,9 @@
     <p><span class="label">Price:</span>
       {{ card.current_price | currency:'USD':'symbol':'1.2-10' }}</p>
     <p><span class="label">24h:</span>
-      {{ card.price_change_24h | currency:'USD':'symbol':'1.2-2' }}</p>
-    <p><span class="label">24h:</span>
-      {{ card.price_change_percentage_24h / 100 | percent:'1.2-2' }}</p>
+      {{ card.price_change_percentage_24h_in_currency / 100 | percent:'1.2-2' }}</p>
+    <p><span class="label">7d:</span>
+      {{ card.price_change_percentage_7d_in_currency / 100 | percent:'1.2-2' }}</p>
   </main>
   <footer class="data-buttons">
     <a class="button" routerLink="/coins/{{card.id}}">Details</a>

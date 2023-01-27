@@ -1,11 +1,14 @@
 <div class="container">
+
   <div class="global-data">
     <app-global-data></app-global-data>
   </div>
+
   <div class="table-component-container">
     <h1>Top 100 coins</h1>
     <app-coin-data-table [coinsData$]="topHundred$"></app-coin-data-table>
   </div>
+  
 </div>
 <div class="spinner-container" *ngIf="(isLoading$ | async)">
   <app-loading-spinner class="spinner"></app-loading-spinner>

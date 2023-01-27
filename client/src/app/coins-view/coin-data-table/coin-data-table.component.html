@@ -11,11 +11,14 @@
         <th class="seventh-col">24h</th>
         <th class="eighth-col">7d</th>
         <th class="ninth-col">Mkt Cap</th>
-        <th class="tenth-col">Total</th>
+        <th class="tenth-col">Total Supply</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="table-row" *ngFor="let coin of (coinsData$ | async), index as i">
+      <tr class="table-row" 
+      *ngFor="let coin of (coinsData$ | async), index as i"
+      routerLink="/coins/{{coin.id}}"
+      >
         <td class="sticky-col first-col">
           <p>{{i + 1}}</p>
         </td>
@@ -35,7 +38,7 @@
           <app-percent-ticker [percent]="coin.price_change_percentage_1h_in_currency"></app-percent-ticker>
         </td>
         <td class="seventh-col">
-          <app-percent-ticker [percent]="coin.price_change_percentage_24h"></app-percent-ticker>
+          <app-percent-ticker [percent]="coin.price_change_percentage_24h_in_currency"></app-percent-ticker>
         </td>
         <td class="eighth-col">
           <app-percent-ticker [percent]="coin.price_change_percentage_7d_in_currency"></app-percent-ticker>

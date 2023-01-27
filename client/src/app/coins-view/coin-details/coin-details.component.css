@@ -1,14 +1,13 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
+  display: block;
+  overflow-x: auto;
   margin-top: 160px;
-  color: aliceblue;
+  color: white;
 }
 
 .details-page {
+  margin: 0 auto;
+  padding: 18px;
   width: 1400px;
   background: rgba(102, 102, 102, 0.4);
   backdrop-filter: blur(6px);
@@ -79,7 +78,7 @@ header {
   display: flex;
   justify-content: space-between;
   width: 500px;
-  margin-top: 10px;
+  margin-top: 18px;
 }
 
 .right-header-part {

@@ -1,12 +1,12 @@
 import { createReducer, on } from "@ngrx/store";
-import { ChartData, DetailedCoinDataResponse, GlobalData, NewCoin, TopHundred } from "../interfaces";
+import { ChartData, DetailedCoinDataResponse, GlobalData, CoinsView } from "../interfaces";
 import * as CryptoActions from './crypto.actions';
 
 export interface State {
   globalData: GlobalData | null;
-  topHundred: TopHundred[] | null;
-  topThree: TopHundred[] | null;
-  newCoins: NewCoin[] | null;
+  topHundred: CoinsView[] | null;
+  topThree: CoinsView[] | null;
+  newCoins: CoinsView[] | null;
   coinDetails: DetailedCoinDataResponse | null;
   chartData: ChartData[] | null;
   chartPeriod: number;

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TopHundredResponse } from 'src/app/interfaces';
+import { CoinsViewResponse } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-coin-data-table',
@@ -8,7 +8,7 @@ import { TopHundredResponse } from 'src/app/interfaces';
   styleUrls: ['./coin-data-table.component.css']
 })
 export class CoinDataTableComponent {
-  @Input() coinsData$!: Observable<TopHundredResponse[] | null>;
+  @Input() coinsData$!: Observable<CoinsViewResponse[] | null>;
 
   constructor() { }
 }

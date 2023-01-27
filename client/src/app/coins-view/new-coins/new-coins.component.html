@@ -1,28 +1,14 @@
 <div class="container">
+
   <div class="global-data">
     <app-global-data></app-global-data>
   </div>
-  <div class="table">
+
+  <div class="table-component-container">
     <h1>New Coins</h1>
-    <thead>
-      <tr>
-        <td id="first">#</td>
-        <td id="second"></td>
-        <td id="third">Coin</td>
-        <td id="fourth">Sym</td>
-        <td id="fifth">Price</td>
-        <td id="sixth">1h</td>
-        <td id="seventh">24h</td>
-        <td id="eighth">7d</td>
-        <td id="tenth">Total</td>
-      </tr>
-    </thead>
-    <tbody>
-      <app-coin-new-row 
-      *ngFor="let coin of (newCoins$ | async); index as i" [coin]="coin"
-        [index]="i + 1"></app-coin-new-row>
-    </tbody>
+    <app-coin-data-table [coinsData$]="newCoins$"></app-coin-data-table>
   </div>
+
 </div>
 <div class="spinner-container" *ngIf="(isLoading$ | async)">
   <app-loading-spinner class="spinner"></app-loading-spinner>
