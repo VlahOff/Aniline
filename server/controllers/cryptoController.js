@@ -1,7 +1,7 @@
 const cryptoController = require('express').Router();
 const cryptoApi = require('../api/cryptoApi');
 const errorParser = require('../utils/errorParser');
-const { cryptoMap, fiatMap } = require('./temp');
+const { cryptoMap, fiatMap } = require('./dummyData');
 
 cryptoController.get('/topThree', async (req, res) => {
   try {

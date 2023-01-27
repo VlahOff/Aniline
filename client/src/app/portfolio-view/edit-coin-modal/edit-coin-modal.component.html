@@ -1,42 +1,46 @@
 <section class="modal">
   <h1 class="title">Edit Transaction</h1>
 
-  <form [formGroup]="editCoinForm" (ngSubmit)="onSubmit()">
-
+  <form (ngSubmit)="onSubmit()" #editCoinForm="ngForm">
     <div class="input-container">
       <label for="coinId">Coin</label>
-      <input class="input" id="coinId" formControlName="coinId" type="text">
+      <input class="input" id="coinId" formControlName="coinId" type="text" 
+      [value]="(transaction$ | async)?.name">
     </div>
 
     <div class="input-container">
       <label for="coinPrice">Price per coin</label>
-      <span class="error" 
+      <!-- <span class="error" 
       *ngIf="!editCoinForm.get('coinPrice')?.valid && 
-      editCoinForm.get('coinPrice')?.touched">Please enter a price!</span>
+      editCoinForm.get('coinPrice')?.touched">Please enter a price!</span> -->
 
-      <input class="input" #coinPrice id="coinPrice" placeholder="Enter bought price" 
+      <input class="input" id="coinPrice" 
+      ngModel="model.coinPrice"
+      placeholder="Enter bought price" 
+      [value]="(transaction$ | async)?.boughtPrice"
       formControlName="coinPrice" type="number">
     </div>
 
     <div class="input-container">
       <label for="quantity">Quantity</label>
-      <span class="error" *ngIf="!editCoinForm.get('quantity')?.valid && 
-      editCoinForm.get('quantity')?.touched">Please enter quantity!</span>
+      <!-- <span class="error" *ngIf="!editCoinForm.get('quantity')?.valid && 
+      editCoinForm.get('quantity')?.touched">Please enter quantity!</span> -->
 
-      <input class="input" #quantity id="quantity" 
+      <input class="input" #quantity id="quantity"
+      [value]="(transaction$ | async)?.quantity" 
       placeholder="Hou much do you own" formControlName="quantity" type="number">
     </div>
 
     <div class="input-container">
       <label for="quantity">Total Spent</label>
-      <p class="input">{{+coinPrice.value * +quantity.value | number:'1.0-2'}}</p>
+      <!-- <p class="input">{{+coinPrice.value * +quantity.value | number:'1.0-2'}}</p> -->
     </div>
 
     <div class="button-div">
       <button type="button" class="button-cancel" 
       (click)="hideModal($event)">Cancel</button>
       <button type="submit" class="button" 
-      [disabled]="!editCoinForm.valid">Edit</button>
+      >Edit</button>
     </div>
   </form>
 </section>

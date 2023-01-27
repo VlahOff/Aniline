@@ -10,16 +10,20 @@ export interface State {
   coinInputField: string;
   transactionsIds: string[];
   transactions: TransactionDetailed[];
+  transactionForEdit: TransactionDetailed | null;
+  transactionIdForEdit: string;
 }
 
 const initialState: State = {
   allCoinsList: [],
   addModalShown: false,
-  editModalShown: true,
+  editModalShown: false,
   selectedCoin: null,
   coinInputField: '',
   transactionsIds: [],
   transactions: [],
+  transactionForEdit: null,
+  transactionIdForEdit: ''
 };
 
 export const portfolioReducer = createReducer(
@@ -32,6 +36,7 @@ export const portfolioReducer = createReducer(
     };
   }),
 
+  // Toggles the modal for editing an asset
   on(PortfolioActions.showEditModal, (state) => {
     return {
       ...state,
@@ -39,6 +44,7 @@ export const portfolioReducer = createReducer(
     };
   }),
 
+  // Toggles both modals to false
   on(PortfolioActions.hideModals, (state) => {
     return {
       ...state,
@@ -63,7 +69,8 @@ export const portfolioReducer = createReducer(
     };
   }),
 
-  // When the transaction IDs are fetch this sets it to the state so that can be iterated over
+  // When the transaction IDs are fetched this puts it in the state
+  // so that can be iterated over and load all the details
   on(PortfolioActions.setTransactionsIds, (state, { payload }) => {
     return {
       ...state,
@@ -83,6 +90,20 @@ export const portfolioReducer = createReducer(
     return {
       ...state,
       transactions: [...state.transactions, payload]
+    };
+  }),
+
+  on(PortfolioActions.setTransactionIdForEditing, (state, { payload }) => {
+    return {
+      ...state,
+      transactionIdForEdit: payload
+    };
+  }),
+
+  on(PortfolioActions.setTransactionForEditing, (state, { payload }) => {
+    return {
+      ...state,
+      transactionForEdit: payload
     };
   }),
 

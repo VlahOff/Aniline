@@ -27,9 +27,7 @@ export class PortfolioTableRowComponent implements OnInit, OnDestroy {
 
   removeTransaction() {
     this.store.dispatch(PortfolioActions.removeTransaction(
-      {
-        payload: this.transactionId
-      }
+      { payload: this.transactionId }
     ));
   }
 

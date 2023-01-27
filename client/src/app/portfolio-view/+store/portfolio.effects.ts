@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { concatMap, map, switchMap } from "rxjs";
+import { concatMap, map, of, switchMap } from "rxjs";
 
 import { AllCoins, TransactionDetailed } from "src/app/interfaces";
 import { environment } from "src/environments/environment";
@@ -56,8 +56,24 @@ export class PortfolioEffects {
     })
   ));
 
+  fetchTransactionForEdit$ = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.fetchTransactionForEditing),
+    switchMap((state) => {
+      this.store.dispatch(AppStateActions.loadStart());
+      let params = new HttpParams();
+      params = params.append('transactionId', state.payload);
+
+      return this.http.get<TransactionDetailed>(
+        environment.portfolioApi + '/getTransaction', { params: params });
+    }),
+    map(data => {
+      this.store.dispatch(AppStateActions.loadEnd());
+      return PortfolioActions.setTransactionForEditing({ payload: data });
+    })
+  ))
+
   //
-  addTransaction = createEffect(() => this.actions$.pipe(
+  addTransaction$ = createEffect(() => this.actions$.pipe(
     ofType(PortfolioActions.addTransaction),
     switchMap((state) => {
       const data = state.payload;
@@ -73,7 +89,7 @@ export class PortfolioEffects {
     })
   ));
 
-  removeTransaction = createEffect(() => this.actions$.pipe(
+  removeTransaction$ = createEffect(() => this.actions$.pipe(
     ofType(PortfolioActions.removeTransaction),
     switchMap((state) => {
       let params = new HttpParams();
