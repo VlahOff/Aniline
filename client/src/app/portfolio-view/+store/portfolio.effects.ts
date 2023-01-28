@@ -1,14 +1,14 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { concatMap, map, of, switchMap } from "rxjs";
+import { concatMap, map, switchMap } from "rxjs";
+import { Store } from "@ngrx/store";
 
 import { AllCoins, TransactionDetailed } from "src/app/interfaces";
 import { environment } from "src/environments/environment";
-import * as PortfolioActions from './portfolio.actions';
 import * as fromApp from '../../+store/app.reducer';
 import * as AppStateActions from '../../+store/appState.actions';
-import { Store } from "@ngrx/store";
+import * as PortfolioActions from './portfolio.actions';
 
 @Injectable()
 export class PortfolioEffects {
@@ -70,7 +70,7 @@ export class PortfolioEffects {
       this.store.dispatch(AppStateActions.loadEnd());
       return PortfolioActions.setTransactionForEditing({ payload: data });
     })
-  ))
+  ));
 
   //
   addTransaction$ = createEffect(() => this.actions$.pipe(
@@ -86,6 +86,23 @@ export class PortfolioEffects {
     }),
     map((data) => {
       return PortfolioActions.addTransactionId({ payload: data.payload.transactionId });
+    })
+  ));
+
+  editTransaction$ = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.putEditedTransaction),
+    switchMap((state) => {
+      this.store.dispatch(AppStateActions.loadStart());
+      return this.http
+        .put<TransactionDetailed>(environment.portfolioApi + '/editTransaction',
+          {
+            transaction: state.payload.transaction,
+            transactionId: state.payload.transactionId
+          });
+    }),
+    map(data => {
+      this.store.dispatch(AppStateActions.loadEnd());
+      return PortfolioActions.updateEditedTransaction({ payload: data });
     })
   ));
 

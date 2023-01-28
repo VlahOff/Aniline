@@ -107,6 +107,18 @@ export const portfolioReducer = createReducer(
     };
   }),
 
+  on(PortfolioActions.updateEditedTransaction, (state, { payload }) => {
+    let t = [...state.transactions];
+
+    let index = t.findIndex(t => t.transactionId == payload.transactionId);
+    t[index] = payload;
+
+    return {
+      ...state,
+      transactions: [...t]
+    };
+  }),
+
   // This removes the transaction
   on(PortfolioActions.removeTransaction, (state, { payload }) => {
     const transactions = state.transactions.filter(t => {

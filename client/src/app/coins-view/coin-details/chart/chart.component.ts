@@ -1,9 +1,9 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import Chart from 'chart.js/auto';
 import { Observable, Subscription } from 'rxjs';
-import { getChartPeriod, getCoinDetailsChart } from 'src/app/+store/crypto.selector';
 
+import { getChartPeriod, getCoinDetailsChart } from 'src/app/+store/crypto.selector';
 import { ChartData } from 'src/app/interfaces';
 import * as fromApp from '../../../+store/app.reducer';
 import * as CryptoActions from '../../../+store/crypto.actions';

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getLoadingStatus } from 'src/app/+store/appState.selector';
 
+import { getLoadingStatus } from 'src/app/+store/appState.selector';
 import { ConverterResponse, CryptoMap, FiatMap } from 'src/app/interfaces';
 import * as ConverterActions from '../+store/converter.actions';
 import { getCryptoMap, getFiatMap, getFrom, getResult, getTo } from '../+store/converter.selector';
@@ -15,7 +15,6 @@ import * as fromApp from '../../+store/app.reducer';
   styleUrls: ['./crypto-converter.component.css']
 })
 export class CryptoConverterComponent implements OnInit {
-  // 
   isLoading$: Observable<boolean> = this.store.select(getLoadingStatus);
   cryptoMap$: Observable<CryptoMap[] | null> = this.store.select(getCryptoMap);
   fiatMap$: Observable<FiatMap[] | null> = this.store.select(getFiatMap);

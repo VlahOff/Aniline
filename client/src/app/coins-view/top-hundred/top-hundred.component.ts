@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+
 import { getLoadingStatus } from 'src/app/+store/appState.selector';
 import { getTopHundred } from 'src/app/+store/crypto.selector';
-
 import { CoinsView } from 'src/app/interfaces';
 import * as fromApp from '../../+store/app.reducer';
 import * as CryptoActions from '../../+store/crypto.actions';

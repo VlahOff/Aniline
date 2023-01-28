@@ -5,12 +5,6 @@
 
     <div class="input-container">
       <label for="coinId">Coin</label>
-
-      <!-- <span class="error" 
-      *ngIf="!editCoinForm.get('coinId')?.valid && 
-      editCoinForm.get('coinId')?.touched"
-      >Please select a coin!</span> -->
-
       <input class="input" id="coinId"
       #input 
       formControlName="coinId" 
@@ -20,10 +14,10 @@
     <div class="input-container">
       <label for="coinPrice">Price per coin</label>
 
-      <!-- <span class="error" 
+      <span class="error" 
       *ngIf="!editCoinForm.get('coinPrice')?.valid && 
       editCoinForm.get('coinPrice')?.touched"
-      >Please enter a price!</span> -->
+      >Please enter a price!</span>
 
       <input class="input" id="coinPrice" 
       #coinPrice  
@@ -35,10 +29,10 @@
     <div class="input-container">
       <label for="quantity">Quantity</label>
 
-      <!-- <span class="error" 
+      <span class="error" 
       *ngIf="!editCoinForm.get('quantity')?.valid && 
       editCoinForm.get('quantity')?.touched"
-      >Please enter quantity!</span> -->
+      >Please enter quantity!</span>
 
       <input class="input" id="quantity" 
       #quantity  
@@ -57,8 +51,8 @@
       <button type="button" class="button-cancel" 
       (click)="hideModal($event)">Cancel</button>
       <button type="submit" class="button" 
+      [disabled]="!editCoinForm.valid"
       >Submit</button>
-      <!-- [disabled]="!editCoinForm.valid" -->
     </div>
   </form>
 </section>

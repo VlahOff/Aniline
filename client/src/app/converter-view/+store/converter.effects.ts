@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { map, switchMap, withLatestFrom } from "rxjs";
 
-import { ConverterResponse, CryptoMap, CryptoMapRes, FiatMap, FiatMapRes } from "src/app/interfaces";
+import { ConverterResponse, CryptoMap, FiatMap } from "src/app/interfaces";
 import { environment } from "src/environments/environment";
 import * as fromApp from '../../+store/app.reducer';
 import * as AppStateActions from '../../+store/appState.actions';

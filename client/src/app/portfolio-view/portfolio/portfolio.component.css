@@ -1,9 +1,5 @@
 .container {
-  margin: 150px 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin: 180px auto;
 }
 
 .card {
@@ -14,6 +10,7 @@
   -webkit-backdrop-filter: blur(6px);
   border-radius: 10px;
   padding: 25px;
+  margin: 0 auto;
 }
 
 .title {
@@ -101,18 +98,17 @@ tr {
   background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
   border: none;
   border-radius: 10px;
-  padding: 10px;
   font-size: large;
   color: white;
   cursor: pointer;
-  height: 25px;
-  width: 25px;
+  height: 35px;
+  width: 35px;
   text-align: center;
   margin-top: 10px;
 }
 
 .button .fa-plus {
-  padding-top: 3px;
+  padding-top: 8px;
 }
 
 .modal {

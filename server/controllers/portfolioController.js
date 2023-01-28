@@ -1,5 +1,5 @@
 const { getCoinDetailed } = require('../api/cryptoApi');
-const { createTransaction, getAllUserTransactions, getTransaction, deleteTransaction } = require('../service/transactionService');
+const { createTransaction, getAllUserTransactions, getTransaction, deleteTransaction, editTransaction } = require('../service/transactionService');
 const errorParser = require('../utils/errorParser');
 
 const portfolioController = require('express').Router();
@@ -62,6 +62,37 @@ portfolioController.post('/addTransaction', async (req, res) => {
     const details = await getCoinDetailed(transactionData.coinId);
 
     const transaction = createTransactionDetail(transactionData, details);
+
+    res.status(200).json(transaction);
+  } catch (error) {
+    res.status(400).json({
+      message: errorParser(error)
+    });
+  }
+});
+
+portfolioController.put('/editTransaction', async (req, res) => {
+  try {
+    if (!req.user) {
+      throw new Error('NO_USER');
+    }
+
+    if (req.body.transaction.coinId === '') {
+      throw new Error('ENTER_COIN_ID');
+    }
+
+    if (req.body.transaction.coinPrice <= 0) {
+      throw new Error('COIN_PRICE_NOT_POSITIVE');
+    }
+
+    if (req.body.transaction.quantity <= 0) {
+      throw new Error('QUANTITY_LEAST_ONES');
+    }
+
+    const transactionData = await editTransaction(req.body.transaction, req.body.transactionId);
+    const details = await getCoinDetailed(transactionData.coinId);
+
+    const transaction = await createTransactionDetail(transactionData, details);
 
     res.status(200).json(transaction);
   } catch (error) {

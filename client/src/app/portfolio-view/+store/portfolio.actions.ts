@@ -61,6 +61,16 @@ export const setTransactionIdForEditing = createAction(
   props<{ payload: string; }>()
 );
 
+export const putEditedTransaction = createAction(
+  '[Portfolio] Put Edited Transaction',
+  props<{ payload: { transaction: Transaction, transactionId: string; }; }>()
+);
+
+export const updateEditedTransaction = createAction(
+  '[Portfolio] Update Edited Transaction',
+  props<{ payload: TransactionDetailed; }>()
+);
+
 export const removeTransaction = createAction(
   '[Portfolio] Remove Transaction',
   props<{ payload: string; }>()

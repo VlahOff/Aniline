@@ -1,11 +1,12 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import * as fromApp from '../../+store/app.reducer';
+import { Subscription } from 'rxjs';
+
+import { Transaction, TransactionDetailed } from 'src/app/interfaces';
 import * as PortfolioActions from '../+store/portfolio.actions';
-import { Observable, Subscription } from 'rxjs';
 import { getTransactionForEdit, getTransactionIdForEdit } from '../+store/portfolio.selector';
-import { TransactionDetailed } from 'src/app/interfaces';
+import * as fromApp from '../../+store/app.reducer';
 
 @Component({
   selector: 'app-edit-coin-modal',
@@ -15,7 +16,7 @@ import { TransactionDetailed } from 'src/app/interfaces';
 export class EditCoinModalComponent implements OnInit, OnDestroy {
   transactionIdSub!: Subscription;
   transactionId!: string;
-  // transaction$: Observable<TransactionDetailed | null> = this.store.select(getTransactionForEdit);
+
   transactionSub!: Subscription;
   transaction!: TransactionDetailed | null;
 
@@ -56,14 +57,17 @@ export class EditCoinModalComponent implements OnInit, OnDestroy {
           });
         }
       });
-
-
   }
 
   onSubmit() {
-    console.log(this.transactionId);
-    console.log(this.editCoinForm.value);
-
+    const transaction = new Transaction(this.transaction!.coinId, this.editCoinForm.value.coinPrice, this.editCoinForm.value.quantity);
+    this.store.dispatch(PortfolioActions.putEditedTransaction({
+      payload: {
+        transaction: transaction,
+        transactionId: this.transactionId
+      }
+    }));
+    this.store.dispatch(PortfolioActions.showEditModal())
   }
 
   hideModal(target: MouseEvent) {
