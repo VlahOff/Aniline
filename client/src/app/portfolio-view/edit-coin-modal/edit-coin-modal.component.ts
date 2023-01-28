@@ -15,36 +15,55 @@ import { TransactionDetailed } from 'src/app/interfaces';
 export class EditCoinModalComponent implements OnInit, OnDestroy {
   transactionIdSub!: Subscription;
   transactionId!: string;
-  transaction$: Observable<TransactionDetailed | null> = this.store.select(getTransactionForEdit);
+  // transaction$: Observable<TransactionDetailed | null> = this.store.select(getTransactionForEdit);
+  transactionSub!: Subscription;
+  transaction!: TransactionDetailed | null;
 
-  @ViewChild('editCoinForm') editCoinForm!: NgForm
+  editCoinForm!: FormGroup;
 
   constructor(
     private store: Store<fromApp.AppState>
   ) { }
 
   ngOnInit(): void {
-    // this.editCoinForm = new FormGroup({
-    //   'coinId': new FormControl(null, Validators.required),
-    //   'coinPrice': new FormControl(null,
-    //     [Validators.required, Validators.pattern(/^(?=.*[1-9])\d*(?:\.\d{0,})?$/)]
-    //   ),
-    //   'quantity': new FormControl(null,
-    //     [Validators.required, Validators.pattern(/^(?=.*[1-9])\d*(?:\.\d{0,})?$/)]
-    //   )
-    // });
-    // this.editCoinForm.get('coinId')?.disable();
+    this.editCoinForm = new FormGroup({
+      'coinId': new FormControl(null, Validators.required),
+      'coinPrice': new FormControl(
+        null,
+        [Validators.required, Validators.pattern(/^(?=.*[1-9])\d*(?:\.\d{0,})?$/)]
+      ),
+      'quantity': new FormControl(
+        null,
+        [Validators.required, Validators.pattern(/^(?=.*[1-9])\d*(?:\.\d{0,})?$/)]
+      )
+    });
+    this.editCoinForm.get('coinId')?.disable();
 
     this.transactionIdSub = this.store.select(getTransactionIdForEdit)
       .subscribe(data => this.transactionId = data);
 
     this.store.dispatch(PortfolioActions.fetchTransactionForEditing({ payload: this.transactionId }));
+
+    this.transactionSub = this.store.select(getTransactionForEdit)
+      .subscribe(data => {
+        this.transaction = data;
+
+        if (this.transaction) {
+          this.editCoinForm.setValue({
+            'coinId': this.transaction?.name,
+            'coinPrice': this.transaction?.boughtPrice,
+            'quantity': this.transaction?.quantity
+          });
+        }
+      });
+
+
   }
 
   onSubmit() {
     console.log(this.transactionId);
     console.log(this.editCoinForm.value);
-    
+
   }
 
   hideModal(target: MouseEvent) {
@@ -53,5 +72,6 @@ export class EditCoinModalComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.transactionIdSub.unsubscribe();
+    this.transactionSub.unsubscribe();
   }
 }
