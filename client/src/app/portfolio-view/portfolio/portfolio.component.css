@@ -3,7 +3,7 @@
 }
 
 .card {
-  width: 900px;
+  width: 1000px;
   color: white;
   background: rgba(102, 102, 102, 0.4);
   backdrop-filter: blur(6px);
@@ -64,7 +64,7 @@ tr {
 }
 
 .third-header {
-  width: 120px;
+  width: 150px;
   display: inline;
   text-align: left;
   padding-top: 10px;
