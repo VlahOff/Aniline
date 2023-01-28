@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getLoadingStatus } from 'src/app/+store/appState.selector';
 
+import { getLoadingStatus } from 'src/app/+store/appState.selector';
 import { ConverterResponse, CryptoMap, FiatMap } from 'src/app/interfaces';
 import * as ConverterActions from '../+store/converter.actions';
 import { getCryptoMap, getFiatMap, getFrom, getResult, getTo } from '../+store/converter.selector';
@@ -51,12 +51,22 @@ export class CryptoConverterComponent implements OnInit {
     );
   }
 
+  filterFrom(value: string) {
+    this.store.dispatch(ConverterActions.setFromString({ payload: value }));
+  }
+
+  filterTo(value: string) {
+    this.store.dispatch(ConverterActions.setToString({ payload: value }));
+  }
+
   fromCrypto(crypto: CryptoMap) {
+    this.store.dispatch(ConverterActions.setFromString({ payload: '' }));
     this.store.dispatch(ConverterActions.setFrom({ payload: crypto }));
     (<FormControl>this.converterForm.get('from')).setValue(`${crypto.name} "${crypto.symbol}"`);
   }
 
   toFiat(fiat: FiatMap) {
+    this.store.dispatch(ConverterActions.setToString({ payload: '' }));
     this.store.dispatch(ConverterActions.setTo({ payload: fiat }));
     (<FormControl>this.converterForm.get('to')).setValue(`${fiat.name} "${fiat.sign}"`);
   }

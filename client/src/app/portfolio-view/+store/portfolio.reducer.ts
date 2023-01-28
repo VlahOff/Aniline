@@ -5,19 +5,25 @@ import * as PortfolioActions from './portfolio.actions';
 export interface State {
   allCoinsList: AllCoins[];
   addModalShown: boolean;
+  editModalShown: boolean;
   selectedCoin: AllCoins | null;
   coinInputField: string;
   transactionsIds: string[];
   transactions: TransactionDetailed[];
+  transactionForEdit: TransactionDetailed | null;
+  transactionIdForEdit: string;
 }
 
 const initialState: State = {
   allCoinsList: [],
   addModalShown: false,
+  editModalShown: false,
   selectedCoin: null,
   coinInputField: '',
   transactionsIds: [],
   transactions: [],
+  transactionForEdit: null,
+  transactionIdForEdit: ''
 };
 
 export const portfolioReducer = createReducer(
@@ -27,6 +33,23 @@ export const portfolioReducer = createReducer(
     return {
       ...state,
       addModalShown: !state.addModalShown
+    };
+  }),
+
+  // Toggles the modal for editing an asset
+  on(PortfolioActions.showEditModal, (state) => {
+    return {
+      ...state,
+      editModalShown: !state.editModalShown
+    };
+  }),
+
+  // Toggles both modals to false
+  on(PortfolioActions.hideModals, (state) => {
+    return {
+      ...state,
+      addModalShown: false,
+      editModalShown: false
     };
   }),
 
@@ -46,7 +69,8 @@ export const portfolioReducer = createReducer(
     };
   }),
 
-  // When the transaction IDs are fetch this sets it to the state so that can be iterated over
+  // When the transaction IDs are fetched this puts it in the state
+  // so that can be iterated over and load all the details
   on(PortfolioActions.setTransactionsIds, (state, { payload }) => {
     return {
       ...state,
@@ -66,6 +90,32 @@ export const portfolioReducer = createReducer(
     return {
       ...state,
       transactions: [...state.transactions, payload]
+    };
+  }),
+
+  on(PortfolioActions.setTransactionIdForEditing, (state, { payload }) => {
+    return {
+      ...state,
+      transactionIdForEdit: payload
+    };
+  }),
+
+  on(PortfolioActions.setTransactionForEditing, (state, { payload }) => {
+    return {
+      ...state,
+      transactionForEdit: payload
+    };
+  }),
+
+  on(PortfolioActions.updateEditedTransaction, (state, { payload }) => {
+    let t = [...state.transactions];
+
+    let index = t.findIndex(t => t.transactionId == payload.transactionId);
+    t[index] = payload;
+
+    return {
+      ...state,
+      transactions: [...t]
     };
   }),
 

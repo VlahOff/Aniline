@@ -4,6 +4,14 @@ export interface Transaction {
   quantity: number;
 }
 
+export class Transaction {
+  constructor(
+    public coinId: string,
+    public boughtPrice: number,
+    public quantity: number
+  ) { }
+}
+
 export interface TransactionDetailed {
   coinId: string,
   boughtPrice: number,

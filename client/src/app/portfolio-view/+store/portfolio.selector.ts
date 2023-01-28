@@ -26,7 +26,13 @@ export const getAllCoins = createSelector(
 
 export const getAddModalStatus = createSelector(portfolioSelector, s => s.addModalShown);
 
+export const getEditModalStatus = createSelector(portfolioSelector, s => s.editModalShown);
+
 export const getTransactionsIds = createSelector(portfolioSelector, s => s.transactionsIds);
+
+export const getTransactionIdForEdit = createSelector(portfolioSelector, s => s.transactionIdForEdit);
+
+export const getTransactionForEdit = createSelector(portfolioSelector, s => s.transactionForEdit);
 
 export const getTransaction = (id: string) =>
   createSelector(portfolioSelector, s => {

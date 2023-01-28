@@ -1,5 +1,6 @@
 h1 {
-  margin: 250px 100px 200px 100px;
+  margin-top: 200px;
+  margin-bottom: 280px;
   text-align: center;
   color: white;
   font-family: 'Montserrat', sans-serif;
@@ -8,7 +9,7 @@ h1 {
   letter-spacing: 2px;
 }
 
-.container {
+.card-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -28,6 +29,7 @@ h1 {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.6);
 }
+
 .spinner {
   margin: 0;
   position: absolute;

@@ -25,11 +25,12 @@ async function createTransaction(data, userId) {
 async function editTransaction(data, transactionId) {
   const transaction = {
     coinId: data.coinId,
-    coinPrice: data.coinPrice,
+    coinPrice: data.boughtPrice,
     quantity: data.quantity
   };
+  await Transaction.findByIdAndUpdate(transactionId, transaction);
 
-  return Transaction.findByIdAndUpdate(transactionId, transaction);
+  return await Transaction.findById(transactionId);
 }
 
 async function deleteTransaction(transactionId) {
@@ -40,6 +41,6 @@ module.exports = {
   getAllUserTransactions,
   getTransaction,
   createTransaction,
-  // editTransaction,
+  editTransaction,
   deleteTransaction
 };

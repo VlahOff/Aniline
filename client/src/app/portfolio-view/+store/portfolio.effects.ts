@@ -2,13 +2,13 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { concatMap, map, switchMap } from "rxjs";
+import { Store } from "@ngrx/store";
 
 import { AllCoins, TransactionDetailed } from "src/app/interfaces";
 import { environment } from "src/environments/environment";
-import * as PortfolioActions from './portfolio.actions';
 import * as fromApp from '../../+store/app.reducer';
 import * as AppStateActions from '../../+store/appState.actions';
-import { Store } from "@ngrx/store";
+import * as PortfolioActions from './portfolio.actions';
 
 @Injectable()
 export class PortfolioEffects {
@@ -56,8 +56,24 @@ export class PortfolioEffects {
     })
   ));
 
+  fetchTransactionForEdit$ = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.fetchTransactionForEditing),
+    switchMap((state) => {
+      this.store.dispatch(AppStateActions.loadStart());
+      let params = new HttpParams();
+      params = params.append('transactionId', state.payload);
+
+      return this.http.get<TransactionDetailed>(
+        environment.portfolioApi + '/getTransaction', { params: params });
+    }),
+    map(data => {
+      this.store.dispatch(AppStateActions.loadEnd());
+      return PortfolioActions.setTransactionForEditing({ payload: data });
+    })
+  ));
+
   //
-  addTransaction = createEffect(() => this.actions$.pipe(
+  addTransaction$ = createEffect(() => this.actions$.pipe(
     ofType(PortfolioActions.addTransaction),
     switchMap((state) => {
       const data = state.payload;
@@ -73,7 +89,24 @@ export class PortfolioEffects {
     })
   ));
 
-  removeTransaction = createEffect(() => this.actions$.pipe(
+  editTransaction$ = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.putEditedTransaction),
+    switchMap((state) => {
+      this.store.dispatch(AppStateActions.loadStart());
+      return this.http
+        .put<TransactionDetailed>(environment.portfolioApi + '/editTransaction',
+          {
+            transaction: state.payload.transaction,
+            transactionId: state.payload.transactionId
+          });
+    }),
+    map(data => {
+      this.store.dispatch(AppStateActions.loadEnd());
+      return PortfolioActions.updateEditedTransaction({ payload: data });
+    })
+  ));
+
+  removeTransaction$ = createEffect(() => this.actions$.pipe(
     ofType(PortfolioActions.removeTransaction),
     switchMap((state) => {
       let params = new HttpParams();

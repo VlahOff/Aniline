@@ -69,9 +69,10 @@ ul li {
 }
 
 .right-container a {
-	padding: 8px;
-	color: white;
 	text-decoration: none;
+	padding: 8px;
+	border-radius: 10px;
+	color: white;
 }
 
 .right-container a:hover {
@@ -79,6 +80,7 @@ ul li {
 	padding: 8px;
 	border-radius: 10px;
 	background-color: #757575;
+	transition: background-color, ease, 600ms;
 }
 
 a {

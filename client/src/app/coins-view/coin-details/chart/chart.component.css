@@ -6,3 +6,27 @@
   padding: 15px;
   border-radius: 10px;
 }
+
+.buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 14px;
+}
+
+.buttons-container button {
+  padding: 6px 12px;
+  margin-left: 6px;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  background-color: #6e6e6e;
+}
+
+.buttons-container button:hover {
+  background-color: #262626;
+  cursor: pointer;
+}
+
+.buttons-container>button.selected {
+  background-color: #262626;
+}

@@ -1,0 +1,58 @@
+<section class="modal">
+  <h1 class="title">Edit Transaction</h1>
+
+  <form [formGroup]="editCoinForm" (ngSubmit)="onSubmit()">
+
+    <div class="input-container">
+      <label for="coinId">Coin</label>
+      <input class="input" id="coinId"
+      #input 
+      formControlName="coinId" 
+      type="text">
+    </div>
+
+    <div class="input-container">
+      <label for="coinPrice">Price per coin</label>
+
+      <span class="error" 
+      *ngIf="!editCoinForm.get('coinPrice')?.valid && 
+      editCoinForm.get('coinPrice')?.touched"
+      >Please enter a price!</span>
+
+      <input class="input" id="coinPrice" 
+      #coinPrice  
+      placeholder="Enter bought price" 
+      formControlName="coinPrice" 
+      type="number">
+    </div>
+
+    <div class="input-container">
+      <label for="quantity">Quantity</label>
+
+      <span class="error" 
+      *ngIf="!editCoinForm.get('quantity')?.valid && 
+      editCoinForm.get('quantity')?.touched"
+      >Please enter quantity!</span>
+
+      <input class="input" id="quantity" 
+      #quantity  
+      placeholder="Hou much do you own" 
+      formControlName="quantity" 
+      type="number">
+    </div>
+
+    <div class="input-container">
+      <label>Total Spent</label>
+      <p class="input"
+      >{{+coinPrice.value * +quantity.value | number:'1.0-2'}}</p>
+    </div>
+
+    <div class="button-div">
+      <button type="button" class="button-cancel" 
+      (click)="hideModal($event)">Cancel</button>
+      <button type="submit" class="button" 
+      [disabled]="!editCoinForm.valid"
+      >Submit</button>
+    </div>
+  </form>
+</section>

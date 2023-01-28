@@ -3,6 +3,10 @@ import { AllCoins, Transaction, TransactionDetailed } from "src/app/interfaces";
 
 export const showAddModal = createAction('[Portfolio] Show Add Modal');
 
+export const showEditModal = createAction('[Portfolio] Show Edit Modal');
+
+export const hideModals = createAction('[Portfolio] Hide Modals');
+
 export const fetchAllCoinsList = createAction('[Portfolio] Fetch All Coins List');
 
 export const setAllCoinsList = createAction(
@@ -40,6 +44,31 @@ export const addTransactionId = createAction(
 export const addTransaction = createAction(
   '[Portfolio] Add Transaction',
   props<{ payload: Transaction; }>()
+);
+
+export const fetchTransactionForEditing = createAction(
+  '[Portfolio] Fetch Transaction For Editing',
+  props<{ payload: string; }>()
+);
+
+export const setTransactionForEditing = createAction(
+  '[Portfolio] Set Transaction For Editing',
+  props<{ payload: TransactionDetailed; }>()
+);
+
+export const setTransactionIdForEditing = createAction(
+  '[Portfolio] Set Transaction ID For Editing',
+  props<{ payload: string; }>()
+);
+
+export const putEditedTransaction = createAction(
+  '[Portfolio] Put Edited Transaction',
+  props<{ payload: { transaction: Transaction, transactionId: string; }; }>()
+);
+
+export const updateEditedTransaction = createAction(
+  '[Portfolio] Update Edited Transaction',
+  props<{ payload: TransactionDetailed; }>()
 );
 
 export const removeTransaction = createAction(

@@ -12,3 +12,7 @@ export const getNewCoins = createSelector(cryptoSelector, s => s.newCoins);
 export const getTopThree = createSelector(cryptoSelector, s => s.topThree);
 
 export const getCoinDetails = createSelector(cryptoSelector, s => s.coinDetails);
+
+export const getCoinDetailsChart = createSelector(cryptoSelector, s => s.chartData);
+
+export const getChartPeriod = createSelector(cryptoSelector, s => s.chartPeriod);

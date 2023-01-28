@@ -1,14 +1,13 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
+  display: block;
+  overflow-x: auto;
   margin-top: 160px;
-  color: aliceblue;
+  color: white;
 }
 
 .details-page {
+  margin: 0 auto;
+  padding: 18px;
   width: 1400px;
   background: rgba(102, 102, 102, 0.4);
   backdrop-filter: blur(6px);
@@ -75,11 +74,26 @@ header {
   position: absolute;
 }
 
-.low-high {
+.low-high-bar-titles {
   display: flex;
   justify-content: space-between;
   width: 500px;
-  margin-top: 10px;
+  margin-top: 18px;
+}
+
+.right-header-part {
+  display: flex;
+  gap: 12px
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 500px;
+}
+
+.percent-ticker {
+  font-size: 18px;
+  font-weight: 500px;
 }
 
 main {
@@ -139,6 +153,7 @@ p.timestamp {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.6);
 }
+
 .spinner {
   margin: 0;
   position: absolute;

@@ -1,24 +1,25 @@
-<div class="modal">
-  <form [formGroup]="addCoinForm" (ngSubmit)="onSubmit()">
-    <h1 class="title">Add Transaction</h1>
+<section class="modal">
+  <h1 class="title">Add Transaction</h1>
 
-    <label for="coinId">Coin</label>
-    <span class="error" 
-    *ngIf="!addCoinForm.get('coinId')?.valid && addCoinForm.get('coinId')?.touched"
-    >Please select a coin!</span>
+  <form [formGroup]="addCoinForm" (ngSubmit)="onSubmit()">
+
     <div class="input-container">
+      <label for="coinId">Coin</label>
+      <span class="error" 
+      *ngIf="!addCoinForm.get('coinId')?.valid && 
+      addCoinForm.get('coinId')?.touched"
+      >Please select a coin!</span>
+
       <div class="menu">
         <div class="input-dropdown">
-          <input 
+          <input class="input" id="coinId"
           #input 
+          formControlName="coinId"
           (input)="filter(input.value)" 
           autocomplete="off" 
-          class="input" 
-          id="coinId" 
           placeholder="Bitcoin"
-          formControlName="coinId" 
           type="text" 
-          [value]="selectedCoinName ? selectedCoinName : ''"
+          [value]="selectedCoinName ? selectedCoinName : ''" 
           autofocus>
           <div class="menu-content" [class.on]="(allCoins$ | async)">
             <button type="button" 
@@ -30,39 +31,46 @@
       </div>
     </div>
 
-    <label for="coinPrice">Price per coin</label>
-    <span class="error" 
-    *ngIf="!addCoinForm.get('coinPrice')?.valid && addCoinForm.get('coinPrice')?.touched"
-    >Please enter a price!</span>
     <div class="input-container">
-      <input class="input" 
-      #coinPrice 
-      id="coinPrice" 
+      <label for="coinPrice">Price per coin</label>
+      <span class="error" 
+      *ngIf="!addCoinForm.get('coinPrice')?.valid && 
+      addCoinForm.get('coinPrice')?.touched"
+      >Please enter a price!</span>
+
+      <input class="input" id="coinPrice"
+      #coinPrice  
+      formControlName="coinPrice" 
       placeholder="Enter bought price" 
-      formControlName="coinPrice"
       type="number">
     </div>
 
-    <label for="quantity">Quantity</label>
-    <span class="error" 
-    *ngIf="!addCoinForm.get('quantity')?.valid && addCoinForm.get('quantity')?.touched"
-    >Please enter quantity!</span>
     <div class="input-container">
-      <input class="input" 
-      #quantity 
-      id="quantity" 
+      <label for="quantity">Quantity</label>
+      <span class="error" 
+      *ngIf="!addCoinForm.get('quantity')?.valid && 
+      addCoinForm.get('quantity')?.touched"
+      >Please enter quantity!</span>
+
+      <input class="input" id="quantity" 
+      #quantity
+      formControlName="quantity" 
       placeholder="Hou much do you own" 
-      formControlName="quantity"
       type="number">
     </div>
 
-    <label for="quantity">Total Spent</label>
     <div class="input-container">
-      <p class="input">{{+coinPrice.value * +quantity.value | number:'1.0-2'}}</p>
+      <label for="quantity">Total Spent</label>
+
+      <p class="input"
+      >{{+coinPrice.value * +quantity.value | number:'1.0-2'}}</p>
     </div>
+
     <div class="button-div">
-      <button type="button" class="button-cancel" (click)="hideModal($event)">Cancel</button>
-      <button type="submit" class="button" [disabled]="!addCoinForm.valid">Submit</button>
+      <button type="button" class="button-cancel" 
+      (click)="hideModal($event)">Cancel</button>
+      <button type="submit" class="button" 
+      [disabled]="!addCoinForm.valid">Submit</button>
     </div>
   </form>
-</div>
+</section>
