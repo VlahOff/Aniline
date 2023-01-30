@@ -52,14 +52,19 @@ tr {
 }
 
 .sixth {
-  width: 25px;
-  height: 25px;
+  width: 28px;
+  height: 28px;
   text-align: center;
-  padding-top: 7px;
+  padding-top: 8px;
   cursor: pointer;
 }
 
-.sixth:hover {
+.delete-button {
+  padding: 4px;
+  border-radius: 16px;
+}
+.delete-button:hover {
   background-color: #181818;
+  padding: 4px;
   border-radius: 16px;
 }

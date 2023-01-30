@@ -51,14 +51,13 @@ img {
 
 .button {
   padding: 8px 2px;
+  border-radius: 10px;
   text-align: center;
   text-decoration: none;
   color: white
 }
 
 .button:hover {
-  text-decoration: none;
-  padding: 8px 2px;
-  border-radius: 10px;
   background-color: #757575;
+  transition: background-color, ease, 600ms;
 }

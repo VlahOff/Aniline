@@ -11,6 +11,7 @@ html {
 
 * {
     margin: 0;
+    padding: 0;
 }
 
 input,
@@ -20,8 +21,15 @@ select {
     font: inherit;
 }
 
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
 body {
     background-image: url("./assets/black-bg.webp") !important;
+    background-size: cover;
     background: no-repeat;
     background-attachment: fixed;
 }
