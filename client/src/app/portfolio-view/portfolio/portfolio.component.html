@@ -33,9 +33,9 @@
     </div>
   </div>
   <div class="modal" *ngIf="(addModalStatus$ | async)" (click)="hideModal($event)">
-    <app-add-coin-modal></app-add-coin-modal>
+    <app-add-coin-modal class="whitespace"></app-add-coin-modal>
   </div>
   <div class="modal" *ngIf="(editModalStatus$ | async)" (click)="hideModal($event)">
-    <app-edit-coin-modal></app-edit-coin-modal>
+    <app-edit-coin-modal class="whitespace"></app-edit-coin-modal>
   </div>
 </div>

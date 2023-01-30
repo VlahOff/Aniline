@@ -35,6 +35,7 @@ tr:hover .first-col,
 tr:hover .second-col,
 tr:hover .third-col {
   background-color: #757575;
+  transition: background-color ease 600ms;
 }
 
 th,

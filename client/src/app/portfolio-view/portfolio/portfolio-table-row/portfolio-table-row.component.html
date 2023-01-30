@@ -26,6 +26,8 @@
     <p>{{ (transaction$ | async)?.pnlPercent | number:'1.2-2' }}%</p>
   </td>
   <td class="sixth"  (click)="removeTransaction()">
+    <div class="delete-button">
       <i class="fa-solid fa-xmark"></i>
+    </div>
   </td>
 </tr>

@@ -41,8 +41,14 @@ export class PortfolioComponent implements OnInit {
   }
 
   hideModal(event: MouseEvent) {
-    if ((event.target as HTMLElement).tagName === 'DIV' &&
-      (event.target as HTMLElement).className === 'modal') {
+    if (
+      ((event.target as HTMLElement).tagName === 'DIV' &&
+       (event.target as HTMLElement).className === 'modal') ||
+      ((event.target as HTMLElement).tagName === 'APP-ADD-COIN-MODAL' &&
+       (event.target as HTMLElement).className === 'whitespace') ||
+      ((event.target as HTMLElement).tagName === 'APP-EDIT-COIN-MODAL' && 
+      (event.target as HTMLElement).className === 'whitespace')
+    ) {
       this.store.dispatch(PortfolioActions.hideModals());
       this.store.dispatch(PortfolioActions.clearTransactionForEdit());
     }
