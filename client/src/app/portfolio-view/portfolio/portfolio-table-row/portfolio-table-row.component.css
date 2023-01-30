@@ -20,7 +20,6 @@ tr {
 }
 
 .asset-name {
-  display: block;
   text-align: left;
 }
 
@@ -36,7 +35,7 @@ tr {
 }
 
 .third {
-  width: 120px;
+  width: 150px;
   text-align: left;
   padding-top: 10px;
 }

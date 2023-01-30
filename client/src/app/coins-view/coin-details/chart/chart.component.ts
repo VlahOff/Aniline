@@ -100,6 +100,9 @@ export class ChartComponent implements OnInit, OnDestroy {
     this.chartSub.unsubscribe();
     this.chart.destroy();
     this.store.dispatch(CryptoActions.setChartData({ payload: null }));
+    this.store.dispatch(
+      CryptoActions.setChartPeriod({ payload: 1 })
+    );
   }
 
   createChart() {

@@ -67,11 +67,13 @@ export class EditCoinModalComponent implements OnInit, OnDestroy {
         transactionId: this.transactionId
       }
     }));
-    this.store.dispatch(PortfolioActions.showEditModal())
+    this.store.dispatch(PortfolioActions.showEditModal());
+    this.store.dispatch(PortfolioActions.clearTransactionForEdit());
   }
 
   hideModal(target: MouseEvent) {
     this.store.dispatch(PortfolioActions.showEditModal());
+    this.store.dispatch(PortfolioActions.clearTransactionForEdit());
   }
 
   ngOnDestroy(): void {

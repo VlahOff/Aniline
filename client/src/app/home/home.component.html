@@ -2,6 +2,3 @@
 <div class="card-container">
   <app-crypto-card *ngFor="let card of (topThree$ | async)" [card]="card"></app-crypto-card>
 </div>
-<div class="spinner-container" *ngIf="(isLoading$ | async)">
-  <app-loading-spinner class="spinner"></app-loading-spinner>
-</div>

@@ -17,7 +17,8 @@
         <tr>
           <td class="first-header">Asset</td>
           <td class="second-header">Balance</td>
-          <td class="third-header">Price (USD)</td>
+          <td class="third-header">Bought Price (USD)</td>
+          <td class="third-header">Current Price (USD)</td>
           <td class="fourth-header">24h Change (%)</td>
           <td class="fifth-header">PNL</td>
           <td class="sixth-header"></td>
@@ -37,7 +38,4 @@
   <div class="modal" *ngIf="(editModalStatus$ | async)" (click)="hideModal($event)">
     <app-edit-coin-modal></app-edit-coin-modal>
   </div>
-</div>
-<div class="spinner-container" *ngIf="(isLoading$ | async)">
-  <app-loading-spinner class="spinner"></app-loading-spinner>
 </div>

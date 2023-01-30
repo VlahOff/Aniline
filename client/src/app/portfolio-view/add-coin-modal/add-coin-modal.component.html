@@ -5,10 +5,10 @@
 
     <div class="input-container">
       <label for="coinId">Coin</label>
-      <span class="error" 
+      <p class="error" 
       *ngIf="!addCoinForm.get('coinId')?.valid && 
       addCoinForm.get('coinId')?.touched"
-      >Please select a coin!</span>
+      >Please select a coin!</p>
 
       <div class="menu">
         <div class="input-dropdown">
@@ -33,10 +33,10 @@
 
     <div class="input-container">
       <label for="coinPrice">Price per coin</label>
-      <span class="error" 
+      <p class="error" 
       *ngIf="!addCoinForm.get('coinPrice')?.valid && 
       addCoinForm.get('coinPrice')?.touched"
-      >Please enter a price!</span>
+      >Please enter a price!</p>
 
       <input class="input" id="coinPrice"
       #coinPrice  
@@ -47,10 +47,10 @@
 
     <div class="input-container">
       <label for="quantity">Quantity</label>
-      <span class="error" 
+      <p class="error" 
       *ngIf="!addCoinForm.get('quantity')?.valid && 
       addCoinForm.get('quantity')?.touched"
-      >Please enter quantity!</span>
+      >Please enter quantity!</p>
 
       <input class="input" id="quantity" 
       #quantity

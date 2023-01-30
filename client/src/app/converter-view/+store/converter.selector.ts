@@ -29,8 +29,6 @@ export const getFiatMap = createSelector(
   toString,
   (fiatMap: FiatMap[] | null, to: string) => {
     if (to !== '' && fiatMap !== null) {
-      console.log('in');
-      
       return fiatMap
         .filter(v => {
           return (v.name.toUpperCase() || v.symbol.toUpperCase())

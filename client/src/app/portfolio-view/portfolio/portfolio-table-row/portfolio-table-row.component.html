@@ -13,6 +13,9 @@
     <p>{{ (transaction$ | async)?.value | currency:'USD':'symbol':'1.2-2'}}</p>
   </td>
   <td class="third">
+    <p>{{ (transaction$ | async)?.boughtPrice | currency:'USD':'symbol':'1.2-10'}}</p>
+  </td>
+  <td class="third">
     <p>{{ (transaction$ | async)?.current_price | currency:'USD':'symbol':'1.2-10'}}</p>
   </td>
   <td class="fourth">

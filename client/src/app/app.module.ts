@@ -17,6 +17,7 @@ import { CryptoCardComponent } from './home/crypto-card/crypto-card.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PortfolioEffects } from './portfolio-view/+store/portfolio.effects';
+import { ErrorBannerComponent } from './shared/error-banner/error-banner.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
@@ -36,7 +37,8 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([AuthEffects, CryptoEffects, ConverterEffects, PortfolioEffects]),
     ...specificModules,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ErrorBannerComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: UserTokenInterceptor, multi: true }
