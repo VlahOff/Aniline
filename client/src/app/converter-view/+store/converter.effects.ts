@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-import { map, switchMap, withLatestFrom } from "rxjs";
+import { catchError, map, of, switchMap, withLatestFrom } from "rxjs";
 
 import { ConverterResponse, CryptoMap, FiatMap } from "src/app/interfaces";
 import { environment } from "src/environments/environment";
@@ -23,11 +23,17 @@ export class ConverterEffects {
     switchMap(() => {
       this.store.dispatch(AppStateActions.loadStart());
       return this.http
-        .get<CryptoMap[]>(environment.cryptoApi + '/cryptoMap', httpOptions);
-    }),
-    map(data => {
-      this.store.dispatch(AppStateActions.loadEnd());
-      return ConverterActions.setCryptoMap({ payload: data });
+        .get<CryptoMap[]>(environment.cryptoApi + '/cryptoMap', httpOptions)
+        .pipe(
+          map(data => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return ConverterActions.setCryptoMap({ payload: data });
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return of(AppStateActions.setError({ payload: err?.error?.message }));
+          })
+        );
     })
   ));
 
@@ -36,11 +42,17 @@ export class ConverterEffects {
     switchMap(() => {
       this.store.dispatch(AppStateActions.loadStart());
       return this.http
-        .get<FiatMap[]>(environment.cryptoApi + '/fiatMap', httpOptions);
-    }),
-    map(data => {
-      this.store.dispatch(AppStateActions.loadEnd());
-      return ConverterActions.setFiatMap({ payload: data });
+        .get<FiatMap[]>(environment.cryptoApi + '/fiatMap', httpOptions)
+        .pipe(
+          map(data => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return ConverterActions.setFiatMap({ payload: data });
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return of(AppStateActions.setError({ payload: err?.error?.message }));
+          })
+        );
     })
   ));
 
@@ -58,11 +70,17 @@ export class ConverterEffects {
       }
 
       return this.http
-        .get<ConverterResponse>(environment.cryptoApi + '/convert', { params: params });
-    }),
-    map(res => {
-      this.store.dispatch(AppStateActions.loadEnd());
-      return ConverterActions.setConvertResult({ payload: res });
+        .get<ConverterResponse>(environment.cryptoApi + '/convert', { params: params })
+        .pipe(
+          map(res => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return ConverterActions.setConvertResult({ payload: res });
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return of(AppStateActions.setError({ payload: err?.error?.message }));
+          })
+        );
     })
   ));
 

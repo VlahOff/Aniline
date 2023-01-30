@@ -107,6 +107,14 @@ export const portfolioReducer = createReducer(
     };
   }),
 
+  on(PortfolioActions.clearTransactionForEdit, (state) => {
+    return {
+      ...state,
+      transactionForEdit: null,
+      transactionIdForEdit: ''
+    };
+  }),
+
   on(PortfolioActions.updateEditedTransaction, (state, { payload }) => {
     let t = [...state.transactions];
 

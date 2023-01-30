@@ -1,9 +1,5 @@
 <div class="container">
   <section class="login-container">
-    <app-error-banner 
-    *ngIf="(error$ | async)" 
-    [errorMessage]="(error$ | async)"
-    ></app-error-banner>
 
     <header>
       <img class="logo" src="/assets/logo-white.png" alt="logo img">
@@ -14,10 +10,10 @@
 
       <div class="input-container">
         <label for="email">Email</label>
-        <span class="error" 
+        <p class="error" 
         *ngIf="!loginForm.get('email')?.valid && 
         loginForm.get('email')?.touched"
-        >Invalid e-mail!</span>
+        >Invalid e-mail!</p>
 
         <div class="field">
           <i class="input-icon fa-solid fa-at"></i>
@@ -30,10 +26,10 @@
 
       <div class="input-container">
         <label for="password">Password</label>
-        <span class="error" 
+        <p class="error" 
         *ngIf="!loginForm.get('password')?.valid && 
         loginForm.get('password')?.touched"
-        >Invalid password!</span>
+        >Invalid password!</p>
 
         <div class="field">
           <i class="input-icon fa-solid fa-key"></i>
@@ -56,8 +52,4 @@
     </footer>
 
   </section>
-</div>
-
-<div class="spinner-container" *ngIf="(isLoading$ | async)">
-  <app-loading-spinner class="spinner"></app-loading-spinner>
 </div>

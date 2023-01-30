@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getLoadingStatus } from 'src/app/+store/appState.selector';
 
 import * as PortfolioActions from '../+store/portfolio.actions';
 import { getAddModalStatus, getEditModalStatus, getTotalAssetValue, getTransactionsIds } from '../+store/portfolio.selector';
@@ -13,7 +12,6 @@ import * as fromApp from '../../+store/app.reducer';
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent implements OnInit {
-  isLoading$: Observable<boolean> = this.store.select(getLoadingStatus);
   totalAssetValue$: Observable<number> = this.store.select(getTotalAssetValue);
   transactionsIds$: Observable<string[]> = this.store.select(getTransactionsIds);
 
@@ -30,7 +28,6 @@ export class PortfolioComponent implements OnInit {
   }
 
   editTransaction(transactionId: string) {
-    console.log(transactionId);
     this.store.dispatch(PortfolioActions.setTransactionIdForEditing({ payload: transactionId }));
     this.store.dispatch(PortfolioActions.showEditModal());
   }
@@ -47,6 +44,7 @@ export class PortfolioComponent implements OnInit {
     if ((event.target as HTMLElement).tagName === 'DIV' &&
       (event.target as HTMLElement).className === 'modal') {
       this.store.dispatch(PortfolioActions.hideModals());
+      this.store.dispatch(PortfolioActions.clearTransactionForEdit());
     }
   }
 }

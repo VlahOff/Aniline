@@ -1,5 +1,5 @@
 <div class="container">
-  <article class="details-page">
+  <article class="details-page" *ngIf="coinDetailsData$ | async">
     <header>
 
       <div class="left-header-part">
@@ -109,7 +109,4 @@
     <footer>
     </footer>
   </article>
-</div>
-<div class="spinner-container" *ngIf="(isLoading$ | async)">
-  <app-loading-spinner class="spinner"></app-loading-spinner>
 </div>

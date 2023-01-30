@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { concatMap, map, switchMap } from "rxjs";
+import { catchError, concatMap, map, of, switchMap } from "rxjs";
 import { Store } from "@ngrx/store";
 
 import { AllCoins, TransactionDetailed } from "src/app/interfaces";
@@ -9,6 +9,30 @@ import { environment } from "src/environments/environment";
 import * as fromApp from '../../+store/app.reducer';
 import * as AppStateActions from '../../+store/appState.actions';
 import * as PortfolioActions from './portfolio.actions';
+
+const handleError = (error: string) => {
+  let errorMessage: string;
+
+  switch (error) {
+    case 'NO_USER':
+      errorMessage = 'You have to be signed in to use this!';
+      break;
+    case 'ENTER_COIN_ID':
+      errorMessage = 'Coin name must be selected!';
+      break;
+    case 'COIN_PRICE_NOT_POSITIVE':
+      errorMessage = 'The bought price must be a positive number!';
+      break;
+    case 'QUANTITY_LEAST_ONES':
+      errorMessage = 'The quantity must be a positive number!';
+      break;
+    default:
+      errorMessage = 'An unknown error has occurred!';
+      break;
+  }
+
+  return of(AppStateActions.setError({ payload: errorMessage }));
+};
 
 @Injectable()
 export class PortfolioEffects {
@@ -18,11 +42,18 @@ export class PortfolioEffects {
     ofType(PortfolioActions.fetchAllCoinsList),
     switchMap(() => {
       this.store.dispatch(AppStateActions.loadStart());
-      return this.http.get<AllCoins[]>(environment.cryptoApi + '/allCoins');
-    }),
-    map(data => {
-      this.store.dispatch(AppStateActions.loadEnd());
-      return PortfolioActions.setAllCoinsList({ payload: data });
+      return this.http
+        .get<AllCoins[]>(environment.cryptoApi + '/allCoins')
+        .pipe(
+          map(data => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return PortfolioActions.setAllCoinsList({ payload: data });
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return handleError(err);
+          })
+        );
     })
   ));
 
@@ -31,11 +62,18 @@ export class PortfolioEffects {
     ofType(PortfolioActions.fetchTransactionsIds),
     switchMap(() => {
       // this.store.dispatch(AppStateActions.loadStart());
-      return this.http.get<string[]>(environment.portfolioApi + '/getTransactions');
-    }),
-    map(data => {
-      // this.store.dispatch(AppStateActions.loadEnd());
-      return PortfolioActions.setTransactionsIds({ payload: data });
+      return this.http
+        .get<string[]>(environment.portfolioApi + '/getTransactions')
+        .pipe(
+          map(data => {
+            // this.store.dispatch(AppStateActions.loadEnd());
+            return PortfolioActions.setTransactionsIds({ payload: data });
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return handleError(err);
+          })
+        );
     })
   ));
 
@@ -47,12 +85,19 @@ export class PortfolioEffects {
       let params = new HttpParams();
       params = params.append('transactionId', state.payload);
 
-      return this.http.get<TransactionDetailed>(
-        environment.portfolioApi + '/getTransaction', { params: params });
-    }),
-    map(data => {
-      this.store.dispatch(AppStateActions.loadEnd());
-      return PortfolioActions.setTransaction({ payload: data });
+      return this.http
+        .get<TransactionDetailed>(
+          environment.portfolioApi + '/getTransaction', { params: params })
+        .pipe(
+          map(data => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return PortfolioActions.setTransaction({ payload: data });
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return handleError(err);
+          })
+        );
     })
   ));
 
@@ -63,12 +108,19 @@ export class PortfolioEffects {
       let params = new HttpParams();
       params = params.append('transactionId', state.payload);
 
-      return this.http.get<TransactionDetailed>(
-        environment.portfolioApi + '/getTransaction', { params: params });
-    }),
-    map(data => {
-      this.store.dispatch(AppStateActions.loadEnd());
-      return PortfolioActions.setTransactionForEditing({ payload: data });
+      return this.http
+        .get<TransactionDetailed>(
+          environment.portfolioApi + '/getTransaction', { params: params })
+        .pipe(
+          map(data => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return PortfolioActions.setTransactionForEditing({ payload: data });
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return handleError(err);
+          })
+        );
     })
   ));
 
@@ -79,13 +131,20 @@ export class PortfolioEffects {
       const data = state.payload;
 
       return this.http
-        .post<TransactionDetailed>(environment.portfolioApi + '/addTransaction', { data });
-    }),
-    map((data) => {
-      return PortfolioActions.setTransaction({ payload: data });
-    }),
-    map((data) => {
-      return PortfolioActions.addTransactionId({ payload: data.payload.transactionId });
+        .post<TransactionDetailed>(
+          environment.portfolioApi + '/addTransaction', { data })
+        .pipe(
+          map((data) => {
+            return PortfolioActions.setTransaction({ payload: data });
+          }),
+          map((data) => {
+            return PortfolioActions.addTransactionId({ payload: data.payload.transactionId });
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return handleError(err);
+          })
+        );
     })
   ));
 
@@ -98,11 +157,17 @@ export class PortfolioEffects {
           {
             transaction: state.payload.transaction,
             transactionId: state.payload.transactionId
-          });
-    }),
-    map(data => {
-      this.store.dispatch(AppStateActions.loadEnd());
-      return PortfolioActions.updateEditedTransaction({ payload: data });
+          })
+        .pipe(
+          map(data => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return PortfolioActions.updateEditedTransaction({ payload: data });
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return handleError(err);
+          })
+        );
     })
   ));
 
@@ -112,7 +177,13 @@ export class PortfolioEffects {
       let params = new HttpParams();
       params = params.append('transactionId', state.payload);
       return this.http
-        .delete(environment.portfolioApi + '/removeTransaction', { params: params });
+        .delete(environment.portfolioApi + '/removeTransaction', { params: params })
+        .pipe(
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return handleError(err);
+          })
+        );
     })
   ), { dispatch: false });
 

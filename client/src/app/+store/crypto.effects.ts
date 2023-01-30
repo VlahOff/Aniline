@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-import { map, switchMap } from "rxjs";
+import { catchError, map, of, switchMap } from "rxjs";
 
 import { environment } from "src/environments/environment";
 import * as fromApp from '../+store/app.reducer';
@@ -39,7 +39,7 @@ const coinViewResponse = (data: CoinsViewResponse[]) => {
     ));
   });
 
-  return result
+  return result;
 };
 
 @Injectable()
@@ -49,33 +49,46 @@ export class CryptoEffects {
     switchMap(() => {
       this.store.dispatch(AppStateActions.loadStart());
       return this.http
-        .get<GlobalDataResponse>(environment.cryptoApi + '/getGlobalData', httpOptions);
+        .get<GlobalDataResponse>(environment.cryptoApi + '/getGlobalData', httpOptions)
+        .pipe(
+          map(data => {
+            return CryptoActions.setGlobalData(
+              {
+                payload: new GlobalData(
+                  data.total_market_cap,
+                  data.market_cap_change_percentage_24h_usd,
+                  data.trading_volume,
+                  data.btc_dominance,
+                  data.number_of_coins
+                )
+              });
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return of(AppStateActions.setError({ payload: err?.error?.message }));
+          })
+        );
     }),
-    map(data => {
-      return CryptoActions.setGlobalData(
-        {
-          payload: new GlobalData(
-            data.total_market_cap,
-            data.market_cap_change_percentage_24h_usd,
-            data.trading_volume,
-            data.btc_dominance,
-            data.number_of_coins
-          )
-        });
-    })
+
   ));
 
   fetchTopHundredData$ = createEffect(() => this.actions$.pipe(
     ofType(CryptoActions.fetchTopHundred),
     switchMap(() => {
       return this.http
-        .get<CoinsViewResponse[]>(environment.cryptoApi + '/topHundred', httpOptions);
+        .get<CoinsViewResponse[]>(environment.cryptoApi + '/topHundred', httpOptions)
+        .pipe(
+          map(data => coinViewResponse(data)),
+          map(data => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return CryptoActions.setTopHundred({ payload: data });
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return of(AppStateActions.setError({ payload: err?.error?.message }));
+          })
+        );
     }),
-    map(data => coinViewResponse(data)),
-    map(data => {
-      this.store.dispatch(AppStateActions.loadEnd());
-      return CryptoActions.setTopHundred({ payload: data });
-    })
   ));
 
   fetchNewCoins$ = createEffect(() => this.actions$.pipe(
@@ -83,13 +96,19 @@ export class CryptoEffects {
     switchMap(() => {
       this.store.dispatch(AppStateActions.loadStart());
       return this.http
-        .get<CoinsViewResponse[]>(environment.cryptoApi + '/newCoins', httpOptions);
+        .get<CoinsViewResponse[]>(environment.cryptoApi + '/newCoins', httpOptions)
+        .pipe(
+          map(data => coinViewResponse(data)),
+          map(data => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return CryptoActions.setNewCoins({ payload: data });
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return of(AppStateActions.setError({ payload: err?.error?.message }));
+          })
+        );
     }),
-    map(data => coinViewResponse(data)),
-    map(data => {
-      this.store.dispatch(AppStateActions.loadEnd());
-      return CryptoActions.setNewCoins({ payload: data });
-    })
   ));
 
   fetchTopThree$ = createEffect(() => this.actions$.pipe(
@@ -97,13 +116,19 @@ export class CryptoEffects {
     switchMap(() => {
       this.store.dispatch(AppStateActions.loadStart());
       return this.http
-        .get<CoinsViewResponse[]>(environment.cryptoApi + '/topThree', httpOptions);
+        .get<CoinsViewResponse[]>(environment.cryptoApi + '/topThree', httpOptions)
+        .pipe(
+          map(data => coinViewResponse(data)),
+          map(data => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return CryptoActions.setTopThree({ payload: data });
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return of(AppStateActions.setError({ payload: err?.error?.message }));
+          })
+        );
     }),
-    map(data => coinViewResponse(data)),
-    map(data => {
-      this.store.dispatch(AppStateActions.loadEnd());
-      return CryptoActions.setTopThree({ payload: data });
-    })
   ));
 
   fetchCoinDetails$ = createEffect(() => this.actions$.pipe(
@@ -113,17 +138,23 @@ export class CryptoEffects {
       let params = new HttpParams();
       params = params.append('coinId', state.payload);
 
-      return this.http.get<DetailedCoinDataResponse>(
-        environment.cryptoApi + '/getCoinDetails',
-        {
-          params: params,
-          headers: httpOptions.headers
-        });
+      return this.http
+        .get<DetailedCoinDataResponse>(environment.cryptoApi + '/getCoinDetails',
+          {
+            params: params,
+            headers: httpOptions.headers
+          })
+        .pipe(
+          map(data => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return CryptoActions.setCoinDetails({ payload: data });
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return of(AppStateActions.setError({ payload: err?.error?.message }));
+          })
+        );
     }),
-    map(data => {
-      this.store.dispatch(AppStateActions.loadEnd());
-      return CryptoActions.setCoinDetails({ payload: data });
-    })
   ));
 
   fetchCoinDetailsChartData$ = createEffect(() => this.actions$.pipe(
@@ -134,18 +165,24 @@ export class CryptoEffects {
       params = params.append('coinId', state.payload.coinId);
       params = params.append('days', state.payload.days);
 
-      return this.http.get<ChartDataResponse>(
-        environment.cryptoApi + '/getCoinChartData',
-        {
-          params: params,
-          headers: httpOptions.headers
-        });
+      return this.http
+        .get<ChartDataResponse>(environment.cryptoApi + '/getCoinChartData',
+          {
+            params: params,
+            headers: httpOptions.headers
+          })
+        .pipe(
+          map(data => data.chartData),
+          map(data => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return CryptoActions.setChartData({ payload: data });
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return of(AppStateActions.setError({ payload: err?.error?.message }));
+          })
+        );
     }),
-    map(data => data.chartData),
-    map(data => {
-      this.store.dispatch(AppStateActions.loadEnd());
-      return CryptoActions.setChartData({ payload: data });
-    })
   ));
 
   constructor(

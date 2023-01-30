@@ -14,10 +14,10 @@
     <div class="input-container">
       <label for="coinPrice">Price per coin</label>
 
-      <span class="error" 
+      <p class="error" 
       *ngIf="!editCoinForm.get('coinPrice')?.valid && 
       editCoinForm.get('coinPrice')?.touched"
-      >Please enter a price!</span>
+      >Please enter a price!</p>
 
       <input class="input" id="coinPrice" 
       #coinPrice  
@@ -29,10 +29,10 @@
     <div class="input-container">
       <label for="quantity">Quantity</label>
 
-      <span class="error" 
+      <p class="error" 
       *ngIf="!editCoinForm.get('quantity')?.valid && 
       editCoinForm.get('quantity')?.touched"
-      >Please enter quantity!</span>
+      >Please enter quantity!</p>
 
       <input class="input" id="quantity" 
       #quantity  
