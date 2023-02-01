@@ -10,12 +10,19 @@ async function parseToken(token) {
 		throw new Error('BLACKLISTED_TOKEN');
 	}
 
-	const result = jwt.verify(token, JWT_SECRET_TOKEN);
-	if (!result) {
+	try {
+		const result = jwt.verify(token, JWT_SECRET_TOKEN);
+		return result;
+	} catch (error) {
 		console.log('The ban hammer struck!');
 		banToken(token);
 	}
-	return result;
+	return null;
+}
+
+async function verifyToken(token) {
+	const res = await parseToken(token);
+	return res ? true : false;
 }
 
 function createToken(user) {
@@ -41,5 +48,6 @@ async function banToken(token) {
 module.exports = {
 	parseToken,
 	createToken,
-	banToken
+	banToken,
+	verifyToken
 };

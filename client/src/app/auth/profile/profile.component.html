@@ -1,0 +1,40 @@
+<div class="container">
+  <section class="profile-card">
+    <article class="user-info">
+      <div class="user-info__img-container">
+        <img src="/assets/profile-img.webp" alt="">
+      </div>
+      <h2 class="user-info__name">{{(user$ | async)!.username}}</h2>
+      <p class="user-info__email">{{(user$ | async)!.email}}</p>
+    </article>
+    <article class="user-settings">
+      <ul class="user-settings__list">
+        <li class="user-settings__option">
+          <a (click)="changeUsernameModal()">
+            <i class="user-settings__option__icon fa-solid fa-address-card"></i>
+            <p>Change username</p>
+          </a>
+        </li>
+        <li class="user-settings__option">
+          <a (click)="changePasswordModal()">
+            <i class="user-settings__option__icon fa-solid fa-key"></i>
+            <p>Change password</p>
+          </a>
+        </li>
+        <li class="user-settings__option">
+          <a (click)="deleteUserModal()">
+            <i class="user-settings__option__icon fa-solid fa-user-slash"></i>
+            <p>Delete account</p>
+          </a>
+        </li>
+      </ul>
+    </article>
+  </section>
+</div>
+<div class="modal-container"
+  *ngIf="(changeUsernameModal$ | async) || (changePasswordModal$ | async) || (deleteUserModal$ | async)"
+  (click)="hideModals($event)">
+  <app-change-username-modal class="modal" *ngIf="(changeUsernameModal$ | async)"></app-change-username-modal>
+  <app-change-password-modal class="modal" *ngIf="(changePasswordModal$ | async)"></app-change-password-modal>
+  <app-delete-user-modal class="modal" *ngIf="(deleteUserModal$ | async)"></app-delete-user-modal>
+</div>
