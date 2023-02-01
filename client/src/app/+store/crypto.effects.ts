@@ -11,7 +11,7 @@ import {
   ChartDataResponse,
   CoinsView,
   CoinsViewResponse,
-  DetailedCoinDataResponse, GlobalData, GlobalDataResponse,
+  DetailedCoinDataResponse, GlobalData, GlobalDataResponse
 } from "../interfaces";
 import * as CryptoActions from './crypto.actions';
 
@@ -42,6 +42,14 @@ const coinViewResponse = (data: CoinsViewResponse[]) => {
   return result;
 };
 
+const handleError = (error: any) => {
+  let errorMessage = `${error!.statusText} - ${error?.status}`
+  if (error?.status == '429') {
+    errorMessage = 'Crypto API too many request sent in a short time!!!'    
+  }
+  return of(AppStateActions.setError({ payload: errorMessage }));
+};
+
 @Injectable()
 export class CryptoEffects {
   fetchGlobalData$ = createEffect(() => this.actions$.pipe(
@@ -65,7 +73,7 @@ export class CryptoEffects {
           }),
           catchError(err => {
             this.store.dispatch(AppStateActions.loadEnd());
-            return of(AppStateActions.setError({ payload: err?.error?.message }));
+            return handleError(err);
           })
         );
     }),
@@ -85,7 +93,7 @@ export class CryptoEffects {
           }),
           catchError(err => {
             this.store.dispatch(AppStateActions.loadEnd());
-            return of(AppStateActions.setError({ payload: err?.error?.message }));
+            return handleError(err);
           })
         );
     }),
@@ -105,7 +113,7 @@ export class CryptoEffects {
           }),
           catchError(err => {
             this.store.dispatch(AppStateActions.loadEnd());
-            return of(AppStateActions.setError({ payload: err?.error?.message }));
+            return handleError(err);
           })
         );
     }),
@@ -125,7 +133,7 @@ export class CryptoEffects {
           }),
           catchError(err => {
             this.store.dispatch(AppStateActions.loadEnd());
-            return of(AppStateActions.setError({ payload: err?.error?.message }));
+            return handleError(err);
           })
         );
     }),
@@ -151,7 +159,7 @@ export class CryptoEffects {
           }),
           catchError(err => {
             this.store.dispatch(AppStateActions.loadEnd());
-            return of(AppStateActions.setError({ payload: err?.error?.message }));
+            return handleError(err);
           })
         );
     }),
@@ -179,7 +187,7 @@ export class CryptoEffects {
           }),
           catchError(err => {
             this.store.dispatch(AppStateActions.loadEnd());
-            return of(AppStateActions.setError({ payload: err?.error?.message }));
+            return handleError(err);
           })
         );
     }),

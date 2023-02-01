@@ -53,8 +53,11 @@ const handleError = (error: string) => {
     case 'EMAIL_TAKEN':
       errorMessage = 'The email address is already in use by another account.';
       break;
+    case 'USERNAME_TAKEN':
+      errorMessage = 'The username address is already in use by another account.';
+      break;
     case 'INVALID_CREDENTIALS':
-      errorMessage = 'Invalid email or password.';
+      errorMessage = 'Invalid user credentials!';
       break;
     default:
       errorMessage = 'An unknown error has occurred!';
@@ -181,6 +184,77 @@ export class AuthEffects {
       this.router.navigate(['/home']);
     }),
     map(() => AuthActions.logoutEnd())
+  ));
+
+  changeUsername$ = createEffect(() => this.actions$.pipe(
+    ofType(AuthActions.sendChangeUsernameData),
+    switchMap((state) => {
+      this.store.dispatch(AppStateActions.loadStart());
+      return this.http
+        .post<User>(environment.authApi + '/changeUsername', state.payload)
+        .pipe(
+          map((data) => {
+            const userData = localStorage.getItem('userData');
+
+            if (userData) {
+              const userObj = JSON.parse(userData);
+              userObj.username = data.username;
+
+              localStorage.setItem('userData', JSON.stringify(userObj));
+            }
+
+            this.store.dispatch(AppStateActions.loadEnd());
+            this.store.dispatch(AuthActions.setNewUsername({ payload: data.username }));
+            return AuthActions.toggleChangeUsernameModal();
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return handleError(err.error.message);
+          })
+        );
+    })
+  ));
+
+  changePassword$ = createEffect(() => this.actions$.pipe(
+    ofType(AuthActions.sendChangePasswordData),
+    switchMap((state) => {
+      this.store.dispatch(AppStateActions.loadStart());
+      return this.http
+        .post(environment.authApi + '/changePassword', state.payload)
+        .pipe(
+          map(() => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return AuthActions.toggleChangePasswordModal();
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return handleError(err.error.message);
+          })
+        );
+    })
+  ));
+
+  deleteAccountRequest$ = createEffect(() => this.actions$.pipe(
+    ofType(AuthActions.sendDeleteAccountRequest),
+    switchMap((state) => {
+      this.store.dispatch(AppStateActions.loadStart());
+      return this.http
+        .post(environment.authApi + '/deleteAccount', state.payload)
+        .pipe(
+          map(() => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            this.authService.clearLogoutTimer();
+            localStorage.removeItem('userData');
+            this.router.navigate(['/home']);
+            this.store.dispatch(AuthActions.toggleChangePasswordModal());
+            return AuthActions.logoutEnd();
+          }),
+          catchError(err => {
+            this.store.dispatch(AppStateActions.loadEnd());
+            return handleError(err.error.message);
+          })
+        );
+    })
   ));
 
   constructor(

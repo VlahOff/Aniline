@@ -1,0 +1,31 @@
+<section class="modal">
+  <header>
+    <h1>Delete account!</h1>
+  </header>
+  <form [formGroup]="deleteAccountForm" (ngSubmit)="deleteAccount()">
+    <div class="input-container">
+      <label for="password">New password</label>
+      <p class="error"
+      *ngIf="!deleteAccountForm.get('password')?.valid &&
+      deleteAccountForm.get('password')?.touched"
+      >Invalid password!</p>
+
+      <div class="field">
+        <div class="input-icon"></div>
+        <input class="input" id="password" 
+        formControlName="password"
+        type="password">
+        <i class="input-icon fa-solid fa-eye"></i>
+      </div>
+    </div>
+    
+    <div class="buttons-container">
+      <button class="button-cancel" 
+      (click)="closeModal()"
+      type="button">Cancel</button>
+      <button class="button" 
+      [disabled]="!deleteAccountForm.valid"
+      type="submit">Confirm</button>
+    </div>
+  </form>
+</section>

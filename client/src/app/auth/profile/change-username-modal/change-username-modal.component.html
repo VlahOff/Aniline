@@ -1,0 +1,58 @@
+<section class="modal">
+  <header>
+    <h1>Change username</h1>
+  </header>
+  <form [formGroup]="changeUsernameForm" (ngSubmit)="onSubmit()">
+
+    <div class="input-container">
+      <label for="oldUsername">Old username</label>
+
+      <div class="field">
+        <i class="input-icon fa-solid fa-id-badge"></i>
+        <p class="input">{{(user$ | async)!.username}}</p>
+        <div class="input-icon"></div>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <label for="newUsername">New username</label>
+      <p class="error"
+      *ngIf="!changeUsernameForm.get('newUsername')?.valid &&
+      changeUsernameForm.get('newUsername')?.touched"
+      >Invalid username!</p>
+
+      <div class="field">
+        <i class="input-icon fa-solid fa-user-tag"></i>
+        <input class="input" id="newUsername" 
+        formControlName="newUsername"
+        type="text">
+        <div class="input-icon"></div>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <label for="password">User password</label>
+      <p class="error"
+      *ngIf="!changeUsernameForm.get('password')?.valid &&
+      changeUsernameForm.get('password')?.touched"
+      >Invalid password!</p>
+
+      <div class="field">
+        <div class="input-icon"></div>
+        <input class="input" id="password" 
+        formControlName="password"
+        type="password">
+        <i class="input-icon fa-solid fa-eye"></i>
+      </div>
+    </div>
+
+    <div class="buttons-container">
+      <button class="button-cancel" 
+      (click)="closeModal()"
+      type="button">Cancel</button>
+      <button class="button" 
+      [disabled]="!changeUsernameForm.valid"
+      type="submit">Confirm</button>
+    </div>
+  </form>
+</section>

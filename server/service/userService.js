@@ -1,12 +1,17 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
-const { createToken, banToken } = require('./tokenService');
+const { createToken, banToken, verifyToken } = require('./tokenService');
 
 async function register(email, username, password) {
-	const existing = await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
+	const existingEmail = await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
+	const existingUsername = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
 
-	if (existing) {
+	if (existingEmail) {
 		throw new Error('EMAIL_TAKEN');
+	}
+
+	if (existingUsername) {
+		throw new Error('USERNAME_TAKEN');
 	}
 
 	const user = await User.create({
@@ -41,8 +46,58 @@ async function logout(token) {
 	banToken(token);
 }
 
+async function verifyUserPassword(password, userId, token) {
+	const isValid = await verifyToken(token);
+	const user = await User.findById(userId);
+	const match = await bcrypt.compare(password, user.hashedPassword);
+
+	if (!match || !isValid) {
+		throw new Error('INVALID_CREDENTIALS');
+	}
+
+	return match;
+}
+
+async function changeUsername(newUsername, password, userId, token) {
+	const user = await User.findById(userId);
+	await verifyUserPassword(password, userId, token);
+
+	await User.findByIdAndUpdate(userId,
+		{
+			email: user.email,
+			username: newUsername,
+			hashedPassword: user.hashedPassword
+		}
+	);
+	const updatedUser = await User.findById(userId);
+	return updatedUser;
+}
+
+async function changePassword(oldPassword, newPassword, userId, token) {
+	const user = await User.findById(userId);
+	await verifyUserPassword(oldPassword, userId, token);
+
+	await User.findByIdAndUpdate(userId,
+		{
+			email: user.email,
+			username: user.username,
+			hashedPassword: await bcrypt.hash(newPassword, 10)
+		}
+	);
+}
+
+async function deleteAccount(password, userId, token) {
+	await verifyUserPassword(password, userId, token);
+
+	await User.findByIdAndRemove(userId);
+}
+
 module.exports = {
 	register,
 	login,
 	logout,
+	changeUsername,
+	changePassword,
+	verifyUserPassword,
+	deleteAccount
 };
