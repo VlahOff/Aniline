@@ -16,7 +16,7 @@ const initialState: State = {
   token: '',
   changeUsernameModal: false,
   changePasswordModal: false,
-  deleteAccountModal: true
+  deleteAccountModal: false
 };
 
 export const authReducer = createReducer(

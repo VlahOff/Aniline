@@ -1,6 +1,5 @@
 <div class="container">
-  <section class="register-container">
-
+  <section class="register-container" >
     <header>
       <img class="logo" src="/assets/logo-white.png" alt="logo img">
       <h1>Register</h1>
@@ -38,7 +37,7 @@
         </div>
       </div>
 
-      <div class="input-container">
+      <div class="input-container" appToolTip className="open">
         <label for="password">Password</label>
         <p class="error"
           *ngIf="!registerForm.get('password')?.valid && 
@@ -50,6 +49,25 @@
           <input id="password" type="password" 
           placeholder="Enter Password" formControlName="password">
           <div class="input-icon"></div>
+        </div>
+        <div class="tooltip">
+          <div class="tooltip-text">
+            <h4>Password must contain</h4>
+            <ul>
+              <li>
+                <p>one uppercase letter</p>
+              </li>
+              <li>
+                <p>one lowercase letter</p>
+              </li>
+              <li>
+                <p>one number and also</p>
+              </li>
+              <li>
+                <p>must be at least 8 characters long!</p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -81,7 +99,6 @@
 
     <footer>
       <p>Already have an account? <a routerLink="/auth/login">Sign in</a>.</p>
-    </footer>
-
+    </footer>  
   </section>
 </div>

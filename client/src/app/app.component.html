@@ -1,8 +1,13 @@
 <app-header></app-header>
-<div class="error-banner" *ngIf="error$ | async" (click)="clearError()">
-  <app-error-banner [errorMessage]="(error$ | async)"></app-error-banner>
-</div>
+
+<app-error-banner 
+*ngIf="error$ | async"
+[errorMessage]="(error$ | async)"
+(click)="clearError()"
+></app-error-banner>
+
 <router-outlet></router-outlet>
+
 <div class="spinner-container" *ngIf="(isLoading$ | async)">
   <app-loading-spinner class="spinner"></app-loading-spinner>
 </div>
