@@ -2,8 +2,8 @@
   position: relative;
   overflow: auto;
   white-space: nowrap;
-  background-color: #444444;
   border-radius: 8px;
+  background-color: #1f1f1f;
 }
 
 table {
@@ -19,7 +19,6 @@ thead {
 .sticky-col {
   position: -webkit-sticky;
   position: sticky;
-  background-color: #444444;
 }
 
 tr {
@@ -34,7 +33,7 @@ tr:hover,
 tr:hover .first-col,
 tr:hover .second-col,
 tr:hover .third-col {
-  background-color: #757575;
+  background-color: #2f2f30;
   transition: background-color ease 600ms;
 }
 

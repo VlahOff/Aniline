@@ -9,6 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ChangeUsernameModalComponent } from './profile/change-username-modal/change-username-modal.component';
 import { ChangePasswordModalComponent } from './profile/change-password-modal/change-password-modal.component';
 import { DeleteUserModalComponent } from './profile/delete-user-modal/delete-user-modal.component';
+import { RollOutDirective } from '../shared/tool-tip.directive';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DeleteUserModalComponent } from './profile/delete-user-modal/delete-use
     CommonModule,
     ReactiveFormsModule,
     AuthRoutingModule,
+    RollOutDirective
   ]
 })
 export class AuthModule { }

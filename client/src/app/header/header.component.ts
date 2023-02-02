@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { getUser } from 'src/app/auth/+store/auth.selector';
 
 import { User } from 'src/app/auth/user.model';
-import * as fromApp from '../../+store/app.reducer';
-import * as AuthActions from '../../auth/+store/auth.actions';
+import * as fromApp from '../+store/app.reducer';
+import * as AuthActions from '../auth/+store/auth.actions';
 
 @Component({
   selector: 'app-header',
