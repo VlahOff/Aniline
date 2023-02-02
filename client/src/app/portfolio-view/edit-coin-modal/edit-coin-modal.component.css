@@ -80,8 +80,7 @@ input::-webkit-inner-spin-button {
 }
 
 .button {
-  background: rgb(238, 174, 202);
-  background: linear-gradient(180deg, #450B25 0%, #0E2C53 100%);
+  background-color: crimson;
   border: none;
   border-radius: 10px;
   padding: 10px 30px;
@@ -101,43 +100,6 @@ input::-webkit-inner-spin-button {
   margin-right: 50px;
 }
 
-.menu {
-  display: inline-block;
-  position: relative;
-}
-
-.menu-content {
-  display: none;
-  position: absolute;
-  width: 300px;
-  height: fit-content;
-  max-height: 300px;
-  overflow: auto;
-  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.712);
-  background-color: white;
-  border-radius: 6px;
-  z-index: 1;
-}
-
-.on {
-  display: flex;
-  flex-direction: column;
-}
-
-.menu-content button {
-  display: block;
-  background-color: #313131;
-  color: #ffffff;
-  padding: 5px;
-  text-decoration: none;
-  border: none;
-}
-
-.menu-content button:hover {
-  color: #FFFFFF;
-  background-color: crimson;
-}
-
 .error {
   text-align: center;
   color: crimson;
@@ -148,8 +110,7 @@ input::-webkit-inner-spin-button {
 }
 
 button:disabled {
-  background-color: #00DBDE;
-  background-image: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+  background-color: #050505;
   cursor: not-allowed
 }
 
