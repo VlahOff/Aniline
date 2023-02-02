@@ -47,6 +47,7 @@ label {
   border: none;
   height: 20px;
   width: 300px;
+  position: relative;
 }
 
 input:focus {
@@ -78,8 +79,7 @@ input::-webkit-inner-spin-button {
 }
 
 .button {
-  background: rgb(238, 174, 202);
-  background: linear-gradient(180deg, #450B25 0%, #0E2C53 100%);
+  background-color: crimson;
   border: none;
   border-radius: 10px;
   padding: 10px 30px;
@@ -100,8 +100,7 @@ input::-webkit-inner-spin-button {
 }
 
 button:disabled {
-  background-color: #00DBDE;
-  background-image: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+  background-color: #050505;
   cursor: not-allowed
 }
 
@@ -114,13 +113,14 @@ button:disabled {
   display: none;
   position: absolute;
   width: 300px;
-  height: fit-content;
   max-height: 300px;
   overflow: auto;
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.712);
-  background-color: white;
-  border-radius: 6px;
+  background-color: #313131;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
   z-index: 1;
+  top: 30px;
 }
 
 .on {
