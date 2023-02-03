@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, concatMap, map, of, switchMap } from "rxjs";
+import { catchError, concatMap, map, of, switchMap, tap } from "rxjs";
 import { Store } from "@ngrx/store";
 
 import { AllCoins, TransactionDetailed } from "src/app/interfaces";
@@ -9,6 +9,7 @@ import { environment } from "src/environments/environment";
 import * as fromApp from '../../+store/app.reducer';
 import * as AppStateActions from '../../+store/appState.actions';
 import * as PortfolioActions from './portfolio.actions';
+import { getAllTransactionsIdsArray } from "./portfolio.selector";
 
 const handleError = (error: string) => {
   let errorMessage: string;
@@ -65,6 +66,7 @@ export class PortfolioEffects {
       return this.http
         .get<string[]>(environment.portfolioApi + '/getTransactions')
         .pipe(
+          tap(data => console.log(data)),
           map(data => {
             // this.store.dispatch(AppStateActions.loadEnd());
             return PortfolioActions.setTransactionsIds({ payload: data });
@@ -100,6 +102,36 @@ export class PortfolioEffects {
         );
     })
   ));
+
+  fetchAllTransactionsDetailed$ = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.fetchAllTransactionsDetailed),
+    switchMap(() => {
+      return this.store.select(getAllTransactionsIdsArray);
+    }),
+    tap(data => console.log(data))
+    // concatMap((data: string[]) => {
+    //   data.forEach(v => {
+    //     let params = new HttpParams();
+    //     params = params.append('transactionId', v);
+
+    //     return this.http
+    //       .get<TransactionDetailed>(
+    //         environment.portfolioApi + '/getTransaction', { params: params })
+    //       .pipe(
+    //         map(data => {
+    //           // this.store.dispatch(AppStateActions.loadEnd());
+    //           return PortfolioActions.setTransaction({ payload: data });
+    //         }),
+    //         catchError(err => {
+    //           // this.store.dispatch(AppStateActions.loadEnd());
+    //           return handleError(err);
+    //         })
+    //       );
+    //   });
+
+    //   // return PortfolioActions.setAllTransactionsDetailed;
+    // })
+  ),{dispatch:false});
 
   fetchTransactionForEdit$ = createEffect(() => this.actions$.pipe(
     ofType(PortfolioActions.fetchTransactionForEditing),

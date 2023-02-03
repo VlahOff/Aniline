@@ -1,9 +1,10 @@
 .container {
-  display: flex;
-  justify-content: center;
-  margin-top: 150px;
+  margin-top: 180px;
 }
 
 img {
+  box-shadow: 6px 4px 31px 19px rgba(0,0,0,0.55);
+  border-radius: 10px;
+  margin: 0 auto;
   width: 800px;
 }

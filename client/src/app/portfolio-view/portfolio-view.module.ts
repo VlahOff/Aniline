@@ -7,6 +7,7 @@ import { EditCoinModalComponent } from './edit-coin-modal/edit-coin-modal.compon
 import { PortfolioRoutingModule } from './portfolio-routing.module';
 import { PortfolioTableRowComponent } from './portfolio/portfolio-table-row/portfolio-table-row.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { PortfolioTableComponent } from './portfolio-table/portfolio-table.component';
 
 
 
@@ -16,6 +17,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
     PortfolioTableRowComponent,
     AddCoinModalComponent,
     EditCoinModalComponent,
+    PortfolioTableComponent,
   ],
   imports: [
     CommonModule,

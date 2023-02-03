@@ -9,16 +9,12 @@
 table {
   border-collapse: collapse;
   width: 100%;
+  background-color: #1f1f1f;
 }
 
 thead {
   display: flex;
   flex-direction: column;
-}
-
-.sticky-col {
-  position: -webkit-sticky;
-  position: sticky;
 }
 
 tr {
@@ -27,6 +23,7 @@ tr {
   border-bottom: 1px black solid;
   text-align: center;
   gap: 10px;
+  cursor: pointer;
 }
 
 tr:hover,
@@ -43,13 +40,17 @@ td {
   height: 46px;
 }
 
-
+.sticky-col {
+  position: -webkit-sticky;
+  position: sticky;
+}
 
 .first-col {
   width: 32px;
   min-width: 32px;
   max-width: 32px;
   left: 0px;
+  background-color: #1f1f1f;
 }
 
 .second-col {
@@ -58,6 +59,7 @@ td {
   max-width: 38px;
   left: 32px;
   padding-top: 6px;
+  background-color: #1f1f1f;
 }
 
 .second-col>img {
@@ -70,6 +72,7 @@ td {
   max-width: 200px;
   left: 70px;
   text-align: left;
+  background-color: #1f1f1f;
 }
 
 .fourth-col {

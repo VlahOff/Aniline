@@ -31,6 +31,15 @@ export const fetchTransaction = createAction(
   props<{ payload: string; }>()
 );
 
+export const fetchAllTransactionsDetailed = createAction(
+  '[Portfolio] Fetch All Transactions Detailed'
+);
+
+export const setAllTransactionsDetailed = createAction(
+  '[Portfolio] Set All Transactions Detailed',
+  props<{ payload: TransactionDetailed[]; }>()
+);
+
 export const setTransaction = createAction(
   '[Portfolio] Set Transaction',
   props<{ payload: TransactionDetailed; }>()

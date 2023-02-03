@@ -12,7 +12,8 @@
         </div>
       </div>
     </div>
-    <div class="table">
+    <app-portfolio-table></app-portfolio-table>
+    <!-- <div class="table">
       <thead>
         <tr>
           <td class="first-header">Asset</td>
@@ -30,7 +31,7 @@
         (click)="editTransaction(transactionId)"
           [transactionId]="transactionId"></app-portfolio-table-row>
       </tbody>
-    </div>
+    </div> -->
   </div>
   <div class="modal" *ngIf="(addModalStatus$ | async)" (click)="hideModal($event)">
     <app-add-coin-modal class="whitespace"></app-add-coin-modal>

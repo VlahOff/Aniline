@@ -42,3 +42,8 @@ export const getTransaction = (id: string) =>
 export const getTotalAssetValue = createSelector(
   portfolioSelector,
   s => s.transactions.reduce((acc, value) => acc + value.value, 0));
+
+
+export const getAllTransactionsIdsArray = createSelector(
+  portfolioSelector, s => s.transactionsIds
+); 
