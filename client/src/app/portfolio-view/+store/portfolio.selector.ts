@@ -1,16 +1,20 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 
-import { AllCoins } from "src/app/interfaces";
+import { AllCoins, TransactionDetailed } from "src/app/interfaces";
 import * as fromPortfolio from './portfolio.reducer';
 
 const portfolioSelector = createFeatureSelector<fromPortfolio.State>('portfolio');
 
-const allCoins = createSelector(portfolioSelector, s => s.allCoinsList);
-export const getCoinInputField = createSelector(portfolioSelector, s => s.coinInputField);
+const allCoins = createSelector(portfolioSelector,
+  s => s.allCoinsList);
 
+const getFilterValue = createSelector(portfolioSelector,
+  s => s.valueToFilterCoinList);
+
+// Returns the coin list filtered by the users input
 export const getAllCoins = createSelector(
   allCoins,
-  getCoinInputField,
+  getFilterValue,
   (allCoins: AllCoins[], coinInput: string) => {
     if (coinInput != '') {
       return allCoins
@@ -24,21 +28,31 @@ export const getAllCoins = createSelector(
   }
 );
 
-export const getAddModalStatus = createSelector(portfolioSelector, s => s.addModalShown);
+export const getAddModalStatus = createSelector(portfolioSelector,
+  s => s.addModalShown);
 
-export const getEditModalStatus = createSelector(portfolioSelector, s => s.editModalShown);
+export const getEditModalStatus = createSelector(portfolioSelector,
+  s => s.editModalShown);
 
-export const getTransactionsIds = createSelector(portfolioSelector, s => s.transactionsIds);
+export const getTransactions = createSelector(portfolioSelector,
+  s => s.transactions);
 
-export const getTransactionIdForEdit = createSelector(portfolioSelector, s => s.transactionIdForEdit);
+const getTransactionIdForEdit = createSelector(portfolioSelector,
+  s => s.transactionIdForEdit);
 
-export const getTransactionForEdit = createSelector(portfolioSelector, s => s.transactionForEdit);
+// Returns the selected transactions to edit
+export const getTransactionToEdit = createSelector(
+  getTransactions,
+  getTransactionIdForEdit,
+  (transactions: TransactionDetailed[], transactionId: string) => {
+    return transactions.find(t => {
+      return t.transactionId === transactionId;
+    });
+  }
+);
 
-export const getTransaction = (id: string) =>
-  createSelector(portfolioSelector, s => {
-    return s.transactions.find(t => t.transactionId === id);
-  });
-
+// Calculates all the assets total current value and returns it
 export const getTotalAssetValue = createSelector(
   portfolioSelector,
-  s => s.transactions.reduce((acc, value) => acc + value.value, 0));
+  s => s.transactions.reduce((acc, value) => acc + value.value, 0)
+);

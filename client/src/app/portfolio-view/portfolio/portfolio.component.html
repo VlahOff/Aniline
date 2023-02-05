@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="card">
+<div class="portfolio-container">
+  <div class="portfolio">
     <div class="title">
       <div class="left-title">
         <h4>Total portfolio value</h4>
@@ -12,25 +12,7 @@
         </div>
       </div>
     </div>
-    <div class="table">
-      <thead>
-        <tr>
-          <td class="first-header">Asset</td>
-          <td class="second-header">Balance</td>
-          <td class="third-header">Bought Price (USD)</td>
-          <td class="third-header">Current Price (USD)</td>
-          <td class="fourth-header">24h Change (%)</td>
-          <td class="fifth-header">PNL</td>
-          <td class="sixth-header"></td>
-        </tr>
-      </thead>
-      <tbody>
-        <app-portfolio-table-row class="transaction" 
-        *ngFor="let transactionId of (transactionsIds$ | async)"
-        (click)="editTransaction(transactionId)"
-          [transactionId]="transactionId"></app-portfolio-table-row>
-      </tbody>
-    </div>
+    <app-portfolio-table></app-portfolio-table>
   </div>
   <div class="modal" *ngIf="(addModalStatus$ | async)" (click)="hideModal($event)">
     <app-add-coin-modal class="whitespace"></app-add-coin-modal>

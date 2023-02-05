@@ -53740,7 +53740,43 @@ const cryptoMap = [
 	}
 ];
 
+const dummyTransactionData = [
+	{
+		'coinId': 'ethereum',
+		'boughtPrice': 1200,
+		'quantity': 0.083,
+		'transactionId': '63d587a36e03d9581096c9dd',
+		'value': 139.17274,
+		'pnlValue': 39.57274,
+		'pnlPercent': 39.73166666666666,
+		'id': 'ethereum',
+		'symbol': 'eth',
+		'name': 'Ethereum',
+		'image': 'https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880',
+		'current_price': 1676.78,
+		'price_change_24h': 20.793648,
+		'price_change_percentage_24h': 1.25566
+	},
+	{
+		'coinId': 'ecomi',
+		'boughtPrice': 0.006998,
+		'quantity': 16327,
+		'transactionId': '63d588ca6e03d9581096ca07',
+		'value': 16.7580328,
+		'pnlValue': -97.4983132,
+		'pnlPercent': -85.33295227207775,
+		'id': 'ecomi',
+		'symbol': 'omi',
+		'name': 'ECOMI',
+		'image': 'https://assets.coingecko.com/coins/images/4428/small/ECOMI.png?1557928886',
+		'current_price': 0.0010264,
+		'price_change_24h': 0.00009987,
+		'price_change_percentage_24h': 10.77844
+	}
+];
+
 module.exports = {
   fiatMap,
-  cryptoMap
+  cryptoMap,
+	dummyTransactionData
 };

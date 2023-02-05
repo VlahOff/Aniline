@@ -1,8 +1,8 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, concatMap, map, of, switchMap } from "rxjs";
 import { Store } from "@ngrx/store";
+import { catchError, map, of, switchMap } from "rxjs";
 
 import { AllCoins, TransactionDetailed } from "src/app/interfaces";
 import { environment } from "src/environments/environment";
@@ -36,7 +36,6 @@ const handleError = (error: string) => {
 
 @Injectable()
 export class PortfolioEffects {
-
   // Fetches all the coins info for the add modal dropdown
   fetchAllCoinsList$ = createEffect(() => this.actions$.pipe(
     ofType(PortfolioActions.fetchAllCoinsList),
@@ -57,41 +56,17 @@ export class PortfolioEffects {
     })
   ));
 
-  // Fetches all the IDs of the user transaction
-  fetchTransactionsIds$ = createEffect(() => this.actions$.pipe(
-    ofType(PortfolioActions.fetchTransactionsIds),
+  // Fetches all user transaction
+  fetchTransactions$ = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.fetchTransactions),
     switchMap(() => {
-      // this.store.dispatch(AppStateActions.loadStart());
-      return this.http
-        .get<string[]>(environment.portfolioApi + '/getTransactions')
-        .pipe(
-          map(data => {
-            // this.store.dispatch(AppStateActions.loadEnd());
-            return PortfolioActions.setTransactionsIds({ payload: data });
-          }),
-          catchError(err => {
-            this.store.dispatch(AppStateActions.loadEnd());
-            return handleError(err);
-          })
-        );
-    })
-  ));
-
-  // Fetches the full transaction data
-  fetchTransaction$ = createEffect(() => this.actions$.pipe(
-    ofType(PortfolioActions.fetchTransaction),
-    concatMap((state) => {
       this.store.dispatch(AppStateActions.loadStart());
-      let params = new HttpParams();
-      params = params.append('transactionId', state.payload);
-
       return this.http
-        .get<TransactionDetailed>(
-          environment.portfolioApi + '/getTransaction', { params: params })
+        .get<TransactionDetailed[]>(environment.portfolioApi + '/getTransactions')
         .pipe(
           map(data => {
             this.store.dispatch(AppStateActions.loadEnd());
-            return PortfolioActions.setTransaction({ payload: data });
+            return PortfolioActions.setTransactions({ payload: data });
           }),
           catchError(err => {
             this.store.dispatch(AppStateActions.loadEnd());
@@ -101,44 +76,19 @@ export class PortfolioEffects {
     })
   ));
 
-  fetchTransactionForEdit$ = createEffect(() => this.actions$.pipe(
-    ofType(PortfolioActions.fetchTransactionForEditing),
-    switchMap((state) => {
-      this.store.dispatch(AppStateActions.loadStart());
-      let params = new HttpParams();
-      params = params.append('transactionId', state.payload);
-
-      return this.http
-        .get<TransactionDetailed>(
-          environment.portfolioApi + '/getTransaction', { params: params })
-        .pipe(
-          map(data => {
-            this.store.dispatch(AppStateActions.loadEnd());
-            return PortfolioActions.setTransactionForEditing({ payload: data });
-          }),
-          catchError(err => {
-            this.store.dispatch(AppStateActions.loadEnd());
-            return handleError(err);
-          })
-        );
-    })
-  ));
-
-  //
+  // Adds the new transaction and receives the whole list with updated values
   addTransaction$ = createEffect(() => this.actions$.pipe(
     ofType(PortfolioActions.addTransaction),
     switchMap((state) => {
-      const data = state.payload;
+      this.store.dispatch(AppStateActions.loadStart());
 
       return this.http
-        .post<TransactionDetailed>(
-          environment.portfolioApi + '/addTransaction', { data })
+        .post<TransactionDetailed[]>(
+          environment.portfolioApi + '/addTransaction', { data: state.payload })
         .pipe(
           map((data) => {
-            return PortfolioActions.setTransaction({ payload: data });
-          }),
-          map((data) => {
-            return PortfolioActions.addTransactionId({ payload: data.payload.transactionId });
+            this.store.dispatch(AppStateActions.loadEnd());
+            return PortfolioActions.setTransactions({ payload: data });
           }),
           catchError(err => {
             this.store.dispatch(AppStateActions.loadEnd());
@@ -148,20 +98,19 @@ export class PortfolioEffects {
     })
   ));
 
+  // Send the edited transaction and receives the whole list with updated value
   editTransaction$ = createEffect(() => this.actions$.pipe(
-    ofType(PortfolioActions.putEditedTransaction),
+    ofType(PortfolioActions.sendUpdatedTransaction),
     switchMap((state) => {
       this.store.dispatch(AppStateActions.loadStart());
       return this.http
-        .put<TransactionDetailed>(environment.portfolioApi + '/editTransaction',
-          {
-            transaction: state.payload.transaction,
-            transactionId: state.payload.transactionId
-          })
-        .pipe(
+        .put<TransactionDetailed[]>(environment.portfolioApi + '/editTransaction', {
+          transaction: state.payload.transaction,
+          transactionId: state.payload.transactionId
+        }).pipe(
           map(data => {
             this.store.dispatch(AppStateActions.loadEnd());
-            return PortfolioActions.updateEditedTransaction({ payload: data });
+            return PortfolioActions.setTransactions({ payload: data });
           }),
           catchError(err => {
             this.store.dispatch(AppStateActions.loadEnd());
@@ -171,6 +120,7 @@ export class PortfolioEffects {
     })
   ));
 
+  // Sends the transaction ID to the backend to remove it
   removeTransaction$ = createEffect(() => this.actions$.pipe(
     ofType(PortfolioActions.removeTransaction),
     switchMap((state) => {
@@ -180,7 +130,6 @@ export class PortfolioEffects {
         .delete(environment.portfolioApi + '/removeTransaction', { params: params })
         .pipe(
           catchError(err => {
-            this.store.dispatch(AppStateActions.loadEnd());
             return handleError(err);
           })
         );

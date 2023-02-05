@@ -5,10 +5,6 @@ async function getAllUserTransactions(userId) {
   return Transaction.find({ owner: userId }).lean();
 }
 
-async function getTransaction(transactionId) {
-  return Transaction.findById(transactionId).lean();
-}
-
 async function createTransaction(data, userId) {
   const user = await User.findById(userId);
 
@@ -39,7 +35,6 @@ async function deleteTransaction(transactionId) {
 
 module.exports = {
   getAllUserTransactions,
-  getTransaction,
   createTransaction,
   editTransaction,
   deleteTransaction

@@ -1,43 +1,39 @@
 import { createAction, props } from "@ngrx/store";
 import { AllCoins, Transaction, TransactionDetailed } from "src/app/interfaces";
 
-export const showAddModal = createAction('[Portfolio] Show Add Modal');
 
-export const showEditModal = createAction('[Portfolio] Show Edit Modal');
+export const toggleAddModal = createAction(
+  '[Portfolio] Toggle Add Modal');
 
-export const hideModals = createAction('[Portfolio] Hide Modals');
+export const toggleEditModal = createAction(
+  '[Portfolio] Toggle Edit Modal');
 
-export const fetchAllCoinsList = createAction('[Portfolio] Fetch All Coins List');
+export const hideModals = createAction(
+  '[Portfolio] Hide Modals');
 
+// Fetches the list of available coins to be added to the portfolio
+export const fetchAllCoinsList = createAction(
+  '[Portfolio] Fetch All Coins List');
+
+// Sets the list of coins to the app state
 export const setAllCoinsList = createAction(
   '[Portfolio] Set All Coins List',
   props<{ payload: AllCoins[]; }>()
 );
 
-export const fetchTransactionsIds = createAction('[Portfolio] Fetch Transaction IDs');
+// Gets the users stored transactions
+export const fetchTransactions = createAction(
+  '[Portfolio] Fetch Transactions');
 
-export const setTransactionsIds = createAction(
-  '[Portfolio] Set Transactions IDs',
-  props<{ payload: string[]; }>()
+// Sets the transactions to the app state
+export const setTransactions = createAction(
+  '[Portfolio] Set Transactions',
+  props<{ payload: TransactionDetailed[]; }>()
 );
 
-export const setCoinInputField = createAction(
-  '[Portfolio] Set Coin Input Field',
-  props<{ payload: string; }>()
-);
-
-export const fetchTransaction = createAction(
-  '[Portfolio] Fetch Transaction',
-  props<{ payload: string; }>()
-);
-
-export const setTransaction = createAction(
-  '[Portfolio] Set Transaction',
-  props<{ payload: TransactionDetailed; }>()
-);
-
-export const addTransactionId = createAction(
-  '[Portfolio] Add Transaction ID',
+// This value is added to the state so that can be used to filter for the desired coin
+export const setCoinToFilterList = createAction(
+  '[Portfolio] Set Coin To Filter List',
   props<{ payload: string; }>()
 );
 
@@ -46,33 +42,18 @@ export const addTransaction = createAction(
   props<{ payload: Transaction; }>()
 );
 
-export const fetchTransactionForEditing = createAction(
-  '[Portfolio] Fetch Transaction For Editing',
+export const setTransactionIdToEdit = createAction(
+  '[Portfolio] Set Transaction ID To Edit',
   props<{ payload: string; }>()
 );
 
-export const setTransactionForEditing = createAction(
-  '[Portfolio] Set Transaction For Editing',
-  props<{ payload: TransactionDetailed; }>()
-);
-
-export const setTransactionIdForEditing = createAction(
-  '[Portfolio] Set Transaction ID For Editing',
-  props<{ payload: string; }>()
-);
-
-export const clearTransactionForEdit = createAction(
-  '[Portfolio] Clear Set Transaction For Edit'
-);
-
-export const putEditedTransaction = createAction(
-  '[Portfolio] Put Edited Transaction',
+export const sendUpdatedTransaction = createAction(
+  '[Portfolio] Send Updated Transaction',
   props<{ payload: { transaction: Transaction, transactionId: string; }; }>()
 );
 
-export const updateEditedTransaction = createAction(
-  '[Portfolio] Update Edited Transaction',
-  props<{ payload: TransactionDetailed; }>()
+export const clearTransactionIdForEdit = createAction(
+  '[Portfolio] Clear Transaction ID For Edit'
 );
 
 export const removeTransaction = createAction(
