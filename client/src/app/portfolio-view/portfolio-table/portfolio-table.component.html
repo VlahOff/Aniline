@@ -2,45 +2,46 @@
   <table>
     <thead>
       <tr>
-        <td class="first-header">Asset</td>
-        <td class="second-header">Balance</td>
-        <td class="third-header">Bought Price (USD)</td>
-        <td class="third-header">Current Price (USD)</td>
-        <td class="fourth-header">24h Change (%)</td>
-        <td class="fifth-header">PNL</td>
-        <td class="sixth-header"></td>
+        <td class="first-col sticky-col"><p>Asset</p></td>
+        <td class="second-col"><p>Balance</p></td>
+        <td class="third-col"><p>Bought Price (USD)</p></td>
+        <td class="third-col"><p>Current Price (USD)</p></td>
+        <td class="fourth-col"><p>24h Change (%)</p></td>
+        <td class="fifth-col"><p>PNL</p></td>
+        <td class="sixth-col"><p></p></td>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td class="first">
-          <!-- <img src="{{ (transaction$ | async)?.image }}" alt="logo"> -->
+      <tr *ngFor="let transaction of (transactions$ | async)"
+      (click)="editTransaction(transaction.transactionId)"
+      >
+        <td class="first-col sticky-col">
+          <img src="{{ transaction.image }}" alt="logo">
           <div class="asset-name">
-            <!-- <strong>{{ (transaction$ | async)?.name}}</strong> -->
-            <!-- <p>{{ (transaction$ | async)?.symbol | uppercase }}</p> -->
+            <strong>{{ transaction.name}}</strong>
+            <p>{{ transaction.symbol | uppercase }}</p>
           </div>
         </td>
-        <td class="second">
-          <!-- <strong>{{ (transaction$ | async)?.quantity }} 
-            {{ (transaction$ | async)?.symbol | uppercase }}</strong>
+        <td class="second-col">
+          <strong>{{ transaction.quantity }} {{ transaction.symbol | uppercase }}</strong>
           <p class="spacer">≈</p>
-          <p>{{ (transaction$ | async)?.value | currency:'USD':'symbol':'1.2-2'}}</p> -->
+          <p>{{ transaction.value | currency:'USD':'symbol':'1.2-2'}}</p>
         </td>
-        <td class="third">
-          <!-- <p>{{ (transaction$ | async)?.boughtPrice | currency:'USD':'symbol':'1.2-10'}}</p> -->
+        <td class="third-col">
+          <p>{{ transaction.boughtPrice | currency:'USD':'symbol':'1.2-10'}}</p>
         </td>
-        <td class="third">
-          <!-- <p>{{ (transaction$ | async)?.current_price | currency:'USD':'symbol':'1.2-10'}}</p> -->
+        <td class="third-col">
+          <p>{{ transaction.current_price | currency:'USD':'symbol':'1.2-10'}}</p>
         </td>
-        <td class="fourth">
-          <!-- <p>{{(transaction$ | async)?.price_change_percentage_24h | number:'1.2-2'}}%</p> -->
+        <td class="fourth-col">
+          <p>{{transaction.price_change_percentage_24h | number:'1.2-2'}}%</p>
         </td>
-        <td class="fifth">
-          <!-- <p>{{ (transaction$ | async)?.pnlValue | currency:'USD':'symbol':'1.2-2' }}</p> -->
-          <!-- <p>{{ (transaction$ | async)?.pnlPercent | number:'1.2-2' }}%</p> -->
+        <td class="fifth-col">
+          <p>{{ transaction.pnlValue | currency:'USD':'symbol':'1.2-2' }}</p>
+          <p>{{ transaction.pnlPercent | number:'1.2-2' }}%</p>
         </td>
-        <td class="sixth"  (click)="removeTransaction()">
-          <div class="delete-button">
+        <td class="sixth-col" (click)="removeTransaction(transaction.transactionId)">
+          <div class="cross">
             <i class="fa-solid fa-xmark"></i>
           </div>
         </td>

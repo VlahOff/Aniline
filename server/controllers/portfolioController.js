@@ -1,38 +1,13 @@
 const { getCoinDetailed } = require('../api/cryptoApi');
-const { createTransaction, getAllUserTransactions, getTransaction, deleteTransaction, editTransaction } = require('../service/transactionService');
+const { createTransaction, getAllUserTransactions, deleteTransaction, editTransaction } = require('../service/transactionService');
 const errorParser = require('../utils/errorParser');
 
 const portfolioController = require('express').Router();
 
 portfolioController.get('/getTransactions', async (req, res) => {
   try {
-    if (!req.user) {
-      throw new Error('NO_USER');
-    }
-    const userId = req.user.userId;
-    let transactions = await getAllUserTransactions(userId);
-    transactions = transactions.map(t => { return t = t._id.toString(); });
-
-    res.status(200).json(transactions);
-  } catch (error) {
-    res.status(400).json({
-      message: errorParser(error)
-    });
-  }
-});
-
-portfolioController.get('/getTransaction', async (req, res) => {
-  try {
-    if (!req.user) {
-      throw new Error('NO_USER');
-    }
-
-    const transactionData = await getTransaction(req.query.transactionId);
-    const details = await getCoinDetailed(transactionData.coinId);
-
-    const transaction = createTransactionDetail(transactionData, details);
-
-    res.status(200).json(transaction);
+    const result = await getDetailedTransactions(req.user.userId);
+    res.status(200).json(result);
   } catch (error) {
     res.status(400).json({
       message: errorParser(error)
@@ -42,10 +17,6 @@ portfolioController.get('/getTransaction', async (req, res) => {
 
 portfolioController.post('/addTransaction', async (req, res) => {
   try {
-    if (!req.user) {
-      throw new Error('NO_USER');
-    }
-
     if (req.body.data.coinId === '') {
       throw new Error('ENTER_COIN_ID');
     }
@@ -57,13 +28,10 @@ portfolioController.post('/addTransaction', async (req, res) => {
     if (req.body.data.quantity <= 0) {
       throw new Error('QUANTITY_LEAST_ONES');
     }
+    await createTransaction(req.body.data, req.user.userId);
 
-    const transactionData = await createTransaction(req.body.data, req.user.userId);
-    const details = await getCoinDetailed(transactionData.coinId);
-
-    const transaction = createTransactionDetail(transactionData, details);
-
-    res.status(200).json(transaction);
+    const result = await getDetailedTransactions(req.user.userId);
+    res.status(200).json(result);
   } catch (error) {
     res.status(400).json({
       message: errorParser(error)
@@ -73,10 +41,6 @@ portfolioController.post('/addTransaction', async (req, res) => {
 
 portfolioController.put('/editTransaction', async (req, res) => {
   try {
-    if (!req.user) {
-      throw new Error('NO_USER');
-    }
-
     if (req.body.transaction.coinId === '') {
       throw new Error('ENTER_COIN_ID');
     }
@@ -88,13 +52,10 @@ portfolioController.put('/editTransaction', async (req, res) => {
     if (req.body.transaction.quantity <= 0) {
       throw new Error('QUANTITY_LEAST_ONES');
     }
+    await editTransaction(req.body.transaction, req.body.transactionId);
 
-    const transactionData = await editTransaction(req.body.transaction, req.body.transactionId);
-    const details = await getCoinDetailed(transactionData.coinId);
-
-    const transaction = await createTransactionDetail(transactionData, details);
-
-    res.status(200).json(transaction);
+    const result = await getDetailedTransactions(req.user.userId);
+    res.status(200).json(result);
   } catch (error) {
     res.status(400).json({
       message: errorParser(error)
@@ -104,10 +65,6 @@ portfolioController.put('/editTransaction', async (req, res) => {
 
 portfolioController.delete('/removeTransaction', async (req, res) => {
   try {
-    if (!req.user) {
-      throw new Error('NO_USER');
-    }
-
     await deleteTransaction(req.query.transactionId);
     res.status(200).end();
   } catch (error) {
@@ -117,7 +74,29 @@ portfolioController.delete('/removeTransaction', async (req, res) => {
   }
 });
 
-function createTransactionDetail(transactionData, details) {
+async function getDetailedTransactions(userId) {
+  const transactions = await getAllUserTransactions(userId);
+  if (!transactions) {
+    throw new Error('NO_TRANSACTIONS_FOR_USER');
+  }
+
+  const detailedTransactions = transactions.map((t) => {
+    return t = getCoinDetailed(t.coinId);
+  });
+
+  const result = [];
+  await Promise.all(detailedTransactions)
+    .then((data) => {
+      transactions.forEach((t, i) => {
+        result.push(createTransactionDetailed(t, data[i]));
+      });
+    })
+    .catch(err => console.log(err));
+
+  return result;
+}
+
+function createTransactionDetailed(transactionData, details) {
   return {
     coinId: transactionData.coinId,
     boughtPrice: transactionData.coinPrice,

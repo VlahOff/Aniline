@@ -6,7 +6,6 @@ const errorParser = require('../utils/errorParser');
 authController.post('/register',
 	body('email')
 		.trim()
-		.isEmpty()
 		.isEmail()
 		.withMessage('INVALID_EMAIL'),
 	body('username')
@@ -87,6 +86,10 @@ authController.post('/changeUsername',
 			const { errors } = validationResult(req);
 			if (errors.length > 0) {
 				throw errors;
+			}
+
+			if (!req.user) {
+				throw new Error('NO_USER');
 			}
 
 			const result = await changeUsername(

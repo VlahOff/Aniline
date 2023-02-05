@@ -63,6 +63,7 @@ const handleError = (error: string) => {
       errorMessage = 'An unknown error has occurred!';
       break;
   }
+  console.log(error);
 
   return of(AppStateActions.setError({ payload: errorMessage }));
 };

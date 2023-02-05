@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { Transaction, TransactionDetailed } from 'src/app/interfaces';
 import * as PortfolioActions from '../+store/portfolio.actions';
-import { getTransactionForEdit, getTransactionIdForEdit } from '../+store/portfolio.selector';
+import { getTransactionToEdit } from '../+store/portfolio.selector';
 import * as fromApp from '../../+store/app.reducer';
 
 @Component({
@@ -14,13 +14,10 @@ import * as fromApp from '../../+store/app.reducer';
   styleUrls: ['./edit-coin-modal.component.css']
 })
 export class EditCoinModalComponent implements OnInit, OnDestroy {
-  transactionIdSub!: Subscription;
-  transactionId!: string;
-
-  transactionSub!: Subscription;
-  transaction!: TransactionDetailed | null;
-
   editCoinForm!: FormGroup;
+  transactionSub!: Subscription;
+  transaction$: Observable<TransactionDetailed | undefined> = this.store.select(getTransactionToEdit);
+  transaction!: TransactionDetailed;
 
   constructor(
     private store: Store<fromApp.AppState>
@@ -40,44 +37,42 @@ export class EditCoinModalComponent implements OnInit, OnDestroy {
     });
     this.editCoinForm.get('coinId')?.disable();
 
-    this.transactionIdSub = this.store.select(getTransactionIdForEdit)
-      .subscribe(data => this.transactionId = data);
-
-    this.store.dispatch(PortfolioActions.fetchTransactionForEditing({ payload: this.transactionId }));
-
-    this.transactionSub = this.store.select(getTransactionForEdit)
+    this.transactionSub = this.transaction$
       .subscribe(data => {
-        this.transaction = data;
-
-        if (this.transaction) {
+        if (data) {
+          this.transaction = data;
           this.editCoinForm.setValue({
-            'coinId': this.transaction?.name,
-            'coinPrice': this.transaction?.boughtPrice,
-            'quantity': this.transaction?.quantity
+            'coinId': data.name,
+            'coinPrice': data.boughtPrice,
+            'quantity': data.quantity
           });
         }
       });
   }
 
   onSubmit() {
-    const transaction = new Transaction(this.transaction!.coinId, this.editCoinForm.value.coinPrice, this.editCoinForm.value.quantity);
-    this.store.dispatch(PortfolioActions.putEditedTransaction({
+    const transaction = new Transaction(
+      this.transaction.coinId,
+      this.editCoinForm.value.coinPrice,
+      this.editCoinForm.value.quantity
+    );
+
+    this.store.dispatch(PortfolioActions.sendUpdatedTransaction({
       payload: {
         transaction: transaction,
-        transactionId: this.transactionId
+        transactionId: this.transaction.transactionId
       }
     }));
-    this.store.dispatch(PortfolioActions.showEditModal());
-    this.store.dispatch(PortfolioActions.clearTransactionForEdit());
+    this.store.dispatch(PortfolioActions.toggleEditModal());
+    this.store.dispatch(PortfolioActions.clearTransactionIdForEdit());
   }
 
   hideModal(target: MouseEvent) {
-    this.store.dispatch(PortfolioActions.showEditModal());
-    this.store.dispatch(PortfolioActions.clearTransactionForEdit());
+    this.store.dispatch(PortfolioActions.toggleEditModal());
+    this.store.dispatch(PortfolioActions.clearTransactionIdForEdit());
   }
 
   ngOnDestroy(): void {
-    this.transactionIdSub.unsubscribe();
     this.transactionSub.unsubscribe();
   }
 }

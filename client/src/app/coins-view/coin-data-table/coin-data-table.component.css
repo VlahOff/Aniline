@@ -55,7 +55,7 @@ td {
 
 .second-col {
   width: 38px;
-  min-width: 38;
+  min-width: 38px;
   max-width: 38px;
   left: 32px;
   padding-top: 6px;

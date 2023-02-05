@@ -40,20 +40,20 @@ export class AddCoinModalComponent implements OnInit {
       payload: this.addCoinForm.value
     }));
     this.addCoinForm.reset();
-    this.store.dispatch(PortfolioActions.showAddModal());
+    this.store.dispatch(PortfolioActions.toggleAddModal());
   }
 
   filter(value: string) {
-    this.store.dispatch(PortfolioActions.setCoinInputField({ payload: value }));
+    this.store.dispatch(PortfolioActions.setCoinToFilterList({ payload: value }));
   }
 
   setCoin(coin: AllCoins) {
     this.selectedCoinName = coin.name;
-    this.store.dispatch(PortfolioActions.setCoinInputField({ payload: '' }));
+    this.store.dispatch(PortfolioActions.setCoinToFilterList({ payload: '' }));
     this.addCoinForm.patchValue({ coinId: coin.id });
   }
 
   hideModal(target: MouseEvent) {
-    this.store.dispatch(PortfolioActions.showAddModal());
+    this.store.dispatch(PortfolioActions.toggleAddModal());
   }
 }

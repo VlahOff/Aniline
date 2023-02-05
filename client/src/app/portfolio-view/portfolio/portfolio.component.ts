@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import * as PortfolioActions from '../+store/portfolio.actions';
-import { getAddModalStatus, getEditModalStatus, getTotalAssetValue, getTransactionsIds } from '../+store/portfolio.selector';
+import { getAddModalStatus, getEditModalStatus, getTotalAssetValue } from '../+store/portfolio.selector';
 import * as fromApp from '../../+store/app.reducer';
 
 @Component({
@@ -13,8 +13,6 @@ import * as fromApp from '../../+store/app.reducer';
 })
 export class PortfolioComponent implements OnInit {
   totalAssetValue$: Observable<number> = this.store.select(getTotalAssetValue);
-  transactionsIds$: Observable<string[]> = this.store.select(getTransactionsIds);
-
   addModalStatus$: Observable<boolean> = this.store.select(getAddModalStatus);
   editModalStatus$: Observable<boolean> = this.store.select(getEditModalStatus);
 
@@ -23,24 +21,16 @@ export class PortfolioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.store.dispatch(PortfolioActions.fetchAllCoinsList());
-    this.store.dispatch(PortfolioActions.fetchTransactionsIds());
-
-
-    this.store.dispatch(PortfolioActions.fetchAllTransactionsDetailed());
-  }
-
-  editTransaction(transactionId: string) {
-    this.store.dispatch(PortfolioActions.setTransactionIdForEditing({ payload: transactionId }));
-    this.store.dispatch(PortfolioActions.showEditModal());
+    this.store.dispatch(PortfolioActions.fetchAllCoinsList());
+    this.store.dispatch(PortfolioActions.fetchTransactions());
   }
 
   showAddModal() {
-    this.store.dispatch(PortfolioActions.showAddModal());
+    this.store.dispatch(PortfolioActions.toggleAddModal());
   }
 
   showEditModal() {
-    this.store.dispatch(PortfolioActions.showEditModal());
+    this.store.dispatch(PortfolioActions.toggleEditModal());
   }
 
   hideModal(event: MouseEvent) {
@@ -53,7 +43,7 @@ export class PortfolioComponent implements OnInit {
         (event.target as HTMLElement).className === 'whitespace')
     ) {
       this.store.dispatch(PortfolioActions.hideModals());
-      this.store.dispatch(PortfolioActions.clearTransactionForEdit());
+      this.store.dispatch(PortfolioActions.clearTransactionIdForEdit());
     }
   }
 }
