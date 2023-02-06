@@ -11,6 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class DeleteUserModalComponent implements OnInit {
   deleteAccountForm!: FormGroup;
+  passField: boolean = true;
 
   constructor(
     private store: Store<fromApp.AppState>
@@ -31,6 +32,10 @@ export class DeleteUserModalComponent implements OnInit {
         payload: this.deleteAccountForm.value
       }
     ));
+  }
+
+  togglePassField() {
+    this.passField = !this.passField
   }
 
   closeModal() {

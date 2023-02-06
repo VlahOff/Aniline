@@ -13,6 +13,7 @@ import * as AppStateActions from '../../+store/appState.actions';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
+  passField: boolean = true;
 
   constructor(
     private store: Store<fromApp.AppState>
@@ -36,6 +37,10 @@ export class LoginComponent implements OnInit, OnDestroy {
         password: this.loginForm.value.password
       }
     }));
+  }
+
+  togglePassField() {
+    this.passField = !this.passField;
   }
 
   ngOnDestroy(): void {

@@ -1,4 +1,11 @@
-<h1>Track your crypto gains!</h1>
-<div class="card-container">
-  <app-crypto-card *ngFor="let card of (topThree$ | async)" [card]="card"></app-crypto-card>
+<div class="container">
+  <h1>Track your crypto gains!</h1>
+  <div class="welcome">
+    <p>Not already a user?</p>
+    <p>Join us now!</p>
+    <a class="button" routerLink="/auth/register">Register</a>
+  </div>
+  <div class="card-container">
+    <app-crypto-card *ngFor="let card of (topThree$ | async)" [card]="card"></app-crypto-card>
+  </div>
 </div>

@@ -16,11 +16,14 @@
         >Invalid e-mail!</p>
 
         <div class="field">
-          <i class="input-icon fa-solid fa-at"></i>
+          <div class="input-icon">
+            <i class="input-icon fa-solid fa-at"></i>
+          </div>
           <input id="email" 
-          placeholder="Enter your e-mail!" 
-          formControlName="email" type="email" autofocus>
-          <div class="input-icon"><i class="icon"></i></div>
+          placeholder="Enter Email" 
+          formControlName="email" autofocus
+          type="text">
+          <div class="input-icon"></div>
         </div>
       </div>
 
@@ -32,11 +35,16 @@
         >Invalid password!</p>
 
         <div class="field">
-          <i class="input-icon fa-solid fa-key"></i>
+          <div class="input-icon">
+            <i class="input-icon fa-solid fa-key"></i>
+          </div>
           <input id="password" 
           placeholder="Enter your password!" 
-          formControlName="password" type="password">
-          <div class="input-icon"></div>
+          formControlName="password" 
+          [type]="passField ? 'password' : 'text'">
+          <div class="input-icon eye" (click)="togglePassField()">
+            <i class="input-icon fa-solid fa-eye"></i>
+          </div>
         </div>
       </div>
 

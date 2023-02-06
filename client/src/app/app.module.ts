@@ -20,7 +20,6 @@ import { PortfolioEffects } from './portfolio-view/+store/portfolio.effects';
 import { ErrorBannerComponent } from './shared/error-banner/error-banner.component';
 import { HeaderComponent } from './header/header.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
-import { MessageBannerComponent } from './shared/message-banner/message-banner.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { MessageBannerComponent } from './shared/message-banner/message-banner.c
     CryptoCardComponent,
     HomeComponent,
     HeaderComponent,
-    MessageBannerComponent,
   ],
   imports: [
     BrowserModule,

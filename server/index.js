@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const databaseConfig = require('./configs/database');
 
-const session = require('./middlewares/session');
+const tokenParser = require('./middlewares/tokenParser');
 const { isUser } = require('./middlewares/guards');
 const cors = require('./middlewares/cors');
 
@@ -18,7 +18,7 @@ async function start() {
 
 	app.use(cors());
 	app.use(express.json());
-	app.use(session());
+	app.use(tokenParser());
 	await databaseConfig();
 
 	app.use('/auth', authController);

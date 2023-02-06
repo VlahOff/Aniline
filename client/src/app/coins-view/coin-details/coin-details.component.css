@@ -80,11 +80,12 @@ header {
 
 .right-header-part {
   display: flex;
+  align-items: center;
   gap: 12px
 }
 
 .price {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 500px;
 }
 

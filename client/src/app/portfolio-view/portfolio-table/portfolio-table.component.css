@@ -15,7 +15,10 @@ table {
 thead {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #797979;
+}
+
+thead tr {
+  border-bottom: 1px white solid;
 }
 
 tr {
@@ -24,6 +27,10 @@ tr {
   border-bottom: 1px black solid;
   text-align: center;
   gap: 10px;
+}
+
+tr:last-child {
+  border-bottom: none;
 }
 
 tbody tr {
@@ -57,7 +64,7 @@ td {
   text-align: left;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .first-col>img {

@@ -64,7 +64,7 @@
       </div>
 
       <div class="output">
-        <h4 class="output-field" *ngIf="result$ | async">
+        <p class="output-field" *ngIf="result$ | async">
           {{ (result$ | async)!.amount }}
           {{ (result$ | async)!.name }}
           ({{ (result$ | async)!.symbol }}) =
@@ -72,7 +72,7 @@
           {{ (to$ | async)!.name }}
           "{{ (to$ | async)!.sign }}"
           ({{ (to$ | async)!.symbol }})
-        </h4>
+        </p>
       </div>
 
     </form>
