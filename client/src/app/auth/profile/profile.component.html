@@ -1,13 +1,13 @@
 <div class="container">
   <section class="profile-card">
-    <article class="user-info">
+    <div class="user-info">
       <div class="user-info__img-container">
         <img src="/assets/profile-img.webp" alt="">
       </div>
       <h2 class="user-info__name">{{(user$ | async)!.username}}</h2>
       <p class="user-info__email">{{(user$ | async)!.email}}</p>
-    </article>
-    <article class="user-settings">
+    </div>
+    <div class="user-settings">
       <ul class="user-settings__list">
         <li class="user-settings__option">
           <a (click)="changeUsernameModal()">
@@ -28,7 +28,7 @@
           </a>
         </li>
       </ul>
-    </article>
+    </div>
   </section>
 </div>
 <div class="modal-container"

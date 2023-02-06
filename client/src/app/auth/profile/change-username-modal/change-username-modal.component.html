@@ -1,16 +1,15 @@
 <section class="modal">
-  <header>
-    <h1>Change username</h1>
-  </header>
+  <h1>Change username</h1>
   <form [formGroup]="changeUsernameForm" (ngSubmit)="onSubmit()">
-
     <div class="input-container">
       <label for="oldUsername">Old username</label>
 
       <div class="field">
-        <i class="input-icon fa-solid fa-id-badge"></i>
+        <div class="spacer">
+          <i class="fa-solid fa-id-badge"></i>
+        </div>
         <p class="input">{{(user$ | async)!.username}}</p>
-        <div class="input-icon"></div>
+        <div class="spacer"></div>
       </div>
     </div>
 
@@ -22,11 +21,13 @@
       >Invalid username!</p>
 
       <div class="field">
-        <i class="input-icon fa-solid fa-user-tag"></i>
+        <div class="spacer">
+          <i class="fa-solid fa-user-tag"></i>
+        </div>
         <input class="input" id="newUsername" 
         formControlName="newUsername"
         type="text">
-        <div class="input-icon"></div>
+        <div class="spacer"></div>
       </div>
     </div>
 
@@ -38,11 +39,13 @@
       >Invalid password!</p>
 
       <div class="field">
-        <div class="input-icon"></div>
+        <div class="spacer"></div>
         <input class="input" id="password" 
         formControlName="password"
-        type="password">
-        <i class="input-icon fa-solid fa-eye"></i>
+        [type]="passField ? 'password' : 'text'">
+        <div class="input-icon" (click)="togglePass()">
+          <i class="input-icon fa-solid fa-eye"></i>
+        </div>
       </div>
     </div>
 

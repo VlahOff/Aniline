@@ -1,7 +1,6 @@
 <div class="container">
   <article class="details-page" *ngIf="coinDetailsData$ | async">
     <header>
-
       <div class="left-header-part">
         <img class="coin-logo" 
         src="{{ (coinDetailsData$ | async)?.image?.small }}" alt="Coin logo">
@@ -41,7 +40,7 @@
       <table>
         <tr>
           <th>
-            <article class="cell">
+            <div class="cell">
               <h5>Market Cap</h5>
               <br>
               <br>
@@ -49,10 +48,10 @@
                 currency:'USD':'symbol':'1.2-2' }}</p>
               <p>{{ (coinDetailsData$ | async)?.market_cap_change_percentage_24h | 
                 number:'1.2-2' }}%</p>
-            </article>
+            </div>
           </th>
           <th>
-            <article class="cell">
+            <div class="cell">
               <h5>Circulating Supply</h5>
               <br>
               <br>
@@ -60,20 +59,20 @@
                 <b>{{ (coinDetailsData$ | async)?.symbol | uppercase }}</b>
               </p>
               <p>Max Supply: {{ (coinDetailsData$ | async)?.max_supply }}</p>
-            </article>
+            </div>
           </th>
           <th>
-            <article class="cell">
+            <div class="cell">
               <h5>Volume</h5>
               <br>
               <br>
               <br>
               <p>{{ (coinDetailsData$ | async)?.total_volume | 
                 currency:'USD':'symbol':'1.2-2' }}</p>
-            </article>
+            </div>
           </th>
           <th>
-            <article class="cell">
+            <div class="cell">
               <h5>All Time High</h5>
               <br>
               <p>{{ (coinDetailsData$ | async)?.ath | 
@@ -84,10 +83,10 @@
                 <p class="timestamp">{{ (coinDetailsData$ | async)?.ath_date | 
                   date : 'd MMM y  H:mm' }}</p>
               </time>
-            </article>
+            </div>
           </th>
           <th>
-            <article class="last-cell">
+            <div class="last-cell">
               <h5>All Time Low</h5>
               <br>
               <p>{{ (coinDetailsData$ | async)?.atl | 
@@ -98,7 +97,7 @@
                 <p class="timestamp">{{ (coinDetailsData$ | async)?.atl_date | 
                   date : 'd MMM y  H:mm' }}</p>
               </time>
-            </article>
+            </div>
           </th>
         </tr>
       </table>

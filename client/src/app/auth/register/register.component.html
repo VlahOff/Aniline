@@ -15,9 +15,13 @@
         >Invalid e-mail!</p>
 
         <div class="field">
-          <i class="input-icon fa-solid fa-at"></i>
-          <input id="email" type="text" 
-          placeholder="Enter Email" formControlName="email" autofocus>
+          <div class="input-icon">
+            <i class="input-icon fa-solid fa-at"></i>
+          </div>
+          <input id="email" 
+          placeholder="Enter Email" 
+          formControlName="email" autofocus
+          type="text">
           <div class="input-icon"></div>
         </div>
       </div>
@@ -30,9 +34,13 @@
           >Invalid username!</p>
 
         <div class="field">
-          <i class="input-icon fa-solid fa-at"></i>
-          <input id="username" type="text" 
-          placeholder="Enter Username" formControlName="username">
+          <div class="input-icon">
+            <i class="input-icon fa-solid fa-at"></i>
+          </div>
+          <input id="username" 
+          placeholder="Enter Username" 
+          formControlName="username"
+          type="text">
           <div class="input-icon"></div>
         </div>
       </div>
@@ -45,10 +53,16 @@
           >Invalid password!</p>
 
         <div class="field">
-          <i class="input-icon fa-solid fa-key"></i>
-          <input id="password" type="password" 
-          placeholder="Enter Password" formControlName="password">
-          <div class="input-icon"></div>
+          <div class="input-icon">
+            <i class="input-icon fa-solid fa-key"></i>
+          </div>
+          <input id="password" 
+          placeholder="Enter Password" 
+          formControlName="password"
+          [type]="passField ? 'password' : 'text'">
+          <div class="input-icon eye" (click)="togglePassField()">
+            <i class="input-icon fa-solid fa-eye"></i>
+          </div>
         </div>
         <div class="tooltip">
           <div class="tooltip-text">
@@ -83,10 +97,16 @@
         >Invalid password!</p>
 
         <div class="field">
-          <i class="input-icon fa-solid fa-key"></i>
-          <input id="rePass" type="password" 
-          placeholder="Repeat Password" formControlName="rePass">
-          <div class="input-icon"></div>
+          <div class="input-icon">
+            <i class="input-icon fa-solid fa-key"></i>
+          </div>
+          <input id="rePass" 
+          placeholder="Repeat Password" 
+          formControlName="rePass"
+          [type]="rePassField ? 'password' : 'text'">
+          <div class="input-icon eye" (click)="toggleRePassField()">
+            <i class="input-icon fa-solid fa-eye"></i>
+          </div>
         </div>
       </div>
 

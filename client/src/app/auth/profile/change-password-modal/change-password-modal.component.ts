@@ -12,6 +12,9 @@ import * as fromApp from '../../../+store/app.reducer';
 })
 export class ChangePasswordModalComponent implements OnInit {
   changePasswordForm!: FormGroup;
+  oldPassField: boolean = true;
+  newPassField: boolean = true;
+  newRePassField: boolean = true;
 
   constructor(
     private store: Store<fromApp.AppState>
@@ -39,6 +42,18 @@ export class ChangePasswordModalComponent implements OnInit {
         newPassword: this.changePasswordForm.get('newPassword')?.value
       }
     }));
+  }
+
+  toggleOldPass() {
+    this.oldPassField = !this.oldPassField;
+  }
+
+  toggleNewPass() {
+    this.newPassField = !this.newPassField;
+  }
+
+  toggleNewRePass() {
+    this.newRePassField = !this.newRePassField;
   }
 
   closeModal() {

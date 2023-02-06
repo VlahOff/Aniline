@@ -16,6 +16,7 @@ import { User } from '../../user.model';
 export class ChangeUsernameModalComponent implements OnInit {
   user$: Observable<User | null> = this.store.select(getUser);
   changeUsernameForm!: FormGroup;
+  passField: boolean = true;
 
   constructor(
     private store: Store<fromApp.AppState>
@@ -39,6 +40,10 @@ export class ChangeUsernameModalComponent implements OnInit {
     this.store.dispatch(AuthActions.sendChangeUsernameData({
       payload: this.changeUsernameForm.value
     }));
+  }
+
+  togglePass() {
+    this.passField = !this.passField
   }
 
   closeModal() {

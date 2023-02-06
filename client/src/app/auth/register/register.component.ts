@@ -13,6 +13,8 @@ import * as AppStateActions from '../../+store/appState.actions';
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   registerForm!: FormGroup;
+  passField: boolean = true;
+  rePassField: boolean = true;
 
   constructor(
     private store: Store<fromApp.AppState>
@@ -52,6 +54,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
         password: this.registerForm.value.password
       }
     }));
+  }
+
+  togglePassField() {
+    this.passField = !this.passField;
+  }
+
+  toggleRePassField() {
+    this.rePassField = !this.rePassField;
   }
 
   doPasswordsMatch(control: FormControl): { [s: string]: boolean; } | null {

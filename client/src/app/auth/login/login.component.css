@@ -56,8 +56,9 @@ label {
 }
 
 .field {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 30px 280px 30px;
+  gap: 6px;
   height: 30px;
   margin-top: 18px;
 }
@@ -66,6 +67,10 @@ label {
   width: 30px;
   opacity: 40%;
   color: white;
+}
+
+.eye {
+  cursor: pointer;
 }
 
 input {
