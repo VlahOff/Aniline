@@ -15,7 +15,7 @@ h1 {
   margin-top: 200px;
 }
 
-.welcome {
+.welcome-container, .welcome {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,6 +27,12 @@ h1 {
 .welcome p {
   font-size: 24px;
   font-weight: 300;
+}
+
+.button-containers {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
 }
 
 .welcome .button {

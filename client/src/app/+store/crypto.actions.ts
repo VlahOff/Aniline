@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { ChartData, CoinsView, DetailedCoinDataResponse, GlobalData } from "../interfaces";
+import { ChartData, CoinsView, DetailedCoinDataResponse, GlobalData, SearchResult } from "../interfaces";
 
 export const fetchGlobalData = createAction('[Crypto] Fetch Global Data');
 
@@ -54,6 +54,16 @@ export const setChartData = createAction(
 export const setChartPeriod = createAction(
   '[Crypto] Set Chart Period',
   props<{ payload: number; }>()
+);
+
+export const startSearch = createAction(
+  '[Crypto] Start Search',
+  props<{ payload: string; }>()
+);
+
+export const setSearchResults = createAction(
+  '[Crypto] Set Search Results',
+  props<{ payload: SearchResult[]; }>()
 );
 
 export const dummy = createAction('[Crypto] Dummy');

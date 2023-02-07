@@ -1,5 +1,4 @@
 export * from './globalData';
-export * from './simple-coin-data-res';
 export * from './detailedCoinData';
 export * from './coinsView';
 export * from './fiatMap';
@@ -7,3 +6,4 @@ export * from './cryptoMap';
 export * from './converterRes';
 export * from './allCoins';
 export * from './transaction';
+export * from './searchResult'

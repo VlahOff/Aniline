@@ -1,4 +1,9 @@
 <p [ngClass]="percent > 0 ? 'green':'red'">
-  {{percent > 0 ? '⮝' : '⮟'}}
+  <i class="fa-solid fa-angle-up"
+  *ngIf="percent > 0"
+  ></i>
+  <i class="fa-solid fa-angle-down"
+  *ngIf="percent < 0"
+  ></i>
   {{percent| number:'1.2-2'}}%
 </p>

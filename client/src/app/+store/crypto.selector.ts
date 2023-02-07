@@ -16,3 +16,5 @@ export const getCoinDetails = createSelector(cryptoSelector, s => s.coinDetails)
 export const getCoinDetailsChart = createSelector(cryptoSelector, s => s.chartData);
 
 export const getChartPeriod = createSelector(cryptoSelector, s => s.chartPeriod);
+
+export const getSearchResults = createSelector(cryptoSelector, s => s.searchResults);
