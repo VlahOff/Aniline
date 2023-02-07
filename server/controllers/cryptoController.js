@@ -162,4 +162,20 @@ cryptoController.get('/getCoinChartData', async (req, res) => {
   }
 });
 
+cryptoController.post('/search', async (req, res) => {
+  try {
+    const temp = await cryptoApi.search(req.body.query);
+    res.status(200).json(temp);
+  } catch (error) {
+    let statusCode = 400;
+    if (error.response.status) {
+      statusCode = error.response.status;
+    }
+
+    res.status(statusCode).json({
+      message: errorParser(error)
+    });
+  }
+});
+
 module.exports = cryptoController;

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="search-box">
+    <form [formGroup]="searchForm" (ngSubmit)="search()">
+      <input 
+      formControlName="search" 
+      type="text" 
+      placeholder="Bitcoin"
+      autocomplete="disable"
+      (input)="search()">
+      <div 
+      class="menu-content" 
+      [class.on]="(searchResults$ | async)">
+        <div class="result" 
+        *ngFor="let result of (searchResults$ | async)" 
+        routerLink="/coins/{{result.id}}">
+          <div class="logo">
+            <img src="{{result.thumb}}" alt="Coin logo">
+          </div>
+          <p>{{result.name}}</p>
+          <p>{{result.symbol | uppercase}}</p>
+        </div>
+      </div>
+      <button 
+      type="submit" 
+      [disabled]="!searchForm.valid"
+      >Search</button>
+    </form>
+  </div>
+</div>

@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-import { catchError, map, of, switchMap } from "rxjs";
+import { catchError, map, of, switchMap, tap } from "rxjs";
 
 import { environment } from "src/environments/environment";
 import * as fromApp from '../+store/app.reducer';
@@ -11,7 +11,7 @@ import {
   ChartDataResponse,
   CoinsView,
   CoinsViewResponse,
-  DetailedCoinDataResponse, GlobalData, GlobalDataResponse
+  DetailedCoinDataResponse, GlobalData, GlobalDataResponse, SearchResult
 } from "../interfaces";
 import * as CryptoActions from './crypto.actions';
 
@@ -43,9 +43,9 @@ const coinViewResponse = (data: CoinsViewResponse[]) => {
 };
 
 const handleError = (error: any) => {
-  let errorMessage = `${error!.statusText} - ${error?.status}`
+  let errorMessage = `${error!.statusText} - ${error?.status}`;
   if (error?.status == '429') {
-    errorMessage = 'Crypto API too many request sent in a short time!!!'    
+    errorMessage = 'Crypto API too many request sent in a short time!!!';
   }
   return of(AppStateActions.setError({ payload: errorMessage }));
 };
@@ -191,6 +191,24 @@ export class CryptoEffects {
           })
         );
     }),
+  ));
+
+  fetchSearchResults = createEffect(() => this.actions$.pipe(
+    ofType(CryptoActions.startSearch),
+    switchMap((state) => {
+      return this.http
+        .post<SearchResult[]>(
+          environment.cryptoApi + '/search', { 'query': state.payload }
+        )
+        .pipe(
+          map(data => {
+            return CryptoActions.setSearchResults({ payload: data });
+          }),
+          catchError(err => {
+            return handleError(err);
+          })
+        );
+    })
   ));
 
   constructor(

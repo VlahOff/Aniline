@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { ChartData, DetailedCoinDataResponse, GlobalData, CoinsView } from "../interfaces";
+import { ChartData, DetailedCoinDataResponse, GlobalData, CoinsView, SearchResult } from "../interfaces";
 import * as CryptoActions from './crypto.actions';
 
 export interface State {
@@ -10,6 +10,7 @@ export interface State {
   coinDetails: DetailedCoinDataResponse | null;
   chartData: ChartData[] | null;
   chartPeriod: number;
+  searchResults: SearchResult[];
 }
 
 const initialState: State = {
@@ -19,7 +20,8 @@ const initialState: State = {
   newCoins: null,
   coinDetails: null,
   chartData: null,
-  chartPeriod: 1
+  chartPeriod: 1,
+  searchResults: []
 };
 
 
@@ -72,6 +74,13 @@ export const cryptoReducer = createReducer(
     return {
       ...state,
       chartPeriod: payload
+    };
+  }),
+
+  on(CryptoActions.setSearchResults, (state, { payload }) => {
+    return {
+      ...state,
+      searchResults: payload
     };
   })
 );

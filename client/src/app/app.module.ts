@@ -20,6 +20,7 @@ import { PortfolioEffects } from './portfolio-view/+store/portfolio.effects';
 import { ErrorBannerComponent } from './shared/error-banner/error-banner.component';
 import { HeaderComponent } from './header/header.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     CryptoCardComponent,
     HomeComponent,
     HeaderComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
