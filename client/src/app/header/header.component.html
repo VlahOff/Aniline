@@ -2,22 +2,45 @@
 	<nav>
 		<ul>
 			<div class="left-container">
-				<li class="logo"><a routerLink="/home"><img src="/assets/logo-white.png" alt="logo"></a></li>
+				<li class="logo">
+					<a routerLink="/home"><img src="/assets/logo-white.png" alt="logo"></a>
+				</li>
 			</div>
 			<div class="right-container">
-				<li><a routerLink="/search"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-				<li><a routerLink="/coins/top100">Top 100</a></li>
-				<li><a routerLink="/coins/new-coins">New Coins</a></li>
-				<li><a routerLink="/converter">Crypto Converter</a></li>
-				<ng-container *ngIf="!(user | async)" class="guestContainer">
-					<li><a routerLink="/auth/login">Login</a></li>
-					<li><a routerLink="/auth/register">Register</a></li>
-				</ng-container>
-				<ng-container *ngIf="(user | async)" class="userContainer">
-					<li><a routerLink="/portfolio">Portfolio</a></li>
-					<li><a (click)="onLogout()">Logout</a></li>
-					<li><a routerLink="/auth/profile"><i class="fa-solid fa-user"></i></a></li>
-				</ng-container>
+				<li class="menu-btn button" appDropdownMenu><i class="fa-solid fa-bars"></i></li>
+				<div class="menu">
+					<li>
+						<a class="button" routerLink="/search"><i class="fa-solid fa-magnifying-glass"></i></a>
+					</li>
+					<li>
+						<a class="button" routerLink="/coins/top100">Top 100</a>
+					</li>
+					<li>
+						<a class="button" routerLink="/coins/new-coins">New Coins</a>
+					</li>
+					<li>
+						<a class="button" routerLink="/converter">Crypto Converter</a>
+					</li>
+					<ng-container *ngIf="!(user | async)" class="guestContainer">
+						<li>
+							<a class="button" routerLink="/auth/login">Login</a>
+						</li>
+						<li>
+							<a class="button" routerLink="/auth/register">Register</a>
+						</li>
+					</ng-container>
+					<ng-container *ngIf="(user | async)" class="userContainer">
+						<li>
+							<a class="button" routerLink="/portfolio">Portfolio</a>
+						</li>
+						<li>
+							<a class="button" routerLink="/auth/profile"><i class="fa-solid fa-user"></i></a>
+						</li>
+						<li>
+							<a class="button" (click)="onLogout()">Logout</a>
+						</li>
+					</ng-container>
+				</div>
 			</div>
 		</ul>
 	</nav>

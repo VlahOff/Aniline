@@ -205,6 +205,7 @@ export class CryptoEffects {
             return CryptoActions.setSearchResults({ payload: data });
           }),
           catchError(err => {
+            console.log(err);
             return handleError(err);
           })
         );

@@ -1,562 +1,562 @@
 const fiatMap = [
-  {
-    'id': 2781,
-    'name': 'United States Dollar',
-    'sign': '$',
-    'symbol': 'USD'
-  },
-  {
-    'id': 2782,
-    'name': 'Australian Dollar',
-    'sign': '$',
-    'symbol': 'AUD'
-  },
-  {
-    'id': 2783,
-    'name': 'Brazilian Real',
-    'sign': 'R$',
-    'symbol': 'BRL'
-  },
-  {
-    'id': 2784,
-    'name': 'Canadian Dollar',
-    'sign': '$',
-    'symbol': 'CAD'
-  },
-  {
-    'id': 2785,
-    'name': 'Swiss Franc',
-    'sign': 'Fr',
-    'symbol': 'CHF'
-  },
-  {
-    'id': 2786,
-    'name': 'Chilean Peso',
-    'sign': '$',
-    'symbol': 'CLP'
-  },
-  {
-    'id': 2787,
-    'name': 'Chinese Yuan',
-    'sign': '¥',
-    'symbol': 'CNY'
-  },
-  {
-    'id': 2788,
-    'name': 'Czech Koruna',
-    'sign': 'Kč',
-    'symbol': 'CZK'
-  },
-  {
-    'id': 2789,
-    'name': 'Danish Krone',
-    'sign': 'kr',
-    'symbol': 'DKK'
-  },
-  {
-    'id': 2790,
-    'name': 'Euro',
-    'sign': '€',
-    'symbol': 'EUR'
-  },
-  {
-    'id': 2791,
-    'name': 'Pound Sterling',
-    'sign': '£',
-    'symbol': 'GBP'
-  },
-  {
-    'id': 2792,
-    'name': 'Hong Kong Dollar',
-    'sign': '$',
-    'symbol': 'HKD'
-  },
-  {
-    'id': 2793,
-    'name': 'Hungarian Forint',
-    'sign': 'Ft',
-    'symbol': 'HUF'
-  },
-  {
-    'id': 2794,
-    'name': 'Indonesian Rupiah',
-    'sign': 'Rp',
-    'symbol': 'IDR'
-  },
-  {
-    'id': 2795,
-    'name': 'Israeli New Shekel',
-    'sign': '₪',
-    'symbol': 'ILS'
-  },
-  {
-    'id': 2796,
-    'name': 'Indian Rupee',
-    'sign': '₹',
-    'symbol': 'INR'
-  },
-  {
-    'id': 2797,
-    'name': 'Japanese Yen',
-    'sign': '¥',
-    'symbol': 'JPY'
-  },
-  {
-    'id': 2798,
-    'name': 'South Korean Won',
-    'sign': '₩',
-    'symbol': 'KRW'
-  },
-  {
-    'id': 2799,
-    'name': 'Mexican Peso',
-    'sign': '$',
-    'symbol': 'MXN'
-  },
-  {
-    'id': 2800,
-    'name': 'Malaysian Ringgit',
-    'sign': 'RM',
-    'symbol': 'MYR'
-  },
-  {
-    'id': 2801,
-    'name': 'Norwegian Krone',
-    'sign': 'kr',
-    'symbol': 'NOK'
-  },
-  {
-    'id': 2802,
-    'name': 'New Zealand Dollar',
-    'sign': '$',
-    'symbol': 'NZD'
-  },
-  {
-    'id': 2803,
-    'name': 'Philippine Peso',
-    'sign': '₱',
-    'symbol': 'PHP'
-  },
-  {
-    'id': 2804,
-    'name': 'Pakistani Rupee',
-    'sign': '₨',
-    'symbol': 'PKR'
-  },
-  {
-    'id': 2805,
-    'name': 'Polish Złoty',
-    'sign': 'zł',
-    'symbol': 'PLN'
-  },
-  {
-    'id': 2806,
-    'name': 'Russian Ruble',
-    'sign': '₽',
-    'symbol': 'RUB'
-  },
-  {
-    'id': 2807,
-    'name': 'Swedish Krona',
-    'sign': 'kr',
-    'symbol': 'SEK'
-  },
-  {
-    'id': 2808,
-    'name': 'Singapore Dollar',
-    'sign': 'S$',
-    'symbol': 'SGD'
-  },
-  {
-    'id': 2809,
-    'name': 'Thai Baht',
-    'sign': '฿',
-    'symbol': 'THB'
-  },
-  {
-    'id': 2810,
-    'name': 'Turkish Lira',
-    'sign': '₺',
-    'symbol': 'TRY'
-  },
-  {
-    'id': 2811,
-    'name': 'New Taiwan Dollar',
-    'sign': 'NT$',
-    'symbol': 'TWD'
-  },
-  {
-    'id': 2812,
-    'name': 'South African Rand',
-    'sign': 'R',
-    'symbol': 'ZAR'
-  },
-  {
-    'id': 2813,
-    'name': 'United Arab Emirates Dirham',
-    'sign': 'د.إ',
-    'symbol': 'AED'
-  },
-  {
-    'id': 2814,
-    'name': 'Bulgarian Lev',
-    'sign': 'лв',
-    'symbol': 'BGN'
-  },
-  {
-    'id': 2815,
-    'name': 'Croatian Kuna',
-    'sign': 'kn',
-    'symbol': 'HRK'
-  },
-  {
-    'id': 2816,
-    'name': 'Mauritian Rupee',
-    'sign': '₨',
-    'symbol': 'MUR'
-  },
-  {
-    'id': 2817,
-    'name': 'Romanian Leu',
-    'sign': 'lei',
-    'symbol': 'RON'
-  },
-  {
-    'id': 2818,
-    'name': 'Icelandic Króna',
-    'sign': 'kr',
-    'symbol': 'ISK'
-  },
-  {
-    'id': 2819,
-    'name': 'Nigerian Naira',
-    'sign': '₦',
-    'symbol': 'NGN'
-  },
-  {
-    'id': 2820,
-    'name': 'Colombian Peso',
-    'sign': '$',
-    'symbol': 'COP'
-  },
-  {
-    'id': 2821,
-    'name': 'Argentine Peso',
-    'sign': '$',
-    'symbol': 'ARS'
-  },
-  {
-    'id': 2822,
-    'name': 'Peruvian Sol',
-    'sign': 'S/.',
-    'symbol': 'PEN'
-  },
-  {
-    'id': 2823,
-    'name': 'Vietnamese Dong',
-    'sign': '₫',
-    'symbol': 'VND'
-  },
-  {
-    'id': 2824,
-    'name': 'Ukrainian Hryvnia',
-    'sign': '₴',
-    'symbol': 'UAH'
-  },
-  {
-    'id': 2832,
-    'name': 'Bolivian Boliviano',
-    'sign': 'Bs.',
-    'symbol': 'BOB'
-  },
-  {
-    'id': 3526,
-    'name': 'Albanian Lek',
-    'sign': 'L',
-    'symbol': 'ALL'
-  },
-  {
-    'id': 3527,
-    'name': 'Armenian Dram',
-    'sign': '֏',
-    'symbol': 'AMD'
-  },
-  {
-    'id': 3528,
-    'name': 'Azerbaijani Manat',
-    'sign': '₼',
-    'symbol': 'AZN'
-  },
-  {
-    'id': 3529,
-    'name': 'Bosnia-Herzegovina Convertible Mark',
-    'sign': 'KM',
-    'symbol': 'BAM'
-  },
-  {
-    'id': 3530,
-    'name': 'Bangladeshi Taka',
-    'sign': '৳',
-    'symbol': 'BDT'
-  },
-  {
-    'id': 3531,
-    'name': 'Bahraini Dinar',
-    'sign': '.د.ب',
-    'symbol': 'BHD'
-  },
-  {
-    'id': 3532,
-    'name': 'Bermudan Dollar',
-    'sign': '$',
-    'symbol': 'BMD'
-  },
-  {
-    'id': 3533,
-    'name': 'Belarusian Ruble',
-    'sign': 'Br',
-    'symbol': 'BYN'
-  },
-  {
-    'id': 3534,
-    'name': 'Costa Rican Colón',
-    'sign': '₡',
-    'symbol': 'CRC'
-  },
-  {
-    'id': 3535,
-    'name': 'Cuban Peso',
-    'sign': '$',
-    'symbol': 'CUP'
-  },
-  {
-    'id': 3536,
-    'name': 'Dominican Peso',
-    'sign': '$',
-    'symbol': 'DOP'
-  },
-  {
-    'id': 3537,
-    'name': 'Algerian Dinar',
-    'sign': 'د.ج',
-    'symbol': 'DZD'
-  },
-  {
-    'id': 3538,
-    'name': 'Egyptian Pound',
-    'sign': '£',
-    'symbol': 'EGP'
-  },
-  {
-    'id': 3539,
-    'name': 'Georgian Lari',
-    'sign': '₾',
-    'symbol': 'GEL'
-  },
-  {
-    'id': 3540,
-    'name': 'Ghanaian Cedi',
-    'sign': '₵',
-    'symbol': 'GHS'
-  },
-  {
-    'id': 3541,
-    'name': 'Guatemalan Quetzal',
-    'sign': 'Q',
-    'symbol': 'GTQ'
-  },
-  {
-    'id': 3542,
-    'name': 'Honduran Lempira',
-    'sign': 'L',
-    'symbol': 'HNL'
-  },
-  {
-    'id': 3543,
-    'name': 'Iraqi Dinar',
-    'sign': 'ع.د',
-    'symbol': 'IQD'
-  },
-  {
-    'id': 3544,
-    'name': 'Iranian Rial',
-    'sign': '﷼',
-    'symbol': 'IRR'
-  },
-  {
-    'id': 3545,
-    'name': 'Jamaican Dollar',
-    'sign': '$',
-    'symbol': 'JMD'
-  },
-  {
-    'id': 3546,
-    'name': 'Jordanian Dinar',
-    'sign': 'د.ا',
-    'symbol': 'JOD'
-  },
-  {
-    'id': 3547,
-    'name': 'Kenyan Shilling',
-    'sign': 'Sh',
-    'symbol': 'KES'
-  },
-  {
-    'id': 3548,
-    'name': 'Kyrgystani Som',
-    'sign': 'с',
-    'symbol': 'KGS'
-  },
-  {
-    'id': 3549,
-    'name': 'Cambodian Riel',
-    'sign': '៛',
-    'symbol': 'KHR'
-  },
-  {
-    'id': 3550,
-    'name': 'Kuwaiti Dinar',
-    'sign': 'د.ك',
-    'symbol': 'KWD'
-  },
-  {
-    'id': 3551,
-    'name': 'Kazakhstani Tenge',
-    'sign': '₸',
-    'symbol': 'KZT'
-  },
-  {
-    'id': 3552,
-    'name': 'Lebanese Pound',
-    'sign': 'ل.ل',
-    'symbol': 'LBP'
-  },
-  {
-    'id': 3553,
-    'name': 'Sri Lankan Rupee',
-    'sign': 'Rs',
-    'symbol': 'LKR'
-  },
-  {
-    'id': 3554,
-    'name': 'Moroccan Dirham',
-    'sign': 'د.م.',
-    'symbol': 'MAD'
-  },
-  {
-    'id': 3555,
-    'name': 'Moldovan Leu',
-    'sign': 'L',
-    'symbol': 'MDL'
-  },
-  {
-    'id': 3556,
-    'name': 'Macedonian Denar',
-    'sign': 'ден',
-    'symbol': 'MKD'
-  },
-  {
-    'id': 3557,
-    'name': 'Myanma Kyat',
-    'sign': 'Ks',
-    'symbol': 'MMK'
-  },
-  {
-    'id': 3558,
-    'name': 'Mongolian Tugrik',
-    'sign': '₮',
-    'symbol': 'MNT'
-  },
-  {
-    'id': 3559,
-    'name': 'Namibian Dollar',
-    'sign': '$',
-    'symbol': 'NAD'
-  },
-  {
-    'id': 3560,
-    'name': 'Nicaraguan Córdoba',
-    'sign': 'C$',
-    'symbol': 'NIO'
-  },
-  {
-    'id': 3561,
-    'name': 'Nepalese Rupee',
-    'sign': '₨',
-    'symbol': 'NPR'
-  },
-  {
-    'id': 3562,
-    'name': 'Omani Rial',
-    'sign': 'ر.ع.',
-    'symbol': 'OMR'
-  },
-  {
-    'id': 3563,
-    'name': 'Panamanian Balboa',
-    'sign': 'B/.',
-    'symbol': 'PAB'
-  },
-  {
-    'id': 3564,
-    'name': 'Qatari Rial',
-    'sign': 'ر.ق',
-    'symbol': 'QAR'
-  },
-  {
-    'id': 3565,
-    'name': 'Serbian Dinar',
-    'sign': 'дин.',
-    'symbol': 'RSD'
-  },
-  {
-    'id': 3566,
-    'name': 'Saudi Riyal',
-    'sign': 'ر.س',
-    'symbol': 'SAR'
-  },
-  {
-    'id': 3567,
-    'name': 'South Sudanese Pound',
-    'sign': '£',
-    'symbol': 'SSP'
-  },
-  {
-    'id': 3568,
-    'name': 'Tunisian Dinar',
-    'sign': 'د.ت',
-    'symbol': 'TND'
-  },
-  {
-    'id': 3569,
-    'name': 'Trinidad and Tobago Dollar',
-    'sign': '$',
-    'symbol': 'TTD'
-  },
-  {
-    'id': 3570,
-    'name': 'Ugandan Shilling',
-    'sign': 'Sh',
-    'symbol': 'UGX'
-  },
-  {
-    'id': 3571,
-    'name': 'Uruguayan Peso',
-    'sign': '$',
-    'symbol': 'UYU'
-  },
-  {
-    'id': 3572,
-    'name': 'Uzbekistan Som',
-    'sign': 'so\'m',
-    'symbol': 'UZS'
-  },
-  {
-    'id': 3573,
-    'name': 'Sovereign Bolivar',
-    'sign': 'Bs.',
-    'symbol': 'VES'
-  }
+	{
+		'id': 2781,
+		'name': 'United States Dollar',
+		'sign': '$',
+		'symbol': 'USD'
+	},
+	{
+		'id': 2782,
+		'name': 'Australian Dollar',
+		'sign': '$',
+		'symbol': 'AUD'
+	},
+	{
+		'id': 2783,
+		'name': 'Brazilian Real',
+		'sign': 'R$',
+		'symbol': 'BRL'
+	},
+	{
+		'id': 2784,
+		'name': 'Canadian Dollar',
+		'sign': '$',
+		'symbol': 'CAD'
+	},
+	{
+		'id': 2785,
+		'name': 'Swiss Franc',
+		'sign': 'Fr',
+		'symbol': 'CHF'
+	},
+	{
+		'id': 2786,
+		'name': 'Chilean Peso',
+		'sign': '$',
+		'symbol': 'CLP'
+	},
+	{
+		'id': 2787,
+		'name': 'Chinese Yuan',
+		'sign': '¥',
+		'symbol': 'CNY'
+	},
+	{
+		'id': 2788,
+		'name': 'Czech Koruna',
+		'sign': 'Kč',
+		'symbol': 'CZK'
+	},
+	{
+		'id': 2789,
+		'name': 'Danish Krone',
+		'sign': 'kr',
+		'symbol': 'DKK'
+	},
+	{
+		'id': 2790,
+		'name': 'Euro',
+		'sign': '€',
+		'symbol': 'EUR'
+	},
+	{
+		'id': 2791,
+		'name': 'Pound Sterling',
+		'sign': '£',
+		'symbol': 'GBP'
+	},
+	{
+		'id': 2792,
+		'name': 'Hong Kong Dollar',
+		'sign': '$',
+		'symbol': 'HKD'
+	},
+	{
+		'id': 2793,
+		'name': 'Hungarian Forint',
+		'sign': 'Ft',
+		'symbol': 'HUF'
+	},
+	{
+		'id': 2794,
+		'name': 'Indonesian Rupiah',
+		'sign': 'Rp',
+		'symbol': 'IDR'
+	},
+	{
+		'id': 2795,
+		'name': 'Israeli New Shekel',
+		'sign': '₪',
+		'symbol': 'ILS'
+	},
+	{
+		'id': 2796,
+		'name': 'Indian Rupee',
+		'sign': '₹',
+		'symbol': 'INR'
+	},
+	{
+		'id': 2797,
+		'name': 'Japanese Yen',
+		'sign': '¥',
+		'symbol': 'JPY'
+	},
+	{
+		'id': 2798,
+		'name': 'South Korean Won',
+		'sign': '₩',
+		'symbol': 'KRW'
+	},
+	{
+		'id': 2799,
+		'name': 'Mexican Peso',
+		'sign': '$',
+		'symbol': 'MXN'
+	},
+	{
+		'id': 2800,
+		'name': 'Malaysian Ringgit',
+		'sign': 'RM',
+		'symbol': 'MYR'
+	},
+	{
+		'id': 2801,
+		'name': 'Norwegian Krone',
+		'sign': 'kr',
+		'symbol': 'NOK'
+	},
+	{
+		'id': 2802,
+		'name': 'New Zealand Dollar',
+		'sign': '$',
+		'symbol': 'NZD'
+	},
+	{
+		'id': 2803,
+		'name': 'Philippine Peso',
+		'sign': '₱',
+		'symbol': 'PHP'
+	},
+	{
+		'id': 2804,
+		'name': 'Pakistani Rupee',
+		'sign': '₨',
+		'symbol': 'PKR'
+	},
+	{
+		'id': 2805,
+		'name': 'Polish Złoty',
+		'sign': 'zł',
+		'symbol': 'PLN'
+	},
+	{
+		'id': 2806,
+		'name': 'Russian Ruble',
+		'sign': '₽',
+		'symbol': 'RUB'
+	},
+	{
+		'id': 2807,
+		'name': 'Swedish Krona',
+		'sign': 'kr',
+		'symbol': 'SEK'
+	},
+	{
+		'id': 2808,
+		'name': 'Singapore Dollar',
+		'sign': 'S$',
+		'symbol': 'SGD'
+	},
+	{
+		'id': 2809,
+		'name': 'Thai Baht',
+		'sign': '฿',
+		'symbol': 'THB'
+	},
+	{
+		'id': 2810,
+		'name': 'Turkish Lira',
+		'sign': '₺',
+		'symbol': 'TRY'
+	},
+	{
+		'id': 2811,
+		'name': 'New Taiwan Dollar',
+		'sign': 'NT$',
+		'symbol': 'TWD'
+	},
+	{
+		'id': 2812,
+		'name': 'South African Rand',
+		'sign': 'R',
+		'symbol': 'ZAR'
+	},
+	{
+		'id': 2813,
+		'name': 'United Arab Emirates Dirham',
+		'sign': 'د.إ',
+		'symbol': 'AED'
+	},
+	{
+		'id': 2814,
+		'name': 'Bulgarian Lev',
+		'sign': 'лв',
+		'symbol': 'BGN'
+	},
+	{
+		'id': 2815,
+		'name': 'Croatian Kuna',
+		'sign': 'kn',
+		'symbol': 'HRK'
+	},
+	{
+		'id': 2816,
+		'name': 'Mauritian Rupee',
+		'sign': '₨',
+		'symbol': 'MUR'
+	},
+	{
+		'id': 2817,
+		'name': 'Romanian Leu',
+		'sign': 'lei',
+		'symbol': 'RON'
+	},
+	{
+		'id': 2818,
+		'name': 'Icelandic Króna',
+		'sign': 'kr',
+		'symbol': 'ISK'
+	},
+	{
+		'id': 2819,
+		'name': 'Nigerian Naira',
+		'sign': '₦',
+		'symbol': 'NGN'
+	},
+	{
+		'id': 2820,
+		'name': 'Colombian Peso',
+		'sign': '$',
+		'symbol': 'COP'
+	},
+	{
+		'id': 2821,
+		'name': 'Argentine Peso',
+		'sign': '$',
+		'symbol': 'ARS'
+	},
+	{
+		'id': 2822,
+		'name': 'Peruvian Sol',
+		'sign': 'S/.',
+		'symbol': 'PEN'
+	},
+	{
+		'id': 2823,
+		'name': 'Vietnamese Dong',
+		'sign': '₫',
+		'symbol': 'VND'
+	},
+	{
+		'id': 2824,
+		'name': 'Ukrainian Hryvnia',
+		'sign': '₴',
+		'symbol': 'UAH'
+	},
+	{
+		'id': 2832,
+		'name': 'Bolivian Boliviano',
+		'sign': 'Bs.',
+		'symbol': 'BOB'
+	},
+	{
+		'id': 3526,
+		'name': 'Albanian Lek',
+		'sign': 'L',
+		'symbol': 'ALL'
+	},
+	{
+		'id': 3527,
+		'name': 'Armenian Dram',
+		'sign': '֏',
+		'symbol': 'AMD'
+	},
+	{
+		'id': 3528,
+		'name': 'Azerbaijani Manat',
+		'sign': '₼',
+		'symbol': 'AZN'
+	},
+	{
+		'id': 3529,
+		'name': 'Bosnia-Herzegovina Convertible Mark',
+		'sign': 'KM',
+		'symbol': 'BAM'
+	},
+	{
+		'id': 3530,
+		'name': 'Bangladeshi Taka',
+		'sign': '৳',
+		'symbol': 'BDT'
+	},
+	{
+		'id': 3531,
+		'name': 'Bahraini Dinar',
+		'sign': '.د.ب',
+		'symbol': 'BHD'
+	},
+	{
+		'id': 3532,
+		'name': 'Bermudan Dollar',
+		'sign': '$',
+		'symbol': 'BMD'
+	},
+	{
+		'id': 3533,
+		'name': 'Belarusian Ruble',
+		'sign': 'Br',
+		'symbol': 'BYN'
+	},
+	{
+		'id': 3534,
+		'name': 'Costa Rican Colón',
+		'sign': '₡',
+		'symbol': 'CRC'
+	},
+	{
+		'id': 3535,
+		'name': 'Cuban Peso',
+		'sign': '$',
+		'symbol': 'CUP'
+	},
+	{
+		'id': 3536,
+		'name': 'Dominican Peso',
+		'sign': '$',
+		'symbol': 'DOP'
+	},
+	{
+		'id': 3537,
+		'name': 'Algerian Dinar',
+		'sign': 'د.ج',
+		'symbol': 'DZD'
+	},
+	{
+		'id': 3538,
+		'name': 'Egyptian Pound',
+		'sign': '£',
+		'symbol': 'EGP'
+	},
+	{
+		'id': 3539,
+		'name': 'Georgian Lari',
+		'sign': '₾',
+		'symbol': 'GEL'
+	},
+	{
+		'id': 3540,
+		'name': 'Ghanaian Cedi',
+		'sign': '₵',
+		'symbol': 'GHS'
+	},
+	{
+		'id': 3541,
+		'name': 'Guatemalan Quetzal',
+		'sign': 'Q',
+		'symbol': 'GTQ'
+	},
+	{
+		'id': 3542,
+		'name': 'Honduran Lempira',
+		'sign': 'L',
+		'symbol': 'HNL'
+	},
+	{
+		'id': 3543,
+		'name': 'Iraqi Dinar',
+		'sign': 'ع.د',
+		'symbol': 'IQD'
+	},
+	{
+		'id': 3544,
+		'name': 'Iranian Rial',
+		'sign': '﷼',
+		'symbol': 'IRR'
+	},
+	{
+		'id': 3545,
+		'name': 'Jamaican Dollar',
+		'sign': '$',
+		'symbol': 'JMD'
+	},
+	{
+		'id': 3546,
+		'name': 'Jordanian Dinar',
+		'sign': 'د.ا',
+		'symbol': 'JOD'
+	},
+	{
+		'id': 3547,
+		'name': 'Kenyan Shilling',
+		'sign': 'Sh',
+		'symbol': 'KES'
+	},
+	{
+		'id': 3548,
+		'name': 'Kyrgystani Som',
+		'sign': 'с',
+		'symbol': 'KGS'
+	},
+	{
+		'id': 3549,
+		'name': 'Cambodian Riel',
+		'sign': '៛',
+		'symbol': 'KHR'
+	},
+	{
+		'id': 3550,
+		'name': 'Kuwaiti Dinar',
+		'sign': 'د.ك',
+		'symbol': 'KWD'
+	},
+	{
+		'id': 3551,
+		'name': 'Kazakhstani Tenge',
+		'sign': '₸',
+		'symbol': 'KZT'
+	},
+	{
+		'id': 3552,
+		'name': 'Lebanese Pound',
+		'sign': 'ل.ل',
+		'symbol': 'LBP'
+	},
+	{
+		'id': 3553,
+		'name': 'Sri Lankan Rupee',
+		'sign': 'Rs',
+		'symbol': 'LKR'
+	},
+	{
+		'id': 3554,
+		'name': 'Moroccan Dirham',
+		'sign': 'د.م.',
+		'symbol': 'MAD'
+	},
+	{
+		'id': 3555,
+		'name': 'Moldovan Leu',
+		'sign': 'L',
+		'symbol': 'MDL'
+	},
+	{
+		'id': 3556,
+		'name': 'Macedonian Denar',
+		'sign': 'ден',
+		'symbol': 'MKD'
+	},
+	{
+		'id': 3557,
+		'name': 'Myanma Kyat',
+		'sign': 'Ks',
+		'symbol': 'MMK'
+	},
+	{
+		'id': 3558,
+		'name': 'Mongolian Tugrik',
+		'sign': '₮',
+		'symbol': 'MNT'
+	},
+	{
+		'id': 3559,
+		'name': 'Namibian Dollar',
+		'sign': '$',
+		'symbol': 'NAD'
+	},
+	{
+		'id': 3560,
+		'name': 'Nicaraguan Córdoba',
+		'sign': 'C$',
+		'symbol': 'NIO'
+	},
+	{
+		'id': 3561,
+		'name': 'Nepalese Rupee',
+		'sign': '₨',
+		'symbol': 'NPR'
+	},
+	{
+		'id': 3562,
+		'name': 'Omani Rial',
+		'sign': 'ر.ع.',
+		'symbol': 'OMR'
+	},
+	{
+		'id': 3563,
+		'name': 'Panamanian Balboa',
+		'sign': 'B/.',
+		'symbol': 'PAB'
+	},
+	{
+		'id': 3564,
+		'name': 'Qatari Rial',
+		'sign': 'ر.ق',
+		'symbol': 'QAR'
+	},
+	{
+		'id': 3565,
+		'name': 'Serbian Dinar',
+		'sign': 'дин.',
+		'symbol': 'RSD'
+	},
+	{
+		'id': 3566,
+		'name': 'Saudi Riyal',
+		'sign': 'ر.س',
+		'symbol': 'SAR'
+	},
+	{
+		'id': 3567,
+		'name': 'South Sudanese Pound',
+		'sign': '£',
+		'symbol': 'SSP'
+	},
+	{
+		'id': 3568,
+		'name': 'Tunisian Dinar',
+		'sign': 'د.ت',
+		'symbol': 'TND'
+	},
+	{
+		'id': 3569,
+		'name': 'Trinidad and Tobago Dollar',
+		'sign': '$',
+		'symbol': 'TTD'
+	},
+	{
+		'id': 3570,
+		'name': 'Ugandan Shilling',
+		'sign': 'Sh',
+		'symbol': 'UGX'
+	},
+	{
+		'id': 3571,
+		'name': 'Uruguayan Peso',
+		'sign': '$',
+		'symbol': 'UYU'
+	},
+	{
+		'id': 3572,
+		'name': 'Uzbekistan Som',
+		'sign': 'so\'m',
+		'symbol': 'UZS'
+	},
+	{
+		'id': 3573,
+		'name': 'Sovereign Bolivar',
+		'sign': 'Bs.',
+		'symbol': 'VES'
+	}
 ];
 
 const cryptoMap = [
@@ -53775,8 +53775,2556 @@ const dummyTransactionData = [
 	}
 ];
 
+const topThree = [
+	{
+		id: 'bitcoin',
+		name: 'Bitcoin',
+		symbol: 'btc',
+		total_supply: 21000000,
+		last_updated: '2023-02-08T16:04:08.525Z',
+		current_price: 22902,
+		market_cap: 441727362728,
+		price_change_percentage_1h_in_currency: -0.4871402331387306,
+		price_change_percentage_24h_in_currency: -0.09734587682491276,
+		price_change_percentage_7d_in_currency: -1.0161528196007397,
+		image: 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579'
+	},
+	{
+		id: 'ethereum',
+		name: 'Ethereum',
+		symbol: 'eth',
+		total_supply: 120508854.572098,
+		last_updated: '2023-02-08T16:04:11.331Z',
+		current_price: 1655.26,
+		market_cap: 199415630970,
+		price_change_percentage_1h_in_currency: -0.7928202501473522,
+		price_change_percentage_24h_in_currency: 1.435429321631365,
+		price_change_percentage_7d_in_currency: 4.331297720877576,
+		image: 'https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880'
+	},
+	{
+		id: 'binancecoin',
+		name: 'BNB',
+		symbol: 'bnb',
+		total_supply: 157900174,
+		last_updated: '2023-02-08T16:04:08.444Z',
+		current_price: 327.54,
+		market_cap: 51727297879,
+		price_change_percentage_1h_in_currency: -1.0291472464949465,
+		price_change_percentage_24h_in_currency: -0.08560161055597627,
+		price_change_percentage_7d_in_currency: 4.808480440582151,
+		image: 'https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850'
+	}
+];
+
+const globalData = {
+	total_market_cap: 1121261975961.2327,
+	market_cap_change_percentage_24h_usd: 0.3445045868886951,
+	trading_volume: 88360896751.93262,
+	btc_dominance: 39.38556824532263,
+	number_of_coins: 12369
+};
+
+const topHundred = [
+	{
+		id: 'bitcoin',
+		name: 'Bitcoin',
+		symbol: 'btc',
+		total_supply: 21000000,
+		last_updated: '2023-02-08T16:11:54.772Z',
+		current_price: 22900,
+		market_cap: 441534780981,
+		price_change_percentage_1h_in_currency: -0.4039688841024979,
+		price_change_percentage_24h_in_currency: -0.19266546179551639,
+		price_change_percentage_7d_in_currency: -1.0242927304436296,
+		image: 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579'
+	},
+	{
+		id: 'ethereum',
+		name: 'Ethereum',
+		symbol: 'eth',
+		total_supply: 120508854.572098,
+		last_updated: '2023-02-08T16:12:11.196Z',
+		current_price: 1652.37,
+		market_cap: 199205782255,
+		price_change_percentage_1h_in_currency: -0.8139958554601201,
+		price_change_percentage_24h_in_currency: 1.1704875744317325,
+		price_change_percentage_7d_in_currency: 4.149133420433106,
+		image: 'https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880'
+	},
+	{
+		id: 'tether',
+		name: 'Tether',
+		symbol: 'usdt',
+		total_supply: 68182382218.6001,
+		last_updated: '2023-02-08T16:10:13.374Z',
+		current_price: 1.002,
+		market_cap: 68292335672,
+		price_change_percentage_1h_in_currency: 0.09035747056188895,
+		price_change_percentage_24h_in_currency: 0.07321034040987706,
+		price_change_percentage_7d_in_currency: 0.087175378202924,
+		image: 'https://assets.coingecko.com/coins/images/325/large/Tether.png?1668148663'
+	},
+	{
+		id: 'binancecoin',
+		name: 'BNB',
+		symbol: 'bnb',
+		total_supply: 157900174,
+		last_updated: '2023-02-08T16:11:54.126Z',
+		current_price: 327.43,
+		market_cap: 51704547570,
+		price_change_percentage_1h_in_currency: -1.04125844933271,
+		price_change_percentage_24h_in_currency: -0.13328125705893953,
+		price_change_percentage_7d_in_currency: 4.774719497081776,
+		image: 'https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850'
+	},
+	{
+		id: 'usd-coin',
+		name: 'USD Coin',
+		symbol: 'usdc',
+		total_supply: 41533301975.5164,
+		last_updated: '2023-02-08T16:12:11.073Z',
+		current_price: 1.002,
+		market_cap: 41627353515,
+		price_change_percentage_1h_in_currency: 0.07629237032018621,
+		price_change_percentage_24h_in_currency: 0.13133661313529393,
+		price_change_percentage_7d_in_currency: 0.15772154553931825,
+		image: 'https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png?1547042389'
+	},
+	{
+		id: 'ripple',
+		name: 'XRP',
+		symbol: 'xrp',
+		total_supply: 99989130718,
+		last_updated: '2023-02-08T16:12:07.956Z',
+		current_price: 0.398966,
+		market_cap: 20259413127,
+		price_change_percentage_1h_in_currency: -0.2422104523606818,
+		price_change_percentage_24h_in_currency: 0.9100004010196576,
+		price_change_percentage_7d_in_currency: -2.06225409435783,
+		image: 'https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1605778731'
+	},
+	{
+		id: 'binance-usd',
+		name: 'Binance USD',
+		symbol: 'busd',
+		total_supply: 16181981038.3,
+		last_updated: '2023-02-08T16:12:11.098Z',
+		current_price: 1.001,
+		market_cap: 16198673889,
+		price_change_percentage_1h_in_currency: 0.08622398244747478,
+		price_change_percentage_24h_in_currency: 0.0475678228016681,
+		price_change_percentage_7d_in_currency: 0.09169627873972494,
+		image: 'https://assets.coingecko.com/coins/images/9576/large/BUSD.png?1568947766'
+	},
+	{
+		id: 'cardano',
+		name: 'Cardano',
+		symbol: 'ada',
+		total_supply: 45000000000,
+		last_updated: '2023-02-08T16:12:12.504Z',
+		current_price: 0.392993,
+		market_cap: 13789246732,
+		price_change_percentage_1h_in_currency: -1.1910369683772195,
+		price_change_percentage_24h_in_currency: 1.63141014054309,
+		price_change_percentage_7d_in_currency: 0.16983799038152575,
+		image: 'https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860'
+	},
+	{
+		id: 'dogecoin',
+		name: 'Dogecoin',
+		symbol: 'doge',
+		total_supply: null,
+		last_updated: '2023-02-08T16:12:03.871Z',
+		current_price: 0.090489,
+		market_cap: 12490008126,
+		price_change_percentage_1h_in_currency: -0.6067793531467081,
+		price_change_percentage_24h_in_currency: -0.2933663378410029,
+		price_change_percentage_7d_in_currency: -6.181086316758447,
+		image: 'https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1547792256'
+	},
+	{
+		id: 'matic-network',
+		name: 'Polygon',
+		symbol: 'matic',
+		total_supply: 10000000000,
+		last_updated: '2023-02-08T16:12:12.009Z',
+		current_price: 1.28,
+		market_cap: 11600057625,
+		price_change_percentage_1h_in_currency: -1.1679893129208494,
+		price_change_percentage_24h_in_currency: 4.125191820380369,
+		price_change_percentage_7d_in_currency: 15.602468592194732,
+		image: 'https://assets.coingecko.com/coins/images/4713/large/matic-token-icon.png?1624446912'
+	},
+	{
+		id: 'okb',
+		name: 'OKB',
+		symbol: 'okb',
+		total_supply: 300000000,
+		last_updated: '2023-02-08T16:12:07.707Z',
+		current_price: 43.95,
+		market_cap: 10844564103,
+		price_change_percentage_1h_in_currency: -3.210531726156295,
+		price_change_percentage_24h_in_currency: -0.12519587639323243,
+		price_change_percentage_7d_in_currency: 16.50488125824648,
+		image: 'https://assets.coingecko.com/coins/images/4463/large/WeChat_Image_20220118095654.png?1642471050'
+	},
+	{
+		id: 'solana',
+		name: 'Solana',
+		symbol: 'sol',
+		total_supply: 540427580.887825,
+		last_updated: '2023-02-08T16:11:52.581Z',
+		current_price: 23.25,
+		market_cap: 8680636239,
+		price_change_percentage_1h_in_currency: -1.2798266193830727,
+		price_change_percentage_24h_in_currency: 0.7660106162098983,
+		price_change_percentage_7d_in_currency: -2.987092449982612,
+		image: 'https://assets.coingecko.com/coins/images/4128/large/solana.png?1640133422'
+	},
+	{
+		id: 'staked-ether',
+		name: 'Lido Staked Ether',
+		symbol: 'steth',
+		total_supply: 5068998.52352219,
+		last_updated: '2023-02-08T16:11:56.683Z',
+		current_price: 1649.17,
+		market_cap: 8375626487,
+		price_change_percentage_1h_in_currency: -0.910730050124094,
+		price_change_percentage_24h_in_currency: 1.295488872771249,
+		price_change_percentage_7d_in_currency: 4.353797296654108,
+		image: 'https://assets.coingecko.com/coins/images/13442/large/steth_logo.png?1608607546'
+	},
+	{
+		id: 'shiba-inu',
+		name: 'Shiba Inu',
+		symbol: 'shib',
+		total_supply: 999990968807043,
+		last_updated: '2023-02-08T16:12:11.967Z',
+		current_price: 0.00001393,
+		market_cap: 8216927242,
+		price_change_percentage_1h_in_currency: -0.5629930086230932,
+		price_change_percentage_24h_in_currency: -0.6259783409031925,
+		price_change_percentage_7d_in_currency: 17.741218188930187,
+		image: 'https://assets.coingecko.com/coins/images/11939/large/shiba.png?1622619446'
+	},
+	{
+		id: 'polkadot',
+		name: 'Polkadot',
+		symbol: 'dot',
+		total_supply: 1281463803.97164,
+		last_updated: '2023-02-08T16:12:10.621Z',
+		current_price: 6.75,
+		market_cap: 8108266055,
+		price_change_percentage_1h_in_currency: -0.7920769556338598,
+		price_change_percentage_24h_in_currency: 0.801472596373202,
+		price_change_percentage_7d_in_currency: 7.644273495041301,
+		image: 'https://assets.coingecko.com/coins/images/12171/large/polkadot.png?1639712644'
+	},
+	{
+		id: 'litecoin',
+		name: 'Litecoin',
+		symbol: 'ltc',
+		total_supply: 84000000,
+		last_updated: '2023-02-08T16:12:00.605Z',
+		current_price: 98.84,
+		market_cap: 7141719009,
+		price_change_percentage_1h_in_currency: -0.6516829860971675,
+		price_change_percentage_24h_in_currency: 0.07558198126449653,
+		price_change_percentage_7d_in_currency: 4.697369204404909,
+		image: 'https://assets.coingecko.com/coins/images/2/large/litecoin.png?1547033580'
+	},
+	{
+		id: 'avalanche-2',
+		name: 'Avalanche',
+		symbol: 'avax',
+		total_supply: 420514389.232788,
+		last_updated: '2023-02-08T16:11:55.779Z',
+		current_price: 20.09,
+		market_cap: 6330822198,
+		price_change_percentage_1h_in_currency: -0.9270439512343324,
+		price_change_percentage_24h_in_currency: 0.2254015645314936,
+		price_change_percentage_7d_in_currency: 1.170734258534484,
+		image: 'https://assets.coingecko.com/coins/images/12559/large/Avalanche_Circle_RedWhite_Trans.png?1670992574'
+	},
+	{
+		id: 'tron',
+		name: 'TRON',
+		symbol: 'trx',
+		total_supply: 91721695695.6132,
+		last_updated: '2023-02-08T16:12:09.553Z',
+		current_price: 0.066602,
+		market_cap: 6111784470,
+		price_change_percentage_1h_in_currency: -0.20935694883145628,
+		price_change_percentage_24h_in_currency: 2.5942746949565736,
+		price_change_percentage_7d_in_currency: 6.911987464442516,
+		image: 'https://assets.coingecko.com/coins/images/1094/large/tron-logo.png?1547035066'
+	},
+	{
+		id: 'dai',
+		name: 'Dai',
+		symbol: 'dai',
+		total_supply: 5102079008.55458,
+		last_updated: '2023-02-08T16:10:56.007Z',
+		current_price: 1,
+		market_cap: 5103153608,
+		price_change_percentage_1h_in_currency: 0.020190733856834883,
+		price_change_percentage_24h_in_currency: -0.03347193708355389,
+		price_change_percentage_7d_in_currency: -0.007067680469228338,
+		image: 'https://assets.coingecko.com/coins/images/9956/large/4943.png?1636636734'
+	},
+	{
+		id: 'uniswap',
+		name: 'Uniswap',
+		symbol: 'uni',
+		total_supply: 1000000000,
+		last_updated: '2023-02-08T16:11:55.349Z',
+		current_price: 6.74,
+		market_cap: 5087811903,
+		price_change_percentage_1h_in_currency: -0.7077845047148272,
+		price_change_percentage_24h_in_currency: -0.4611778871874987,
+		price_change_percentage_7d_in_currency: 2.594622663178634,
+		image: 'https://assets.coingecko.com/coins/images/12504/large/uniswap-uni.png?1600306604'
+	},
+	{
+		id: 'cosmos',
+		name: 'Cosmos Hub',
+		symbol: 'atom',
+		total_supply: null,
+		last_updated: '2023-02-08T16:12:03.334Z',
+		current_price: 14.9,
+		market_cap: 4360629845,
+		price_change_percentage_1h_in_currency: -1.5829374828494978,
+		price_change_percentage_24h_in_currency: 2.67835718531277,
+		price_change_percentage_7d_in_currency: 11.322662470432054,
+		image: 'https://assets.coingecko.com/coins/images/1481/large/cosmos_hub.png?1555657960'
+	},
+	{
+		id: 'wrapped-bitcoin',
+		name: 'Wrapped Bitcoin',
+		symbol: 'wbtc',
+		total_supply: 176372.0713473,
+		last_updated: '2023-02-08T16:12:04.277Z',
+		current_price: 22883,
+		market_cap: 4039854172,
+		price_change_percentage_1h_in_currency: -0.4035636759488645,
+		price_change_percentage_24h_in_currency: -0.14415275397322386,
+		price_change_percentage_7d_in_currency: -0.9608757174918809,
+		image: 'https://assets.coingecko.com/coins/images/7598/large/wrapped_bitcoin_wbtc.png?1548822744'
+	},
+	{
+		id: 'chainlink',
+		name: 'Chainlink',
+		symbol: 'link',
+		total_supply: 1000000000,
+		last_updated: '2023-02-08T16:12:02.147Z',
+		current_price: 7.09,
+		market_cap: 3486250578,
+		price_change_percentage_1h_in_currency: -1.1175493502562832,
+		price_change_percentage_24h_in_currency: 1.454559399360476,
+		price_change_percentage_7d_in_currency: 1.7921434481767848,
+		image: 'https://assets.coingecko.com/coins/images/877/large/chainlink-new-logo.png?1547034700'
+	},
+	{
+		id: 'the-open-network',
+		name: 'Toncoin',
+		symbol: 'ton',
+		total_supply: 5057362773.99687,
+		last_updated: '2023-02-08T16:12:05.104Z',
+		current_price: 2.28,
+		market_cap: 3352158479,
+		price_change_percentage_1h_in_currency: 0.06662402329709533,
+		price_change_percentage_24h_in_currency: -3.098469130242335,
+		price_change_percentage_7d_in_currency: -1.2708579477140474,
+		image: 'https://assets.coingecko.com/coins/images/17980/large/ton_symbol.png?1670498136'
+	},
+	{
+		id: 'ethereum-classic',
+		name: 'Ethereum Classic',
+		symbol: 'etc',
+		total_supply: 210700000,
+		last_updated: '2023-02-08T16:12:10.607Z',
+		current_price: 22.64,
+		market_cap: 3167936148,
+		price_change_percentage_1h_in_currency: -1.191268689486792,
+		price_change_percentage_24h_in_currency: 0.9897872227649809,
+		price_change_percentage_7d_in_currency: 4.0865321613819745,
+		image: 'https://assets.coingecko.com/coins/images/453/large/ethereum-classic-logo.png?1547034169'
+	},
+	{
+		id: 'leo-token',
+		name: 'LEO Token',
+		symbol: 'leo',
+		total_supply: 985239504,
+		last_updated: '2023-02-08T16:11:46.118Z',
+		current_price: 3.39,
+		market_cap: 3162272206,
+		price_change_percentage_1h_in_currency: 0.3942166270998782,
+		price_change_percentage_24h_in_currency: 0.9148696457286021,
+		price_change_percentage_7d_in_currency: -4.3194196194285395,
+		image: 'https://assets.coingecko.com/coins/images/8418/large/leo-token.png?1558326215'
+	},
+	{
+		id: 'monero',
+		name: 'Monero',
+		symbol: 'xmr',
+		total_supply: null,
+		last_updated: '2023-02-08T16:12:12.514Z',
+		current_price: 165.88,
+		market_cap: 3011642846,
+		price_change_percentage_1h_in_currency: -0.550439430617489,
+		price_change_percentage_24h_in_currency: -0.8859528220451008,
+		price_change_percentage_7d_in_currency: -6.567016525664086,
+		image: 'https://assets.coingecko.com/coins/images/69/large/monero_logo.png?1547033729'
+	},
+	{
+		id: 'bitcoin-cash',
+		name: 'Bitcoin Cash',
+		symbol: 'bch',
+		total_supply: 21000000,
+		last_updated: '2023-02-08T16:11:56.050Z',
+		current_price: 132.47,
+		market_cap: 2558889181,
+		price_change_percentage_1h_in_currency: -0.8007640575160742,
+		price_change_percentage_24h_in_currency: -0.8813605738550332,
+		price_change_percentage_7d_in_currency: -0.7073063398557163,
+		image: 'https://assets.coingecko.com/coins/images/780/large/bitcoin-cash-circle.png?1594689492'
+	},
+	{
+		id: 'aptos',
+		name: 'Aptos',
+		symbol: 'apt',
+		total_supply: 1018846355.34861,
+		last_updated: '2023-02-08T16:12:05.659Z',
+		current_price: 15.18,
+		market_cap: 2467431792,
+		price_change_percentage_1h_in_currency: -1.1834301477056601,
+		price_change_percentage_24h_in_currency: -2.066901559748103,
+		price_change_percentage_7d_in_currency: -9.467897793867497,
+		image: 'https://assets.coingecko.com/coins/images/26455/large/aptos_round.png?1666839629'
+	},
+	{
+		id: 'stellar',
+		name: 'Stellar',
+		symbol: 'xlm',
+		total_supply: 50001787466.7577,
+		last_updated: '2023-02-08T16:11:57.888Z',
+		current_price: 0.091223,
+		market_cap: 2401403472,
+		price_change_percentage_1h_in_currency: -0.318586037524717,
+		price_change_percentage_24h_in_currency: 1.2223054215003388,
+		price_change_percentage_7d_in_currency: 0.40771321725083687,
+		image: 'https://assets.coingecko.com/coins/images/100/large/Stellar_symbol_black_RGB.png?1552356157'
+	},
+	{
+		id: 'near',
+		name: 'NEAR Protocol',
+		symbol: 'near',
+		total_supply: 1000000000,
+		last_updated: '2023-02-08T16:12:11.682Z',
+		current_price: 2.65,
+		market_cap: 2263844253,
+		price_change_percentage_1h_in_currency: -1.924242115728134,
+		price_change_percentage_24h_in_currency: 13.165682878557202,
+		price_change_percentage_7d_in_currency: 13.339123452446822,
+		image: 'https://assets.coingecko.com/coins/images/10365/large/near_icon.png?1601359077'
+	},
+	{
+		id: 'apecoin',
+		name: 'ApeCoin',
+		symbol: 'ape',
+		total_supply: 1000000000,
+		last_updated: '2023-02-08T16:12:05.870Z',
+		current_price: 5.79,
+		market_cap: 2142497848,
+		price_change_percentage_1h_in_currency: -0.7298436088347362,
+		price_change_percentage_24h_in_currency: 2.292142905417426,
+		price_change_percentage_7d_in_currency: -1.3398777331325311,
+		image: 'https://assets.coingecko.com/coins/images/24383/large/apecoin.jpg?1647476455'
+	},
+	{
+		id: 'crypto-com-chain',
+		name: 'Cronos',
+		symbol: 'cro',
+		total_supply: 30263013692,
+		last_updated: '2023-02-08T16:12:09.984Z',
+		current_price: 0.083629,
+		market_cap: 2113372069,
+		price_change_percentage_1h_in_currency: -1.0411801048895961,
+		price_change_percentage_24h_in_currency: 3.903003763887781,
+		price_change_percentage_7d_in_currency: 5.626077131625997,
+		image: 'https://assets.coingecko.com/coins/images/7310/large/cro_token_logo.png?1669699773'
+	},
+	{
+		id: 'filecoin',
+		name: 'Filecoin',
+		symbol: 'fil',
+		total_supply: 1965831130,
+		last_updated: '2023-02-08T16:12:06.455Z',
+		current_price: 5.5,
+		market_cap: 2099659822,
+		price_change_percentage_1h_in_currency: -0.5473292837984922,
+		price_change_percentage_24h_in_currency: 1.7716304671967977,
+		price_change_percentage_7d_in_currency: 4.920366200877035,
+		image: 'https://assets.coingecko.com/coins/images/12817/large/filecoin.png?1602753933'
+	},
+	{
+		id: 'algorand',
+		name: 'Algorand',
+		symbol: 'algo',
+		total_supply: 7394848584.11048,
+		last_updated: '2023-02-08T16:12:11.709Z',
+		current_price: 0.286107,
+		market_cap: 2063139365,
+		price_change_percentage_1h_in_currency: -1.1418571473214503,
+		price_change_percentage_24h_in_currency: 3.513651721729839,
+		price_change_percentage_7d_in_currency: 17.781139460610873,
+		image: 'https://assets.coingecko.com/coins/images/4380/large/download.png?1547039725'
+	},
+	{
+		id: 'lido-dao',
+		name: 'Lido DAO',
+		symbol: 'ldo',
+		total_supply: 1000000000,
+		last_updated: '2023-02-08T16:12:13.116Z',
+		current_price: 2.42,
+		market_cap: 2040034785,
+		price_change_percentage_1h_in_currency: -1.4249510166461417,
+		price_change_percentage_24h_in_currency: -4.123529050676866,
+		price_change_percentage_7d_in_currency: 9.809936933239342,
+		image: 'https://assets.coingecko.com/coins/images/13573/large/Lido_DAO.png?1609873644'
+	},
+	{
+		id: 'quant-network',
+		name: 'Quant',
+		symbol: 'qnt',
+		total_supply: 14612493,
+		last_updated: '2023-02-08T16:12:09.683Z',
+		current_price: 139.01,
+		market_cap: 2025323908,
+		price_change_percentage_1h_in_currency: -0.5881836191855278,
+		price_change_percentage_24h_in_currency: 0.8342324970050323,
+		price_change_percentage_7d_in_currency: -2.27972103044063,
+		image: 'https://assets.coingecko.com/coins/images/3370/large/5ZOu7brX_400x400.jpg?1612437252'
+	},
+	{
+		id: 'hedera-hashgraph',
+		name: 'Hedera',
+		symbol: 'hbar',
+		total_supply: 50000000000,
+		last_updated: '2023-02-08T16:12:13.222Z',
+		current_price: 0.074757,
+		market_cap: 1957218342,
+		price_change_percentage_1h_in_currency: -1.5654112420145398,
+		price_change_percentage_24h_in_currency: -0.6048310464981597,
+		price_change_percentage_7d_in_currency: 15.436958568959309,
+		image: 'https://assets.coingecko.com/coins/images/3688/large/hbar.png?1637045634'
+	},
+	{
+		id: 'vechain',
+		name: 'VeChain',
+		symbol: 'vet',
+		total_supply: 85985041177,
+		last_updated: '2023-02-08T16:12:09.611Z',
+		current_price: 0.02554681,
+		market_cap: 1856113430,
+		price_change_percentage_1h_in_currency: -0.6418278929263362,
+		price_change_percentage_24h_in_currency: 3.6361132505071487,
+		price_change_percentage_7d_in_currency: 10.17631693210346,
+		image: 'https://assets.coingecko.com/coins/images/1167/large/VeChain-Logo-768x725.png?1547035194'
+	},
+	{
+		id: 'internet-computer',
+		name: 'Internet Computer',
+		symbol: 'icp',
+		total_supply: 494749482.282825,
+		last_updated: '2023-02-08T16:12:01.236Z',
+		current_price: 5.77,
+		market_cap: 1647512981,
+		price_change_percentage_1h_in_currency: -0.9263708659929939,
+		price_change_percentage_24h_in_currency: 1.8719928705659639,
+		price_change_percentage_7d_in_currency: -2.0678075717129776,
+		image: 'https://assets.coingecko.com/coins/images/14495/large/Internet_Computer_logo.png?1620703073'
+	},
+	{
+		id: 'the-graph',
+		name: 'The Graph',
+		symbol: 'grt',
+		total_supply: 10000000000,
+		last_updated: '2023-02-08T16:12:10.083Z',
+		current_price: 0.181591,
+		market_cap: 1619483969,
+		price_change_percentage_1h_in_currency: 0.16877203301029658,
+		price_change_percentage_24h_in_currency: 0.5160270090597141,
+		price_change_percentage_7d_in_currency: 103.79469861085843,
+		image: 'https://assets.coingecko.com/coins/images/13397/large/Graph_Token.png?1608145566'
+	},
+	{
+		id: 'fantom',
+		name: 'Fantom',
+		symbol: 'ftm',
+		total_supply: 3175000000,
+		last_updated: '2023-02-08T16:12:04.122Z',
+		current_price: 0.53624,
+		market_cap: 1489387989,
+		price_change_percentage_1h_in_currency: -1.1165077845806881,
+		price_change_percentage_24h_in_currency: -3.1168957216434303,
+		price_change_percentage_7d_in_currency: -0.943969793187247,
+		image: 'https://assets.coingecko.com/coins/images/4001/large/Fantom_round.png?1669652346'
+	},
+	{
+		id: 'the-sandbox',
+		name: 'The Sandbox',
+		symbol: 'sand',
+		total_supply: 3000000000,
+		last_updated: '2023-02-08T16:12:09.431Z',
+		current_price: 0.835616,
+		market_cap: 1477538084,
+		price_change_percentage_1h_in_currency: -0.22475374733829262,
+		price_change_percentage_24h_in_currency: 16.16486146258006,
+		price_change_percentage_7d_in_currency: 14.06127528796788,
+		image: 'https://assets.coingecko.com/coins/images/12129/large/sandbox_logo.jpg?1597397942'
+	},
+	{
+		id: 'decentraland',
+		name: 'Decentraland',
+		symbol: 'mana',
+		total_supply: 2193219827.32015,
+		last_updated: '2023-02-08T16:12:10.854Z',
+		current_price: 0.764726,
+		market_cap: 1393104790,
+		price_change_percentage_1h_in_currency: -1.403377970954136,
+		price_change_percentage_24h_in_currency: 5.097917403510276,
+		price_change_percentage_7d_in_currency: 1.990075255869033,
+		image: 'https://assets.coingecko.com/coins/images/878/large/decentraland-mana.png?1550108745'
+	},
+	{
+		id: 'axie-infinity',
+		name: 'Axie Infinity',
+		symbol: 'axs',
+		total_supply: 270000000,
+		last_updated: '2023-02-08T16:12:09.495Z',
+		current_price: 11.72,
+		market_cap: 1355049768,
+		price_change_percentage_1h_in_currency: 0.16292690370198792,
+		price_change_percentage_24h_in_currency: 6.482797002945555,
+		price_change_percentage_7d_in_currency: 7.256519751092245,
+		image: 'https://assets.coingecko.com/coins/images/13029/large/axie_infinity_logo.png?1604471082'
+	},
+	{
+		id: 'aave',
+		name: 'Aave',
+		symbol: 'aave',
+		total_supply: 16000000,
+		last_updated: '2023-02-08T16:12:01.330Z',
+		current_price: 86.57,
+		market_cap: 1236303959,
+		price_change_percentage_1h_in_currency: -1.5528102707021039,
+		price_change_percentage_24h_in_currency: 0.22790462888831148,
+		price_change_percentage_7d_in_currency: 4.078276392861486,
+		image: 'https://assets.coingecko.com/coins/images/12645/large/AAVE.png?1601374110'
+	},
+	{
+		id: 'flow',
+		name: 'Flow',
+		symbol: 'flow',
+		total_supply: 1414011748.80532,
+		last_updated: '2023-02-08T16:12:10.692Z',
+		current_price: 1.19,
+		market_cap: 1229287856,
+		price_change_percentage_1h_in_currency: -2.2555995669002065,
+		price_change_percentage_24h_in_currency: 6.776093179802498,
+		price_change_percentage_7d_in_currency: 11.197028129730082,
+		image: 'https://assets.coingecko.com/coins/images/13446/large/5f6294c0c7a8cda55cb1c936_Flow_Wordmark.png?1631696776'
+	},
+	{
+		id: 'eos',
+		name: 'EOS',
+		symbol: 'eos',
+		total_supply: null,
+		last_updated: '2023-02-08T16:12:13.874Z',
+		current_price: 1.09,
+		market_cap: 1192994398,
+		price_change_percentage_1h_in_currency: -0.52417412404206,
+		price_change_percentage_24h_in_currency: -0.27161534209111216,
+		price_change_percentage_7d_in_currency: 2.3368976924502927,
+		image: 'https://assets.coingecko.com/coins/images/738/large/eos-eos-logo.png?1547034481'
+	},
+	{
+		id: 'elrond-erd-2',
+		name: 'MultiversX',
+		symbol: 'egld',
+		total_supply: 24973610,
+		last_updated: '2023-02-08T16:12:07.051Z',
+		current_price: 46.2,
+		market_cap: 1160161970,
+		price_change_percentage_1h_in_currency: -1.108026021855595,
+		price_change_percentage_24h_in_currency: 1.4420603073681963,
+		price_change_percentage_7d_in_currency: 7.593265849370458,
+		image: 'https://assets.coingecko.com/coins/images/12335/large/egld-token-logo.png?1673490885'
+	},
+	{
+		id: 'theta-token',
+		name: 'Theta Network',
+		symbol: 'theta',
+		total_supply: 1000000000,
+		last_updated: '2023-02-08T16:12:09.390Z',
+		current_price: 1.14,
+		market_cap: 1139854105,
+		price_change_percentage_1h_in_currency: -1.153149496005316,
+		price_change_percentage_24h_in_currency: -0.985366608361945,
+		price_change_percentage_7d_in_currency: 10.77571975886807,
+		image: 'https://assets.coingecko.com/coins/images/2538/large/theta-token-logo.png?1548387191'
+	},
+	{
+		id: 'tezos',
+		name: 'Tezos',
+		symbol: 'xtz',
+		total_supply: null,
+		last_updated: '2023-02-08T16:12:10.324Z',
+		current_price: 1.2,
+		market_cap: 1107354298,
+		price_change_percentage_1h_in_currency: -0.8012081475697057,
+		price_change_percentage_24h_in_currency: 2.023273156731115,
+		price_change_percentage_7d_in_currency: 13.414703117976941,
+		image: 'https://assets.coingecko.com/coins/images/976/large/Tezos-logo.png?1547034862'
+	},
+	{
+		id: 'terra-luna',
+		name: 'Terra Luna Classic',
+		symbol: 'lunc',
+		total_supply: 6870416174968.09,
+		last_updated: '2023-02-08T16:12:06.474Z',
+		current_price: 0.00018094,
+		market_cap: 1073236296,
+		price_change_percentage_1h_in_currency: -0.36620869791683297,
+		price_change_percentage_24h_in_currency: -0.9697483335820717,
+		price_change_percentage_7d_in_currency: 5.358295309647366,
+		image: 'https://assets.coingecko.com/coins/images/8284/large/01_LunaClassic_color.png?1653547790'
+	},
+	{
+		id: 'frax',
+		name: 'Frax',
+		symbol: 'frax',
+		total_supply: 1023353133.25878,
+		last_updated: '2023-02-08T16:12:06.216Z',
+		current_price: 0.997407,
+		market_cap: 1020820383,
+		price_change_percentage_1h_in_currency: -0.3950403455680784,
+		price_change_percentage_24h_in_currency: -0.23832980964904518,
+		price_change_percentage_7d_in_currency: -0.2742438504801781,
+		image: 'https://assets.coingecko.com/coins/images/13422/large/ethCanonicalFRAX.png?1669277108'
+	},
+	{
+		id: 'paxos-standard',
+		name: 'Pax Dollar',
+		symbol: 'usdp',
+		total_supply: 956181645.510683,
+		last_updated: '2023-02-08T16:11:57.290Z',
+		current_price: 1.003,
+		market_cap: 957052787,
+		price_change_percentage_1h_in_currency: 0.1468517594959551,
+		price_change_percentage_24h_in_currency: 0.2933965609039881,
+		price_change_percentage_7d_in_currency: 0.4192808481659553,
+		image: 'https://assets.coingecko.com/coins/images/6013/large/Pax_Dollar.png?1629877204'
+	},
+	{
+		id: 'true-usd',
+		name: 'TrueUSD',
+		symbol: 'tusd',
+		total_supply: 948571121.050951,
+		last_updated: '2023-02-08T16:12:00.781Z',
+		current_price: 1.002,
+		market_cap: 949264958,
+		price_change_percentage_1h_in_currency: 0.04041548674939298,
+		price_change_percentage_24h_in_currency: 0.13265040199138578,
+		price_change_percentage_7d_in_currency: 0.21177275179070704,
+		image: 'https://assets.coingecko.com/coins/images/3449/large/tusd.png?1618395665'
+	},
+	{
+		id: 'huobi-token',
+		name: 'Huobi',
+		symbol: 'ht',
+		total_supply: 203980445.3,
+		last_updated: '2023-02-08T16:12:02.494Z',
+		current_price: 5.48,
+		market_cap: 890291200,
+		price_change_percentage_1h_in_currency: 0.4549816135925547,
+		price_change_percentage_24h_in_currency: -0.015837982188847688,
+		price_change_percentage_7d_in_currency: 6.6952881538683675,
+		image: 'https://assets.coingecko.com/coins/images/2822/large/huobi-token-logo.png?1547036992'
+	},
+	{
+		id: 'chiliz',
+		name: 'Chiliz',
+		symbol: 'chz',
+		total_supply: 8888888888,
+		last_updated: '2023-02-08T16:12:12.344Z',
+		current_price: 0.15965,
+		market_cap: 856163503,
+		price_change_percentage_1h_in_currency: -1.5447108914950671,
+		price_change_percentage_24h_in_currency: 1.234578095328613,
+		price_change_percentage_7d_in_currency: 19.063590030479308,
+		image: 'https://assets.coingecko.com/coins/images/8834/large/CHZ_Token_updated.png?1675848257'
+	},
+	{
+		id: 'frax-share',
+		name: 'Frax Share',
+		symbol: 'fxs',
+		total_supply: 99822984.1145714,
+		last_updated: '2023-02-08T16:12:09.243Z',
+		current_price: 11.65,
+		market_cap: 855115661,
+		price_change_percentage_1h_in_currency: -1.7294320335438655,
+		price_change_percentage_24h_in_currency: -11.93838166713108,
+		price_change_percentage_7d_in_currency: 13.943550031090377,
+		image: 'https://assets.coingecko.com/coins/images/13423/large/ethCanonicalFXS.png?1669276861'
+	},
+	{
+		id: 'havven',
+		name: 'Synthetix Network',
+		symbol: 'snx',
+		total_supply: 313530363.088774,
+		last_updated: '2023-02-08T16:12:06.605Z',
+		current_price: 2.7,
+		market_cap: 844874103,
+		price_change_percentage_1h_in_currency: -2.3592274816998873,
+		price_change_percentage_24h_in_currency: -6.789790867696535,
+		price_change_percentage_7d_in_currency: 16.79442097403296,
+		image: 'https://assets.coingecko.com/coins/images/3406/large/SNX.png?1598631139'
+	},
+	{
+		id: 'kucoin-shares',
+		name: 'KuCoin',
+		symbol: 'kcs',
+		total_supply: 144885672.457236,
+		last_updated: '2023-02-08T16:11:48.168Z',
+		current_price: 8.65,
+		market_cap: 842588093,
+		price_change_percentage_1h_in_currency: -0.5395047202092067,
+		price_change_percentage_24h_in_currency: 0.4382984326298282,
+		price_change_percentage_7d_in_currency: 4.313087616442835,
+		image: 'https://assets.coingecko.com/coins/images/1047/large/sa9z79.png?1610678720'
+	},
+	{
+		id: 'immutable-x',
+		name: 'ImmutableX',
+		symbol: 'imx',
+		total_supply: 2000000000,
+		last_updated: '2023-02-08T16:12:10.322Z',
+		current_price: 1.035,
+		market_cap: 827948316,
+		price_change_percentage_1h_in_currency: -2.865142204631843,
+		price_change_percentage_24h_in_currency: 7.8902933612921125,
+		price_change_percentage_7d_in_currency: 39.22326211364941,
+		image: 'https://assets.coingecko.com/coins/images/17233/large/immutableX-symbol-BLK-RGB.png?1665110648'
+	},
+	{
+		id: 'curve-dao-token',
+		name: 'Curve DAO',
+		symbol: 'crv',
+		total_supply: 1898039630.34822,
+		last_updated: '2023-02-08T16:12:03.910Z',
+		current_price: 1.11,
+		market_cap: 827834534,
+		price_change_percentage_1h_in_currency: -2.319107341838702,
+		price_change_percentage_24h_in_currency: 5.204656641506143,
+		price_change_percentage_7d_in_currency: 8.715364026462117,
+		image: 'https://assets.coingecko.com/coins/images/12124/large/Curve.png?1597369484'
+	},
+	{
+		id: 'bitcoin-cash-sv',
+		name: 'Bitcoin SV',
+		symbol: 'bsv',
+		total_supply: 21000000,
+		last_updated: '2023-02-08T16:12:09.623Z',
+		current_price: 43.01,
+		market_cap: 826674018,
+		price_change_percentage_1h_in_currency: -0.1297242357245854,
+		price_change_percentage_24h_in_currency: 0.17539775739820854,
+		price_change_percentage_7d_in_currency: 0.8042411647745011,
+		image: 'https://assets.coingecko.com/coins/images/6799/large/BSV.png?1558947902'
+	},
+	{
+		id: 'rocket-pool',
+		name: 'Rocket Pool',
+		symbol: 'rpl',
+		total_supply: 19113413.067094,
+		last_updated: '2023-02-08T16:12:07.353Z',
+		current_price: 40.41,
+		market_cap: 772380377,
+		price_change_percentage_1h_in_currency: -1.2720258460801144,
+		price_change_percentage_24h_in_currency: -3.9742528135751813,
+		price_change_percentage_7d_in_currency: 5.682902358544201,
+		image: 'https://assets.coingecko.com/coins/images/2090/large/rocket_pool_%28RPL%29.png?1637662441'
+	},
+	{
+		id: 'pancakeswap-token',
+		name: 'PancakeSwap',
+		symbol: 'cake',
+		total_supply: 365184955.53567,
+		last_updated: '2023-02-08T16:12:10.458Z',
+		current_price: 4.59,
+		market_cap: 759558996,
+		price_change_percentage_1h_in_currency: -0.8988675975108473,
+		price_change_percentage_24h_in_currency: 2.2936291661898838,
+		price_change_percentage_7d_in_currency: 13.564009980417993,
+		image: 'https://assets.coingecko.com/coins/images/12632/large/pancakeswap-cake-logo_%281%29.png?1629359065'
+	},
+	{
+		id: 'ecash',
+		name: 'eCash',
+		symbol: 'xec',
+		total_supply: 21000000000000,
+		last_updated: '2023-02-08T16:12:14.404Z',
+		current_price: 0.00003752,
+		market_cap: 724436138,
+		price_change_percentage_1h_in_currency: -0.22291221850444706,
+		price_change_percentage_24h_in_currency: 1.9518121760979068,
+		price_change_percentage_7d_in_currency: 2.6641690657827897,
+		image: 'https://assets.coingecko.com/coins/images/16646/large/Logo_final-22.png?1628239446'
+	},
+	{
+		id: 'usdd',
+		name: 'USDD',
+		symbol: 'usdd',
+		total_supply: null,
+		last_updated: '2023-02-08T16:11:56.643Z',
+		current_price: 0.994405,
+		market_cap: 720870381,
+		price_change_percentage_1h_in_currency: 0.1750820181351151,
+		price_change_percentage_24h_in_currency: 0.3678857539531688,
+		price_change_percentage_7d_in_currency: 0.22135199067863962,
+		image: 'https://assets.coingecko.com/coins/images/25380/large/UUSD.jpg?1651823371'
+	},
+	{
+		id: 'bittorrent',
+		name: 'BitTorrent',
+		symbol: 'btt',
+		total_supply: 990000000000000,
+		last_updated: '2023-02-08T16:11:59.359Z',
+		current_price: 7.51582e-7,
+		market_cap: 716613440,
+		price_change_percentage_1h_in_currency: -0.5884693014257998,
+		price_change_percentage_24h_in_currency: 1.678483526736057,
+		price_change_percentage_7d_in_currency: 4.326972021530589,
+		image: 'https://assets.coingecko.com/coins/images/22457/large/btt_logo.png?1643857231'
+	},
+	{
+		id: 'dash',
+		name: 'Dash',
+		symbol: 'dash',
+		total_supply: 18920000,
+		last_updated: '2023-02-08T16:11:55.019Z',
+		current_price: 63.84,
+		market_cap: 710751299,
+		price_change_percentage_1h_in_currency: -0.43413085877998125,
+		price_change_percentage_24h_in_currency: -2.1024560733844058,
+		price_change_percentage_7d_in_currency: 5.911388546905265,
+		image: 'https://assets.coingecko.com/coins/images/19/large/dash-logo.png?1548385930'
+	},
+	{
+		id: 'maker',
+		name: 'Maker',
+		symbol: 'mkr',
+		total_supply: 977631.036950888,
+		last_updated: '2023-02-08T16:12:11.725Z',
+		current_price: 764.02,
+		market_cap: 692326728,
+		price_change_percentage_1h_in_currency: -1.2686305795574555,
+		price_change_percentage_24h_in_currency: 4.122659853901686,
+		price_change_percentage_7d_in_currency: 16.703145941550236,
+		image: 'https://assets.coingecko.com/coins/images/1364/large/Mark_Maker.png?1585191826'
+	},
+	{
+		id: 'bitdao',
+		name: 'BitDAO',
+		symbol: 'bit',
+		total_supply: 9610239403,
+		last_updated: '2023-02-08T16:12:13.254Z',
+		current_price: 0.592414,
+		market_cap: 690586162,
+		price_change_percentage_1h_in_currency: -0.37915964045354655,
+		price_change_percentage_24h_in_currency: 1.4283979002570855,
+		price_change_percentage_7d_in_currency: 12.319269944951037,
+		image: 'https://assets.coingecko.com/coins/images/17627/large/rI_YptK8.png?1653983088'
+	},
+	{
+		id: 'mina-protocol',
+		name: 'Mina Protocol',
+		symbol: 'mina',
+		total_supply: 1001343772.84004,
+		last_updated: '2023-02-08T16:12:09.344Z',
+		current_price: 0.81647,
+		market_cap: 681609258,
+		price_change_percentage_1h_in_currency: -1.140311131542886,
+		price_change_percentage_24h_in_currency: -1.0420122964193834,
+		price_change_percentage_7d_in_currency: -3.7422827512401446,
+		image: 'https://assets.coingecko.com/coins/images/15628/large/JM4_vQ34_400x400.png?1621394004'
+	},
+	{
+		id: 'iota',
+		name: 'IOTA',
+		symbol: 'miota',
+		total_supply: 2779530283,
+		last_updated: '2023-02-08T16:11:59.906Z',
+		current_price: 0.243056,
+		market_cap: 676549006,
+		price_change_percentage_1h_in_currency: -0.9902865330522476,
+		price_change_percentage_24h_in_currency: 0.4331707314465586,
+		price_change_percentage_7d_in_currency: 6.7284085443875625,
+		image: 'https://assets.coingecko.com/coins/images/692/large/IOTA_Swirl.png?1604238557'
+	},
+	{
+		id: 'trust-wallet-token',
+		name: 'Trust Wallet',
+		symbol: 'twt',
+		total_supply: 1000000000,
+		last_updated: '2023-02-08T16:12:03.483Z',
+		current_price: 1.57,
+		market_cap: 657269088,
+		price_change_percentage_1h_in_currency: -0.5412988568395951,
+		price_change_percentage_24h_in_currency: -0.6076808898032868,
+		price_change_percentage_7d_in_currency: -5.2186383887004535,
+		image: 'https://assets.coingecko.com/coins/images/11085/large/Trust.png?1588062702'
+	},
+	{
+		id: 'klay-token',
+		name: 'Klaytn',
+		symbol: 'klay',
+		total_supply: null,
+		last_updated: '2023-02-08T16:12:13.840Z',
+		current_price: 0.208676,
+		market_cap: 646137640,
+		price_change_percentage_1h_in_currency: -1.2175189306935408,
+		price_change_percentage_24h_in_currency: 1.0374613740013288,
+		price_change_percentage_7d_in_currency: 1.0176107697065921,
+		image: 'https://assets.coingecko.com/coins/images/9672/large/klaytn.png?1660288824'
+	},
+	{
+		id: 'gatechain-token',
+		name: 'Gate',
+		symbol: 'gt',
+		total_supply: 300000000,
+		last_updated: '2023-02-08T16:11:54.535Z',
+		current_price: 4.45,
+		market_cap: 645952074,
+		price_change_percentage_1h_in_currency: 0.16216094990805133,
+		price_change_percentage_24h_in_currency: 0.8482866282159771,
+		price_change_percentage_7d_in_currency: 0.6904505621059815,
+		image: 'https://assets.coingecko.com/coins/images/8183/large/gt.png?1556085624'
+	},
+	{
+		id: 'neo',
+		name: 'NEO',
+		symbol: 'neo',
+		total_supply: 100000000,
+		last_updated: '2023-02-08T16:12:09.697Z',
+		current_price: 8.82,
+		market_cap: 622355263,
+		price_change_percentage_1h_in_currency: -0.34533419431522405,
+		price_change_percentage_24h_in_currency: -0.013630728201035856,
+		price_change_percentage_7d_in_currency: 7.576181073561967,
+		image: 'https://assets.coingecko.com/coins/images/480/large/NEO_512_512.png?1594357361'
+	},
+	{
+		id: 'optimism',
+		name: 'Optimism',
+		symbol: 'op',
+		total_supply: 4294967296,
+		last_updated: '2023-02-08T16:12:11.345Z',
+		current_price: 2.84,
+		market_cap: 611174118,
+		price_change_percentage_1h_in_currency: -0.8739879563178787,
+		price_change_percentage_24h_in_currency: -3.7771888787215477,
+		price_change_percentage_7d_in_currency: 30.725448256761396,
+		image: 'https://assets.coingecko.com/coins/images/25244/large/Optimism.png?1660904599'
+	},
+	{
+		id: 'arweave',
+		name: 'Arweave',
+		symbol: 'ar',
+		total_supply: 64598643,
+		last_updated: '2023-02-08T16:12:09.880Z',
+		current_price: 11.99,
+		market_cap: 605248563,
+		price_change_percentage_1h_in_currency: -1.9688855073148037,
+		price_change_percentage_24h_in_currency: -0.20384757710573317,
+		price_change_percentage_7d_in_currency: 13.218930469735646,
+		image: 'https://assets.coingecko.com/coins/images/4343/large/oRt6SiEN_400x400.jpg?1591059616'
+	},
+	{
+		id: 'zcash',
+		name: 'Zcash',
+		symbol: 'zec',
+		total_supply: 21000000,
+		last_updated: '2023-02-08T16:12:12.584Z',
+		current_price: 45.7,
+		market_cap: 585689213,
+		price_change_percentage_1h_in_currency: -0.7844035013294723,
+		price_change_percentage_24h_in_currency: 0.1399707077293351,
+		price_change_percentage_7d_in_currency: 0.9404231384796605,
+		image: 'https://assets.coingecko.com/coins/images/486/large/circle-zcash-color.png?1547034197'
+	},
+	{
+		id: 'singularitynet',
+		name: 'SingularityNET',
+		symbol: 'agix',
+		total_supply: 1260835661.73639,
+		last_updated: '2023-02-08T16:12:02.688Z',
+		current_price: 0.482837,
+		market_cap: 579053367,
+		price_change_percentage_1h_in_currency: 0.8495758889195395,
+		price_change_percentage_24h_in_currency: -15.31043084926581,
+		price_change_percentage_7d_in_currency: 173.6120373033667,
+		image: 'https://assets.coingecko.com/coins/images/2138/large/singularitynet.png?1548609559'
+	},
+	{
+		id: 'compound-usd-coin',
+		name: 'cUSDC',
+		symbol: 'cusdc',
+		total_supply: 25294470584.0421,
+		last_updated: '2023-02-08T16:11:27.608Z',
+		current_price: 0.02277297,
+		market_cap: 575645833,
+		price_change_percentage_1h_in_currency: 0.07044601829197286,
+		price_change_percentage_24h_in_currency: 0.12632741840897396,
+		price_change_percentage_7d_in_currency: 0.4172829291466844,
+		image: 'https://assets.coingecko.com/coins/images/9442/large/Compound_USDC.png?1567581577'
+	},
+	{
+		id: 'gemini-dollar',
+		name: 'Gemini Dollar',
+		symbol: 'gusd',
+		total_supply: 571813561.17,
+		last_updated: '2023-02-08T16:12:01.479Z',
+		current_price: 1.002,
+		market_cap: 572548013,
+		price_change_percentage_1h_in_currency: -0.11662260098152524,
+		price_change_percentage_24h_in_currency: 0.09744574477801532,
+		price_change_percentage_7d_in_currency: 0.06194385057410574,
+		image: 'https://assets.coingecko.com/coins/images/5992/large/gemini-dollar-gusd.png?1536745278'
+	},
+	{
+		id: 'thorchain',
+		name: 'THORChain',
+		symbol: 'rune',
+		total_supply: 500000000,
+		last_updated: '2023-02-08T16:12:10.811Z',
+		current_price: 1.9,
+		market_cap: 571842297,
+		price_change_percentage_1h_in_currency: -0.7608779564881398,
+		price_change_percentage_24h_in_currency: 1.5633617374446451,
+		price_change_percentage_7d_in_currency: 7.213530295040963,
+		image: 'https://assets.coingecko.com/coins/images/6595/large/Rune200x200.png?1671179394'
+	},
+	{
+		id: 'oec-token',
+		name: 'OKC',
+		symbol: 'okt',
+		total_supply: 17847259.5,
+		last_updated: '2023-02-08T16:12:12.205Z',
+		current_price: 31.88,
+		market_cap: 571841393,
+		price_change_percentage_1h_in_currency: -1.6699442179402753,
+		price_change_percentage_24h_in_currency: 0.2105298917382896,
+		price_change_percentage_7d_in_currency: 4.356842914961905,
+		image: 'https://assets.coingecko.com/coins/images/13708/large/WeChat_Image_20220118095654.png?1642471094'
+	},
+	{
+		id: 'osmosis',
+		name: 'Osmosis',
+		symbol: 'osmo',
+		total_supply: 325000000,
+		last_updated: '2023-02-08T16:12:01.855Z',
+		current_price: 1.075,
+		market_cap: 567469582,
+		price_change_percentage_1h_in_currency: -1.8538355950973844,
+		price_change_percentage_24h_in_currency: 1.8996832370539702,
+		price_change_percentage_7d_in_currency: 10.052387020289055,
+		image: 'https://assets.coingecko.com/coins/images/16724/large/osmo.png?1632763885'
+	},
+	{
+		id: 'cdai',
+		name: 'cDAI',
+		symbol: 'cdai',
+		total_supply: 25158952553.2217,
+		last_updated: '2023-02-08T16:11:41.144Z',
+		current_price: 0.02216612,
+		market_cap: 557511311,
+		price_change_percentage_1h_in_currency: 0.3256227994886386,
+		price_change_percentage_24h_in_currency: 0.018849140876175785,
+		price_change_percentage_7d_in_currency: 0.02710116170348211,
+		image: 'https://assets.coingecko.com/coins/images/9281/large/cDAI.png?1576467585'
+	},
+	{
+		id: 'gmx',
+		name: 'GMX',
+		symbol: 'gmx',
+		total_supply: 8454473.556832,
+		last_updated: '2023-02-08T16:12:05.096Z',
+		current_price: 65.88,
+		market_cap: 556674604,
+		price_change_percentage_1h_in_currency: -1.0423031938810419,
+		price_change_percentage_24h_in_currency: -5.248582304057251,
+		price_change_percentage_7d_in_currency: 10.56190192674142,
+		image: 'https://assets.coingecko.com/coins/images/18323/large/arbit.png?1631532468'
+	},
+	{
+		id: 'tokenize-xchange',
+		name: 'Tokenize Xchange',
+		symbol: 'tkx',
+		total_supply: 100000000,
+		last_updated: '2023-02-08T16:11:26.667Z',
+		current_price: 6.79,
+		market_cap: 543063668,
+		price_change_percentage_1h_in_currency: -0.09872930904967192,
+		price_change_percentage_24h_in_currency: 1.9153003344402497,
+		price_change_percentage_7d_in_currency: 1.2084789044212307,
+		image: 'https://assets.coingecko.com/coins/images/4984/large/TKX_-_Logo_-_RGB-15.png?1672912391'
+	},
+	{
+		id: 'baby-doge-coin',
+		name: 'Baby Doge Coin',
+		symbol: 'babydoge',
+		total_supply: 420000000000000000,
+		last_updated: '2023-02-08T16:12:11.366Z',
+		current_price: 3.345e-9,
+		market_cap: 534360326,
+		price_change_percentage_1h_in_currency: -2.2565194377543967,
+		price_change_percentage_24h_in_currency: 1.321506335259054,
+		price_change_percentage_7d_in_currency: 114.61500611281674,
+		image: 'https://assets.coingecko.com/coins/images/16125/large/Baby_Doge.png?1623044048'
+	},
+	{
+		id: 'render-token',
+		name: 'Render',
+		symbol: 'rndr',
+		total_supply: 531016083.388796,
+		last_updated: '2023-02-08T16:12:04.535Z',
+		current_price: 1.76,
+		market_cap: 532838207,
+		price_change_percentage_1h_in_currency: -0.8185389296438694,
+		price_change_percentage_24h_in_currency: -12.692847821788703,
+		price_change_percentage_7d_in_currency: 24.483515815043848,
+		image: 'https://assets.coingecko.com/coins/images/11636/large/rndr.png?1638840934'
+	},
+	{
+		id: 'radix',
+		name: 'Radix',
+		symbol: 'xrd',
+		total_supply: 12497899100.4299,
+		last_updated: '2023-02-08T16:11:50.108Z',
+		current_price: 0.050426,
+		market_cap: 509608882,
+		price_change_percentage_1h_in_currency: -0.027049761946718195,
+		price_change_percentage_24h_in_currency: 0.143916315188155,
+		price_change_percentage_7d_in_currency: -9.164884521966504,
+		image: 'https://assets.coingecko.com/coins/images/4374/large/Radix.png?1629701658'
+	},
+	{
+		id: 'pax-gold',
+		name: 'PAX Gold',
+		symbol: 'paxg',
+		total_supply: 268725.16,
+		last_updated: '2023-02-08T16:12:02.289Z',
+		current_price: 1861.24,
+		market_cap: 499850033,
+		price_change_percentage_1h_in_currency: 0.06033779830237136,
+		price_change_percentage_24h_in_currency: -0.10640730361236325,
+		price_change_percentage_7d_in_currency: -2.194024829770779,
+		image: 'https://assets.coingecko.com/coins/images/9519/large/paxg.PNG?1568542565'
+	},
+	{
+		id: 'fetch-ai',
+		name: 'Fetch.ai',
+		symbol: 'fet',
+		total_supply: 1152997575,
+		last_updated: '2023-02-08T16:12:14.087Z',
+		current_price: 0.477349,
+		market_cap: 499272395,
+		price_change_percentage_1h_in_currency: -1.394840446828966,
+		price_change_percentage_24h_in_currency: -12.996212797972435,
+		price_change_percentage_7d_in_currency: 72.43095096816083,
+		image: 'https://assets.coingecko.com/coins/images/5681/large/Fetch.jpg?1572098136'
+	},
+	{
+		id: 'enjincoin',
+		name: 'Enjin Coin',
+		symbol: 'enj',
+		total_supply: 1000000000,
+		last_updated: '2023-02-08T16:12:09.743Z',
+		current_price: 0.495674,
+		market_cap: 496105902,
+		price_change_percentage_1h_in_currency: -0.027374239780928795,
+		price_change_percentage_24h_in_currency: 3.095666927874164,
+		price_change_percentage_7d_in_currency: 9.056064950810978,
+		image: 'https://assets.coingecko.com/coins/images/1102/large/enjin-coin-logo.png?1547035078'
+	},
+	{
+		id: 'zilliqa',
+		name: 'Zilliqa',
+		symbol: 'zil',
+		total_supply: 17157890436.7824,
+		last_updated: '2023-02-08T16:12:12.866Z',
+		current_price: 0.03010413,
+		market_cap: 485411319,
+		price_change_percentage_1h_in_currency: -1.198810000669839,
+		price_change_percentage_24h_in_currency: 1.6407875630834599,
+		price_change_percentage_7d_in_currency: 11.146419950115144,
+		image: 'https://assets.coingecko.com/coins/images/2687/large/Zilliqa-logo.png?1547036894'
+	},
+	{
+		id: 'convex-finance',
+		name: 'Convex Finance',
+		symbol: 'cvx',
+		total_supply: 97279782.2317431,
+		last_updated: '2023-02-08T16:12:14.372Z',
+		current_price: 6.42,
+		market_cap: 479883825,
+		price_change_percentage_1h_in_currency: -1.9879627591125801,
+		price_change_percentage_24h_in_currency: -1.3281311205941968,
+		price_change_percentage_7d_in_currency: 9.288613411440046,
+		image: 'https://assets.coingecko.com/coins/images/15585/large/convex.png?1621256328'
+	},
+	{
+		id: 'compound-ether',
+		name: 'cETH',
+		symbol: 'ceth',
+		total_supply: 14174784.800101,
+		last_updated: '2023-02-08T16:11:36.100Z',
+		current_price: 33.24,
+		market_cap: 471023691,
+		price_change_percentage_1h_in_currency: -0.7024985609845872,
+		price_change_percentage_24h_in_currency: 1.4406226367425266,
+		price_change_percentage_7d_in_currency: 3.7301854067232667,
+		image: 'https://assets.coingecko.com/coins/images/10643/large/ceth2.JPG?1581389598'
+	},
+	{
+		id: 'loopring',
+		name: 'Loopring',
+		symbol: 'lrc',
+		total_supply: 1373873397.44246,
+		last_updated: '2023-02-08T16:12:14.634Z',
+		current_price: 0.371924,
+		market_cap: 465098221,
+		price_change_percentage_1h_in_currency: -1.1693147395536876,
+		price_change_percentage_24h_in_currency: -2.6570280289164687,
+		price_change_percentage_7d_in_currency: 6.000216187881073,
+		image: 'https://assets.coingecko.com/coins/images/913/large/LRC.png?1572852344'
+	},
+	{
+		id: 'ethereum-pow-iou',
+		name: 'EthereumPoW',
+		symbol: 'ethw',
+		total_supply: 107818717.04993,
+		last_updated: '2023-02-08T16:12:12.943Z',
+		current_price: 4.27,
+		market_cap: 463458586,
+		price_change_percentage_1h_in_currency: -1.3200493550413428,
+		price_change_percentage_24h_in_currency: -0.31820922819331265,
+		price_change_percentage_7d_in_currency: 12.876065988978011,
+		image: 'https://assets.coingecko.com/coins/images/26997/large/logo-clear.png?1661311105'
+	}
+];
+
+const detailsData = {
+	id: 'ethereum',
+	symbol: 'eth',
+	name: 'Ethereum',
+	image: {
+		thumb: 'https://assets.coingecko.com/coins/images/279/thumb/ethereum.png?1595348880',
+		small: 'https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880',
+		large: 'https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880'
+	},
+	current_price: 1640.48,
+	market_cap: 197648625073,
+	total_volume: 10453139810,
+	high_24h: 1690.67,
+	low_24h: 1631.82,
+	low_high_value: 14.715378079864166,
+	price_change_24h: 6.782524,
+	price_change_percentage_24h: 0.41516,
+	market_cap_change_24h: 1116111808,
+	market_cap_change_percentage_24h: 0.5679,
+	circulating_supply: 120508854.572098,
+	total_supply: 120508854.572098,
+	max_supply: null,
+	ath: 4878.26,
+	ath_change_percentage: -66.37904,
+	ath_date: '2021-11-10T14:24:19.604Z',
+	atl: 0.432979,
+	atl_change_percentage: 378698.63743,
+	atl_date: '2015-10-20T00:00:00.000Z',
+	last_updated: '2023-02-08T16:40:47.169Z'
+};
+
+const chartData = [
+	{
+		'time': 1675788308034,
+		'price': 22919.717656891757
+	},
+	{
+		'time': 1675788611908,
+		'price': 23012.52413696981
+	},
+	{
+		'time': 1675788904040,
+		'price': 23034.119674531
+	},
+	{
+		'time': 1675789216810,
+		'price': 23010.3301592181
+	},
+	{
+		'time': 1675789498179,
+		'price': 22982.894892793898
+	},
+	{
+		'time': 1675789855972,
+		'price': 22989.83738985959
+	},
+	{
+		'time': 1675790100803,
+		'price': 22993.497742050673
+	},
+	{
+		'time': 1675790397516,
+		'price': 22975.077791452026
+	},
+	{
+		'time': 1675790703930,
+		'price': 22958.467873196194
+	},
+	{
+		'time': 1675790948940,
+		'price': 22910.38561743651
+	},
+	{
+		'time': 1675791275126,
+		'price': 22921.641688136762
+	},
+	{
+		'time': 1675791671295,
+		'price': 22931.95961560498
+	},
+	{
+		'time': 1675791900953,
+		'price': 22953.663373195533
+	},
+	{
+		'time': 1675792180250,
+		'price': 23090.901662973258
+	},
+	{
+		'time': 1675792527903,
+		'price': 23186.919945628473
+	},
+	{
+		'time': 1675792833872,
+		'price': 23610.185929260544
+	},
+	{
+		'time': 1675793133323,
+		'price': 23438.09425147776
+	},
+	{
+		'time': 1675793364662,
+		'price': 23402.57425083473
+	},
+	{
+		'time': 1675793709018,
+		'price': 23347.794169314708
+	},
+	{
+		'time': 1675794055096,
+		'price': 22937.782053719387
+	},
+	{
+		'time': 1675794328774,
+		'price': 22882.33418236
+	},
+	{
+		'time': 1675794616039,
+		'price': 22785.773575240455
+	},
+	{
+		'time': 1675794902394,
+		'price': 22792.153534315523
+	},
+	{
+		'time': 1675795333121,
+		'price': 22968.25736107351
+	},
+	{
+		'time': 1675795507366,
+		'price': 22971.105392008452
+	},
+	{
+		'time': 1675795942886,
+		'price': 22922.023953847936
+	},
+	{
+		'time': 1675796110768,
+		'price': 22944.661422024343
+	},
+	{
+		'time': 1675796409014,
+		'price': 22959.40588397159
+	},
+	{
+		'time': 1675796699395,
+		'price': 22979.133364734473
+	},
+	{
+		'time': 1675796998910,
+		'price': 23089.946159079944
+	},
+	{
+		'time': 1675797295965,
+		'price': 23053.95419556835
+	},
+	{
+		'time': 1675797617418,
+		'price': 23056.01792118624
+	},
+	{
+		'time': 1675797917188,
+		'price': 23083.0825163775
+	},
+	{
+		'time': 1675798199606,
+		'price': 23092.421542921085
+	},
+	{
+		'time': 1675798507798,
+		'price': 23124.905200876885
+	},
+	{
+		'time': 1675798942787,
+		'price': 23075.001346246558
+	},
+	{
+		'time': 1675799087448,
+		'price': 23083.483621886957
+	},
+	{
+		'time': 1675799388997,
+		'price': 23088.94194057653
+	},
+	{
+		'time': 1675799711262,
+		'price': 23109.18576256016
+	},
+	{
+		'time': 1675800062781,
+		'price': 23131.81455887355
+	},
+	{
+		'time': 1675800324378,
+		'price': 23148.90228743418
+	},
+	{
+		'time': 1675800666749,
+		'price': 23124.749627879617
+	},
+	{
+		'time': 1675800947329,
+		'price': 23137.29863591129
+	},
+	{
+		'time': 1675801217434,
+		'price': 23132.602980187636
+	},
+	{
+		'time': 1675801491295,
+		'price': 23122.70665013937
+	},
+	{
+		'time': 1675801807166,
+		'price': 23157.060215071946
+	},
+	{
+		'time': 1675802092959,
+		'price': 23230.381489269334
+	},
+	{
+		'time': 1675802385971,
+		'price': 23213.40715315792
+	},
+	{
+		'time': 1675802690384,
+		'price': 23215.923380900585
+	},
+	{
+		'time': 1675803025655,
+		'price': 23224.01540114798
+	},
+	{
+		'time': 1675803334957,
+		'price': 23229.73693909663
+	},
+	{
+		'time': 1675803598324,
+		'price': 23199.974887607776
+	},
+	{
+		'time': 1675803862980,
+		'price': 23225.276300065176
+	},
+	{
+		'time': 1675804194200,
+		'price': 23240.459387251754
+	},
+	{
+		'time': 1675804502082,
+		'price': 23245.997287028928
+	},
+	{
+		'time': 1675804830310,
+		'price': 23240.069209807403
+	},
+	{
+		'time': 1675805049425,
+		'price': 23246.293332117482
+	},
+	{
+		'time': 1675805394516,
+		'price': 23234.582783993334
+	},
+	{
+		'time': 1675805675874,
+		'price': 23240.313313225543
+	},
+	{
+		'time': 1675806021570,
+		'price': 23230.00986055429
+	},
+	{
+		'time': 1675806335920,
+		'price': 23244.65606972719
+	},
+	{
+		'time': 1675806596937,
+		'price': 23239.108686423428
+	},
+	{
+		'time': 1675806930665,
+		'price': 23243.105238805634
+	},
+	{
+		'time': 1675807194485,
+		'price': 23207.933064926743
+	},
+	{
+		'time': 1675807518822,
+		'price': 23207.34982164386
+	},
+	{
+		'time': 1675807802147,
+		'price': 23201.51204760552
+	},
+	{
+		'time': 1675808127138,
+		'price': 23220.920265490386
+	},
+	{
+		'time': 1675808429758,
+		'price': 23206.625702971443
+	},
+	{
+		'time': 1675808692193,
+		'price': 23200.270435295417
+	},
+	{
+		'time': 1675809000579,
+		'price': 23189.483054292767
+	},
+	{
+		'time': 1675809327287,
+		'price': 23202.313880162455
+	},
+	{
+		'time': 1675809661251,
+		'price': 23196.27023098833
+	},
+	{
+		'time': 1675809923440,
+		'price': 23198.415353929744
+	},
+	{
+		'time': 1675810345865,
+		'price': 23227.29111137256
+	},
+	{
+		'time': 1675810548278,
+		'price': 23217.619321666563
+	},
+	{
+		'time': 1675810971632,
+		'price': 23205.90053334457
+	},
+	{
+		'time': 1675811070148,
+		'price': 23228.363025452123
+	},
+	{
+		'time': 1675811403343,
+		'price': 23292.373970772223
+	},
+	{
+		'time': 1675811727305,
+		'price': 23285.54846631805
+	},
+	{
+		'time': 1675812004956,
+		'price': 23283.185168026892
+	},
+	{
+		'time': 1675812279360,
+		'price': 23285.505492158336
+	},
+	{
+		'time': 1675812648146,
+		'price': 23299.96720273572
+	},
+	{
+		'time': 1675812936846,
+		'price': 23301.220355577672
+	},
+	{
+		'time': 1675813359405,
+		'price': 23280.090169368676
+	},
+	{
+		'time': 1675813530783,
+		'price': 23302.16510391541
+	},
+	{
+		'time': 1675813857659,
+		'price': 23290.288532812636
+	},
+	{
+		'time': 1675814112837,
+		'price': 23294.9136483527
+	},
+	{
+		'time': 1675814400559,
+		'price': 23259.39942465226
+	},
+	{
+		'time': 1675814747004,
+		'price': 23283.411431224245
+	},
+	{
+		'time': 1675814985387,
+		'price': 23263.97097320684
+	},
+	{
+		'time': 1675815325911,
+		'price': 23278.30812249642
+	},
+	{
+		'time': 1675815628629,
+		'price': 23266.708233814672
+	},
+	{
+		'time': 1675815913774,
+		'price': 23260.415846178556
+	},
+	{
+		'time': 1675816341786,
+		'price': 23257.054139780343
+	},
+	{
+		'time': 1675816544673,
+		'price': 23244.688540355874
+	},
+	{
+		'time': 1675816779107,
+		'price': 23282.335605588254
+	},
+	{
+		'time': 1675817099072,
+		'price': 23270.020358102225
+	},
+	{
+		'time': 1675817508526,
+		'price': 23310.925831116212
+	},
+	{
+		'time': 1675817702528,
+		'price': 23292.98895947332
+	},
+	{
+		'time': 1675818064572,
+		'price': 23282.325457981762
+	},
+	{
+		'time': 1675818335630,
+		'price': 23282.962429066127
+	},
+	{
+		'time': 1675818706397,
+		'price': 23364.604106634866
+	},
+	{
+		'time': 1675818909013,
+		'price': 23372.398613576766
+	},
+	{
+		'time': 1675819270374,
+		'price': 23340.46713899282
+	},
+	{
+		'time': 1675819467666,
+		'price': 23341.52970030948
+	},
+	{
+		'time': 1675819964274,
+		'price': 23314.178718573352
+	},
+	{
+		'time': 1675820165590,
+		'price': 23343.363857175584
+	},
+	{
+		'time': 1675820436291,
+		'price': 23333.285804113893
+	},
+	{
+		'time': 1675820729008,
+		'price': 23292.751549571556
+	},
+	{
+		'time': 1675821040513,
+		'price': 23294.377945141394
+	},
+	{
+		'time': 1675821337943,
+		'price': 23310.172648744316
+	},
+	{
+		'time': 1675821805315,
+		'price': 23310.746952057656
+	},
+	{
+		'time': 1675821953466,
+		'price': 23319.773356375055
+	},
+	{
+		'time': 1675822251793,
+		'price': 23304.382857076187
+	},
+	{
+		'time': 1675822535791,
+		'price': 23299.012266766244
+	},
+	{
+		'time': 1675822850851,
+		'price': 23305.907115299797
+	},
+	{
+		'time': 1675823138509,
+		'price': 23343.783722473916
+	},
+	{
+		'time': 1675823395755,
+		'price': 23328.046981306525
+	},
+	{
+		'time': 1675823711659,
+		'price': 23277.75042413106
+	},
+	{
+		'time': 1675824075487,
+		'price': 23304.3568730217
+	},
+	{
+		'time': 1675824291739,
+		'price': 23303.45049043356
+	},
+	{
+		'time': 1675824587007,
+		'price': 23301.82463194195
+	},
+	{
+		'time': 1675824934612,
+		'price': 23294.94850858602
+	},
+	{
+		'time': 1675825214617,
+		'price': 23293.08625731691
+	},
+	{
+		'time': 1675825494606,
+		'price': 23251.72276609833
+	},
+	{
+		'time': 1675825743133,
+		'price': 23256.52075829864
+	},
+	{
+		'time': 1675826100960,
+		'price': 23246.15171619327
+	},
+	{
+		'time': 1675826519683,
+		'price': 23253.510703287568
+	},
+	{
+		'time': 1675826696399,
+		'price': 23258.260065243383
+	},
+	{
+		'time': 1675826982262,
+		'price': 23251.965810462996
+	},
+	{
+		'time': 1675827265660,
+		'price': 23258.778154155883
+	},
+	{
+		'time': 1675827585577,
+		'price': 23263.855839707587
+	},
+	{
+		'time': 1675827902635,
+		'price': 23262.509755524457
+	},
+	{
+		'time': 1675828258761,
+		'price': 23265.106455360416
+	},
+	{
+		'time': 1675828477135,
+		'price': 23265.70299300269
+	},
+	{
+		'time': 1675828806565,
+		'price': 23263.80777697587
+	},
+	{
+		'time': 1675829128361,
+		'price': 23276.508821005278
+	},
+	{
+		'time': 1675829295332,
+		'price': 23279.702352630262
+	},
+	{
+		'time': 1675829693013,
+		'price': 23271.836212674265
+	},
+	{
+		'time': 1675830009943,
+		'price': 23272.571952455226
+	},
+	{
+		'time': 1675830337635,
+		'price': 23267.9261193091
+	},
+	{
+		'time': 1675830596561,
+		'price': 23275.19188777071
+	},
+	{
+		'time': 1675830897474,
+		'price': 23274.653156731496
+	},
+	{
+		'time': 1675831205553,
+		'price': 23269.270768782273
+	},
+	{
+		'time': 1675831462998,
+		'price': 23261.778183860028
+	},
+	{
+		'time': 1675831813593,
+		'price': 23271.194440554205
+	},
+	{
+		'time': 1675832110664,
+		'price': 23272.766231504218
+	},
+	{
+		'time': 1675832451074,
+		'price': 23269.70693095379
+	},
+	{
+		'time': 1675832740006,
+		'price': 23270.869887628407
+	},
+	{
+		'time': 1675833124550,
+		'price': 23277.954679453404
+	},
+	{
+		'time': 1675833345791,
+		'price': 23274.094695762644
+	},
+	{
+		'time': 1675833649160,
+		'price': 23271.54708875582
+	},
+	{
+		'time': 1675833931069,
+		'price': 23252.938797573708
+	},
+	{
+		'time': 1675834323427,
+		'price': 23229.35892979438
+	},
+	{
+		'time': 1675834533863,
+		'price': 23239.10023133119
+	},
+	{
+		'time': 1675834837733,
+		'price': 23238.034547913612
+	},
+	{
+		'time': 1675835131590,
+		'price': 23230.830777889223
+	},
+	{
+		'time': 1675835400413,
+		'price': 23235.673327114102
+	},
+	{
+		'time': 1675835725979,
+		'price': 23239.158055794116
+	},
+	{
+		'time': 1675836095161,
+		'price': 23256.444021133044
+	},
+	{
+		'time': 1675836329972,
+		'price': 23248.08641948896
+	},
+	{
+		'time': 1675836590271,
+		'price': 23244.480210415364
+	},
+	{
+		'time': 1675836881512,
+		'price': 23223.652580296948
+	},
+	{
+		'time': 1675837201169,
+		'price': 23240.5924302935
+	},
+	{
+		'time': 1675837533877,
+		'price': 23216.2746631127
+	},
+	{
+		'time': 1675837842578,
+		'price': 23208.59978388383
+	},
+	{
+		'time': 1675838134576,
+		'price': 23220.00029827339
+	},
+	{
+		'time': 1675838526541,
+		'price': 23213.37669360106
+	},
+	{
+		'time': 1675838758914,
+		'price': 23209.104070064055
+	},
+	{
+		'time': 1675839156541,
+		'price': 23210.975156009965
+	},
+	{
+		'time': 1675839296235,
+		'price': 23208.616967723145
+	},
+	{
+		'time': 1675839710506,
+		'price': 23208.155194384657
+	},
+	{
+		'time': 1675839927891,
+		'price': 23192.404815768954
+	},
+	{
+		'time': 1675840229612,
+		'price': 23228.05890334634
+	},
+	{
+		'time': 1675840526630,
+		'price': 23212.601044443716
+	},
+	{
+		'time': 1675840811984,
+		'price': 23218.940617306704
+	},
+	{
+		'time': 1675841084793,
+		'price': 23223.51246028747
+	},
+	{
+		'time': 1675841431961,
+		'price': 23226.2960627437
+	},
+	{
+		'time': 1675841649407,
+		'price': 23224.260370228007
+	},
+	{
+		'time': 1675841996668,
+		'price': 23221.77046783967
+	},
+	{
+		'time': 1675842308527,
+		'price': 23210.68419494994
+	},
+	{
+		'time': 1675842675529,
+		'price': 23228.60135358561
+	},
+	{
+		'time': 1675842906451,
+		'price': 23217.10349698143
+	},
+	{
+		'time': 1675843201916,
+		'price': 23218.836728811897
+	},
+	{
+		'time': 1675843522297,
+		'price': 23248.884894655614
+	},
+	{
+		'time': 1675843788832,
+		'price': 23222.43911395255
+	},
+	{
+		'time': 1675844121652,
+		'price': 23234.057359904382
+	},
+	{
+		'time': 1675844411807,
+		'price': 23239.242425931465
+	},
+	{
+		'time': 1675844732983,
+		'price': 23215.181715470164
+	},
+	{
+		'time': 1675845148386,
+		'price': 23191.27936660391
+	},
+	{
+		'time': 1675845319379,
+		'price': 23192.147074140372
+	},
+	{
+		'time': 1675845676288,
+		'price': 23187.391489515892
+	},
+	{
+		'time': 1675845887280,
+		'price': 23204.327428200762
+	},
+	{
+		'time': 1675846206489,
+		'price': 23215.856458262402
+	},
+	{
+		'time': 1675846503235,
+		'price': 23215.160994133348
+	},
+	{
+		'time': 1675846775072,
+		'price': 23207.52290863466
+	},
+	{
+		'time': 1675847104256,
+		'price': 23204.963331277235
+	},
+	{
+		'time': 1675847395577,
+		'price': 23202.00300910455
+	},
+	{
+		'time': 1675847689795,
+		'price': 23215.36364921254
+	},
+	{
+		'time': 1675848002589,
+		'price': 23228.55468698253
+	},
+	{
+		'time': 1675848334014,
+		'price': 23230.7220792942
+	},
+	{
+		'time': 1675848652756,
+		'price': 23228.440511595865
+	},
+	{
+		'time': 1675848906097,
+		'price': 23216.73951680241
+	},
+	{
+		'time': 1675849177838,
+		'price': 23225.48497197451
+	},
+	{
+		'time': 1675849539989,
+		'price': 23214.919770052147
+	},
+	{
+		'time': 1675849929093,
+		'price': 23203.56921600704
+	},
+	{
+		'time': 1675850101017,
+		'price': 23213.64267571757
+	},
+	{
+		'time': 1675850496920,
+		'price': 23211.875881106138
+	},
+	{
+		'time': 1675850730666,
+		'price': 23204.67775193349
+	},
+	{
+		'time': 1675851170211,
+		'price': 23199.804148079824
+	},
+	{
+		'time': 1675851286435,
+		'price': 23185.858738353018
+	},
+	{
+		'time': 1675851623778,
+		'price': 23196.548567666316
+	},
+	{
+		'time': 1675851917301,
+		'price': 23230.605293889796
+	},
+	{
+		'time': 1675852323196,
+		'price': 23236.39888816488
+	},
+	{
+		'time': 1675852477904,
+		'price': 23233.114356575767
+	},
+	{
+		'time': 1675852744532,
+		'price': 23155.356917646724
+	},
+	{
+		'time': 1675853133311,
+		'price': 23158.407337365523
+	},
+	{
+		'time': 1675853352751,
+		'price': 23159.936816559948
+	},
+	{
+		'time': 1675853693554,
+		'price': 23149.3359710378
+	},
+	{
+		'time': 1675853995080,
+		'price': 23167.647299046766
+	},
+	{
+		'time': 1675854330556,
+		'price': 23166.83806075061
+	},
+	{
+		'time': 1675854595854,
+		'price': 23162.444395167375
+	},
+	{
+		'time': 1675854899970,
+		'price': 23177.87252190986
+	},
+	{
+		'time': 1675855245708,
+		'price': 23170.244962965502
+	},
+	{
+		'time': 1675855496393,
+		'price': 23172.65809677292
+	},
+	{
+		'time': 1675855828475,
+		'price': 23178.139088236785
+	},
+	{
+		'time': 1675856126691,
+		'price': 23191.85706574333
+	},
+	{
+		'time': 1675856415283,
+		'price': 23185.355404983693
+	},
+	{
+		'time': 1675856697940,
+		'price': 23168.848917106363
+	},
+	{
+		'time': 1675856996521,
+		'price': 23157.870248540046
+	},
+	{
+		'time': 1675857301279,
+		'price': 23164.578702931558
+	},
+	{
+		'time': 1675857762746,
+		'price': 23171.504907331913
+	},
+	{
+		'time': 1675857896480,
+		'price': 23173.589284463436
+	},
+	{
+		'time': 1675858201379,
+		'price': 23173.38451267747
+	},
+	{
+		'time': 1675858529047,
+		'price': 23211.811270908373
+	},
+	{
+		'time': 1675858815117,
+		'price': 23189.227215932646
+	},
+	{
+		'time': 1675859099631,
+		'price': 23190.033268067906
+	},
+	{
+		'time': 1675859416554,
+		'price': 23185.41846326909
+	},
+	{
+		'time': 1675859697179,
+		'price': 23197.83709876852
+	},
+	{
+		'time': 1675859956984,
+		'price': 23198.88323703025
+	},
+	{
+		'time': 1675860308662,
+		'price': 23185.34494379314
+	},
+	{
+		'time': 1675860611036,
+		'price': 23175.021053035354
+	},
+	{
+		'time': 1675860925655,
+		'price': 23125.045055968312
+	},
+	{
+		'time': 1675861233576,
+		'price': 23115.814726739358
+	},
+	{
+		'time': 1675861510363,
+		'price': 23111.27207725547
+	},
+	{
+		'time': 1675861800061,
+		'price': 23133.514569524814
+	},
+	{
+		'time': 1675862099798,
+		'price': 23133.86415378401
+	},
+	{
+		'time': 1675862386717,
+		'price': 23134.51226829174
+	},
+	{
+		'time': 1675862746270,
+		'price': 23130.109375241092
+	},
+	{
+		'time': 1675863084730,
+		'price': 23121.24886944071
+	},
+	{
+		'time': 1675863275667,
+		'price': 23087.430631421747
+	},
+	{
+		'time': 1675863583527,
+		'price': 23104.41563957369
+	},
+	{
+		'time': 1675863910721,
+		'price': 23092.389386804454
+	},
+	{
+		'time': 1675864273891,
+		'price': 23099.516601871608
+	},
+	{
+		'time': 1675864530658,
+		'price': 23118.582072783975
+	},
+	{
+		'time': 1675864870824,
+		'price': 23114.93372209317
+	},
+	{
+		'time': 1675865120111,
+		'price': 23109.00772756889
+	},
+	{
+		'time': 1675865440230,
+		'price': 23092.3397942716
+	},
+	{
+		'time': 1675865767726,
+		'price': 23109.904831149808
+	},
+	{
+		'time': 1675866188411,
+		'price': 23097.103976142196
+	},
+	{
+		'time': 1675866369512,
+		'price': 23087.653060267046
+	},
+	{
+		'time': 1675866766831,
+		'price': 23082.50944341129
+	},
+	{
+		'time': 1675866985970,
+		'price': 23078.06524149514
+	},
+	{
+		'time': 1675867364634,
+		'price': 23080.926789152138
+	},
+	{
+		'time': 1675867473815,
+		'price': 23095.2969037655
+	},
+	{
+		'time': 1675867811978,
+		'price': 23147.517943115417
+	},
+	{
+		'time': 1675868113057,
+		'price': 23057.311510685347
+	},
+	{
+		'time': 1675868399354,
+		'price': 23027.711189004673
+	},
+	{
+		'time': 1675868700438,
+		'price': 23014.32502499543
+	},
+	{
+		'time': 1675868987762,
+		'price': 23020.389704808447
+	},
+	{
+		'time': 1675869297944,
+		'price': 22993.215065222896
+	},
+	{
+		'time': 1675869622011,
+		'price': 23006.998060766287
+	},
+	{
+		'time': 1675869905633,
+		'price': 22993.05034048041
+	},
+	{
+		'time': 1675870229761,
+		'price': 22994.106532426897
+	},
+	{
+		'time': 1675870531021,
+		'price': 22976.893088298824
+	},
+	{
+		'time': 1675870824085,
+		'price': 22987.97777295915
+	},
+	{
+		'time': 1675871099141,
+		'price': 22882.75381936239
+	},
+	{
+		'time': 1675871413355,
+		'price': 22918.29573232662
+	},
+	{
+		'time': 1675871698317,
+		'price': 22898.899885072387
+	},
+	{
+		'time': 1675872006907,
+		'price': 22905.275246487745
+	},
+	{
+		'time': 1675872340411,
+		'price': 22902.392780493472
+	},
+	{
+		'time': 1675872619795,
+		'price': 22892.15760063172
+	},
+	{
+		'time': 1675872885911,
+		'price': 22900.17898403838
+	},
+	{
+		'time': 1675873214399,
+		'price': 22875.010593274565
+	},
+	{
+		'time': 1675873486615,
+		'price': 22841.21697017049
+	},
+	{
+		'time': 1675873813369,
+		'price': 22828.954551059524
+	},
+	{
+		'time': 1675874090878,
+		'price': 22839.77403626496
+	},
+	{
+		'time': 1675874420032,
+		'price': 22814.871866507503
+	},
+	{
+		'time': 1675874648000,
+		'price': 22831.665556799704
+	}
+];
+
 module.exports = {
-  fiatMap,
-  cryptoMap,
-	dummyTransactionData
+	fiatMap,
+	cryptoMap,
+	dummyTransactionData,
+	topThree,
+	globalData,
+	topHundred,
+	detailsData,
+	chartData
 };

@@ -57,7 +57,7 @@ label {
 
 .field {
   display: grid;
-  grid-template-columns: 30px 280px 30px;
+  grid-template-columns: 30px 1fr 30px;
   gap: 6px;
   height: 30px;
   margin-top: 18px;
@@ -79,7 +79,6 @@ input {
   border-radius: 10px;
   text-align: center;
   border: none;
-  width: 280px;
   height: 20px;
 }
 
@@ -128,4 +127,24 @@ a {
   padding-left: 3px;
   font-weight: bold;
   text-decoration: none;
+}
+
+@media (max-width: 460px) {
+  .container {
+    margin: 100px 0;
+  }
+
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  form {
+    padding: 0;
+    width: 100%;
+  }
 }

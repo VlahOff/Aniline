@@ -137,3 +137,7 @@ p.timestamp {
   align-items: center;
   margin-top: 24px;
 }
+
+@media (max-width: 1400px) {
+  
+}

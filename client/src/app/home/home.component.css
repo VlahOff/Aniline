@@ -3,6 +3,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, 1fr);
+  gap: 24px;
 }
 
 h1 {
@@ -22,6 +23,8 @@ h1 {
   align-items: center;
   gap: 12px;
   color: white;
+  background-color: #1a1c1d;
+  padding: 18px 0;
 }
 
 .welcome p {
@@ -52,4 +55,11 @@ h1 {
   flex-wrap: wrap;
   align-items: last baseline;
   margin-bottom: 38px;
+}
+
+@media (max-width: 800px) {
+  h1 {
+    margin-top: 80px;
+    font-size: 60px;
+  }
 }

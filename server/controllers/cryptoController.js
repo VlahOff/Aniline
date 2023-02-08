@@ -1,6 +1,7 @@
 const cryptoController = require('express').Router();
 const cryptoApi = require('../api/cryptoApi');
 const errorParser = require('../utils/errorParser');
+const { topThree, globalData, topHundred, chartData, detailsData } = require('./dummyData');
 
 cryptoController.get('/topThree', async (req, res) => {
   try {
@@ -132,7 +133,8 @@ cryptoController.get('/getGlobalData', async (req, res) => {
 
 cryptoController.get('/getCoinDetails', async (req, res) => {
   try {
-    const temp = await cryptoApi.getCoinDetailed(req.query.coinId);
+    // const temp = await cryptoApi.getCoinDetailed(req.query.coinId);
+    const temp = detailsData;
     res.status(200).json(temp);
   } catch (error) {
     let statusCode = 400;
@@ -148,7 +150,8 @@ cryptoController.get('/getCoinDetails', async (req, res) => {
 
 cryptoController.get('/getCoinChartData', async (req, res) => {
   try {
-    const temp = await cryptoApi.getCoinChartData(req.query.coinId, req.query.days);
+    // const temp = await cryptoApi.getCoinChartData(req.query.coinId, req.query.days);
+    const temp = chartData;
     res.status(200).json({ chartData: temp });
   } catch (error) {
     let statusCode = 400;
