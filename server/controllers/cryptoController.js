@@ -133,8 +133,7 @@ cryptoController.get('/getGlobalData', async (req, res) => {
 
 cryptoController.get('/getCoinDetails', async (req, res) => {
   try {
-    // const temp = await cryptoApi.getCoinDetailed(req.query.coinId);
-    const temp = detailsData;
+    const temp = await cryptoApi.getCoinDetailed(req.query.coinId);
     res.status(200).json(temp);
   } catch (error) {
     let statusCode = 400;
@@ -150,8 +149,7 @@ cryptoController.get('/getCoinDetails', async (req, res) => {
 
 cryptoController.get('/getCoinChartData', async (req, res) => {
   try {
-    // const temp = await cryptoApi.getCoinChartData(req.query.coinId, req.query.days);
-    const temp = chartData;
+    const temp = await cryptoApi.getCoinChartData(req.query.coinId, req.query.days);
     res.status(200).json({ chartData: temp });
   } catch (error) {
     let statusCode = 400;

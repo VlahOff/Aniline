@@ -120,12 +120,21 @@ export class ChartComponent implements OnInit, OnDestroy {
         ]
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: true,
         animation: {
           easing: 'easeInSine'
         },
+        scales: {
+          x: {
+            ticks: {
+              display: false
+            }
+          }
+        },
         elements: {
           point: {
-            hoverRadius: 18
+            hoverRadius: 38
           }
         },
         plugins: {

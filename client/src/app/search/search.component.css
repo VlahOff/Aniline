@@ -111,3 +111,19 @@ button:disabled {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+@media (max-width: 500px) {
+  .container {
+    margin: 70px 0;
+  }
+
+  .search-box {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .menu-content {
+    width: 100%;
+    max-height: 400px;
+  }
+}

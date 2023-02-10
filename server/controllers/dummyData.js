@@ -55129,34 +55129,34 @@ const topHundred = [
 ];
 
 const detailsData = {
-	id: 'ethereum',
-	symbol: 'eth',
-	name: 'Ethereum',
-	image: {
-		thumb: 'https://assets.coingecko.com/coins/images/279/thumb/ethereum.png?1595348880',
-		small: 'https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880',
-		large: 'https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880'
+	'id': 'cardano',
+	'symbol': 'ada',
+	'name': 'Cardano',
+	'image': {
+		'thumb': 'https://assets.coingecko.com/coins/images/975/thumb/cardano.png?1547034860',
+		'small': 'https://assets.coingecko.com/coins/images/975/small/cardano.png?1547034860',
+		'large': 'https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860'
 	},
-	current_price: 1640.48,
-	market_cap: 197648625073,
-	total_volume: 10453139810,
-	high_24h: 1690.67,
-	low_24h: 1631.82,
-	low_high_value: 14.715378079864166,
-	price_change_24h: 6.782524,
-	price_change_percentage_24h: 0.41516,
-	market_cap_change_24h: 1116111808,
-	market_cap_change_percentage_24h: 0.5679,
-	circulating_supply: 120508854.572098,
-	total_supply: 120508854.572098,
-	max_supply: null,
-	ath: 4878.26,
-	ath_change_percentage: -66.37904,
-	ath_date: '2021-11-10T14:24:19.604Z',
-	atl: 0.432979,
-	atl_change_percentage: 378698.63743,
-	atl_date: '2015-10-20T00:00:00.000Z',
-	last_updated: '2023-02-08T16:40:47.169Z'
+	'current_price': 0.371349,
+	'market_cap': 13059330898,
+	'total_volume': 378212024,
+	'high_24h': 0.395839,
+	'low_24h': 0.37167,
+	'low_high_value': -1.328147627125722,
+	'price_change_24h': -0.022407610772332,
+	'price_change_percentage_24h': -5.69073,
+	'market_cap_change_24h': -728941459.8729,
+	'market_cap_change_percentage_24h': -5.28668,
+	'circulating_supply': 35045020830.3234,
+	'total_supply': 45000000000,
+	'max_supply': 45000000000,
+	'ath': 3.09,
+	'ath_change_percentage': -87.72339,
+	'ath_date': '2021-09-02T06:00:10.474Z',
+	'atl': 0.01925275,
+	'atl_change_percentage': 1868.38485,
+	'atl_date': '2020-03-13T02:22:55.044Z',
+	'last_updated': '2023-02-09T19:36:59.132Z'
 };
 
 const chartData = [

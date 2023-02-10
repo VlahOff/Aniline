@@ -1,4 +1,4 @@
-<div class="chart">
+<div class="container">
   <section class="buttons-container">
     <button 
     ngClass="{{(chartPeriod$ | async) == 1 ? 'selected': ''}}" 
@@ -15,5 +15,7 @@
     type="button" 
     (click)="fetchChartOneMonth()">1M</button>
   </section>
-  <canvas id="acquisitions">{{chart}}</canvas>
+  <div class="chart-container">
+    <canvas class="chart" id="acquisitions">{{chart}}</canvas>
+  </div>
 </div>

@@ -1,19 +1,16 @@
 <div class="container">
   <h1>Track your crypto gains!</h1>
   <div class="welcome-container">
-    <div class="welcome" 
-    *ngIf="!(user$ | async)">
+    <div class="welcome" *ngIf="!(user$ | async)">
       <p>Not already a user?</p>
       <p>Join us now!</p>
-      <div class="button-containers">
+      <div class="button-container">
         <a class="button" routerLink="/auth/register">Register</a>
         <a class="button" routerLink="/auth/login">Login</a>
       </div>
     </div>
   </div>
   <div class="card-container">
-    <app-crypto-card 
-    *ngFor="let card of (topThree$ | async)" 
-    [card]="card"></app-crypto-card>
+    <app-crypto-card *ngFor="let card of (topThree$ | async)" [card]="card"></app-crypto-card>
   </div>
 </div>
