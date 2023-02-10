@@ -91,7 +91,7 @@ async function getDetailedTransactions(userId) {
         result.push(createTransactionDetailed(t, data[i]));
       });
     })
-    .catch(err => console.log(err));
+    .catch(err => { throw new Error(err); });
 
   return result;
 }
