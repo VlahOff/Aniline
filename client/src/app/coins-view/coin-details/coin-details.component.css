@@ -1,21 +1,24 @@
 .container {
   overflow-x: auto;
   color: white;
+  height: 100vh;
 }
 
 .details-page {
   margin: 160px auto;
   padding: 18px;
-  width: 1400px;
+  max-width: 1600px;
+  width: 80%;
   background-color: #1A1C1D;
   border-radius: 10px;
-  box-shadow: 6px 4px 31px 19px rgba(0,0,0,0.55);
+  box-shadow: 6px 4px 31px 19px rgba(0, 0, 0, 0.55);
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 58px;
   margin: 24px;
 }
 
@@ -24,16 +27,16 @@ header {
   margin-right: 6px;
 }
 
-.coin-logo {
+.left-header-part .coin-logo {
   width: 28px;
   margin-right: 6px;
 }
 
-.coin-name {
+.left-header-part .coin-name {
   margin-right: 6px;
 }
 
-.symbol {
+.left-header-part .symbol {
   background-color: #6e6e6e;
   padding: 4px;
   padding-right: 5px;
@@ -45,10 +48,10 @@ header {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 500px;
+  width: 100%;
 }
 
-.bar {
+.center-header-part .bar {
   position: relative;
   width: 300px;
   height: 8px;
@@ -56,7 +59,7 @@ header {
   border-radius: 8px;
 }
 
-.bar-progress {
+.center-header-part .bar .bar-progress {
   background-color: #262626;
   height: 8px;
   border-radius: 8px;
@@ -67,14 +70,14 @@ header {
   margin-left: -3px;
 }
 
-.arrow {
+.center-header-part .bar .bar-progress .arrow {
   position: absolute;
 }
 
-.low-high-bar-titles {
+.bar-titles {
   display: flex;
   justify-content: space-between;
-  width: 500px;
+  width: 100%;
   margin-top: 18px;
 }
 
@@ -101,22 +104,26 @@ main {
   margin: 24px 46px;
 }
 
-table {
+.coin-info {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 24px;
+  flex-wrap: wrap;
   border-top: #6e6e6e 1px solid;
   border-bottom: #6e6e6e 1px solid;
+  padding: 24px 0;
 }
 
-.cell {
-  border-right: #6e6e6e 1px solid;
-}
-
-th {
-  width: 160px;
+.coin-info .cell {
+  width: 250px;
+  height: 120px;
   text-align: left;
   padding: 10px;
+  border-radius: 6px;
+  box-shadow: 6px 4px 31px 19px rgba(0, 0, 0, 0.15);
 }
 
-th>p {
+.coin-info .cell p {
   font-size: 15px;
   font-weight: 600;
   line-height: 1.4;
@@ -136,4 +143,30 @@ p.timestamp {
   justify-content: center;
   align-items: center;
   margin-top: 24px;
+  box-shadow: 6px 4px 31px 19px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 1200px) {
+  .details-page {
+    margin: 80px 0;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin: 24px;
+  }
+
+  .left-header-part {
+    order: -2;
+  }
+
+  .right-header-part {
+    order: -1;
+  }
 }

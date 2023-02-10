@@ -13,14 +13,15 @@ import { AuthEffects } from './auth/+store/auth.effects';
 import { UserTokenInterceptor } from './auth/user-token.interceptor';
 import { ConverterEffects } from './converter-view/+store/converter.effects';
 import { specificModules } from './dev-tools';
+import { HeaderComponent } from './header/header.component';
 import { CryptoCardComponent } from './home/crypto-card/crypto-card.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PortfolioEffects } from './portfolio-view/+store/portfolio.effects';
-import { ErrorBannerComponent } from './shared/error-banner/error-banner.component';
-import { HeaderComponent } from './header/header.component';
-import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { SearchComponent } from './search/search.component';
+import { DropdownMenuDirective } from './shared/dropdown-menu.directive';
+import { ErrorBannerComponent } from './shared/error-banner/error-banner.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { SearchComponent } from './search/search.component';
     EffectsModule.forRoot([AuthEffects, CryptoEffects, ConverterEffects, PortfolioEffects]),
     ...specificModules,
     LoadingSpinnerComponent,
-    ErrorBannerComponent
+    ErrorBannerComponent,
+    DropdownMenuDirective
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: UserTokenInterceptor, multi: true }

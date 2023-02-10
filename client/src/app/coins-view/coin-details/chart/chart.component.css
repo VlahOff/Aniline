@@ -1,8 +1,9 @@
-.chart {
-  width: 1000px;
+.container {
   background-color: #1f1f1f;
   padding: 15px;
   border-radius: 10px;
+  width: 70vw;
+  max-width: 1500px;
 }
 
 .buttons-container {
@@ -27,4 +28,11 @@
 
 .buttons-container>button.selected {
   background-color: #262626;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 100vw;
+    border-radius: 0;
+  }
 }

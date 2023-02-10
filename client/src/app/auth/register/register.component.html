@@ -1,12 +1,11 @@
 <div class="container">
-  <section class="register-container" >
+  <section class="register-container">
     <header>
       <img class="logo" src="/assets/logo-white.png" alt="logo img">
       <h1>Register</h1>
     </header>
-
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-
+      
       <div class="input-container">
         <label for="email">Email</label>
         <p class="error" 
@@ -20,7 +19,8 @@
           </div>
           <input id="email" 
           placeholder="Enter Email" 
-          formControlName="email" autofocus
+          formControlName="email" 
+          autofocus 
           type="text">
           <div class="input-icon"></div>
         </div>
@@ -28,8 +28,8 @@
 
       <div class="input-container">
         <label for="email">Username</label>
-        <p class="error"
-          *ngIf="!registerForm.get('username')?.valid && 
+        <p class="error" 
+        *ngIf="!registerForm.get('username')?.valid && 
           registerForm.get('username')?.touched"
           >Invalid username!</p>
 
@@ -39,19 +39,25 @@
           </div>
           <input id="username" 
           placeholder="Enter Username" 
-          formControlName="username"
+          formControlName="username" 
           type="text">
           <div class="input-icon"></div>
         </div>
       </div>
 
-      <div class="input-container" appToolTip className="open">
+      <div class="input-container">
         <label for="password">Password</label>
-        <p class="error"
-          *ngIf="!registerForm.get('password')?.valid && 
-          registerForm.get('password')?.touched"
-          >Invalid password!</p>
-
+        <div class="tooltip" 
+        *ngIf="!registerForm.get('password')?.valid && 
+          registerForm.get('password')?.touched">
+          <h4>Password must contain</h4>
+          <ul>
+            <li><p>one uppercase letter</p></li>
+            <li><p>one lowercase letter</p></li>
+            <li><p>one number and also</p></li>
+            <li><p>must be at least 8 characters long!</p></li>
+          </ul>
+        </div>
         <div class="field">
           <div class="input-icon">
             <i class="input-icon fa-solid fa-key"></i>
@@ -64,25 +70,6 @@
             <i class="input-icon fa-solid fa-eye"></i>
           </div>
         </div>
-        <div class="tooltip">
-          <div class="tooltip-text">
-            <h4>Password must contain</h4>
-            <ul>
-              <li>
-                <p>one uppercase letter</p>
-              </li>
-              <li>
-                <p>one lowercase letter</p>
-              </li>
-              <li>
-                <p>one number and also</p>
-              </li>
-              <li>
-                <p>must be at least 8 characters long!</p>
-              </li>
-            </ul>
-          </div>
-        </div>
       </div>
 
       <div class="input-container">
@@ -91,10 +78,6 @@
         *ngIf="registerForm.get('rePass')?.errors?.['passwordDontMatch'] &&
         registerForm.get('rePass')?.touched"
         >Passwords must match!</p>
-        <p class="error" 
-        *ngIf="!registerForm.get('rePass')?.valid && 
-        registerForm.get('rePass')?.touched"
-        >Invalid password!</p>
 
         <div class="field">
           <div class="input-icon">
@@ -111,14 +94,14 @@
       </div>
 
       <div class="button-container">
-        <button type="submit" class="registerbtn button" 
+        <button type="submit" 
+        class="registerbtn button" 
         [disabled]="!registerForm.valid">Register</button>
       </div>
-
     </form>
 
     <footer>
       <p>Already have an account? <a routerLink="/auth/login">Sign in</a>.</p>
-    </footer>  
+    </footer>
   </section>
 </div>

@@ -1,6 +1,7 @@
 const cryptoController = require('express').Router();
 const cryptoApi = require('../api/cryptoApi');
 const errorParser = require('../utils/errorParser');
+const { topThree, globalData, topHundred, chartData, detailsData } = require('./dummyData');
 
 cryptoController.get('/topThree', async (req, res) => {
   try {

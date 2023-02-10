@@ -105,3 +105,14 @@ li.user-settings__option:last-child {
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.6);
 }
+
+@media (max-width: 460px) {
+  .container {
+    margin: 100px 0;
+  }
+
+  .profile-card {
+    border-radius: 0;
+    width: 100%;
+  }
+}

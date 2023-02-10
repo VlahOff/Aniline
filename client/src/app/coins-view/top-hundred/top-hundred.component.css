@@ -16,7 +16,7 @@
   min-width: 600px;
   max-width: 1600px;
   background-color: #1A1C1D;
-  box-shadow: 6px 4px 31px 19px rgba(0,0,0,0.55);
+  box-shadow: 6px 4px 31px 19px rgba(0, 0, 0, 0.55);
   border-radius: 10px;
 }
 
@@ -24,4 +24,18 @@
   text-align: center;
   padding: 20px 0px 50px 0px;
   font-weight: 300;
+}
+
+
+@media (max-width: 800px) {
+  .global-data {
+    width: 90%;
+  }
+
+  .table-component-container {
+    padding: 0;
+    width: 100%;
+    min-width: 320px;
+    border-radius: 0;
+  }
 }

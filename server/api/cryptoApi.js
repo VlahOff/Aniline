@@ -138,7 +138,6 @@ const cryptoApi = {
 		return t.data;
 	},
 
-	// TODO: NOT IMPLEMENTED
 	search: async (query) => {
 		let t = await axios.get(`${cgHost}search?query=${query}`);
 		return t.data.coins;
