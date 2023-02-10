@@ -59,6 +59,7 @@ h1 {
   font-size: large;
   color: white;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .card-container {
@@ -73,6 +74,17 @@ h1 {
 @media (max-width: 800px) {
   h1 {
     margin-top: 80px;
-    font-size: 60px;
+    font-size: 50px;
+  }
+
+  .welcome p {
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  .welcome .button {
+    border-radius: 6px;
+    padding: 6px 16px;
+    font-size: 18px;
   }
 }

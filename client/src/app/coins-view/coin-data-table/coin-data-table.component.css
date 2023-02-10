@@ -126,9 +126,6 @@ td {
     width: 160px;
     min-width: 160px;
     max-width: 160px;
-    left: 70px;
-    text-align: left;
-    background-color: #1f1f1f;
     overflow: hidden;
   }
 }

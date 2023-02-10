@@ -30,6 +30,7 @@
 @media (max-width: 800px) {
   .global-data {
     width: 90%;
+    margin: 80px auto 30px auto;
   }
 
   .table-component-container {
@@ -37,5 +38,11 @@
     width: 100%;
     min-width: 320px;
     border-radius: 0;
+  }
+
+  .table-component-container>h1 {
+    padding: 20px 0px 40px 0px;
+    font-weight: 300;
+    font-size: 28px;
   }
 }

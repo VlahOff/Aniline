@@ -128,3 +128,17 @@ td {
 .cross:hover {
   background-color: crimson;
 }
+
+@media (max-width: 800px) {
+  .first-col {
+    width: 160;
+    min-width: 160;
+    max-width: 160;
+    gap: 12px;
+  }
+  
+  .first-col>img {
+    width: 25px;
+    height: 25px;
+  }
+}
