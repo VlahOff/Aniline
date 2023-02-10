@@ -33,6 +33,7 @@ const cryptoApi = {
 	getCoinDetailed: async (coin) => {
 		const t = await axios.get(cgHost + `coins/${coin}?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false`);
 		const data = t.data;
+		const low_high_value = ((data.market_data.current_price.usd - data.market_data.low_24h.usd) * 100) / (data.market_data.high_24h.usd - data.market_data.low_24h.usd);
 
 		return {
 			id: data.id,
@@ -44,7 +45,7 @@ const cryptoApi = {
 			total_volume: data.market_data.total_volume.usd,
 			high_24h: data.market_data.high_24h.usd,
 			low_24h: data.market_data.low_24h.usd,
-			low_high_value: ((data.market_data.current_price.usd - data.market_data.low_24h.usd) * 100) / (data.market_data.high_24h.usd - data.market_data.low_24h.usd),
+			low_high_value: low_high_value > 0 ? low_high_value : 0,
 			price_change_24h: data.market_data.price_change_24h,
 			price_change_percentage_24h: data.market_data.price_change_percentage_24h,
 			market_cap_change_24h: data.market_data.market_cap_change_24h,
