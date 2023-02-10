@@ -30,3 +30,17 @@
 hr {
   margin: 5px 0;
 }
+
+@media (max-width: 800px) {
+  .global-data-container {
+    gap: 18px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .top-row, .top-row-cap>p {
+    font-size: 16px;
+  }
+}

@@ -5,10 +5,14 @@
 
     <div class="input-container">
       <label for="coinId">Coin</label>
-      <input class="input" id="coinId"
-      #input 
-      formControlName="coinId" 
-      type="text">
+      <div class="field">
+        <div class="input-icon"></div>
+        <input class="input" id="coinId"
+        #input 
+        formControlName="coinId" 
+        type="text">
+        <div class="input-icon"></div>
+      </div>
     </div>
 
     <div class="input-container">
@@ -18,12 +22,15 @@
       *ngIf="!editCoinForm.get('coinPrice')?.valid && 
       editCoinForm.get('coinPrice')?.touched"
       >Please enter a price!</p>
-
-      <input class="input" id="coinPrice" 
-      #coinPrice  
-      placeholder="Enter bought price" 
-      formControlName="coinPrice" 
-      type="number">
+      <div class="field">
+        <div class="input-icon"></div>
+        <input class="input" id="coinPrice" 
+        #coinPrice  
+        placeholder="Enter bought price" 
+        formControlName="coinPrice" 
+        type="number">
+        <div class="input-icon"></div>
+      </div>
     </div>
 
     <div class="input-container">
@@ -34,20 +41,28 @@
       editCoinForm.get('quantity')?.touched"
       >Please enter quantity!</p>
 
-      <input class="input" id="quantity" 
-      #quantity  
-      placeholder="Hou much do you own" 
-      formControlName="quantity" 
-      type="number">
+      <div class="field">
+        <div class="input-icon"></div>
+        <input class="input" id="quantity" 
+        #quantity  
+        placeholder="Hou much do you own" 
+        formControlName="quantity" 
+        type="number">
+        <div class="input-icon"></div>
+      </div>
     </div>
 
     <div class="input-container">
       <label>Total Spent</label>
-      <p class="input"
-      >{{+coinPrice.value * +quantity.value | number:'1.0-2'}}</p>
+      <div class="field">
+        <div class="input-icon"></div>
+        <p class="input"
+        >{{+coinPrice.value * +quantity.value | number:'1.0-2'}}</p>
+        <div class="input-icon"></div>
+      </div>
     </div>
 
-    <div class="button-div">
+    <div class="buttons-container">
       <button type="button" class="button-cancel" 
       (click)="hideModal($event)">Cancel</button>
       <button type="submit" class="button" 

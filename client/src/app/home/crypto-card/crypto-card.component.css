@@ -8,23 +8,23 @@
   width: 200px;
 }
 
-.logo-container {
+.card .logo-container {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   padding: 20px 0;
 }
 
-.coin-name {
+.logo-container .coin-name {
   text-align: center;
-  padding-top: 15px;
   color: white;
 }
 
-img {
+.logo-container img {
   width: 50px;
 }
 
-.coin-info {
+.card .coin-info {
   padding: 10px;
   margin-bottom: 8px;
   border-top: white solid 1px;
@@ -37,17 +37,17 @@ img {
   margin-bottom: 5px;
 }
 
-.label {
+.coin-info .label {
   color: #bbbbbb;
 }
 
-.data-buttons {
+.button-container {
   display: flex;
   flex-direction: column;
   padding: 0 30px;
 }
 
-.button {
+.button-container .button {
   padding: 8px 2px;
   border-radius: 10px;
   text-align: center;
@@ -55,7 +55,46 @@ img {
   color: white
 }
 
-.button:hover {
+.button-container .button:hover {
   background-color: #2f2f30;
   transition: background-color, ease, 600ms;
+}
+
+@media (max-width: 800px) {
+  .card {
+    margin: 16px;
+    border-radius: 6px;
+    color: white;
+    padding: 8px;
+    width: 160px;
+  }
+
+  .card .logo-container {
+    padding: 0;
+    padding-bottom: 8px;
+  }
+
+  .logo-container .coin-name {
+    font-size: 16px;
+    font-weight: 400;
+    padding-top: 0px;
+    color: white;
+  }
+
+  .logo-container img {
+    width: 35px;
+  }
+
+  .coin-info p {
+    font-size: 16px;
+    padding: 0;
+  }
+
+  .button-container {
+    padding: 0;
+  }
+
+  .button-container .button {
+    padding: 4px 2px;
+  }
 }

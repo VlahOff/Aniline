@@ -9,8 +9,9 @@
       >Invalid password!</p>
 
       <div class="field">
-        <div class="spacer"></div>
-        <input class="input" id="password" 
+        <div class="input-icon"></div>
+        <input id="password" 
+        class="input" 
         formControlName="password"
         [type]="passField ? 'password' : 'text'">
         <div class="input-icon" (click)="togglePassField()">

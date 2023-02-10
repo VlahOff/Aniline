@@ -5,6 +5,7 @@
   border-radius: 10px;
   width: 500px;
   padding: 24px;
+  padding-bottom: 0;
 }
 
 h1 {
@@ -51,8 +52,10 @@ label {
 
 .input-icon {
   width: 30px;
-  cursor: pointer;
+  opacity: 40%;
+  color: white;
 }
+
 
 .input-icon .btn {
   opacity: 40%;
@@ -60,14 +63,12 @@ label {
 }
 
 .input {
-  display: block;
   color: white;
   background-color: #313131;
   border-radius: 10px;
   text-align: center;
   border: none;
   height: 20px;
-  margin: 0 auto;
 }
 
 input:focus {
@@ -87,8 +88,8 @@ input:-webkit-autofill:focus {
 
 .buttons-container {
   display: flex;
-  justify-content: center;
-  margin-top: 24px;
+  justify-content: space-evenly;
+  margin: 24px 0;
 }
 
 .button {
@@ -109,7 +110,6 @@ input:-webkit-autofill:focus {
   font-size: large;
   color: white;
   cursor: pointer;
-  margin-right: 50px;
 }
 
 button:disabled {
@@ -120,7 +120,6 @@ button:disabled {
 @media (max-width: 500px) {
   .modal {
     width: 100%;
-    padding: 18px;
   }
 
   form {

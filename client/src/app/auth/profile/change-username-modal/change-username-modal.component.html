@@ -1,15 +1,16 @@
 <section class="modal">
   <h1>Change username</h1>
   <form [formGroup]="changeUsernameForm" (ngSubmit)="onSubmit()">
+   
     <div class="input-container">
       <label for="oldUsername">Old username</label>
 
       <div class="field">
-        <div class="spacer">
+        <div class="input-icon">
           <i class="fa-solid fa-id-badge"></i>
         </div>
         <p class="input">{{(user$ | async)!.username}}</p>
-        <div class="spacer"></div>
+        <div class="input-icon"></div>
       </div>
     </div>
 
@@ -21,13 +22,14 @@
       >Invalid username!</p>
 
       <div class="field">
-        <div class="spacer">
+        <div class="input-icon">
           <i class="fa-solid fa-user-tag"></i>
         </div>
-        <input class="input" id="newUsername" 
+        <input id="newUsername" 
+        class="input" 
         formControlName="newUsername"
         type="text">
-        <div class="spacer"></div>
+        <div class="input-icon"></div>
       </div>
     </div>
 
@@ -39,8 +41,9 @@
       >Invalid password!</p>
 
       <div class="field">
-        <div class="spacer"></div>
-        <input class="input" id="password" 
+        <div class="input-icon"></div>
+        <input id="password" 
+        class="input"
         formControlName="password"
         [type]="passField ? 'password' : 'text'">
         <div class="input-icon" (click)="togglePass()">

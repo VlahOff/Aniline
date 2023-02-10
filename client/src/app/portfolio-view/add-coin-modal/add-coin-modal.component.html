@@ -10,9 +10,10 @@
       addCoinForm.get('coinId')?.touched"
       >Please select a coin!</p>
 
-      <div class="menu">
-        <div class="input-dropdown">
-          <input class="input" id="coinId"
+      <div class="field">
+        <div class="input-icon"></div>
+        <div class="input">
+          <input id="coinId"
           #input 
           formControlName="coinId"
           (input)="filter(input.value)" 
@@ -28,6 +29,7 @@
             >{{coin.name}} - {{coin.symbol | uppercase}}</button>
           </div>
         </div>
+        <div class="input-icon"></div>
       </div>
     </div>
 
@@ -38,11 +40,16 @@
       addCoinForm.get('coinPrice')?.touched"
       >Please enter a price!</p>
 
-      <input class="input" id="coinPrice"
-      #coinPrice  
-      formControlName="coinPrice" 
-      placeholder="Enter bought price" 
-      type="number">
+      <div class="field">
+        <div class="input-icon"></div>
+        <input id="coinPrice"
+        #coinPrice  
+        class="input" 
+        formControlName="coinPrice" 
+        placeholder="Enter bought price" 
+        type="number">
+        <div class="input-icon"></div>
+      </div>
     </div>
 
     <div class="input-container">
@@ -52,21 +59,30 @@
       addCoinForm.get('quantity')?.touched"
       >Please enter quantity!</p>
 
-      <input class="input" id="quantity" 
-      #quantity
-      formControlName="quantity" 
-      placeholder="Hou much do you own" 
-      type="number">
+      <div class="field">
+        <div class="input-icon"></div>
+        <input id="quantity" 
+        #quantity
+        class="input" 
+        formControlName="quantity" 
+        placeholder="Hou much do you own" 
+        type="number">
+        <div class="input-icon"></div>
+      </div>
     </div>
 
     <div class="input-container">
       <label for="quantity">Total Spent</label>
 
-      <p class="input"
-      >{{+coinPrice.value * +quantity.value | number:'1.0-2'}}</p>
+      <div class="field">
+        <div class="input-icon"></div>
+        <p class="input"
+        >{{+coinPrice.value * +quantity.value | number:'1.0-2'}}</p>
+        <div class="input-icon"></div>
+      </div>
     </div>
 
-    <div class="button-div">
+    <div class="buttons-container">
       <button type="button" class="button-cancel" 
       (click)="hideModal($event)">Cancel</button>
       <button type="submit" class="button" 

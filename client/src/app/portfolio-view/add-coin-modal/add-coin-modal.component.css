@@ -4,10 +4,11 @@
   box-shadow: 6px 4px 31px 19px rgba(0, 0, 0, 0.55);
   border-radius: 10px;
   width: 500px;
+  padding: 24px;
+  padding-bottom: 0;
 }
 
 .title {
-  padding: 50px 0px;
   text-align: center;
   font-weight: 300;
 }
@@ -16,38 +17,88 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0 50px;
 }
 
 .input-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   border-bottom: black 1px solid;
-  padding: 0px 20px 10px 20px;
-  margin: 5px 15% 20px 15%;
+  margin-top: 25px;
+  transition: border-bottom, ease, 600ms;
 }
 
-.input-container:has(div.menu>div.input-dropdown>input.ng-invalid.ng-touched),
-.input-container:has(> input.ng-invalid.ng-touched) {
+.input-container:has(.field>.input input.ng-invalid.ng-touched),
+.input-container:has(.field> input.ng-invalid.ng-touched) {
   border-bottom: crimson 1px solid;
   transition: border-color, ease, 600ms;
 }
 
 label {
-  margin: 8px 0;
+  display: block;
+  text-align: left;
   font-size: 16px;
-  justify-content: left;
+  padding-left: 10px;
 }
 
-.input {
+.error {
+  text-align: center;
+  color: crimson;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: 30px 1fr 30px;
+  gap: 6px;
+  height: 30px;
+  margin-top: 18px;
+}
+
+.input-icon {
+  width: 30px;
+}
+
+.input, input {
   color: white;
   background-color: #313131;
   border-radius: 10px;
   text-align: center;
   border: none;
   height: 20px;
-  width: 300px;
   position: relative;
+}
+
+.menu-content {
+  display: none;
+  position: absolute;
+  max-height: 300px;
+  overflow: auto;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.712);
+  background-color: #313131;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  z-index: 1;
+  top: 30px;
+}
+
+.on {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-content button {
+  display: block;
+  background-color: #313131;
+  color: #ffffff;
+  padding: 5px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-content button:hover {
+  color: #FFFFFF;
+  background-color: crimson
 }
 
 input:focus {
@@ -72,10 +123,10 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.button-div {
+.buttons-container {
   display: flex;
-  justify-content: center;
-  margin: 5% 0%;
+  justify-content: space-evenly;
+  margin: 24px 0;
 }
 
 .button {
@@ -96,59 +147,11 @@ input::-webkit-inner-spin-button {
   font-size: large;
   color: white;
   cursor: pointer;
-  margin-right: 50px;
 }
 
 button:disabled {
   background-color: #050505;
   cursor: not-allowed
-}
-
-.menu {
-  display: inline-block;
-  position: relative;
-}
-
-.menu-content {
-  display: none;
-  position: absolute;
-  width: 300px;
-  max-height: 300px;
-  overflow: auto;
-  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.712);
-  background-color: #313131;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-  z-index: 1;
-  top: 30px;
-}
-
-.on {
-  display: flex;
-  flex-direction: column;
-}
-
-.menu-content button {
-  display: block;
-  background-color: #313131;
-  color: #ffffff;
-  padding: 5px;
-  text-decoration: none;
-  border: none;
-}
-
-.menu-content button:hover {
-  color: #FFFFFF;
-  background-color: crimson
-}
-
-.error {
-  text-align: center;
-  color: crimson;
-  font-style: italic;
-  font-size: 16px;
-  padding-top: -8px;
-  padding-bottom: 6px;
 }
 
 ::-webkit-scrollbar {
@@ -166,4 +169,14 @@ button:disabled {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+@media (max-width: 500px) {
+  .modal {
+    width: 100%;
+  }
+
+  form {
+    padding: 0;
+  }
 }

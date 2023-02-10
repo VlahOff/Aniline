@@ -109,6 +109,7 @@ input:-webkit-autofill:focus {
   padding: 5px;
   text-decoration: none;
   border: none;
+  cursor: pointer;
 }
 
 .menu-content button:hover {
@@ -167,7 +168,7 @@ input:-webkit-autofill:focus {
 
 @media (max-width: 800px) {
   .container {
-    margin: 80px 0;
+    margin: 100px 0;
   }
 
   .converter {
@@ -178,5 +179,12 @@ input:-webkit-autofill:focus {
   form {
     border-radius: 0;
     padding: 0;
+  }
+
+  .output-field {
+    font-size: 16px;
+    padding: 0 24px;
+    line-height: 1.6;
+    letter-spacing: 1px;
   }
 }
