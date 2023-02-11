@@ -29,9 +29,33 @@ You can check it out here 👀 [Aniline](https://aniline.vercel.app/home)
 - Delete assets
 
 ## You can register yourself or use these credentials
-- E-mail - admin@aniline.com
-- Password - Admin1234
 
 | E-mail | Password |
 | ----------- | ----------- |
 | admin@aniline.com | Admin1234 |
+
+### Top 100 view
+![Top100](./screenshots/Screenshot_20230211_120946.png)
+
+### Search view
+![Search](./screenshots/Screenshot_20230211_121251.png)
+
+### Coin details
+![Search](./screenshots/Screenshot_20230211_120924.png)
+
+### Cryptocurrency Converter view
+![ConverterView](./screenshots/Screenshot_20230211_121049.png)
+![ConverterView](./screenshots/Screenshot_20230211_121058.png)
+
+### Portfolio view
+![PortfolioView](./screenshots/Screenshot_20230211_121212.png)
+
+#### Add transaction
+![PortfolioView](./screenshots/Screenshot_20230211_121217.png)
+![PortfolioView](./screenshots/Screenshot_20230211_121230.png)
+
+#### Edit transaction
+![PortfolioView](./screenshots/Screenshot_20230211_121238.png)
+
+### Profile settings
+![PortfolioView](./screenshots/Screenshot_20230211_122415.png)
