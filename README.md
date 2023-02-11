@@ -27,3 +27,11 @@ You can check it out here 👀 [Aniline](https://aniline.vercel.app/home)
 - Add assets to your portfolio
 - Edit already existing assets
 - Delete assets
+
+## You can register yourself or use these credentials
+- E-mail - admin@aniline.com
+- Password - Admin1234
+
+| E-mail | Password |
+| ----------- | ----------- |
+| admin@aniline.com | Admin1234 |
