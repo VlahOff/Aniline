@@ -10,6 +10,7 @@ const cors = require('./middlewares/cors');
 const authController = require('./controllers/authController');
 const cryptoController = require('./controllers/cryptoController');
 const portfolioController = require('./controllers/portfolioController');
+const myPortfolio = require('./controllers/myPortfolio');
 
 const EXPRESS_PORT = process.env.EXPRESS_PORT;
 
@@ -24,6 +25,7 @@ async function start() {
 	app.use('/auth', authController);
 	app.use('/crypto', cryptoController);
 	app.use('/portfolio', isUser(), portfolioController);
+	app.use('/myPortfolio', myPortfolio);
 
 	app.get('/', (req, res) => {
 		res.status(200).send('It works!');

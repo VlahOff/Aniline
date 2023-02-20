@@ -24,7 +24,6 @@ const cryptoApi = {
 	},
 
 	// decimal place for currency price value, default: 2
-	// TODO: NOT IMPLEMENTED
 	getCoin: async (coin, precision) => {
 		const t = await axios.get(cgHost + `simple/price?ids=${coin}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&precision=${Number(precision) | 2}`);
 		return t.data;
