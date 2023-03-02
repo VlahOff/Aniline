@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
   authApi: 'https://rose-frantic-butterfly.cyclic.app/auth',
-  cryptoApi: 'https://anilinebackend.onrender.com/crypto',
-  portfolioApi: 'https://anilinebackend.onrender.com/portfolio'
+  cryptoApi: 'https://calm-plum-greyhound-garb.cyclic.app/crypto',
+  portfolioApi: 'https://calm-plum-greyhound-garb.cyclic.app/portfolio'
 };
