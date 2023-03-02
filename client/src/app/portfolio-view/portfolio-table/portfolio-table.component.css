@@ -35,6 +35,7 @@ tr:last-child {
 
 tbody tr {
   cursor: pointer;
+  background-color: #1F1F1F;
 }
 
 tbody tr:hover,
@@ -42,7 +43,7 @@ tbody tr:hover .first-col,
 tbody tr:hover .second-col,
 tbody tr:hover .third-col {
   background-color: #2f2f30;
-  transition: background-color ease 600ms;
+  transition: all ease 300ms;
 }
 
 th,

@@ -7,7 +7,6 @@ const tokenParser = require('./middlewares/tokenParser');
 const { isUser } = require('./middlewares/guards');
 const cors = require('./middlewares/cors');
 
-const authController = require('./controllers/authController');
 const cryptoController = require('./controllers/cryptoController');
 const portfolioController = require('./controllers/portfolioController');
 
@@ -19,9 +18,9 @@ async function start() {
 	app.use(cors());
 	app.use(express.json());
 	app.use(tokenParser());
-	await databaseConfig();
 
-	app.use('/auth', authController);
+	const connectToDB = databaseConfig();
+
 	app.use('/crypto', cryptoController);
 	app.use('/portfolio', isUser(), portfolioController);
 
@@ -29,7 +28,9 @@ async function start() {
 		res.status(200).send('It works!');
 	});
 
-	app.listen(EXPRESS_PORT, () => console.log('App listening on port: ' + EXPRESS_PORT));
+	connectToDB.then(() => {
+		app.listen(EXPRESS_PORT, () => console.log('App listening on port: ' + EXPRESS_PORT));
+	});
 }
 
 start();
