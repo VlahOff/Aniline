@@ -99,7 +99,7 @@ input:-webkit-autofill:focus {
 }
 
 .tooltip {
-  margin: 0 auto;
+  margin: 0.5rem auto 0 auto;
   width: 260px;
   padding: 8px;
   padding-left: 28px;
@@ -155,7 +155,7 @@ a {
   }
 
   form {
-    padding: 0;
+    padding: 1rem;
     width: 100%;
   }
 

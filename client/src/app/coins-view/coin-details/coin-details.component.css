@@ -25,6 +25,7 @@ header {
 .left-header-part {
   display: flex;
   margin-right: 6px;
+  align-items: center;
 }
 
 .left-header-part .coin-logo {
