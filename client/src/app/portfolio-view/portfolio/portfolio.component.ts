@@ -21,8 +21,8 @@ export class PortfolioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch(PortfolioActions.fetchAllCoinsList());
     this.store.dispatch(PortfolioActions.fetchTransactions());
+    this.store.dispatch(PortfolioActions.fetchAllCoinsList());
   }
 
   showAddModal() {
