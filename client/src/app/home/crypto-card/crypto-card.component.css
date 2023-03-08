@@ -1,9 +1,9 @@
 .card {
   margin: 25px;
-  background-color: #1A1C1D;
+  background-color: var(--container-b);
   box-shadow: 6px 4px 31px 19px rgba(0, 0, 0, 0.55);
   border-radius: 10px;
-  color: white;
+  color: var(--text-color);
   padding: 8px;
   width: 200px;
 }
@@ -17,7 +17,7 @@
 
 .logo-container .coin-name {
   text-align: center;
-  color: white;
+  color: var(--text-color);
 }
 
 .logo-container img {
@@ -52,11 +52,11 @@
   border-radius: 10px;
   text-align: center;
   text-decoration: none;
-  color: white
+  color: var(--text-color)
 }
 
 .button-container .button:hover {
-  background-color: #2f2f30;
+  background-color: var(--btn-hover);
   transition: background-color, ease, 600ms;
 }
 
@@ -64,7 +64,6 @@
   .card {
     margin: 16px;
     border-radius: 6px;
-    color: white;
     padding: 8px;
     width: 160px;
   }
@@ -78,7 +77,6 @@
     font-size: 16px;
     font-weight: 400;
     padding-top: 0px;
-    color: white;
   }
 
   .logo-container img {

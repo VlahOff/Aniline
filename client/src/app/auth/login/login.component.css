@@ -5,8 +5,8 @@
 .login-container {
   margin: 0 auto;
   width: 460px;
-  color: white;
-  background-color: #1A1C1D;
+  color: var(--text-color);
+  background-color: var(--container-bg);
   box-shadow: 6px 4px 31px 19px rgba(0, 0, 0, 0.55);
   border-radius: 10px;
 }
@@ -38,7 +38,7 @@ form {
 }
 
 .input-container:has(.field > input.ng-invalid.ng-touched) {
-  border-bottom: crimson 1px solid;
+  border-bottom: var(--error-color) 1px solid;
 }
 
 label {
@@ -50,7 +50,7 @@ label {
 
 .error {
   text-align: center;
-  color: crimson;
+  color: var(--error-color);
   font-style: italic;
   font-size: 15px;
 }
@@ -66,7 +66,7 @@ label {
 .input-icon {
   width: 30px;
   opacity: 40%;
-  color: white;
+  color: var(--text-color);
 }
 
 .eye {
@@ -74,8 +74,8 @@ label {
 }
 
 input {
-  color: white;
-  background-color: #313131;
+  color: var(--text-color);
+  background-color: var(--input-bg);
   border-radius: 10px;
   text-align: center;
   border: none;
@@ -87,14 +87,14 @@ input:focus {
 }
 
 ::placeholder {
-  color: #a8a8a8;
+  color: var(--placeholder-color)
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-  -webkit-text-fill-color: white;
-  -webkit-box-shadow: 0 0 0px 40rem #313131 inset;
+  -webkit-text-fill-color: var(--text-color);
+  -webkit-box-shadow: 0 0 0px 40rem var(--input-bg) inset;
 }
 
 .button-container {
@@ -103,17 +103,17 @@ input:-webkit-autofill:focus {
 }
 
 button {
-  background-color: crimson;
+  background-color: var(--btn-primary);
   border: none;
   border-radius: 10px;
   padding: 10px 30%;
   font-size: large;
-  color: white;
+  color: var(--text-color);
   cursor: pointer;
 }
 
 button:disabled {
-  background-color: #050505;
+  background-color: var(--btn-disabled);
   cursor: not-allowed;
 }
 
@@ -123,7 +123,7 @@ footer {
 }
 
 a {
-  color: crimson;
+  color: var(--btn-primary);
   padding-left: 3px;
   font-weight: bold;
   text-decoration: none;

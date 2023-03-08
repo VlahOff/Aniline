@@ -1,6 +1,6 @@
 .container {
   overflow-x: auto;
-  color: white;
+  color: var(--text-color);
   height: 100vh;
 }
 
@@ -9,7 +9,7 @@
   padding: 18px;
   max-width: 1600px;
   width: 80%;
-  background-color: #1A1C1D;
+  background-color: var(--container-bg);
   border-radius: 10px;
   box-shadow: 6px 4px 31px 19px rgba(0, 0, 0, 0.55);
 }

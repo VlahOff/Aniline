@@ -3,13 +3,13 @@
   overflow: auto;
   white-space: nowrap;
   border-radius: 8px;
-  background-color: #1f1f1f;
+  background-color: var(--secondary-container-bg);
 }
 
 table {
   border-collapse: collapse;
   width: 100%;
-  background-color: #1f1f1f;
+  background-color: var(--secondary-container-bg);
 }
 
 thead {
@@ -35,14 +35,14 @@ tr:last-child {
 
 tbody tr {
   cursor: pointer;
-  background-color: #1F1F1F;
+  background-color: var(--secondary-container-bg);
 }
 
 tbody tr:hover,
 tbody tr:hover .first-col,
 tbody tr:hover .second-col,
 tbody tr:hover .third-col {
-  background-color: #2f2f30;
+  background-color: var(--btn-hover);
   transition: all ease 300ms;
 }
 
@@ -61,7 +61,7 @@ td {
   min-width: 200px;
   max-width: 200px;
   left: 0px;
-  background-color: #1f1f1f;
+  background-color: var(--secondary-container-bg);
   text-align: left;
   display: flex;
   align-items: center;
@@ -127,7 +127,7 @@ td {
 }
 
 .cross:hover {
-  background-color: crimson;
+  background-color: var(--btn-primary);
 }
 
 @media (max-width: 800px) {

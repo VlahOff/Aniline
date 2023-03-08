@@ -1,6 +1,6 @@
 .modal {
-  color: white;
-  background-color: #1A1C1D;
+  color: var(--text-color);
+  background-color: var(--container-bg);
   box-shadow: 6px 4px 31px 19px rgba(0, 0, 0, 0.55);
   border-radius: 10px;
   width: 500px;
@@ -28,7 +28,7 @@ form {
 
 .input-container:has(.field>.input input.ng-invalid.ng-touched),
 .input-container:has(.field> input.ng-invalid.ng-touched) {
-  border-bottom: crimson 1px solid;
+  border-bottom: var(--error-color) 1px solid;
   transition: border-color, ease, 600ms;
 }
 
@@ -41,7 +41,7 @@ label {
 
 .error {
   text-align: center;
-  color: crimson;
+  color: var(--error-color);
   font-style: italic;
   font-size: 15px;
 }
@@ -58,9 +58,10 @@ label {
   width: 30px;
 }
 
-.input, input {
-  color: white;
-  background-color: #313131;
+.input,
+input {
+  color: var(--text-color);
+  background-color: var(--input-bg);
   border-radius: 10px;
   text-align: center;
   border: none;
@@ -75,7 +76,7 @@ label {
   width: 100%;
   overflow: auto;
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.712);
-  background-color: #313131;
+  background-color: var(--input-bg);
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
   z-index: 1;
@@ -89,8 +90,8 @@ label {
 
 .menu-content button {
   display: block;
-  background-color: #313131;
-  color: #ffffff;
+  background-color: var(--input-bg);
+  color: var(--text-color);
   padding: 5px;
   text-decoration: none;
   border: none;
@@ -98,8 +99,8 @@ label {
 }
 
 .menu-content button:hover {
-  color: #FFFFFF;
-  background-color: crimson
+  color: var(--text-color);
+  background-color: var(--btn-primary)
 }
 
 input:focus {
@@ -107,15 +108,15 @@ input:focus {
 }
 
 ::placeholder {
-  color: #a8a8a8;
+  color: var(--placeholder-color)
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #313131 inset !important;
-  -webkit-text-fill-color: rgb(255, 255, 255);
+  -webkit-box-shadow: 0 0 0 30px var(--input-bg) inset !important;
+  -webkit-text-fill-color: var(--text-color);
 }
 
 input::-webkit-outer-spin-button,
@@ -131,27 +132,27 @@ input::-webkit-inner-spin-button {
 }
 
 .button {
-  background-color: crimson;
+  background-color: var(--btn-primary);
   border: none;
   border-radius: 10px;
   padding: 10px 30px;
   font-size: large;
-  color: white;
+  color: var(--text-color);
   cursor: pointer;
 }
 
 .button-cancel {
-  background-color: #525252;
+  background-color: var(--btn-secondary);
   border: none;
   border-radius: 10px;
   padding: 10px 30px;
   font-size: large;
-  color: white;
+  color: var(--text-color);
   cursor: pointer;
 }
 
 button:disabled {
-  background-color: #050505;
+  background-color: var(--btn-disabled);
   cursor: not-allowed
 }
 

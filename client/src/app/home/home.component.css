@@ -8,7 +8,7 @@
 
 h1 {
   text-align: center;
-  color: white;
+  color: var(--text-color);
   font-family: 'Montserrat', sans-serif;
   font-weight: 200;
   font-size: 90px;
@@ -24,7 +24,7 @@ h1 {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  color: white;
+  color: var(--text-color);
   padding: 18px 0;
   position: relative;
   isolation: isolate;
@@ -52,12 +52,12 @@ h1 {
 }
 
 .welcome .button {
-  background-color: #dc143c;
+  background-color: var(--btn-primary);
   border: none;
   border-radius: 10px;
   padding: 10px 30px;
   font-size: large;
-  color: white;
+  color: var(--text-color);
   cursor: pointer;
   text-decoration: none;
 }
@@ -67,7 +67,7 @@ h1 {
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  align-items: last baseline;
+  align-items: baseline;
   margin-bottom: 38px;
 }
 

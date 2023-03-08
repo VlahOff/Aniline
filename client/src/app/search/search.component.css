@@ -5,7 +5,7 @@
 }
 
 .search-box {
-  background-color: #1A1C1D;
+  background-color: var(--container-bg);
   width: 500px;
   padding: 16px;
   border-radius: 8px;
@@ -21,8 +21,8 @@ form {
 }
 
 input {
-  color: white;
-  background-color: #313131;
+  color: var(--text-color);
+  background-color: var(--input-bg);
   border-radius: 10px;
   text-align: center;
   border: none;
@@ -35,28 +35,28 @@ input:focus {
 }
 
 ::placeholder {
-  color: #a8a8a8;
+  color: var(--placeholder-color);
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-  -webkit-text-fill-color: white;
-  -webkit-box-shadow: 0 0 0px 40rem #313131 inset;
+  -webkit-text-fill-color: var(--text-color);
+  -webkit-box-shadow: 0 0 0px 40rem var(--input-bg) inset;
 }
 
 button {
-  background-color: crimson;
+  background-color: var(--btn-primary);
   border: none;
   border-radius: 10px;
   padding: 10px 20px;
   font-size: large;
-  color: white;
+  color: var(--text-color);
   cursor: pointer;
 }
 
 button:disabled {
-  background-color: #050505;
+  background-color: var(--btn-disabled);
   cursor: not-allowed;
 }
 
@@ -67,7 +67,7 @@ button:disabled {
   width: 100%;
   overflow: auto;
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.712);
-  background-color: #313131;
+  background-color: var(--input-bg);
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
   z-index: 1;
@@ -83,7 +83,7 @@ button:disabled {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #FFFFFF;
+  color: var(--text-color);
   height: 40px;
   min-height: 40px;
   cursor: pointer;
@@ -91,7 +91,7 @@ button:disabled {
 }
 
 .result:hover {
-  background-color: crimson
+  background-color: var(--btn-primary)
 }
 
 ::-webkit-scrollbar {

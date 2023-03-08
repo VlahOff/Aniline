@@ -1,5 +1,5 @@
 .container {
-  background-color: #1f1f1f;
+  background-color: var(--secondary-container-bg);
   padding: 15px;
   border-radius: 10px;
   width: 70vw;
@@ -16,18 +16,18 @@
   padding: 6px 12px;
   margin-left: 6px;
   border-radius: 10px;
-  color: white;
+  color: var(--text-color);
   border: none;
-  background-color: #6e6e6e;
+  background-color: var(--btn-secondary);
 }
 
 .buttons-container button:hover {
-  background-color: #262626;
+  background-color: var(--btn-hover);
   cursor: pointer;
 }
 
 .buttons-container>button.selected {
-  background-color: #262626;
+  background-color: var(--btn-hover);
 }
 
 @media (max-width: 1200px) {

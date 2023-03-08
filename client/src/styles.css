@@ -1,3 +1,17 @@
+:root {
+	--main-bg: #101111;
+	--container-bg: #1A1C1D;
+	--secondary-container-bg: #1f1f1f;
+	--input-bg: #313131;
+	--text-color: #ffffff;
+	--placeholder-color: #a8a8a8;
+	--error-color: #dc143c;
+	--btn-primary: #dc143c;
+	--btn-secondary: #525252;
+	--btn-disabled: #050505;
+	--btn-hover: #2f2f30;
+}
+
 *,
 html {
 	font-family: 'Roboto', sans-serif;
@@ -28,5 +42,5 @@ picture {
 }
 
 body {
-	background-color: #101111;
+	background-color: var(--main-bg);
 }

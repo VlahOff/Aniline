@@ -13,10 +13,10 @@ form {
   flex-direction: column;
   justify-content: center;
   padding: 25px;
-  background-color: #1A1C1D;
+  background-color: var(--container-bg);
   box-shadow: 6px 4px 31px 19px rgba(0, 0, 0, 0.55);
   border-radius: 10px;
-  color: white;
+  color: var(--text-color);
 }
 
 .title {
@@ -55,12 +55,12 @@ form {
 .input-icon {
   width: 30px;
   opacity: 40%;
-  color: white;
+  color: var(--text-color);
 }
 
 input {
-  color: white;
-  background-color: #313131;
+  color: var(--text-color);
+  background-color: var(--input-bg);
   border-radius: 10px;
   text-align: center;
   border: none;
@@ -73,14 +73,14 @@ input:focus {
 }
 
 ::placeholder {
-  color: #a8a8a8;
+  color: var(--placeholder-color);
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-  -webkit-text-fill-color: white;
-  -webkit-box-shadow: 0 0 0px 40rem #313131 inset;
+  -webkit-text-fill-color: var(--text-color);
+  -webkit-box-shadow: 0 0 0px 40rem var(--input-bg) inset;
 }
 
 .menu-content {
@@ -104,8 +104,8 @@ input:-webkit-autofill:focus {
 
 .menu-content button {
   display: block;
-  background: #313131;
-  color: #ffffff;
+  background: var(--input-bg);
+  color: var(--text-color);
   padding: 5px;
   text-decoration: none;
   border: none;
@@ -113,9 +113,8 @@ input:-webkit-autofill:focus {
 }
 
 .menu-content button:hover {
-  color: #FFFFFF;
-  background: rgb(238, 174, 202);
-  background-color: crimson;
+  color: var(--text-color);
+  background-color: var(--btn-primary);
 }
 
 .button-container {
@@ -125,15 +124,15 @@ input:-webkit-autofill:focus {
 .button {
   width: 100px;
   height: 35px;
-  background-color: crimson;
+  background-color: var(--btn-primary);
   border: none;
   border-radius: 10px;
-  color: white;
+  color: var(--text-color);
   cursor: pointer;
 }
 
 .button:disabled {
-  background-color: #050505;
+  background-color: var(--btn-disabled);
   cursor: not-allowed;
 }
 

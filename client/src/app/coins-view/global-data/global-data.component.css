@@ -4,12 +4,12 @@
   flex-wrap: wrap;
   gap: 28px;
   justify-content: space-evenly;
-  color: white;
+  color: var(--text-color);
 }
 
 .card {
   padding: 25px;
-  background-color: #1A1C1D;
+  background-color: var(--container-bg);
   border-radius: 10px;
   box-shadow: 6px 4px 31px 19px rgba(0,0,0,0.55);
   width: 300px;

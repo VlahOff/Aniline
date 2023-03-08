@@ -1,5 +1,5 @@
 .portfolio-container {
-  color: white;
+  color: var(--text-color);
   overflow-x: auto;
 }
 
@@ -9,7 +9,7 @@
   width: 80%;
   min-width: 500px;
   max-width: 1600px;
-  background-color: #1A1C1D;
+  background-color: var(--container-bg);
   box-shadow: 6px 4px 31px 19px rgba(0,0,0,0.55);
   border-radius: 10px;
 }
@@ -31,11 +31,11 @@
 }
 
 .button {
-  background-color: crimson;
+  background-color: var(--btn-primary);
   border: none;
   border-radius: 10px;
   font-size: large;
-  color: white;
+  color: var(--text-color);
   cursor: pointer;
   height: 35px;
   width: 35px;
