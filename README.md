@@ -32,7 +32,7 @@ You can check it out here 👀 [Aniline](https://aniline.vercel.app/home)
 
 | E-mail | Password |
 | ----------- | ----------- |
-| admin@aniline.com | Admin1234 |
+| test@aniline.com | Testing1234 |
 
 ### Top 100 view
 ![Top100](./screenshots/Screenshot_20230211_120946.png)
