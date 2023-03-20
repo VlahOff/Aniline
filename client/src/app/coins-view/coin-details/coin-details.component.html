@@ -23,16 +23,16 @@
           </div>
           <div class="bar-titles">
             <p>Low: {{ (coinDetailsData$ | async)?.low_24h |
-            currency:'USD':'symbol':'1.2-2' }}</p>
+            currency:'USD':'symbol':'1.2-10' }}</p>
             <p>High: {{ (coinDetailsData$ | async)?.high_24h |
-            currency:'USD':'symbol':'1.2-2' }}</p>
+            currency:'USD':'symbol':'1.2-10' }}</p>
           </div>
         </div>
       </div>
 
       <div class="right-header-part">
         <p class="price">{{ (coinDetailsData$ | async)?.current_price | 
-          currency:'USD':'symbol':'1.2-2' }}</p>
+          currency:'USD':'symbol':'1.2-10' }}</p>
         <app-percent-ticker class="percent-ticker"
           [percent]="(coinDetailsData$ | async)!.price_change_percentage_24h"
           ></app-percent-ticker>

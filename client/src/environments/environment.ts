@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  authApi: 'https://rose-frantic-butterfly.cyclic.app/auth',
-  cryptoApi: 'http://localhost:6969/crypto',
-  portfolioApi: 'http://localhost:6969/portfolio'
+  authApi: 'http://localhost:3131',
+  cryptoApi: 'http://localhost:3030/crypto',
+  portfolioApi: 'http://localhost:3030/portfolio'
 };
 
 /*
