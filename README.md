@@ -8,7 +8,13 @@ Whether you're a seasoned investor or just getting started in the world of crypt
 ![HomePage](./screenshots/Screenshot_20230211_120901.png)
 
 You can check it out here 👀 [Aniline](https://aniline.vercel.app/home) 
-**The first loading may take from 30-40 seconds because the backend spins down!**
+**The first loading may take up to 30 seconds because the backend spins down when not in use!**
+
+## You can register yourself or use these credentials
+
+| E-mail | Password |
+| ----------- | ----------- |
+| test@aniline.com | Testing1234 |
 
 ## Tech Stack
 - Angular
@@ -27,12 +33,6 @@ You can check it out here 👀 [Aniline](https://aniline.vercel.app/home)
 - Add assets to your portfolio
 - Edit already existing assets
 - Delete assets
-
-## You can register yourself or use these credentials
-
-| E-mail | Password |
-| ----------- | ----------- |
-| test@aniline.com | Testing1234 |
 
 ### Top 100 view
 ![Top100](./screenshots/Screenshot_20230211_120946.png)
