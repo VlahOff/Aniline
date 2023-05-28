@@ -84,7 +84,7 @@ export class PortfolioEffects {
 
       return this.http
         .post<TransactionDetailed[]>(
-          environment.portfolioApi + '/addTransaction', { data: state.payload })
+          environment.portfolioApi + '/addTransaction', { transaction: state.payload })
         .pipe(
           map((data) => {
             this.store.dispatch(AppStateActions.loadEnd());
