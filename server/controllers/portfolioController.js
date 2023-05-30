@@ -19,7 +19,7 @@ portfolioController.get('/getTransactions', async (req, res) => {
 portfolioController.post('/addTransaction',
   body('transaction.coinId')
     .trim()
-    .isEmpty()
+    .isLength({ min: 1 })
     .withMessage('ENTER_COIN_ID'),
   body('transaction.coinPrice')
     .trim()
@@ -50,7 +50,7 @@ portfolioController.post('/addTransaction',
 portfolioController.put('/editTransaction',
   body('transaction.coinId')
     .trim()
-    .isEmpty()
+    .isLength({ min: 1 })
     .withMessage('ENTER_COIN_ID'),
   body('transaction.coinPrice')
     .trim()

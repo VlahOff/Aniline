@@ -4,8 +4,8 @@ const errorParser = require('../utils/errorParser');
 
 cryptoController.get('/topThree', async (req, res) => {
   try {
-    const temp = await cryptoApi.getTopThree();
-    res.status(200).json(temp);
+    const response = await cryptoApi.getTopThree();
+    res.status(200).json(response);
   } catch (error) {
     let statusCode = 400;
     if (error.response.status) {
@@ -20,8 +20,8 @@ cryptoController.get('/topThree', async (req, res) => {
 
 cryptoController.get('/topHundred', async (req, res) => {
   try {
-    const temp = await cryptoApi.getTopHundred();
-    res.status(200).json(temp);
+    const response = await cryptoApi.getTopHundred();
+    res.status(200).json(response);
   } catch (error) {
     let statusCode = 400;
     if (error.response.status) {
@@ -36,8 +36,8 @@ cryptoController.get('/topHundred', async (req, res) => {
 
 cryptoController.get('/newCoins', async (req, res) => {
   try {
-    const temp = await cryptoApi.newCoinsToday();
-    res.status(200).json(temp);
+    const response = await cryptoApi.newCoinsToday();
+    res.status(200).json(response);
   } catch (error) {
     let statusCode = 400;
     if (error.response.status) {
@@ -52,8 +52,8 @@ cryptoController.get('/newCoins', async (req, res) => {
 
 cryptoController.get('/cryptoMap', async (req, res) => {
   try {
-    const temp = await cryptoApi.cryptoMap();
-    res.status(200).json(temp);
+    const response = await cryptoApi.cryptoMap();
+    res.status(200).json(response);
   } catch (error) {
     let statusCode = 400;
     if (error.response.status) {
@@ -68,8 +68,8 @@ cryptoController.get('/cryptoMap', async (req, res) => {
 
 cryptoController.get('/fiatMap', async (req, res) => {
   try {
-    const temp = await cryptoApi.fiatMap();
-    res.status(200).json(temp);
+    const response = await cryptoApi.fiatMap();
+    res.status(200).json(response);
   } catch (error) {
     let statusCode = 400;
     if (error.response.status) {
@@ -84,8 +84,8 @@ cryptoController.get('/fiatMap', async (req, res) => {
 
 cryptoController.get('/allCoins', async (req, res) => {
   try {
-    const temp = await cryptoApi.getListCoins();
-    res.status(200).json(temp).end();
+    const response = await cryptoApi.getListCoins();
+    res.status(200).json(response);
   } catch (error) {
     let statusCode = 400;
     if (error.response.status) {
@@ -100,8 +100,8 @@ cryptoController.get('/allCoins', async (req, res) => {
 
 cryptoController.get('/convert', async (req, res) => {
   try {
-    const temp = await cryptoApi.convert(req.query.amount, req.query.from, req.query.to);
-    res.status(200).json(temp);
+    const response = await cryptoApi.convert(req.query.amount, req.query.from, req.query.to);
+    res.status(200).json(response);
   } catch (error) {
     let statusCode = 400;
     if (error.response.status) {
@@ -116,8 +116,8 @@ cryptoController.get('/convert', async (req, res) => {
 
 cryptoController.get('/getGlobalData', async (req, res) => {
   try {
-    const temp = await cryptoApi.getGlobal();
-    res.status(200).json(temp);
+    const response = await cryptoApi.getGlobal();
+    res.status(200).json(response);
   } catch (error) {
     let statusCode = 400;
     if (error.response.status) {
@@ -132,8 +132,8 @@ cryptoController.get('/getGlobalData', async (req, res) => {
 
 cryptoController.get('/getCoinDetails', async (req, res) => {
   try {
-    const temp = await cryptoApi.getCoinDetailed(req.query.coinId);
-    res.status(200).json(temp);
+    const response = await cryptoApi.getCoinDetailed(req.query.coinId);
+    res.status(200).json(response);
   } catch (error) {
     let statusCode = 400;
     if (error.response.status) {
@@ -148,8 +148,8 @@ cryptoController.get('/getCoinDetails', async (req, res) => {
 
 cryptoController.get('/getCoinChartData', async (req, res) => {
   try {
-    const temp = await cryptoApi.getCoinChartData(req.query.coinId, req.query.days);
-    res.status(200).json({ chartData: temp });
+    const response = await cryptoApi.getCoinChartData(req.query.coinId, req.query.days);
+    res.status(200).json({ chartData: response });
   } catch (error) {
     let statusCode = 400;
     if (error.response.status) {
@@ -162,10 +162,26 @@ cryptoController.get('/getCoinChartData', async (req, res) => {
   }
 });
 
+cryptoController.get('/getCoinOHLC', async (req, res) => {
+  try {
+    const response = await cryptoApi.getCoinOHLC(req.query.id, req.query.days);
+    res.status(200).json({ coinOHLC: response });
+  } catch (error) {
+    let statusCode = 400;
+    if (error.response?.status) {
+      statusCode = error.response.status;
+    }
+
+    res.status(statusCode).json({
+      message: errorParser(error)
+    });
+  }
+});
+
 cryptoController.post('/search', async (req, res) => {
   try {
-    const temp = await cryptoApi.search(req.body.query);
-    res.status(200).json(temp);
+    const response = await cryptoApi.search(req.body.query);
+    res.status(200).json(response);
   } catch (error) {
     let statusCode = 400;
     if (error.response.status) {

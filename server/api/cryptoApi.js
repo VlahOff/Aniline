@@ -73,7 +73,27 @@ const cryptoApi = {
 				price: v[1]
 			});
 		});
+		
+		return chart;
+	},
 
+	getCoinOHLC: async (id, days) => {
+		const t = await axios.get(cgHost + `coins/${id}/ohlc?vs_currency=usd&days=${days || 1}`);
+		const chart = [];
+		
+		t.data.forEach(x => {
+			const time = x[0];
+			const open = x[1];
+			const high = x[2];
+			const low = x[3];
+			const close = x[4];
+			
+			chart.push({
+				x: new Date(time),
+				y: [open, high, low, close]
+			});
+		});
+		
 		return chart;
 	},
 
