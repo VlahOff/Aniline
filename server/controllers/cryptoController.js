@@ -20,7 +20,9 @@ cryptoController.get('/topThree', async (req, res) => {
 
 cryptoController.get('/topHundred', async (req, res) => {
   try {
-    const response = await cryptoApi.getTopHundred();
+    const page = req.query.page;
+    const response = await cryptoApi.getTopHundred(page);
+
     res.status(200).json(response);
   } catch (error) {
     let statusCode = 400;
