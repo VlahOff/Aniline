@@ -119,8 +119,8 @@ const cryptoApi = {
 		return data;
 	},
 
-	newCoinsToday: async () => {
-		const t = await axios.get(cmcHostVOne + 'cryptocurrency/listings/latest?sort=date_added', { 'headers': cmcHeaders });
+	newCoinsToday: async (page = 1) => {
+		const t = await axios.get(cmcHostVOne + `cryptocurrency/listings/latest?sort=date_added&start=${page}`, { 'headers': cmcHeaders });
 		const coinData = t.data.data;
 
 		const ids = [];

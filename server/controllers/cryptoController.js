@@ -38,7 +38,9 @@ cryptoController.get('/topHundred', async (req, res) => {
 
 cryptoController.get('/newCoins', async (req, res) => {
   try {
-    const response = await cryptoApi.newCoinsToday();
+    const page = req.query.page;
+    const response = await cryptoApi.newCoinsToday(page);
+
     res.status(200).json(response);
   } catch (error) {
     let statusCode = 400;
