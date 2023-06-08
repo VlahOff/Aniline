@@ -196,9 +196,12 @@ export class CryptoEffects {
   fetchSearchResults = createEffect(() => this.actions$.pipe(
     ofType(CryptoActions.startSearch),
     switchMap((state) => {
+      let params = new HttpParams();
+      params = params.append('query', state.payload);
+
       return this.http
-        .post<SearchResult[]>(
-          environment.cryptoApi + '/search', { 'query': state.payload }
+        .get<SearchResult[]>(
+          environment.cryptoApi + '/search', { params: params }
         )
         .pipe(
           map(data => {
