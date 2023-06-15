@@ -7,15 +7,6 @@ Whether you're a seasoned investor or just getting started in the world of crypt
 
 ![HomePage](./screenshots/Screenshot_20230211_120901.png)
 
-You can check it out here 👀 [Aniline](https://aniline-old.vercel.app/) 
-**The first loading may take up to 30 seconds because the backend spins down when not in use!**
-
-## You can register yourself or use these credentials
-
-| E-mail | Password |
-| ----------- | ----------- |
-| test@aniline.com | Test1234 |
-
 ## Tech Stack
 - Angular
 - NgRx
